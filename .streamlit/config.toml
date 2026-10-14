@@ -1,0 +1,20 @@
+# Streamlit config for dashboard/app.py (run from the repo root). Colours mirror the Signal light tokens
+# (design/DESIGN_SIGNAL.md §2); the app swaps them at runtime for dark mode and restyles widgets with CSS.
+[theme]
+base = "light"
+primaryColor = "#2d54d3"
+backgroundColor = "#f7f8fa"
+secondaryBackgroundColor = "#f1f3f6"
+textColor = "#0f1318"
+baseRadius = "8px"
+
+[client]
+toolbarMode = "minimal"
+showSidebarNavigation = false
+
+[server]
+headless = true
+runOnSave = false
+
+[browser]
+gatherUsageStats = false

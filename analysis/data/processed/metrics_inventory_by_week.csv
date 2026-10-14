@@ -1,0 +1,337 @@
+year,wk,family,prod_type,on_hand_eow,units_sold,partial_sales_week,avg_weekly_units_trailing,wos_window_weeks,wos,wos_vs_week_median,wos_ly_same_week,sell_through_wk,implied_receipts
+LY,23,Belt Bag,Evergreen,98,14,False,14.0,1,7.0,0.918,,0.125,
+LY,23,Brooklyn,Evergreen,138,20,False,20.0,1,6.9,0.905,,0.126582,
+LY,23,Card Case,Core,106,13,False,13.0,1,8.15,1.069,,0.109244,
+LY,23,Charms,Evergreen,77,10,False,10.0,1,7.7,1.01,,0.114943,
+LY,23,Fragrance,Evergreen,60,5,False,5.0,1,12.0,1.574,,0.076923,
+LY,23,Jewelry,Halo,56,5,False,5.0,1,11.2,1.469,,0.081967,
+LY,23,Knit Dress,Halo,79,6,False,6.0,1,13.17,1.727,,0.070588,
+LY,23,Loafer,Evergreen,111,20,False,20.0,1,5.55,0.728,,0.152672,
+LY,23,Lowline Sneaker,Evergreen,93,16,False,16.0,1,5.81,0.762,,0.146789,
+LY,23,Mens Bag,Core,78,12,False,12.0,1,6.5,0.852,,0.133333,
+LY,23,Mens Footwear,Evergreen,84,12,False,12.0,1,7.0,0.918,,0.125,
+LY,23,Mens SLG,Core,51,10,False,10.0,1,5.1,0.669,,0.163934,
+LY,23,Pillow Tabby,Hero,63,5,False,5.0,1,12.6,1.652,,0.073529,
+LY,23,Rogue,Halo,183,24,False,24.0,1,7.62,1.0,,0.115942,
+LY,23,Sculpted Sandal,Halo,73,11,False,11.0,1,6.64,0.87,,0.130952,
+LY,23,Tabby,Hero,279,27,False,27.0,1,10.33,1.355,,0.088235,
+LY,23,Tailored Jacket,Halo,73,11,False,11.0,1,6.64,0.87,,0.130952,
+LY,23,Trench,Halo,74,11,False,11.0,1,6.73,0.882,,0.129412,
+LY,23,Wallet,Core,108,12,False,12.0,1,9.0,1.18,,0.1,
+LY,23,Willow,Core,213,17,False,17.0,1,12.53,1.643,,0.073913,
+LY,23,Wristlet,Core,120,9,False,9.0,1,13.33,1.749,,0.069767,
+LY,24,Belt Bag,Evergreen,97,14,False,14.0,2,6.93,0.882,,0.126126,13.0
+LY,24,Brooklyn,Evergreen,135,22,False,21.0,2,6.43,0.818,,0.140127,19.0
+LY,24,Card Case,Core,107,10,False,11.5,2,9.3,1.184,,0.08547,11.0
+LY,24,Charms,Evergreen,76,10,False,10.0,2,7.6,0.967,,0.116279,9.0
+LY,24,Fragrance,Evergreen,64,4,False,4.5,2,14.22,1.81,,0.058824,8.0
+LY,24,Jewelry,Halo,55,9,False,7.0,2,7.86,1.0,,0.140625,8.0
+LY,24,Knit Dress,Halo,75,12,False,9.0,2,8.33,1.061,,0.137931,8.0
+LY,24,Loafer,Evergreen,111,16,False,18.0,2,6.17,0.785,,0.125984,16.0
+LY,24,Lowline Sneaker,Evergreen,88,20,False,18.0,2,4.89,0.622,,0.185185,15.0
+LY,24,Mens Bag,Core,79,11,False,11.5,2,6.87,0.874,,0.122222,12.0
+LY,24,Mens Footwear,Evergreen,87,10,False,11.0,2,7.91,1.007,,0.103093,13.0
+LY,24,Mens SLG,Core,54,5,False,7.5,2,7.2,0.916,,0.084746,8.0
+LY,24,Pillow Tabby,Hero,64,7,False,6.0,2,10.67,1.358,,0.098592,8.0
+LY,24,Rogue,Halo,188,21,False,22.5,2,8.36,1.063,,0.100478,26.0
+LY,24,Sculpted Sandal,Halo,71,13,False,12.0,2,5.92,0.753,,0.154762,11.0
+LY,24,Tabby,Hero,286,23,False,25.0,2,11.44,1.456,,0.074434,30.0
+LY,24,Tailored Jacket,Halo,69,15,False,13.0,2,5.31,0.676,,0.178571,11.0
+LY,24,Trench,Halo,75,11,False,11.0,2,6.82,0.868,,0.127907,12.0
+LY,24,Wallet,Core,109,13,False,12.5,2,8.72,1.11,,0.106557,14.0
+LY,24,Willow,Core,212,30,False,23.5,2,9.02,1.148,,0.123967,29.0
+LY,24,Wristlet,Core,120,14,False,11.5,2,10.43,1.328,,0.104478,14.0
+LY,25,Belt Bag,Evergreen,91,17,False,15.0,3,6.07,0.708,,0.157407,11.0
+LY,25,Brooklyn,Evergreen,137,19,False,20.333,3,6.74,0.786,,0.121795,21.0
+LY,25,Card Case,Core,113,8,False,10.333,3,10.94,1.276,,0.066116,14.0
+LY,25,Charms,Evergreen,77,8,False,9.333,3,8.25,0.963,,0.094118,9.0
+LY,25,Fragrance,Evergreen,65,7,False,5.333,3,12.19,1.422,,0.097222,8.0
+LY,25,Jewelry,Halo,56,7,False,7.0,3,8.0,0.933,,0.111111,8.0
+LY,25,Knit Dress,Halo,77,8,False,8.667,3,8.88,1.037,,0.094118,10.0
+LY,25,Loafer,Evergreen,114,12,False,16.0,3,7.12,0.831,,0.095238,15.0
+LY,25,Lowline Sneaker,Evergreen,97,3,False,13.0,3,7.46,0.871,,0.03,12.0
+LY,25,Mens Bag,Core,84,3,False,8.667,3,9.69,1.131,,0.034483,8.0
+LY,25,Mens Footwear,Evergreen,87,8,False,10.0,3,8.7,1.015,,0.084211,8.0
+LY,25,Mens SLG,Core,56,6,False,7.0,3,8.0,0.933,,0.096774,8.0
+LY,25,Pillow Tabby,Hero,67,3,False,5.0,3,13.4,1.563,,0.042857,6.0
+LY,25,Rogue,Halo,193,18,False,21.0,3,9.19,1.072,,0.085308,23.0
+LY,25,Sculpted Sandal,Halo,71,9,False,11.0,3,6.45,0.753,,0.1125,9.0
+LY,25,Tabby,Hero,279,37,False,29.0,3,9.62,1.122,,0.117089,30.0
+LY,25,Tailored Jacket,Halo,65,12,False,12.667,3,5.13,0.599,,0.155844,8.0
+LY,25,Trench,Halo,80,6,False,9.333,3,8.57,1.0,,0.069767,11.0
+LY,25,Wallet,Core,106,14,False,13.0,3,8.15,0.951,,0.116667,11.0
+LY,25,Willow,Core,220,20,False,22.333,3,9.85,1.149,,0.083333,28.0
+LY,25,Wristlet,Core,123,13,False,12.0,3,10.25,1.196,,0.095588,16.0
+LY,26,Belt Bag,Evergreen,97,8,False,13.25,4,7.32,0.872,,0.07619,14.0
+LY,26,Brooklyn,Evergreen,140,17,False,19.5,4,7.18,0.855,,0.10828,20.0
+LY,26,Card Case,Core,111,13,False,11.0,4,10.09,1.201,,0.104839,11.0
+LY,26,Charms,Evergreen,73,14,False,10.5,4,6.95,0.828,,0.16092,10.0
+LY,26,Fragrance,Evergreen,60,11,False,6.75,4,8.89,1.058,,0.15493,6.0
+LY,26,Jewelry,Halo,54,8,False,7.25,4,7.45,0.887,,0.129032,6.0
+LY,26,Knit Dress,Halo,80,6,False,8.0,4,10.0,1.19,,0.069767,9.0
+LY,26,Loafer,Evergreen,113,15,False,15.75,4,7.17,0.854,,0.117188,14.0
+LY,26,Lowline Sneaker,Evergreen,100,8,False,11.75,4,8.51,1.013,,0.074074,11.0
+LY,26,Mens Bag,Core,77,16,False,10.5,4,7.33,0.873,,0.172043,9.0
+LY,26,Mens Footwear,Evergreen,90,7,False,9.25,4,9.73,1.158,,0.072165,10.0
+LY,26,Mens SLG,Core,57,5,False,6.5,4,8.77,1.044,,0.080645,6.0
+LY,26,Pillow Tabby,Hero,67,7,False,5.5,4,12.18,1.45,,0.094595,7.0
+LY,26,Rogue,Halo,182,35,False,24.5,4,7.43,0.884,,0.16129,24.0
+LY,26,Sculpted Sandal,Halo,68,11,False,11.0,4,6.18,0.736,,0.139241,8.0
+LY,26,Tabby,Hero,274,43,False,32.5,4,8.43,1.004,,0.135647,38.0
+LY,26,Tailored Jacket,Halo,69,5,False,10.75,4,6.42,0.764,,0.067568,9.0
+LY,26,Trench,Halo,78,11,False,9.75,4,8.0,0.952,,0.123596,9.0
+LY,26,Wallet,Core,105,11,False,12.5,4,8.4,1.0,,0.094828,10.0
+LY,26,Willow,Core,214,29,False,24.0,4,8.92,1.062,,0.119342,23.0
+LY,26,Wristlet,Core,129,8,False,11.0,4,11.73,1.396,,0.058394,14.0
+LY,27,Belt Bag,Evergreen,99,10,False,12.25,4,8.08,1.023,,0.091743,12.0
+LY,27,Brooklyn,Evergreen,144,15,False,18.25,4,7.89,0.999,,0.09434,19.0
+LY,27,Card Case,Core,109,14,False,11.25,4,9.69,1.227,,0.113821,12.0
+LY,27,Charms,Evergreen,74,8,False,10.0,4,7.4,0.937,,0.097561,9.0
+LY,27,Fragrance,Evergreen,61,6,False,7.0,4,8.71,1.103,,0.089552,7.0
+LY,27,Jewelry,Halo,56,5,False,7.25,4,7.72,0.978,,0.081967,7.0
+LY,27,Knit Dress,Halo,77,13,False,9.75,4,7.9,1.0,,0.144444,10.0
+LY,27,Loafer,Evergreen,112,13,False,14.0,4,8.0,1.013,,0.104,12.0
+LY,27,Lowline Sneaker,Evergreen,104,12,False,10.75,4,9.67,1.225,,0.103448,16.0
+LY,27,Mens Bag,Core,78,10,False,10.0,4,7.8,0.988,,0.113636,11.0
+LY,27,Mens Footwear,Evergreen,88,11,False,9.0,4,9.78,1.238,,0.111111,9.0
+LY,27,Mens SLG,Core,57,5,False,5.25,4,10.86,1.375,,0.080645,5.0
+LY,27,Pillow Tabby,Hero,61,15,False,8.0,4,7.62,0.966,,0.197368,9.0
+LY,27,Rogue,Halo,180,19,False,23.25,4,7.74,0.98,,0.095477,17.0
+LY,27,Sculpted Sandal,Halo,73,4,False,9.25,4,7.89,0.999,,0.051948,9.0
+LY,27,Tabby,Hero,269,42,False,36.25,4,7.42,0.94,,0.135048,37.0
+LY,27,Tailored Jacket,Halo,69,8,False,10.0,4,6.9,0.874,,0.103896,8.0
+LY,27,Trench,Halo,76,10,False,9.5,4,8.0,1.013,,0.116279,8.0
+LY,27,Wallet,Core,104,13,False,12.75,4,8.16,1.033,,0.111111,12.0
+LY,27,Willow,Core,218,17,False,24.0,4,9.08,1.15,,0.07234,21.0
+LY,27,Wristlet,Core,115,28,False,15.75,4,7.3,0.925,,0.195804,14.0
+LY,28,Belt Bag,Evergreen,97,12,False,11.75,4,8.26,1.0,,0.110092,10.0
+LY,28,Brooklyn,Evergreen,150,17,False,17.0,4,8.82,1.069,,0.101796,23.0
+LY,28,Card Case,Core,106,19,False,13.5,4,7.85,0.951,,0.152,16.0
+LY,28,Charms,Evergreen,72,10,False,10.0,4,7.2,0.872,,0.121951,8.0
+LY,28,Fragrance,Evergreen,65,5,False,7.25,4,8.97,1.086,,0.071429,9.0
+LY,28,Jewelry,Halo,54,9,False,7.25,4,7.45,0.902,,0.142857,7.0
+LY,28,Knit Dress,Halo,77,9,False,9.0,4,8.56,1.036,,0.104651,9.0
+LY,28,Loafer,Evergreen,115,12,False,13.0,4,8.85,1.072,,0.094488,15.0
+LY,28,Lowline Sneaker,Evergreen,94,22,False,11.25,4,8.36,1.012,,0.189655,12.0
+LY,28,Mens Bag,Core,80,7,False,9.0,4,8.89,1.077,,0.08046,9.0
+LY,28,Mens Footwear,Evergreen,89,11,False,9.25,4,9.62,1.166,,0.11,12.0
+LY,28,Mens SLG,Core,52,11,False,6.75,4,7.7,0.933,,0.174603,6.0
+LY,28,Pillow Tabby,Hero,62,7,False,8.0,4,7.75,0.939,,0.101449,8.0
+LY,28,Rogue,Halo,177,22,False,23.5,4,7.53,0.912,,0.110553,19.0
+LY,28,Sculpted Sandal,Halo,75,10,False,8.5,4,8.82,1.069,,0.117647,12.0
+LY,28,Tabby,Hero,271,39,False,40.25,4,6.73,0.816,,0.125806,41.0
+LY,28,Tailored Jacket,Halo,70,10,False,8.75,4,8.0,0.969,,0.125,11.0
+LY,28,Trench,Halo,76,12,False,9.75,4,7.79,0.944,,0.136364,12.0
+LY,28,Wallet,Core,104,11,False,12.25,4,8.49,1.028,,0.095652,11.0
+LY,28,Willow,Core,216,33,False,24.75,4,8.73,1.057,,0.13253,31.0
+LY,28,Wristlet,Core,109,19,False,17.0,4,6.41,0.777,,0.148438,13.0
+LY,29,Belt Bag,Evergreen,99,8,False,9.5,4,10.42,1.335,,0.074766,10.0
+LY,29,Brooklyn,Evergreen,149,18,False,16.75,4,8.9,1.14,,0.107784,17.0
+LY,29,Card Case,Core,107,13,False,14.75,4,7.25,0.929,,0.108333,14.0
+LY,29,Charms,Evergreen,71,9,False,10.25,4,6.93,0.888,,0.1125,8.0
+LY,29,Fragrance,Evergreen,59,14,False,9.0,4,6.56,0.84,,0.191781,8.0
+LY,29,Jewelry,Halo,54,6,False,7.0,4,7.71,0.988,,0.1,6.0
+LY,29,Knit Dress,Halo,74,10,False,9.5,4,7.79,0.998,,0.119048,7.0
+LY,29,Loafer,Evergreen,115,11,False,12.75,4,9.02,1.156,,0.087302,11.0
+LY,29,Lowline Sneaker,Evergreen,98,6,False,12.0,4,8.17,1.046,,0.057692,10.0
+LY,29,Mens Bag,Core,76,12,False,11.25,4,6.76,0.866,,0.136364,8.0
+LY,29,Mens Footwear,Evergreen,85,13,False,10.5,4,8.1,1.037,,0.132653,9.0
+LY,29,Mens SLG,Core,53,5,False,6.5,4,8.15,1.045,,0.086207,6.0
+LY,29,Pillow Tabby,Hero,55,14,False,10.75,4,5.12,0.656,,0.202899,7.0
+LY,29,Rogue,Halo,183,14,False,22.5,4,8.13,1.042,,0.071066,20.0
+LY,29,Sculpted Sandal,Halo,74,11,False,9.0,4,8.22,1.053,,0.129412,10.0
+LY,29,Tabby,Hero,269,29,False,38.25,4,7.03,0.901,,0.097315,27.0
+LY,29,Tailored Jacket,Halo,78,3,False,6.5,4,12.0,1.538,,0.037037,11.0
+LY,29,Trench,Halo,80,8,False,10.25,4,7.8,1.0,,0.090909,12.0
+LY,29,Wallet,Core,100,15,False,12.5,4,8.0,1.025,,0.130435,11.0
+LY,29,Willow,Core,209,30,False,27.25,4,7.67,0.983,,0.125523,23.0
+LY,29,Wristlet,Core,107,16,False,17.75,4,6.03,0.772,,0.130081,14.0
+LY,30,Belt Bag,Evergreen,90,21,False,12.75,4,7.06,0.938,,0.189189,12.0
+LY,30,Brooklyn,Evergreen,153,15,False,16.25,4,9.42,1.251,,0.089286,19.0
+LY,30,Card Case,Core,105,15,False,15.25,4,6.89,0.915,,0.125,13.0
+LY,30,Charms,Evergreen,67,15,False,10.5,4,6.38,0.848,,0.182927,11.0
+LY,30,Fragrance,Evergreen,51,15,False,10.0,4,5.1,0.678,,0.227273,7.0
+LY,30,Jewelry,Halo,54,8,False,7.0,4,7.71,1.025,,0.129032,8.0
+LY,30,Knit Dress,Halo,73,9,False,10.25,4,7.12,0.947,,0.109756,8.0
+LY,30,Loafer,Evergreen,124,5,False,10.25,4,12.1,1.608,,0.03876,14.0
+LY,30,Lowline Sneaker,Evergreen,99,9,False,12.25,4,8.08,1.074,,0.083333,10.0
+LY,30,Mens Bag,Core,74,14,False,10.75,4,6.88,0.915,,0.159091,12.0
+LY,30,Mens Footwear,Evergreen,85,9,False,11.0,4,7.73,1.027,,0.095745,9.0
+LY,30,Mens SLG,Core,52,8,False,7.25,4,7.17,0.953,,0.133333,7.0
+LY,30,Pillow Tabby,Hero,56,8,False,11.0,4,5.09,0.677,,0.125,9.0
+LY,30,Rogue,Halo,179,21,False,19.0,4,9.42,1.252,,0.105,17.0
+LY,30,Sculpted Sandal,Halo,72,14,False,9.75,4,7.38,0.981,,0.162791,12.0
+LY,30,Tabby,Hero,269,33,False,35.75,4,7.52,1.0,,0.109272,33.0
+LY,30,Tailored Jacket,Halo,77,9,False,7.5,4,10.27,1.364,,0.104651,8.0
+LY,30,Trench,Halo,81,7,False,9.25,4,8.76,1.164,,0.079545,8.0
+LY,30,Wallet,Core,103,13,False,13.0,4,7.92,1.053,,0.112069,16.0
+LY,30,Willow,Core,214,15,False,23.75,4,9.01,1.197,,0.065502,20.0
+LY,30,Wristlet,Core,120,6,False,17.25,4,6.96,0.925,,0.047619,19.0
+TY,23,Belt Bag,Evergreen,119,19,False,19.0,1,6.26,0.679,7.0,0.137681,
+TY,23,Brooklyn,Evergreen,177,19,False,19.0,1,9.32,1.009,6.9,0.096939,
+TY,23,Card Case,Core,132,9,False,9.0,1,14.67,1.589,8.15,0.06383,
+TY,23,Charms,Evergreen,90,9,False,9.0,1,10.0,1.083,7.7,0.090909,
+TY,23,Fragrance,Evergreen,81,6,False,6.0,1,13.5,1.463,12.0,0.068966,
+TY,23,Jewelry,Halo,77,10,False,10.0,1,7.7,0.834,11.2,0.114943,
+TY,23,Knit Dress,Halo,77,4,False,4.0,1,19.25,2.085,13.17,0.049383,
+TY,23,Loafer,Evergreen,81,18,False,18.0,1,4.5,0.488,5.55,0.181818,
+TY,23,Lowline Sneaker,Evergreen,104,9,False,9.0,1,11.56,1.252,5.81,0.079646,
+TY,23,Mens Bag,Core,76,8,False,8.0,1,9.5,1.029,6.5,0.095238,
+TY,23,Mens Footwear,Evergreen,64,8,False,8.0,1,8.0,0.867,7.0,0.111111,
+TY,23,Mens SLG,Core,69,13,False,13.0,1,5.31,0.575,5.1,0.158537,
+TY,23,Pillow Tabby,Hero,89,5,False,5.0,1,17.8,1.928,12.6,0.053191,
+TY,23,Rogue,Halo,134,24,False,24.0,1,5.58,0.605,7.62,0.151899,
+TY,23,Sculpted Sandal,Halo,104,16,False,16.0,1,6.5,0.704,6.64,0.133333,
+TY,23,Tabby,Hero,290,43,False,43.0,1,6.74,0.731,10.33,0.129129,
+TY,23,Tailored Jacket,Halo,95,4,False,4.0,1,23.75,2.573,6.64,0.040404,
+TY,23,Trench,Halo,130,4,False,4.0,1,32.5,3.521,6.73,0.029851,
+TY,23,Wallet,Core,120,13,False,13.0,1,9.23,1.0,9.0,0.097744,
+TY,23,Willow,Core,220,27,False,27.0,1,8.15,0.883,12.53,0.109312,
+TY,23,Wristlet,Core,136,18,False,18.0,1,7.56,0.819,13.33,0.116883,
+TY,24,Belt Bag,Evergreen,117,14,False,16.5,2,7.09,0.808,6.93,0.10687,12.0
+TY,24,Brooklyn,Evergreen,180,21,False,20.0,2,9.0,1.025,6.43,0.104478,24.0
+TY,24,Card Case,Core,138,11,False,10.0,2,13.8,1.572,9.3,0.073826,17.0
+TY,24,Charms,Evergreen,90,14,False,11.5,2,7.83,0.892,7.6,0.134615,14.0
+TY,24,Fragrance,Evergreen,79,12,False,9.0,2,8.78,1.0,14.22,0.131868,10.0
+TY,24,Jewelry,Halo,80,5,False,7.5,2,10.67,1.215,7.86,0.058824,8.0
+TY,24,Knit Dress,Halo,72,11,False,7.5,2,9.6,1.094,8.33,0.13253,6.0
+TY,24,Loafer,Evergreen,85,7,False,12.5,2,6.8,0.775,6.17,0.076087,11.0
+TY,24,Lowline Sneaker,Evergreen,104,11,False,10.0,2,10.4,1.185,4.89,0.095652,11.0
+TY,24,Mens Bag,Core,84,2,False,5.0,2,16.8,1.914,6.87,0.023256,10.0
+TY,24,Mens Footwear,Evergreen,65,7,False,7.5,2,8.67,0.987,7.91,0.097222,8.0
+TY,24,Mens SLG,Core,65,11,False,12.0,2,5.42,0.617,7.2,0.144737,7.0
+TY,24,Pillow Tabby,Hero,84,10,False,7.5,2,11.2,1.276,10.67,0.106383,5.0
+TY,24,Rogue,Halo,129,19,False,21.5,2,6.0,0.684,8.36,0.128378,14.0
+TY,24,Sculpted Sandal,Halo,100,14,False,15.0,2,6.67,0.759,5.92,0.122807,10.0
+TY,24,Tabby,Hero,246,54,False,48.5,2,5.07,0.578,11.44,0.18,10.0
+TY,24,Tailored Jacket,Halo,101,5,False,4.5,2,22.44,2.557,5.31,0.04717,11.0
+TY,24,Trench,Halo,130,11,False,7.5,2,17.33,1.975,6.82,0.078014,11.0
+TY,24,Wallet,Core,121,15,False,14.0,2,8.64,0.985,8.72,0.110294,16.0
+TY,24,Willow,Core,225,29,False,28.0,2,8.04,0.915,9.02,0.114173,34.0
+TY,24,Wristlet,Core,149,7,False,12.5,2,11.92,1.358,10.43,0.044872,20.0
+TY,25,Belt Bag,Evergreen,122,13,False,15.333,3,7.96,0.903,6.07,0.096296,18.0
+TY,25,Brooklyn,Evergreen,181,17,False,19.0,3,9.53,1.082,6.74,0.085859,18.0
+TY,25,Card Case,Core,138,18,False,12.667,3,10.89,1.237,10.94,0.115385,18.0
+TY,25,Charms,Evergreen,91,8,False,10.333,3,8.81,1.0,8.25,0.080808,9.0
+TY,25,Fragrance,Evergreen,83,5,False,7.667,3,10.83,1.229,12.19,0.056818,9.0
+TY,25,Jewelry,Halo,83,7,False,7.333,3,11.32,1.285,8.0,0.077778,10.0
+TY,25,Knit Dress,Halo,74,4,False,6.333,3,11.68,1.327,8.88,0.051282,6.0
+TY,25,Loafer,Evergreen,86,7,False,10.667,3,8.06,0.916,7.12,0.075269,8.0
+TY,25,Lowline Sneaker,Evergreen,113,3,False,7.667,3,14.74,1.674,7.46,0.025862,12.0
+TY,25,Mens Bag,Core,87,6,False,5.333,3,16.31,1.852,9.69,0.064516,9.0
+TY,25,Mens Footwear,Evergreen,64,7,False,7.333,3,8.73,0.991,8.7,0.098592,6.0
+TY,25,Mens SLG,Core,69,5,False,9.667,3,7.14,0.811,8.0,0.067568,9.0
+TY,25,Pillow Tabby,Hero,70,17,False,10.667,3,6.56,0.745,13.4,0.195402,3.0
+TY,25,Rogue,Halo,131,14,False,19.0,3,6.89,0.783,9.19,0.096552,16.0
+TY,25,Sculpted Sandal,Halo,104,6,False,12.0,3,8.67,0.984,6.45,0.054545,10.0
+TY,25,Tabby,Hero,213,45,False,47.333,3,4.5,0.511,9.62,0.174419,12.0
+TY,25,Tailored Jacket,Halo,106,5,False,4.667,3,22.71,2.579,5.13,0.045045,10.0
+TY,25,Trench,Halo,136,7,False,7.333,3,18.55,2.106,8.57,0.048951,13.0
+TY,25,Wallet,Core,118,15,False,14.333,3,8.23,0.935,8.15,0.112782,12.0
+TY,25,Willow,Core,225,23,False,26.333,3,8.54,0.97,9.85,0.092742,23.0
+TY,25,Wristlet,Core,151,15,False,13.333,3,11.32,1.286,10.25,0.090361,17.0
+TY,26,Belt Bag,Evergreen,111,27,False,18.25,4,6.08,0.721,7.32,0.195652,16.0
+TY,26,Brooklyn,Evergreen,173,25,False,20.5,4,8.44,1.0,7.18,0.126263,17.0
+TY,26,Card Case,Core,127,24,False,15.5,4,8.19,0.971,10.09,0.15894,13.0
+TY,26,Charms,Evergreen,94,9,False,10.0,4,9.4,1.114,6.95,0.087379,12.0
+TY,26,Fragrance,Evergreen,88,3,False,6.5,4,13.54,1.604,8.89,0.032967,8.0
+TY,26,Jewelry,Halo,79,12,False,8.5,4,9.29,1.101,7.45,0.131868,8.0
+TY,26,Knit Dress,Halo,80,4,False,5.75,4,13.91,1.649,10.0,0.047619,10.0
+TY,26,Loafer,Evergreen,92,7,False,9.75,4,9.44,1.118,7.17,0.070707,13.0
+TY,26,Lowline Sneaker,Evergreen,106,19,False,10.5,4,10.1,1.196,8.51,0.152,12.0
+TY,26,Mens Bag,Core,81,14,False,7.5,4,10.8,1.28,7.33,0.147368,8.0
+TY,26,Mens Footwear,Evergreen,58,13,False,8.75,4,6.63,0.785,9.73,0.183099,7.0
+TY,26,Mens SLG,Core,67,9,False,9.5,4,7.05,0.836,8.77,0.118421,7.0
+TY,26,Pillow Tabby,Hero,65,9,False,10.25,4,6.34,0.751,12.18,0.121622,4.0
+TY,26,Rogue,Halo,134,10,False,16.75,4,8.0,0.948,7.43,0.069444,13.0
+TY,26,Sculpted Sandal,Halo,105,14,False,12.5,4,8.4,0.995,6.18,0.117647,15.0
+TY,26,Tabby,Hero,183,47,False,47.25,4,3.87,0.459,8.43,0.204348,17.0
+TY,26,Tailored Jacket,Halo,110,3,False,4.25,4,25.88,3.067,6.42,0.026549,7.0
+TY,26,Trench,Halo,139,9,False,7.75,4,17.94,2.125,8.0,0.060811,12.0
+TY,26,Wallet,Core,112,17,False,15.0,4,7.47,0.885,8.4,0.131783,11.0
+TY,26,Willow,Core,225,28,False,26.75,4,8.41,0.997,8.92,0.110672,28.0
+TY,26,Wristlet,Core,146,19,False,14.75,4,9.9,1.173,11.73,0.115152,14.0
+TY,27,Belt Bag,Evergreen,113,10,False,16.0,4,7.06,0.857,8.08,0.081301,12.0
+TY,27,Brooklyn,Evergreen,165,25,False,22.0,4,7.5,0.91,7.89,0.131579,17.0
+TY,27,Card Case,Core,127,12,False,16.25,4,7.82,0.948,9.69,0.086331,12.0
+TY,27,Charms,Evergreen,101,7,False,9.5,4,10.63,1.289,7.4,0.064815,14.0
+TY,27,Fragrance,Evergreen,86,12,False,8.0,4,10.75,1.304,8.71,0.122449,10.0
+TY,27,Jewelry,Halo,78,10,False,8.5,4,9.18,1.113,7.72,0.113636,9.0
+TY,27,Knit Dress,Halo,81,5,False,6.0,4,13.5,1.637,7.9,0.05814,6.0
+TY,27,Loafer,Evergreen,92,12,False,8.25,4,11.15,1.353,8.0,0.115385,12.0
+TY,27,Lowline Sneaker,Evergreen,101,18,False,12.75,4,7.92,0.961,9.67,0.151261,13.0
+TY,27,Mens Bag,Core,76,15,False,9.25,4,8.22,0.997,7.8,0.164835,10.0
+TY,27,Mens Footwear,Evergreen,57,9,False,9.0,4,6.33,0.768,9.78,0.136364,8.0
+TY,27,Mens SLG,Core,73,5,False,7.5,4,9.73,1.181,10.86,0.064103,11.0
+TY,27,Pillow Tabby,Hero,55,14,False,12.5,4,4.4,0.534,7.62,0.202899,4.0
+TY,27,Rogue,Halo,137,14,False,14.25,4,9.61,1.166,7.74,0.092715,17.0
+TY,27,Sculpted Sandal,Halo,101,15,False,12.25,4,8.24,1.0,7.89,0.12931,11.0
+TY,27,Tabby,Hero,160,38,False,46.0,4,3.48,0.422,7.42,0.191919,15.0
+TY,27,Tailored Jacket,Halo,114,5,False,4.5,4,25.33,3.073,6.9,0.042017,9.0
+TY,27,Trench,Halo,148,5,False,8.0,4,18.5,2.244,8.0,0.03268,14.0
+TY,27,Wallet,Core,109,17,False,16.0,4,6.81,0.826,8.16,0.134921,14.0
+TY,27,Willow,Core,221,36,False,29.0,4,7.62,0.924,9.08,0.140078,32.0
+TY,27,Wristlet,Core,152,15,False,14.0,4,10.86,1.317,7.3,0.08982,21.0
+TY,28,Belt Bag,Evergreen,120,7,False,14.25,4,8.42,0.976,8.26,0.055118,14.0
+TY,28,Brooklyn,Evergreen,158,26,False,23.25,4,6.8,0.787,8.82,0.141304,19.0
+TY,28,Card Case,Core,114,26,False,20.0,4,5.7,0.661,7.85,0.185714,13.0
+TY,28,Charms,Evergreen,95,20,False,11.0,4,8.64,1.001,7.2,0.173913,14.0
+TY,28,Fragrance,Evergreen,81,15,False,8.75,4,9.26,1.073,8.97,0.15625,10.0
+TY,28,Jewelry,Halo,73,13,False,10.5,4,6.95,0.806,7.45,0.151163,8.0
+TY,28,Knit Dress,Halo,85,3,False,4.0,4,21.25,2.462,8.56,0.034091,7.0
+TY,28,Loafer,Evergreen,96,6,False,8.0,4,12.0,1.391,8.85,0.058824,10.0
+TY,28,Lowline Sneaker,Evergreen,98,15,False,13.75,4,7.13,0.826,8.36,0.132743,12.0
+TY,28,Mens Bag,Core,74,10,False,11.25,4,6.58,0.762,8.89,0.119048,8.0
+TY,28,Mens Footwear,Evergreen,54,9,False,9.5,4,5.68,0.659,9.62,0.142857,6.0
+TY,28,Mens SLG,Core,70,11,False,7.5,4,9.33,1.082,7.7,0.135802,8.0
+TY,28,Pillow Tabby,Hero,41,18,False,14.5,4,2.83,0.328,7.75,0.305085,4.0
+TY,28,Rogue,Halo,142,12,False,12.5,4,11.36,1.316,7.53,0.077922,17.0
+TY,28,Sculpted Sandal,Halo,102,13,False,12.0,4,8.5,0.985,8.82,0.113043,14.0
+TY,28,Tabby,Hero,116,55,False,46.25,4,2.51,0.291,6.73,0.321637,11.0
+TY,28,Tailored Jacket,Halo,109,15,False,7.0,4,15.57,1.804,8.0,0.120968,10.0
+TY,28,Trench,Halo,144,14,False,8.75,4,16.46,1.907,7.79,0.088608,10.0
+TY,28,Wallet,Core,121,6,False,13.75,4,8.8,1.02,8.49,0.047244,18.0
+TY,28,Willow,Core,233,21,False,27.0,4,8.63,1.0,8.73,0.082677,33.0
+TY,28,Wristlet,Core,153,20,False,17.25,4,8.87,1.028,6.41,0.115607,21.0
+TY,29,Belt Bag,Evergreen,123,14,False,14.5,4,8.48,1.088,10.42,0.10219,17.0
+TY,29,Brooklyn,Evergreen,168,14,False,22.5,4,7.47,0.957,8.9,0.076923,24.0
+TY,29,Card Case,Core,116,13,False,18.75,4,6.19,0.793,7.25,0.100775,15.0
+TY,29,Charms,Evergreen,94,14,False,12.5,4,7.52,0.964,6.93,0.12963,13.0
+TY,29,Fragrance,Evergreen,78,10,False,10.0,4,7.8,1.0,6.56,0.113636,7.0
+TY,29,Jewelry,Halo,77,5,False,10.0,4,7.7,0.987,7.71,0.060976,9.0
+TY,29,Knit Dress,Halo,88,5,False,4.25,4,20.71,2.655,7.79,0.053763,8.0
+TY,29,Loafer,Evergreen,88,19,False,11.0,4,8.0,1.026,9.02,0.17757,11.0
+TY,29,Lowline Sneaker,Evergreen,94,15,False,16.75,4,5.61,0.719,8.17,0.137615,11.0
+TY,29,Mens Bag,Core,72,10,False,12.25,4,5.88,0.754,6.76,0.121951,8.0
+TY,29,Mens Footwear,Evergreen,59,3,False,8.5,4,6.94,0.89,8.1,0.048387,8.0
+TY,29,Mens SLG,Core,68,9,False,8.5,4,8.0,1.026,8.15,0.116883,7.0
+TY,29,Pillow Tabby,Hero,27,19,False,15.0,4,1.8,0.231,5.12,0.413043,5.0
+TY,29,Rogue,Halo,139,20,False,14.0,4,9.93,1.273,8.13,0.125786,17.0
+TY,29,Sculpted Sandal,Halo,103,10,False,13.0,4,7.92,1.016,8.22,0.088496,11.0
+TY,29,Tabby,Hero,92,37,False,44.25,4,2.08,0.267,7.03,0.286822,13.0
+TY,29,Tailored Jacket,Halo,110,6,False,7.25,4,15.17,1.945,12.0,0.051724,7.0
+TY,29,Trench,Halo,146,8,False,9.0,4,16.22,2.08,7.8,0.051948,10.0
+TY,29,Wallet,Core,120,19,False,14.75,4,8.14,1.043,8.0,0.136691,18.0
+TY,29,Willow,Core,225,30,False,28.75,4,7.83,1.003,7.67,0.117647,22.0
+TY,29,Wristlet,Core,143,26,False,20.0,4,7.15,0.917,6.03,0.153846,16.0
+TY,30,Belt Bag,Evergreen,126,9,True,14.5,4,8.69,1.1,7.06,,
+TY,30,Brooklyn,Evergreen,169,20,True,22.5,4,7.51,0.951,9.42,,
+TY,30,Card Case,Core,129,6,True,18.75,4,6.88,0.871,6.89,,
+TY,30,Charms,Evergreen,95,8,True,12.5,4,7.6,0.962,6.38,,
+TY,30,Fragrance,Evergreen,79,8,True,10.0,4,7.9,1.0,5.1,,
+TY,30,Jewelry,Halo,83,5,True,10.0,4,8.3,1.051,7.71,,
+TY,30,Knit Dress,Halo,90,4,True,4.25,4,21.18,2.681,7.12,,
+TY,30,Loafer,Evergreen,93,7,True,11.0,4,8.45,1.07,12.1,,
+TY,30,Lowline Sneaker,Evergreen,106,3,True,16.75,4,6.33,0.801,8.08,,
+TY,30,Mens Bag,Core,71,11,True,12.25,4,5.8,0.734,6.88,,
+TY,30,Mens Footwear,Evergreen,61,5,True,8.5,4,7.18,0.908,7.73,,
+TY,30,Mens SLG,Core,65,12,True,8.5,4,7.65,0.968,7.17,,
+TY,30,Pillow Tabby,Hero,24,6,True,15.0,4,1.6,0.203,5.09,,
+TY,30,Rogue,Halo,146,6,True,14.0,4,10.43,1.32,9.42,,
+TY,30,Sculpted Sandal,Halo,108,7,True,13.0,4,8.31,1.052,7.38,,
+TY,30,Tabby,Hero,82,26,True,44.25,4,1.85,0.235,7.52,,
+TY,30,Tailored Jacket,Halo,118,2,True,7.25,4,16.28,2.06,10.27,,
+TY,30,Trench,Halo,152,4,True,9.0,4,16.89,2.138,8.76,,
+TY,30,Wallet,Core,122,12,True,14.75,4,8.27,1.047,7.92,,
+TY,30,Willow,Core,242,16,True,28.75,4,8.42,1.065,9.01,,
+TY,30,Wristlet,Core,156,8,True,20.0,4,7.8,0.987,6.96,,
