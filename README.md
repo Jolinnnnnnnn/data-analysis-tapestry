@@ -1,4 +1,4 @@
-# TYLY take-home: data structure & analysis
+# aTYLY take-home: data structure & analysis
 
 Consumer Intelligence & Analytics exercise on `TYLY_data_sample.xlsx` (FY26 vs FY25, fiscal weeks W23–W30).
 
