@@ -108,3 +108,10 @@
   - Medium-high: F6 (flat returning; proxy, not cohort), F12 (receipts inferred, not observed), F10 (Rogue/Knit Dress significant; Trench/Tailored Jacket not).
   - Medium: F3, F7 (segment gaps n=22–79), F8 (Tabby gateway solid; AUR premium downgraded to mix), F13.
   - Low / tentative: F15 (Mens Bag watch list, n=11). R3 impact (scenario-based).
+
+## Iteration 14 — design direction
+- Goal: user asked that the deliverables follow the design style of https://signal-agent-nu.vercel.app/.
+- Actions: inspected the reference in the built-in browser (briefing, classic dashboard, /ask, /build) and extracted computed CSS (token sets for light and dark, fonts, component sizes); wrote handoff/DESIGN_SIGNAL.md; rewrote PROMPT_C layout (briefing-first landing page with AI-worded validated cards, "What I'm watching" rules rail, classic G1–G4 view behind a toggle, /build-style "How it was built", light/dark); added the Signal restyle + design-comparison steps to PROMPT_D.
+- Result: both handoffs now reference DESIGN_SIGNAL.md; the old palette (#2a78d6 / #eb6834) is removed from both prompts.
+- Verification: tokens copied from the site's own CSS variables ([data-theme="light"/"dark"]), not eyeballed; fonts read from document.fonts (Geist 400/500/600, Instrument Serif 400, JetBrains Mono 400/500).
+- Next: run PROMPT_C, then PROMPT_D.
