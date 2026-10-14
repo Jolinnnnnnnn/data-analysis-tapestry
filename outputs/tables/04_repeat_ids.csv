@@ -1,0 +1,19 @@
+CUST_ID,TXN_DT,FISCAL_YR,GEO_REGION,CUST_AGE_GROUP,INSIDER_FLAG,COHORT_STATUS,STYLE_DESC
+271379,2026-07-04,FY26,North America,Boomer,N,New,Long Zip Around Wallet
+271379,2026-07-24,FY26,North America,Millennial,Y,New,Pillow Tabby 18
+467752,2025-07-28,FY25,Europe,Millennial,N,Retained,Pillow Tabby 18
+467752,2026-08-15,FY26,Greater China,Boomer,N,New,Leather Loafer
+468795,2025-08-01,FY25,North America,Gen X,N,New,Charter Belt Bag
+468795,2026-07-25,FY26,North America,Gen X,Y,Retained,Warren Belt Bag
+604081,2025-08-02,FY25,North America,Millennial,N,New,Lowline Low Top Sneaker
+604081,2026-07-21,FY26,Greater China,Millennial,N,Retained,Citysole Sneaker
+638364,2026-07-08,FY26,North America,Millennial,N,Reactivated,Hamptons Sandal
+638364,2026-07-18,FY26,Europe,Gen Z,Y,Reactivated,Rogue 25
+777513,2025-08-13,FY25,Europe,Gen X,N,New,Willow Shoulder Bag
+777513,2026-07-03,FY26,North America,Gen X,Y,New,Rogue 25
+778325,2025-08-10,FY25,Europe,Boomer,Y,Reactivated,Citysole Sneaker
+778325,2026-08-06,FY26,Greater China,Gen X,Y,Retained,Slim Billfold Wallet
+808307,2025-08-11,FY25,North America,Gen X,N,Retained,Tabby Shoulder Bag 26
+808307,2026-06-30,FY26,North America,Gen X,Y,Retained,Cherry Bag Charm
+817586,2025-07-30,FY25,North America,Millennial,Y,New,Tabby Messenger
+817586,2025-08-16,FY25,North America,Gen Z,N,New,Zip Card Case

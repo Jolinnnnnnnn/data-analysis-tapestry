@@ -1,0 +1,73 @@
+{
+  "R1": {
+    "horizon_weeks": 4,
+    "demand_at_risk_usd_sample": 23058.29,
+    "demand_at_risk_pct_of_next_4wk_demand": 0.0774,
+    "by_family": [
+      {
+        "family": "Tabby",
+        "eoh_W30": 82,
+        "demand_units_wk": 44.25,
+        "receipts_wk_TY": 13.0,
+        "receipts_to_sales_LY": 0.953,
+        "weeks_to_stockout_at_TY_pace": 2.624,
+        "shortfall_units_4wk": 43.0,
+        "aur_TY": 364.719,
+        "demand_at_risk_4wk": 15682.898,
+        "genz_new_at_risk_4wk": 5.519,
+        "units_needed_to_hold_LY_wos": 229.196
+      },
+      {
+        "family": "Pillow Tabby",
+        "eoh_W30": 24,
+        "demand_units_wk": 15.0,
+        "receipts_wk_TY": 4.167,
+        "receipts_to_sales_LY": 0.849,
+        "weeks_to_stockout_at_TY_pace": 2.215,
+        "shortfall_units_4wk": 19.333,
+        "aur_TY": 381.486,
+        "demand_at_risk_4wk": 7375.392,
+        "genz_new_at_risk_4wk": 2.553,
+        "units_needed_to_hold_LY_wos": 52.744
+      }
+    ]
+  },
+  "R2": {
+    "median_wos": 7.9,
+    "excess_units": 198.0,
+    "excess_retail_value_usd_sample": 50499.55,
+    "families": [
+      "Tailored Jacket",
+      "Trench",
+      "Knit Dress"
+    ]
+  },
+  "R3": {
+    "genz_new_TY": 240,
+    "genz_new_insider_rate": 0.1708,
+    "millennial_new_insider_rate": 0.2343,
+    "retained_insider_rate": 0.7136,
+    "genz_returning_TY": 158,
+    "genz_returning_aov": 304.47,
+    "scenarios": [
+      {
+        "returning_genz_lift": 0.05,
+        "extra_txns_sample": 7.9,
+        "extra_demand_usd_sample": 2405.3045,
+        "pct_of_TY_demand": 0.0043
+      },
+      {
+        "returning_genz_lift": 0.1,
+        "extra_txns_sample": 15.8,
+        "extra_demand_usd_sample": 4810.609,
+        "pct_of_TY_demand": 0.0085
+      },
+      {
+        "returning_genz_lift": 0.2,
+        "extra_txns_sample": 31.6,
+        "extra_demand_usd_sample": 9621.218,
+        "pct_of_TY_demand": 0.0171
+      }
+    ]
+  }
+}

@@ -1,0 +1,337 @@
+FISCAL_YR,FISCAL_WK,STYLE_GROUP,ON_HAND_UNITS,YEAR,WK,PROD_CATEGORY,PROD_TYPE
+FY26,FY26 W23,Belt Bag,119,TY,23,2.Womens Accessories,Evergreen
+FY26,FY26 W23,Brooklyn,177,TY,23,1.Womens Bag,Evergreen
+FY26,FY26 W23,Card Case,132,TY,23,2.Womens Accessories,Core
+FY26,FY26 W23,Charms,90,TY,23,5.Womens Other,Evergreen
+FY26,FY26 W23,Fragrance,81,TY,23,5.Womens Other,Evergreen
+FY26,FY26 W23,Jewelry,77,TY,23,5.Womens Other,Halo
+FY26,FY26 W23,Knit Dress,77,TY,23,4.Womens Apparel,Halo
+FY26,FY26 W23,Loafer,81,TY,23,3.Womens Footwear,Evergreen
+FY26,FY26 W23,Lowline Sneaker,104,TY,23,3.Womens Footwear,Evergreen
+FY26,FY26 W23,Mens Bag,76,TY,23,6.Mens,Core
+FY26,FY26 W23,Mens Footwear,64,TY,23,6.Mens,Evergreen
+FY26,FY26 W23,Mens SLG,69,TY,23,6.Mens,Core
+FY26,FY26 W23,Pillow Tabby,89,TY,23,1.Womens Bag,Hero
+FY26,FY26 W23,Rogue,134,TY,23,1.Womens Bag,Halo
+FY26,FY26 W23,Sculpted Sandal,104,TY,23,3.Womens Footwear,Halo
+FY26,FY26 W23,Tabby,290,TY,23,1.Womens Bag,Hero
+FY26,FY26 W23,Tailored Jacket,95,TY,23,4.Womens Apparel,Halo
+FY26,FY26 W23,Trench,130,TY,23,4.Womens Apparel,Halo
+FY26,FY26 W23,Wallet,120,TY,23,2.Womens Accessories,Core
+FY26,FY26 W23,Willow,220,TY,23,1.Womens Bag,Core
+FY26,FY26 W23,Wristlet,136,TY,23,2.Womens Accessories,Core
+FY26,FY26 W24,Belt Bag,117,TY,24,2.Womens Accessories,Evergreen
+FY26,FY26 W24,Brooklyn,180,TY,24,1.Womens Bag,Evergreen
+FY26,FY26 W24,Card Case,138,TY,24,2.Womens Accessories,Core
+FY26,FY26 W24,Charms,90,TY,24,5.Womens Other,Evergreen
+FY26,FY26 W24,Fragrance,79,TY,24,5.Womens Other,Evergreen
+FY26,FY26 W24,Jewelry,80,TY,24,5.Womens Other,Halo
+FY26,FY26 W24,Knit Dress,72,TY,24,4.Womens Apparel,Halo
+FY26,FY26 W24,Loafer,85,TY,24,3.Womens Footwear,Evergreen
+FY26,FY26 W24,Lowline Sneaker,104,TY,24,3.Womens Footwear,Evergreen
+FY26,FY26 W24,Mens Bag,84,TY,24,6.Mens,Core
+FY26,FY26 W24,Mens Footwear,65,TY,24,6.Mens,Evergreen
+FY26,FY26 W24,Mens SLG,65,TY,24,6.Mens,Core
+FY26,FY26 W24,Pillow Tabby,84,TY,24,1.Womens Bag,Hero
+FY26,FY26 W24,Rogue,129,TY,24,1.Womens Bag,Halo
+FY26,FY26 W24,Sculpted Sandal,100,TY,24,3.Womens Footwear,Halo
+FY26,FY26 W24,Tabby,246,TY,24,1.Womens Bag,Hero
+FY26,FY26 W24,Tailored Jacket,101,TY,24,4.Womens Apparel,Halo
+FY26,FY26 W24,Trench,130,TY,24,4.Womens Apparel,Halo
+FY26,FY26 W24,Wallet,121,TY,24,2.Womens Accessories,Core
+FY26,FY26 W24,Willow,225,TY,24,1.Womens Bag,Core
+FY26,FY26 W24,Wristlet,149,TY,24,2.Womens Accessories,Core
+FY26,FY26 W25,Belt Bag,122,TY,25,2.Womens Accessories,Evergreen
+FY26,FY26 W25,Brooklyn,181,TY,25,1.Womens Bag,Evergreen
+FY26,FY26 W25,Card Case,138,TY,25,2.Womens Accessories,Core
+FY26,FY26 W25,Charms,91,TY,25,5.Womens Other,Evergreen
+FY26,FY26 W25,Fragrance,83,TY,25,5.Womens Other,Evergreen
+FY26,FY26 W25,Jewelry,83,TY,25,5.Womens Other,Halo
+FY26,FY26 W25,Knit Dress,74,TY,25,4.Womens Apparel,Halo
+FY26,FY26 W25,Loafer,86,TY,25,3.Womens Footwear,Evergreen
+FY26,FY26 W25,Lowline Sneaker,113,TY,25,3.Womens Footwear,Evergreen
+FY26,FY26 W25,Mens Bag,87,TY,25,6.Mens,Core
+FY26,FY26 W25,Mens Footwear,64,TY,25,6.Mens,Evergreen
+FY26,FY26 W25,Mens SLG,69,TY,25,6.Mens,Core
+FY26,FY26 W25,Pillow Tabby,70,TY,25,1.Womens Bag,Hero
+FY26,FY26 W25,Rogue,131,TY,25,1.Womens Bag,Halo
+FY26,FY26 W25,Sculpted Sandal,104,TY,25,3.Womens Footwear,Halo
+FY26,FY26 W25,Tabby,213,TY,25,1.Womens Bag,Hero
+FY26,FY26 W25,Tailored Jacket,106,TY,25,4.Womens Apparel,Halo
+FY26,FY26 W25,Trench,136,TY,25,4.Womens Apparel,Halo
+FY26,FY26 W25,Wallet,118,TY,25,2.Womens Accessories,Core
+FY26,FY26 W25,Willow,225,TY,25,1.Womens Bag,Core
+FY26,FY26 W25,Wristlet,151,TY,25,2.Womens Accessories,Core
+FY26,FY26 W26,Belt Bag,111,TY,26,2.Womens Accessories,Evergreen
+FY26,FY26 W26,Brooklyn,173,TY,26,1.Womens Bag,Evergreen
+FY26,FY26 W26,Card Case,127,TY,26,2.Womens Accessories,Core
+FY26,FY26 W26,Charms,94,TY,26,5.Womens Other,Evergreen
+FY26,FY26 W26,Fragrance,88,TY,26,5.Womens Other,Evergreen
+FY26,FY26 W26,Jewelry,79,TY,26,5.Womens Other,Halo
+FY26,FY26 W26,Knit Dress,80,TY,26,4.Womens Apparel,Halo
+FY26,FY26 W26,Loafer,92,TY,26,3.Womens Footwear,Evergreen
+FY26,FY26 W26,Lowline Sneaker,106,TY,26,3.Womens Footwear,Evergreen
+FY26,FY26 W26,Mens Bag,81,TY,26,6.Mens,Core
+FY26,FY26 W26,Mens Footwear,58,TY,26,6.Mens,Evergreen
+FY26,FY26 W26,Mens SLG,67,TY,26,6.Mens,Core
+FY26,FY26 W26,Pillow Tabby,65,TY,26,1.Womens Bag,Hero
+FY26,FY26 W26,Rogue,134,TY,26,1.Womens Bag,Halo
+FY26,FY26 W26,Sculpted Sandal,105,TY,26,3.Womens Footwear,Halo
+FY26,FY26 W26,Tabby,183,TY,26,1.Womens Bag,Hero
+FY26,FY26 W26,Tailored Jacket,110,TY,26,4.Womens Apparel,Halo
+FY26,FY26 W26,Trench,139,TY,26,4.Womens Apparel,Halo
+FY26,FY26 W26,Wallet,112,TY,26,2.Womens Accessories,Core
+FY26,FY26 W26,Willow,225,TY,26,1.Womens Bag,Core
+FY26,FY26 W26,Wristlet,146,TY,26,2.Womens Accessories,Core
+FY26,FY26 W27,Belt Bag,113,TY,27,2.Womens Accessories,Evergreen
+FY26,FY26 W27,Brooklyn,165,TY,27,1.Womens Bag,Evergreen
+FY26,FY26 W27,Card Case,127,TY,27,2.Womens Accessories,Core
+FY26,FY26 W27,Charms,101,TY,27,5.Womens Other,Evergreen
+FY26,FY26 W27,Fragrance,86,TY,27,5.Womens Other,Evergreen
+FY26,FY26 W27,Jewelry,78,TY,27,5.Womens Other,Halo
+FY26,FY26 W27,Knit Dress,81,TY,27,4.Womens Apparel,Halo
+FY26,FY26 W27,Loafer,92,TY,27,3.Womens Footwear,Evergreen
+FY26,FY26 W27,Lowline Sneaker,101,TY,27,3.Womens Footwear,Evergreen
+FY26,FY26 W27,Mens Bag,76,TY,27,6.Mens,Core
+FY26,FY26 W27,Mens Footwear,57,TY,27,6.Mens,Evergreen
+FY26,FY26 W27,Mens SLG,73,TY,27,6.Mens,Core
+FY26,FY26 W27,Pillow Tabby,55,TY,27,1.Womens Bag,Hero
+FY26,FY26 W27,Rogue,137,TY,27,1.Womens Bag,Halo
+FY26,FY26 W27,Sculpted Sandal,101,TY,27,3.Womens Footwear,Halo
+FY26,FY26 W27,Tabby,160,TY,27,1.Womens Bag,Hero
+FY26,FY26 W27,Tailored Jacket,114,TY,27,4.Womens Apparel,Halo
+FY26,FY26 W27,Trench,148,TY,27,4.Womens Apparel,Halo
+FY26,FY26 W27,Wallet,109,TY,27,2.Womens Accessories,Core
+FY26,FY26 W27,Willow,221,TY,27,1.Womens Bag,Core
+FY26,FY26 W27,Wristlet,152,TY,27,2.Womens Accessories,Core
+FY26,FY26 W28,Belt Bag,120,TY,28,2.Womens Accessories,Evergreen
+FY26,FY26 W28,Brooklyn,158,TY,28,1.Womens Bag,Evergreen
+FY26,FY26 W28,Card Case,114,TY,28,2.Womens Accessories,Core
+FY26,FY26 W28,Charms,95,TY,28,5.Womens Other,Evergreen
+FY26,FY26 W28,Fragrance,81,TY,28,5.Womens Other,Evergreen
+FY26,FY26 W28,Jewelry,73,TY,28,5.Womens Other,Halo
+FY26,FY26 W28,Knit Dress,85,TY,28,4.Womens Apparel,Halo
+FY26,FY26 W28,Loafer,96,TY,28,3.Womens Footwear,Evergreen
+FY26,FY26 W28,Lowline Sneaker,98,TY,28,3.Womens Footwear,Evergreen
+FY26,FY26 W28,Mens Bag,74,TY,28,6.Mens,Core
+FY26,FY26 W28,Mens Footwear,54,TY,28,6.Mens,Evergreen
+FY26,FY26 W28,Mens SLG,70,TY,28,6.Mens,Core
+FY26,FY26 W28,Pillow Tabby,41,TY,28,1.Womens Bag,Hero
+FY26,FY26 W28,Rogue,142,TY,28,1.Womens Bag,Halo
+FY26,FY26 W28,Sculpted Sandal,102,TY,28,3.Womens Footwear,Halo
+FY26,FY26 W28,Tabby,116,TY,28,1.Womens Bag,Hero
+FY26,FY26 W28,Tailored Jacket,109,TY,28,4.Womens Apparel,Halo
+FY26,FY26 W28,Trench,144,TY,28,4.Womens Apparel,Halo
+FY26,FY26 W28,Wallet,121,TY,28,2.Womens Accessories,Core
+FY26,FY26 W28,Willow,233,TY,28,1.Womens Bag,Core
+FY26,FY26 W28,Wristlet,153,TY,28,2.Womens Accessories,Core
+FY26,FY26 W29,Belt Bag,123,TY,29,2.Womens Accessories,Evergreen
+FY26,FY26 W29,Brooklyn,168,TY,29,1.Womens Bag,Evergreen
+FY26,FY26 W29,Card Case,116,TY,29,2.Womens Accessories,Core
+FY26,FY26 W29,Charms,94,TY,29,5.Womens Other,Evergreen
+FY26,FY26 W29,Fragrance,78,TY,29,5.Womens Other,Evergreen
+FY26,FY26 W29,Jewelry,77,TY,29,5.Womens Other,Halo
+FY26,FY26 W29,Knit Dress,88,TY,29,4.Womens Apparel,Halo
+FY26,FY26 W29,Loafer,88,TY,29,3.Womens Footwear,Evergreen
+FY26,FY26 W29,Lowline Sneaker,94,TY,29,3.Womens Footwear,Evergreen
+FY26,FY26 W29,Mens Bag,72,TY,29,6.Mens,Core
+FY26,FY26 W29,Mens Footwear,59,TY,29,6.Mens,Evergreen
+FY26,FY26 W29,Mens SLG,68,TY,29,6.Mens,Core
+FY26,FY26 W29,Pillow Tabby,27,TY,29,1.Womens Bag,Hero
+FY26,FY26 W29,Rogue,139,TY,29,1.Womens Bag,Halo
+FY26,FY26 W29,Sculpted Sandal,103,TY,29,3.Womens Footwear,Halo
+FY26,FY26 W29,Tabby,92,TY,29,1.Womens Bag,Hero
+FY26,FY26 W29,Tailored Jacket,110,TY,29,4.Womens Apparel,Halo
+FY26,FY26 W29,Trench,146,TY,29,4.Womens Apparel,Halo
+FY26,FY26 W29,Wallet,120,TY,29,2.Womens Accessories,Core
+FY26,FY26 W29,Willow,225,TY,29,1.Womens Bag,Core
+FY26,FY26 W29,Wristlet,143,TY,29,2.Womens Accessories,Core
+FY26,FY26 W30,Belt Bag,126,TY,30,2.Womens Accessories,Evergreen
+FY26,FY26 W30,Brooklyn,169,TY,30,1.Womens Bag,Evergreen
+FY26,FY26 W30,Card Case,129,TY,30,2.Womens Accessories,Core
+FY26,FY26 W30,Charms,95,TY,30,5.Womens Other,Evergreen
+FY26,FY26 W30,Fragrance,79,TY,30,5.Womens Other,Evergreen
+FY26,FY26 W30,Jewelry,83,TY,30,5.Womens Other,Halo
+FY26,FY26 W30,Knit Dress,90,TY,30,4.Womens Apparel,Halo
+FY26,FY26 W30,Loafer,93,TY,30,3.Womens Footwear,Evergreen
+FY26,FY26 W30,Lowline Sneaker,106,TY,30,3.Womens Footwear,Evergreen
+FY26,FY26 W30,Mens Bag,71,TY,30,6.Mens,Core
+FY26,FY26 W30,Mens Footwear,61,TY,30,6.Mens,Evergreen
+FY26,FY26 W30,Mens SLG,65,TY,30,6.Mens,Core
+FY26,FY26 W30,Pillow Tabby,24,TY,30,1.Womens Bag,Hero
+FY26,FY26 W30,Rogue,146,TY,30,1.Womens Bag,Halo
+FY26,FY26 W30,Sculpted Sandal,108,TY,30,3.Womens Footwear,Halo
+FY26,FY26 W30,Tabby,82,TY,30,1.Womens Bag,Hero
+FY26,FY26 W30,Tailored Jacket,118,TY,30,4.Womens Apparel,Halo
+FY26,FY26 W30,Trench,152,TY,30,4.Womens Apparel,Halo
+FY26,FY26 W30,Wallet,122,TY,30,2.Womens Accessories,Core
+FY26,FY26 W30,Willow,242,TY,30,1.Womens Bag,Core
+FY26,FY26 W30,Wristlet,156,TY,30,2.Womens Accessories,Core
+FY25,FY25 W23,Belt Bag,98,LY,23,2.Womens Accessories,Evergreen
+FY25,FY25 W23,Brooklyn,138,LY,23,1.Womens Bag,Evergreen
+FY25,FY25 W23,Card Case,106,LY,23,2.Womens Accessories,Core
+FY25,FY25 W23,Charms,77,LY,23,5.Womens Other,Evergreen
+FY25,FY25 W23,Fragrance,60,LY,23,5.Womens Other,Evergreen
+FY25,FY25 W23,Jewelry,56,LY,23,5.Womens Other,Halo
+FY25,FY25 W23,Knit Dress,79,LY,23,4.Womens Apparel,Halo
+FY25,FY25 W23,Loafer,111,LY,23,3.Womens Footwear,Evergreen
+FY25,FY25 W23,Lowline Sneaker,93,LY,23,3.Womens Footwear,Evergreen
+FY25,FY25 W23,Mens Bag,78,LY,23,6.Mens,Core
+FY25,FY25 W23,Mens Footwear,84,LY,23,6.Mens,Evergreen
+FY25,FY25 W23,Mens SLG,51,LY,23,6.Mens,Core
+FY25,FY25 W23,Pillow Tabby,63,LY,23,1.Womens Bag,Hero
+FY25,FY25 W23,Rogue,183,LY,23,1.Womens Bag,Halo
+FY25,FY25 W23,Sculpted Sandal,73,LY,23,3.Womens Footwear,Halo
+FY25,FY25 W23,Tabby,279,LY,23,1.Womens Bag,Hero
+FY25,FY25 W23,Tailored Jacket,73,LY,23,4.Womens Apparel,Halo
+FY25,FY25 W23,Trench,74,LY,23,4.Womens Apparel,Halo
+FY25,FY25 W23,Wallet,108,LY,23,2.Womens Accessories,Core
+FY25,FY25 W23,Willow,213,LY,23,1.Womens Bag,Core
+FY25,FY25 W23,Wristlet,120,LY,23,2.Womens Accessories,Core
+FY25,FY25 W24,Belt Bag,97,LY,24,2.Womens Accessories,Evergreen
+FY25,FY25 W24,Brooklyn,135,LY,24,1.Womens Bag,Evergreen
+FY25,FY25 W24,Card Case,107,LY,24,2.Womens Accessories,Core
+FY25,FY25 W24,Charms,76,LY,24,5.Womens Other,Evergreen
+FY25,FY25 W24,Fragrance,64,LY,24,5.Womens Other,Evergreen
+FY25,FY25 W24,Jewelry,55,LY,24,5.Womens Other,Halo
+FY25,FY25 W24,Knit Dress,75,LY,24,4.Womens Apparel,Halo
+FY25,FY25 W24,Loafer,111,LY,24,3.Womens Footwear,Evergreen
+FY25,FY25 W24,Lowline Sneaker,88,LY,24,3.Womens Footwear,Evergreen
+FY25,FY25 W24,Mens Bag,79,LY,24,6.Mens,Core
+FY25,FY25 W24,Mens Footwear,87,LY,24,6.Mens,Evergreen
+FY25,FY25 W24,Mens SLG,54,LY,24,6.Mens,Core
+FY25,FY25 W24,Pillow Tabby,64,LY,24,1.Womens Bag,Hero
+FY25,FY25 W24,Rogue,188,LY,24,1.Womens Bag,Halo
+FY25,FY25 W24,Sculpted Sandal,71,LY,24,3.Womens Footwear,Halo
+FY25,FY25 W24,Tabby,286,LY,24,1.Womens Bag,Hero
+FY25,FY25 W24,Tailored Jacket,69,LY,24,4.Womens Apparel,Halo
+FY25,FY25 W24,Trench,75,LY,24,4.Womens Apparel,Halo
+FY25,FY25 W24,Wallet,109,LY,24,2.Womens Accessories,Core
+FY25,FY25 W24,Willow,212,LY,24,1.Womens Bag,Core
+FY25,FY25 W24,Wristlet,120,LY,24,2.Womens Accessories,Core
+FY25,FY25 W25,Belt Bag,91,LY,25,2.Womens Accessories,Evergreen
+FY25,FY25 W25,Brooklyn,137,LY,25,1.Womens Bag,Evergreen
+FY25,FY25 W25,Card Case,113,LY,25,2.Womens Accessories,Core
+FY25,FY25 W25,Charms,77,LY,25,5.Womens Other,Evergreen
+FY25,FY25 W25,Fragrance,65,LY,25,5.Womens Other,Evergreen
+FY25,FY25 W25,Jewelry,56,LY,25,5.Womens Other,Halo
+FY25,FY25 W25,Knit Dress,77,LY,25,4.Womens Apparel,Halo
+FY25,FY25 W25,Loafer,114,LY,25,3.Womens Footwear,Evergreen
+FY25,FY25 W25,Lowline Sneaker,97,LY,25,3.Womens Footwear,Evergreen
+FY25,FY25 W25,Mens Bag,84,LY,25,6.Mens,Core
+FY25,FY25 W25,Mens Footwear,87,LY,25,6.Mens,Evergreen
+FY25,FY25 W25,Mens SLG,56,LY,25,6.Mens,Core
+FY25,FY25 W25,Pillow Tabby,67,LY,25,1.Womens Bag,Hero
+FY25,FY25 W25,Rogue,193,LY,25,1.Womens Bag,Halo
+FY25,FY25 W25,Sculpted Sandal,71,LY,25,3.Womens Footwear,Halo
+FY25,FY25 W25,Tabby,279,LY,25,1.Womens Bag,Hero
+FY25,FY25 W25,Tailored Jacket,65,LY,25,4.Womens Apparel,Halo
+FY25,FY25 W25,Trench,80,LY,25,4.Womens Apparel,Halo
+FY25,FY25 W25,Wallet,106,LY,25,2.Womens Accessories,Core
+FY25,FY25 W25,Willow,220,LY,25,1.Womens Bag,Core
+FY25,FY25 W25,Wristlet,123,LY,25,2.Womens Accessories,Core
+FY25,FY25 W26,Belt Bag,97,LY,26,2.Womens Accessories,Evergreen
+FY25,FY25 W26,Brooklyn,140,LY,26,1.Womens Bag,Evergreen
+FY25,FY25 W26,Card Case,111,LY,26,2.Womens Accessories,Core
+FY25,FY25 W26,Charms,73,LY,26,5.Womens Other,Evergreen
+FY25,FY25 W26,Fragrance,60,LY,26,5.Womens Other,Evergreen
+FY25,FY25 W26,Jewelry,54,LY,26,5.Womens Other,Halo
+FY25,FY25 W26,Knit Dress,80,LY,26,4.Womens Apparel,Halo
+FY25,FY25 W26,Loafer,113,LY,26,3.Womens Footwear,Evergreen
+FY25,FY25 W26,Lowline Sneaker,100,LY,26,3.Womens Footwear,Evergreen
+FY25,FY25 W26,Mens Bag,77,LY,26,6.Mens,Core
+FY25,FY25 W26,Mens Footwear,90,LY,26,6.Mens,Evergreen
+FY25,FY25 W26,Mens SLG,57,LY,26,6.Mens,Core
+FY25,FY25 W26,Pillow Tabby,67,LY,26,1.Womens Bag,Hero
+FY25,FY25 W26,Rogue,182,LY,26,1.Womens Bag,Halo
+FY25,FY25 W26,Sculpted Sandal,68,LY,26,3.Womens Footwear,Halo
+FY25,FY25 W26,Tabby,274,LY,26,1.Womens Bag,Hero
+FY25,FY25 W26,Tailored Jacket,69,LY,26,4.Womens Apparel,Halo
+FY25,FY25 W26,Trench,78,LY,26,4.Womens Apparel,Halo
+FY25,FY25 W26,Wallet,105,LY,26,2.Womens Accessories,Core
+FY25,FY25 W26,Willow,214,LY,26,1.Womens Bag,Core
+FY25,FY25 W26,Wristlet,129,LY,26,2.Womens Accessories,Core
+FY25,FY25 W27,Belt Bag,99,LY,27,2.Womens Accessories,Evergreen
+FY25,FY25 W27,Brooklyn,144,LY,27,1.Womens Bag,Evergreen
+FY25,FY25 W27,Card Case,109,LY,27,2.Womens Accessories,Core
+FY25,FY25 W27,Charms,74,LY,27,5.Womens Other,Evergreen
+FY25,FY25 W27,Fragrance,61,LY,27,5.Womens Other,Evergreen
+FY25,FY25 W27,Jewelry,56,LY,27,5.Womens Other,Halo
+FY25,FY25 W27,Knit Dress,77,LY,27,4.Womens Apparel,Halo
+FY25,FY25 W27,Loafer,112,LY,27,3.Womens Footwear,Evergreen
+FY25,FY25 W27,Lowline Sneaker,104,LY,27,3.Womens Footwear,Evergreen
+FY25,FY25 W27,Mens Bag,78,LY,27,6.Mens,Core
+FY25,FY25 W27,Mens Footwear,88,LY,27,6.Mens,Evergreen
+FY25,FY25 W27,Mens SLG,57,LY,27,6.Mens,Core
+FY25,FY25 W27,Pillow Tabby,61,LY,27,1.Womens Bag,Hero
+FY25,FY25 W27,Rogue,180,LY,27,1.Womens Bag,Halo
+FY25,FY25 W27,Sculpted Sandal,73,LY,27,3.Womens Footwear,Halo
+FY25,FY25 W27,Tabby,269,LY,27,1.Womens Bag,Hero
+FY25,FY25 W27,Tailored Jacket,69,LY,27,4.Womens Apparel,Halo
+FY25,FY25 W27,Trench,76,LY,27,4.Womens Apparel,Halo
+FY25,FY25 W27,Wallet,104,LY,27,2.Womens Accessories,Core
+FY25,FY25 W27,Willow,218,LY,27,1.Womens Bag,Core
+FY25,FY25 W27,Wristlet,115,LY,27,2.Womens Accessories,Core
+FY25,FY25 W28,Belt Bag,97,LY,28,2.Womens Accessories,Evergreen
+FY25,FY25 W28,Brooklyn,150,LY,28,1.Womens Bag,Evergreen
+FY25,FY25 W28,Card Case,106,LY,28,2.Womens Accessories,Core
+FY25,FY25 W28,Charms,72,LY,28,5.Womens Other,Evergreen
+FY25,FY25 W28,Fragrance,65,LY,28,5.Womens Other,Evergreen
+FY25,FY25 W28,Jewelry,54,LY,28,5.Womens Other,Halo
+FY25,FY25 W28,Knit Dress,77,LY,28,4.Womens Apparel,Halo
+FY25,FY25 W28,Loafer,115,LY,28,3.Womens Footwear,Evergreen
+FY25,FY25 W28,Lowline Sneaker,94,LY,28,3.Womens Footwear,Evergreen
+FY25,FY25 W28,Mens Bag,80,LY,28,6.Mens,Core
+FY25,FY25 W28,Mens Footwear,89,LY,28,6.Mens,Evergreen
+FY25,FY25 W28,Mens SLG,52,LY,28,6.Mens,Core
+FY25,FY25 W28,Pillow Tabby,62,LY,28,1.Womens Bag,Hero
+FY25,FY25 W28,Rogue,177,LY,28,1.Womens Bag,Halo
+FY25,FY25 W28,Sculpted Sandal,75,LY,28,3.Womens Footwear,Halo
+FY25,FY25 W28,Tabby,271,LY,28,1.Womens Bag,Hero
+FY25,FY25 W28,Tailored Jacket,70,LY,28,4.Womens Apparel,Halo
+FY25,FY25 W28,Trench,76,LY,28,4.Womens Apparel,Halo
+FY25,FY25 W28,Wallet,104,LY,28,2.Womens Accessories,Core
+FY25,FY25 W28,Willow,216,LY,28,1.Womens Bag,Core
+FY25,FY25 W28,Wristlet,109,LY,28,2.Womens Accessories,Core
+FY25,FY25 W29,Belt Bag,99,LY,29,2.Womens Accessories,Evergreen
+FY25,FY25 W29,Brooklyn,149,LY,29,1.Womens Bag,Evergreen
+FY25,FY25 W29,Card Case,107,LY,29,2.Womens Accessories,Core
+FY25,FY25 W29,Charms,71,LY,29,5.Womens Other,Evergreen
+FY25,FY25 W29,Fragrance,59,LY,29,5.Womens Other,Evergreen
+FY25,FY25 W29,Jewelry,54,LY,29,5.Womens Other,Halo
+FY25,FY25 W29,Knit Dress,74,LY,29,4.Womens Apparel,Halo
+FY25,FY25 W29,Loafer,115,LY,29,3.Womens Footwear,Evergreen
+FY25,FY25 W29,Lowline Sneaker,98,LY,29,3.Womens Footwear,Evergreen
+FY25,FY25 W29,Mens Bag,76,LY,29,6.Mens,Core
+FY25,FY25 W29,Mens Footwear,85,LY,29,6.Mens,Evergreen
+FY25,FY25 W29,Mens SLG,53,LY,29,6.Mens,Core
+FY25,FY25 W29,Pillow Tabby,55,LY,29,1.Womens Bag,Hero
+FY25,FY25 W29,Rogue,183,LY,29,1.Womens Bag,Halo
+FY25,FY25 W29,Sculpted Sandal,74,LY,29,3.Womens Footwear,Halo
+FY25,FY25 W29,Tabby,269,LY,29,1.Womens Bag,Hero
+FY25,FY25 W29,Tailored Jacket,78,LY,29,4.Womens Apparel,Halo
+FY25,FY25 W29,Trench,80,LY,29,4.Womens Apparel,Halo
+FY25,FY25 W29,Wallet,100,LY,29,2.Womens Accessories,Core
+FY25,FY25 W29,Willow,209,LY,29,1.Womens Bag,Core
+FY25,FY25 W29,Wristlet,107,LY,29,2.Womens Accessories,Core
+FY25,FY25 W30,Belt Bag,90,LY,30,2.Womens Accessories,Evergreen
+FY25,FY25 W30,Brooklyn,153,LY,30,1.Womens Bag,Evergreen
+FY25,FY25 W30,Card Case,105,LY,30,2.Womens Accessories,Core
+FY25,FY25 W30,Charms,67,LY,30,5.Womens Other,Evergreen
+FY25,FY25 W30,Fragrance,51,LY,30,5.Womens Other,Evergreen
+FY25,FY25 W30,Jewelry,54,LY,30,5.Womens Other,Halo
+FY25,FY25 W30,Knit Dress,73,LY,30,4.Womens Apparel,Halo
+FY25,FY25 W30,Loafer,124,LY,30,3.Womens Footwear,Evergreen
+FY25,FY25 W30,Lowline Sneaker,99,LY,30,3.Womens Footwear,Evergreen
+FY25,FY25 W30,Mens Bag,74,LY,30,6.Mens,Core
+FY25,FY25 W30,Mens Footwear,85,LY,30,6.Mens,Evergreen
+FY25,FY25 W30,Mens SLG,52,LY,30,6.Mens,Core
+FY25,FY25 W30,Pillow Tabby,56,LY,30,1.Womens Bag,Hero
+FY25,FY25 W30,Rogue,179,LY,30,1.Womens Bag,Halo
+FY25,FY25 W30,Sculpted Sandal,72,LY,30,3.Womens Footwear,Halo
+FY25,FY25 W30,Tabby,269,LY,30,1.Womens Bag,Hero
+FY25,FY25 W30,Tailored Jacket,77,LY,30,4.Womens Apparel,Halo
+FY25,FY25 W30,Trench,81,LY,30,4.Womens Apparel,Halo
+FY25,FY25 W30,Wallet,103,LY,30,2.Womens Accessories,Core
+FY25,FY25 W30,Willow,214,LY,30,1.Womens Bag,Core
+FY25,FY25 W30,Wristlet,120,LY,30,2.Womens Accessories,Core
