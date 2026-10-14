@@ -1,0 +1,157 @@
+{
+ "week": "FY26 W24",
+ "is_partial_week": false,
+ "days_in_week": 7,
+ "l1w_sales_ty": 75246.99,
+ "l1w_sales_ly": 68942.1,
+ "l1w_sales_yoy_pct": 0.091452,
+ "l1w_txns_yoy_pct": -0.029046,
+ "l1w_aov_ty": 321.568333,
+ "l1w_aov_yoy_pct": 0.124102,
+ "l1w_sales_wow_pct": 0.074229,
+ "l4w_weeks": [
+  23,
+  24
+ ],
+ "l4w_sales_yoy_pct": 0.116344,
+ "l4w_txns_yoy_pct": 0.015487,
+ "ptd_sales_yoy_pct": 0.116344,
+ "l1w_genz_new_ty": 21,
+ "l1w_genz_new_ly": 16,
+ "l1w_genz_new_yoy_pct": 0.3125,
+ "l1w_genz_share_of_new_ty": 0.328125,
+ "l1w_genz_share_of_new_ly": 0.258065,
+ "l4w_genz_new_ty": 43,
+ "l4w_genz_new_ly": 31,
+ "l4w_genz_new_yoy_pct": 0.387097,
+ "l4w_returning_yoy_pct": -0.026627,
+ "l4w_genz_new_insider_rate_ty": 0.162791,
+ "l4w_top_families_by_contrib": [
+  {
+   "family": "Tabby",
+   "contrib_pts": 14.114,
+   "sales_yoy_pct": 1.086684
+  },
+  {
+   "family": "Willow",
+   "contrib_pts": 2.921,
+   "sales_yoy_pct": 0.237687
+  },
+  {
+   "family": "Mens SLG",
+   "contrib_pts": 1.807,
+   "sales_yoy_pct": 0.683105
+  }
+ ],
+ "l4w_bottom_families_by_contrib": [
+  {
+   "family": "Tailored Jacket",
+   "contrib_pts": -2.994,
+   "sales_yoy_pct": -0.633068
+  },
+  {
+   "family": "Mens Bag",
+   "contrib_pts": -2.2,
+   "sales_yoy_pct": -0.57732
+  }
+ ],
+ "lowest_wos_families": [
+  {
+   "family": "Tabby",
+   "wos": 5.07,
+   "wos_ly_same_week": 11.44
+  },
+  {
+   "family": "Mens SLG",
+   "wos": 5.42,
+   "wos_ly_same_week": 7.2
+  }
+ ],
+ "highest_wos_families": [
+  {
+   "family": "Tailored Jacket",
+   "wos": 22.44,
+   "wos_ly_same_week": 5.31
+  },
+  {
+   "family": "Trench",
+   "wos": 17.33,
+   "wos_ly_same_week": 6.82
+  }
+ ],
+ "anomalies": [
+  {
+   "id": "AN004",
+   "severity": "warning",
+   "rule_id": "GENZ_NEW_INSIDER_LOW",
+   "entity": "genz",
+   "message": "L4W (W23–W24) Insider attach of new Gen Z 16.3% (< 20%).",
+   "values": {
+    "genz_new_insider_rate_ty": 0.162791,
+    "weeks": [
+     23,
+     24
+    ]
+   },
+   "rule_threshold": 0.2
+  },
+  {
+   "id": "AN005",
+   "severity": "warning",
+   "rule_id": "GENZ_RETURNING_YOY_NEG",
+   "entity": "retention",
+   "message": "L4W returning Gen Z 36 vs 51 LY (-29.4%).",
+   "values": {
+    "genz_returning_ty": 36,
+    "genz_returning_ly": 51,
+    "genz_returning_yoy_pct": -0.294118,
+    "weeks": [
+     23,
+     24
+    ]
+   },
+   "rule_threshold": 0.0
+  },
+  {
+   "id": "AN006",
+   "severity": "warning",
+   "rule_id": "RETURNING_YOY_FLAT",
+   "entity": "retention",
+   "message": "L4W returning customers -2.7% YoY (329 vs 338).",
+   "values": {
+    "returning_yoy_pct": -0.026627,
+    "returning_ty": 329,
+    "returning_ly": 338,
+    "weeks": [
+     23,
+     24
+    ]
+   },
+   "rule_threshold": 0.02
+  },
+  {
+   "id": "AN007",
+   "severity": "warning",
+   "rule_id": "TXNS_YOY_NEG",
+   "entity": "total",
+   "message": "W24 transactions -2.9% YoY.",
+   "values": {
+    "txns_yoy_pct": -0.029046
+   },
+   "rule_threshold": 0.0
+  },
+  {
+   "id": "AN008",
+   "severity": "info",
+   "rule_id": "AOV_YOY_SWING",
+   "entity": "total",
+   "message": "W24 AOV +12.4% YoY ($321.57 vs $286.07).",
+   "values": {
+    "aov_yoy_pct": 0.124102,
+    "aov_ty": 321.568333,
+    "aov_ly": 286.066805
+   },
+   "rule_threshold": 0.1
+  }
+ ]
+}

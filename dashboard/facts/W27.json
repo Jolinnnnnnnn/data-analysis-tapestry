@@ -1,0 +1,231 @@
+{
+ "week": "FY26 W27",
+ "is_partial_week": false,
+ "days_in_week": 7,
+ "l1w_sales_ty": 76921.94,
+ "l1w_sales_ly": 68135.49,
+ "l1w_sales_yoy_pct": 0.128956,
+ "l1w_txns_yoy_pct": 0.111607,
+ "l1w_aov_ty": 308.923454,
+ "l1w_aov_yoy_pct": 0.015607,
+ "l1w_sales_wow_pct": 0.027989,
+ "l4w_weeks": [
+  24,
+  25,
+  26,
+  27
+ ],
+ "l4w_sales_yoy_pct": 0.085754,
+ "l4w_txns_yoy_pct": 0.063758,
+ "ptd_sales_yoy_pct": 0.096687,
+ "l1w_genz_new_ty": 34,
+ "l1w_genz_new_ly": 12,
+ "l1w_genz_new_yoy_pct": 1.833333,
+ "l1w_genz_share_of_new_ty": 0.414634,
+ "l1w_genz_share_of_new_ly": 0.173913,
+ "l4w_genz_new_ty": 110,
+ "l4w_genz_new_ly": 57,
+ "l4w_genz_new_yoy_pct": 0.929825,
+ "l4w_returning_yoy_pct": 0.0,
+ "l4w_genz_new_insider_rate_ty": 0.181818,
+ "l4w_top_families_by_contrib": [
+  {
+   "family": "Tabby",
+   "contrib_pts": 6.769,
+   "sales_yoy_pct": 0.367734
+  },
+  {
+   "family": "Pillow Tabby",
+   "contrib_pts": 3.283,
+   "sales_yoy_pct": 0.846255
+  },
+  {
+   "family": "Willow",
+   "contrib_pts": 2.685,
+   "sales_yoy_pct": 0.206972
+  }
+ ],
+ "l4w_bottom_families_by_contrib": [
+  {
+   "family": "Rogue",
+   "contrib_pts": -4.457,
+   "sales_yoy_pct": -0.367861
+  },
+  {
+   "family": "Tailored Jacket",
+   "contrib_pts": -2.207,
+   "sales_yoy_pct": -0.559044
+  }
+ ],
+ "lowest_wos_families": [
+  {
+   "family": "Tabby",
+   "wos": 3.48,
+   "wos_ly_same_week": 7.42
+  },
+  {
+   "family": "Pillow Tabby",
+   "wos": 4.4,
+   "wos_ly_same_week": 7.62
+  }
+ ],
+ "highest_wos_families": [
+  {
+   "family": "Tailored Jacket",
+   "wos": 25.33,
+   "wos_ly_same_week": 6.9
+  },
+  {
+   "family": "Trench",
+   "wos": 18.5,
+   "wos_ly_same_week": 8.0
+  }
+ ],
+ "anomalies": [
+  {
+   "id": "AN023",
+   "severity": "warning",
+   "rule_id": "FAMILY_L4W_DECLINE",
+   "entity": "Knit Dress",
+   "message": "Knit Dress L4W demand -45.6% YoY.",
+   "values": {
+    "sales_yoy_pct": -0.456196,
+    "sales_ty": 6387.09,
+    "sales_ly": 11745.2
+   },
+   "rule_threshold": -0.3
+  },
+  {
+   "id": "AN024",
+   "severity": "warning",
+   "rule_id": "FAMILY_L4W_DECLINE",
+   "entity": "Loafer",
+   "message": "Loafer L4W demand -37.2% YoY.",
+   "values": {
+    "sales_yoy_pct": -0.371905,
+    "sales_ty": 6388.7,
+    "sales_ly": 10171.55
+   },
+   "rule_threshold": -0.3
+  },
+  {
+   "id": "AN025",
+   "severity": "warning",
+   "rule_id": "FAMILY_L4W_DECLINE",
+   "entity": "Rogue",
+   "message": "Rogue L4W demand -36.8% YoY.",
+   "values": {
+    "sales_yoy_pct": -0.367861,
+    "sales_ty": 20450.33,
+    "sales_ly": 32350.98
+   },
+   "rule_threshold": -0.3
+  },
+  {
+   "id": "AN026",
+   "severity": "warning",
+   "rule_id": "FAMILY_L4W_DECLINE",
+   "entity": "Tailored Jacket",
+   "message": "Tailored Jacket L4W demand -55.9% YoY.",
+   "values": {
+    "sales_yoy_pct": -0.559044,
+    "sales_ty": 4647.91,
+    "sales_ly": 10540.53
+   },
+   "rule_threshold": -0.3
+  },
+  {
+   "id": "AN027",
+   "severity": "warning",
+   "rule_id": "GENZ_NEW_INSIDER_LOW",
+   "entity": "genz",
+   "message": "L4W (W24–W27) Insider attach of new Gen Z 18.2% (< 20%).",
+   "values": {
+    "genz_new_insider_rate_ty": 0.181818,
+    "weeks": [
+     24,
+     25,
+     26,
+     27
+    ]
+   },
+   "rule_threshold": 0.2
+  },
+  {
+   "id": "AN028",
+   "severity": "warning",
+   "rule_id": "GENZ_RETURNING_YOY_NEG",
+   "entity": "retention",
+   "message": "L4W returning Gen Z 80 vs 87 LY (-8.0%).",
+   "values": {
+    "genz_returning_ty": 80,
+    "genz_returning_ly": 87,
+    "genz_returning_yoy_pct": -0.08046,
+    "weeks": [
+     24,
+     25,
+     26,
+     27
+    ]
+   },
+   "rule_threshold": 0.0
+  },
+  {
+   "id": "AN029",
+   "severity": "warning",
+   "rule_id": "RETURNING_YOY_FLAT",
+   "entity": "retention",
+   "message": "L4W returning customers +0.0% YoY (654 vs 654).",
+   "values": {
+    "returning_yoy_pct": 0.0,
+    "returning_ty": 654,
+    "returning_ly": 654,
+    "weeks": [
+     24,
+     25,
+     26,
+     27
+    ]
+   },
+   "rule_threshold": 0.02
+  },
+  {
+   "id": "AN030",
+   "severity": "warning",
+   "rule_id": "WOS_COLLAPSE_VS_LY",
+   "entity": "Tabby",
+   "message": "Tabby weeks of supply 3.5 vs 7.4 LY (less than half).",
+   "values": {
+    "wos": 3.48,
+    "wos_ly_same_week": 7.42
+   },
+   "rule_threshold": 0.5
+  },
+  {
+   "id": "AN031",
+   "severity": "warning",
+   "rule_id": "WOS_HIGH",
+   "entity": "Tailored Jacket",
+   "message": "Tailored Jacket weeks of supply 25.3 (LY same week 6.9).",
+   "values": {
+    "wos": 25.33,
+    "wos_ly_same_week": 6.9,
+    "on_hand_eow": 114
+   },
+   "rule_threshold": 15.0
+  },
+  {
+   "id": "AN032",
+   "severity": "warning",
+   "rule_id": "WOS_HIGH",
+   "entity": "Trench",
+   "message": "Trench weeks of supply 18.5 (LY same week 8.0).",
+   "values": {
+    "wos": 18.5,
+    "wos_ly_same_week": 8.0,
+    "on_hand_eow": 148
+   },
+   "rule_threshold": 15.0
+  }
+ ]
+}
