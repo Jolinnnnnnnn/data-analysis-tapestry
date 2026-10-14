@@ -1,6 +1,6 @@
 # Design spec — "Signal" style (reference: https://signal-agent-nu.vercel.app/)
 
-Both the dashboard (PROMPT_C) and the deck (PROMPT_D) must follow this style. It was extracted from the reference site's computed CSS on 2026-10-13. Open the reference in a browser before building, and compare your result against it side by side at the end.
+Both the dashboard (`dashboard/PROMPT.md`) and the deck (`deck/PROMPT.md`) must follow this style. It was extracted from the reference site's computed CSS on 2026-10-13. Open the reference in a browser before building, and compare your result against it side by side at the end.
 
 ## 1. The idea
 An **agent briefing**, not a wall of charts. The landing view tells the reader *what changed and what to do*, with each finding written as a full sentence that carries its numbers. A big editorial serif headline sits over calm UI text. There is one accent colour, and status colours are used only when they carry meaning. The reference even ships a "Classic dashboard" toggle as a deliberate foil: "Everything is here. You find the story." Our app should do the same. The briefing is the default; the classic G1–G4 charts sit one click away.
@@ -99,9 +99,9 @@ Base body font size is **13px**. The UI is compact and the serif headlines carry
 | "How I built Signal" page | "How it was built": stat trio (e.g. scripts, findings audit "30/30 checks passed", validator status), numbered sections "01 / 02 / 03", the flow diagram data → metrics.json → rules → Claude → validator → UI, and the "Use only the facts provided…" prompt card |
 | Floating "Ask Signal 4" | "Ask {name}" with the count of critical alerts |
 
-## 9. Deck adaptation (PROMPT_D)
+## 9. Deck adaptation (`deck/PROMPT.md`)
 Use the same tokens and fonts on 16:9 slides. Background `--bg` (#f7f8fa). Action titles in Instrument Serif (40–48pt) written as full sentences with numbers. A mono uppercase eyebrow with an accent dot top-left ("G2 · GEN Z ACQUISITION"). Body in Geist 14–16pt `--muted`. Pills for finding type. Mono evidence chips (F#, script paths) in the footer. Charts restyled to the one-highlight rule. The exec-summary slide should look like the briefing (pill + serif sentence + one-line body, ×3). The "how it was built" slide should mirror the reference's /build page (stat trio + flow diagram).
 
 ## 10. Implementation notes
-- Load fonts via Google Fonts CSS (`Geist`, `Instrument Serif` incl. italic, `JetBrains Mono`) in the app. For matplotlib/PowerPoint, download the OFL TTFs into `assets/fonts/` (log the source URLs in PROMPTS.md), register them (`matplotlib.font_manager.fontManager.addfont`), and embed or ship them with the deck. If a font can't be embedded in PPTX, fall back to Georgia (serif) / Inter or Helvetica (sans) / Menlo (mono) and note it.
-- Before finishing, take screenshots of the built app and deck in **light and dark** and compare them with the reference: spacing, type scale, colours, and pill/button shapes. Fix differences. Log the comparison in HISTORY.md.
+- Load fonts via Google Fonts CSS (`Geist`, `Instrument Serif` incl. italic, `JetBrains Mono`) in the app. For matplotlib/PowerPoint, download the OFL TTFs into `design/fonts/` (log the source URLs in the building component's PROMPTS.md), register them (`matplotlib.font_manager.fontManager.addfont`), and embed or ship them with the deck. If a font can't be embedded in PPTX, fall back to Georgia (serif) / Inter or Helvetica (sans) / Menlo (mono) and note it.
+- Before finishing, take screenshots of the built app and deck in **light and dark** and compare them with the reference: spacing, type scale, colours, and pill/button shapes. Fix differences. Log the comparison in the component's HISTORY.md.

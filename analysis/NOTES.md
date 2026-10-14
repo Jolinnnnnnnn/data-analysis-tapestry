@@ -22,10 +22,10 @@
 
 ## Current state
 - ANALYSIS SESSION COMPLETE (13 iterations). FINDINGS F1–F15 + R1–R3; metrics.json / anomalies.json / metrics_schema.md built; findings audit 30/30; run_all reproducible.
-- Next sessions: handoff/PROMPT_C_dashboard.md (Streamlit app), handoff/PROMPT_D_deck.md (5–8 slides). Both must follow handoff/DESIGN_SIGNAL.md (Signal style: Instrument Serif headlines, Geist UI, JetBrains Mono numbers, cool-gray tokens, one accent #2d54d3).
+- Repo restructured (iteration 15): this analysis lives in `analysis/`; next sessions run `dashboard/PROMPT.md` (Streamlit app) and `deck/PROMPT.md` (5–8 slides). Both must follow `design/DESIGN_SIGNAL.md` (Signal style: Instrument Serif headlines, Geist UI, JetBrains Mono numbers, cool-gray tokens, one accent #2d54d3).
 
 ## Gotchas
-- Use `.venv/bin/python -W ignore`. `./run_all.sh --clean` rebuilds everything.
+- Use the repo-root venv: `../.venv/bin/python -W ignore` from `analysis/`. `analysis/run_all.sh --clean` rebuilds the analysis; root `./run_all.sh --clean` rebuilds everything.
 - Never sum ON_HAND_UNITS across weeks (summing across families within a week is fine).
 - Ratio metrics (AOV, UPT, AUR) must be recomputed from totals, never averaged across weeks.
 - 08 depends on 07 output (g3 scorecard); 10 depends on 08.

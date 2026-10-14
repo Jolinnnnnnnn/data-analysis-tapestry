@@ -1,22 +1,20 @@
-# TYLY take-home: data structure & analysis
+# TYLY take-home: analysis → dashboard → deck
 
-Consumer Intelligence & Analytics exercise on `TYLY_data_sample.xlsx` (FY26 vs FY25, fiscal weeks W23–W30).
+Consumer Intelligence & Analytics exercise on `TYLY_data_sample.xlsx` (FY26 vs FY25 sales at transaction-line grain, fiscal weeks W23–W30, plus weekly stock by product family).
+
+| Folder | What | Status |
+|---|---|---|
+| [`analysis/`](analysis/) | Data structure decisions, analysis scripts, findings (F1–F15), recommendations (R1–R3), and the dashboard source of truth (`analysis/data/processed/metrics.json`, `anomalies.json`) | Done |
+| [`dashboard/`](dashboard/) | D1: Streamlit weekly dashboard with an accuracy-guarded AI briefing | To build: run [`dashboard/PROMPT.md`](dashboard/PROMPT.md) |
+| [`deck/`](deck/) | D2: 5–8 slide findings deck | To build after the dashboard: run [`deck/PROMPT.md`](deck/PROMPT.md) |
+| [`design/`](design/) | Shared visual spec (Signal style) for dashboard and deck | [`design/DESIGN_SIGNAL.md`](design/DESIGN_SIGNAL.md) |
+
+`TYLY_data_sample.xlsx` at the root is the original input and is never modified; the analysis works on its read-only copy in `analysis/data/raw/`.
 
 ## Rebuild everything
 ```bash
 ./run_all.sh --clean
 ```
-This creates `.venv` if needed (pandas, openpyxl, matplotlib, numpy, tabulate), then runs `scripts/01…14` in order. The raw file in `data/raw/` is read-only.
+Creates `.venv` if needed, runs `analysis/run_all.sh`, then the dashboard and deck stages once they exist.
 
-## Where things are
-| What | Where |
-|---|---|
-| Working memory / assumptions | `NOTES.md` |
-| Interpretation choices (D1–D13) | `DECISIONS.md` |
-| Verified findings (F1–F15) + ranked recommendations (R1–R3) | `FINDINGS.md` |
-| Iteration log | `HISTORY.md` |
-| AI prompts + verification | `PROMPTS.md` |
-| Dashboard source of truth | `data/processed/metrics.json`, `anomalies.json`, `metrics_schema.md` |
-| Tables / charts | `outputs/tables/`, `outputs/figures/` |
-| Data dictionary | `outputs/tables/data_dictionary.md` |
-| Next-session prompts | `handoff/PROMPT_C_dashboard.md`, `handoff/PROMPT_D_deck.md` (both follow `handoff/DESIGN_SIGNAL.md`) |
+Start with [`analysis/FINDINGS.md`](analysis/FINDINGS.md) for the story and [`analysis/DECISIONS.md`](analysis/DECISIONS.md) for the definition choices.
