@@ -1,0 +1,4797 @@
+{
+ "23": {
+  "week_label": "FY26 W23",
+  "is_partial_week": false,
+  "n_critical_alerts": 0,
+  "n_alerts_by_severity": {
+   "critical": 0,
+   "warning": 3,
+   "info": 0
+  },
+  "n_alerts": 3,
+  "n_rules": 18,
+  "rule_hits": {
+   "SALES_YOY_NEG": 0,
+   "SALES_YOY_DROP": 0,
+   "SALES_YOY_SPIKE": 0,
+   "SALES_WOW_SWING": 0,
+   "TXNS_YOY_NEG": 0,
+   "AOV_YOY_SWING": 0,
+   "GENZ_NEW_YOY_NEG": 0,
+   "GENZ_NEW_WOW_DROP": 0,
+   "GENZ_SHARE_BELOW_LY": 0,
+   "GENZ_NEW_INSIDER_LOW": 1,
+   "RETURNING_YOY_FLAT": 1,
+   "GENZ_RETURNING_YOY_NEG": 1,
+   "FAMILY_L4W_DECLINE": 0,
+   "WOS_LOW": 0,
+   "WOS_HIGH": 0,
+   "WOS_COLLAPSE_VS_LY": 0,
+   "RECEIPTS_BELOW_SALES": 0,
+   "PARTIAL_WEEK": 0
+  },
+  "n_needs_you": 1,
+  "n_fyi": 4,
+  "cards_file": "dashboard/facts/W23_cards.json",
+  "cards": [
+   {
+    "card_id": "retention",
+    "title": "Retention leak and Insider gap",
+    "pill": "Needs you",
+    "pill_rank": 1,
+    "meta": "Retention proxy · L4W ending W23",
+    "findings": [
+     "F6",
+     "F7",
+     "R3"
+    ],
+    "anomaly_ids": [
+     "AN001",
+     "AN002",
+     "AN003"
+    ],
+    "explore_tab": "G2",
+    "ask_prefill": "Why is retention flagged in week 23?",
+    "chart": {
+     "type": "bars",
+     "unit": "Insider attach of new customers, L4W",
+     "rows": [
+      {
+       "label": "Gen Z new · TY",
+       "value": 0.045455,
+       "fmt": "pct",
+       "tone": "accent"
+      },
+      {
+       "label": "Gen Z new · LY",
+       "value": 0.266667,
+       "fmt": "pct",
+       "tone": "ly"
+      },
+      {
+       "label": "All new · TY",
+       "value": 0.151515,
+       "fmt": "pct",
+       "tone": "neutral"
+      },
+      {
+       "label": "All new · LY",
+       "value": 0.173077,
+       "fmt": "pct",
+       "tone": "ly"
+      }
+     ]
+    },
+    "headline": "Returning customers were flat at 159 vs 159, and returning Gen Z fell to 17 from 26.",
+    "body": "That is -34.6% for returning Gen Z, and only 4.5% of new Gen Z joined Insider (LY 26.7%). This is a mix proxy (D8): CUST_ID can't link buyers across years, so read it as a direction, not a cohort rate.",
+    "generated_by": "pregenerated",
+    "validation": {
+     "n_numbers": 7,
+     "n_matched": 7,
+     "unmatched": [],
+     "matches": [
+      {
+       "text": "159",
+       "fact": "l4w_returning_ly",
+       "alternatives": 3,
+       "candidates": [
+        "l4w_returning_ly",
+        "l4w_returning_ty",
+        "ptd_returning_ly",
+        "ptd_returning_ty"
+       ]
+      },
+      {
+       "text": "159",
+       "fact": "l4w_returning_ly",
+       "alternatives": 3,
+       "candidates": [
+        "l4w_returning_ly",
+        "l4w_returning_ty",
+        "ptd_returning_ly",
+        "ptd_returning_ty"
+       ]
+      },
+      {
+       "text": "17",
+       "fact": "l4w_genz_returning_ty",
+       "alternatives": 1,
+       "candidates": [
+        "l4w_genz_returning_ty",
+        "ptd_genz_returning_ty"
+       ]
+      },
+      {
+       "text": "26",
+       "fact": "l4w_genz_returning_ly",
+       "alternatives": 1,
+       "candidates": [
+        "l4w_genz_returning_ly",
+        "ptd_genz_returning_ly"
+       ]
+      },
+      {
+       "text": "-34.6%",
+       "fact": "l4w_genz_returning_yoy_pct",
+       "alternatives": 1,
+       "candidates": [
+        "l4w_genz_returning_yoy_pct",
+        "ptd_genz_returning_yoy_pct"
+       ]
+      },
+      {
+       "text": "4.5%",
+       "fact": "l4w_genz_new_insider_rate_ty",
+       "alternatives": 1,
+       "candidates": [
+        "l4w_genz_new_insider_rate_ty",
+        "ptd_genz_new_insider_rate_ty"
+       ]
+      },
+      {
+       "text": "26.7%",
+       "fact": "l4w_genz_new_insider_rate_ly",
+       "alternatives": 1,
+       "candidates": [
+        "l4w_genz_new_insider_rate_ly",
+        "ptd_genz_new_insider_rate_ly"
+       ]
+      }
+     ],
+     "status": "PASS"
+    }
+   },
+   {
+    "card_id": "pattern",
+    "title": "Gen Z share of new customers",
+    "pill": "Pattern",
+    "pill_rank": 2,
+    "meta": "Acquisition · Gen Z share of new · W23–W23",
+    "findings": [
+     "F5"
+    ],
+    "anomaly_ids": [],
+    "explore_tab": "G2",
+    "ask_prefill": "Gen Z share of new customers by week up to week 23?",
+    "chart": {
+     "type": "columns",
+     "unit": "Gen Z share of new customers, TY",
+     "fmt": "pct0",
+     "cols": [
+      {
+       "label": "W23",
+       "value": 0.333333,
+       "partial": false
+      }
+     ]
+    },
+    "headline": "Gen Z is 33.3% of new customers in the first week, up from 28.8% last year.",
+    "body": "That is 22 Gen Z new customers vs 15. One week isn't a trend yet; I'll track the share week by week.",
+    "generated_by": "pregenerated",
+    "validation": {
+     "n_numbers": 4,
+     "n_matched": 4,
+     "unmatched": [],
+     "matches": [
+      {
+       "text": "33.3%",
+       "fact": "first_week_genz_share_of_new_ty",
+       "alternatives": 1,
+       "candidates": [
+        "first_week_genz_share_of_new_ty",
+        "week_genz_share_of_new_ty"
+       ]
+      },
+      {
+       "text": "28.8%",
+       "fact": "first_week_genz_share_of_new_ly",
+       "alternatives": 1,
+       "candidates": [
+        "first_week_genz_share_of_new_ly",
+        "week_genz_share_of_new_ly"
+       ]
+      },
+      {
+       "text": "22",
+       "fact": "first_week_genz_new_ty",
+       "alternatives": 1,
+       "candidates": [
+        "first_week_genz_new_ty",
+        "week_genz_new_ty"
+       ]
+      },
+      {
+       "text": "15",
+       "fact": "week_genz_new_ly",
+       "alternatives": 0,
+       "candidates": [
+        "week_genz_new_ly"
+       ]
+      }
+     ],
+     "status": "PASS"
+    }
+   },
+   {
+    "card_id": "win",
+    "title": "Gen Z acquisition and Tabby growth",
+    "pill": "Win",
+    "pill_rank": 3,
+    "meta": "Growth · PTD W23–W23 · L4W families",
+    "findings": [
+     "F4",
+     "F9"
+    ],
+    "anomaly_ids": [],
+    "explore_tab": "G3",
+    "ask_prefill": "Top 3 families by contribution in L4W for week 23",
+    "chart": {
+     "type": "bars",
+     "unit": "Gen Z new customers, PTD W23–W23 (sample)",
+     "rows": [
+      {
+       "label": "Gen Z new · LY",
+       "value": 15,
+       "fmt": "int",
+       "tone": "ly"
+      },
+      {
+       "label": "Gen Z new · TY",
+       "value": 22,
+       "fmt": "int",
+       "tone": "green"
+      }
+     ]
+    },
+    "headline": "Gen Z new customers are up +46.7% in the first week, 22 vs 15.",
+    "body": "Tabby drives the start: +70.8% YoY and +10.5 pts of growth on its own. Total demand is +14.4%.",
+    "generated_by": "pregenerated",
+    "validation": {
+     "n_numbers": 6,
+     "n_matched": 6,
+     "unmatched": [],
+     "matches": [
+      {
+       "text": "+46.7%",
+       "fact": "ptd_genz_new_yoy_pct",
+       "alternatives": 0,
+       "candidates": [
+        "ptd_genz_new_yoy_pct"
+       ]
+      },
+      {
+       "text": "22",
+       "fact": "ptd_genz_new_ty",
+       "alternatives": 0,
+       "candidates": [
+        "ptd_genz_new_ty"
+       ]
+      },
+      {
+       "text": "15",
+       "fact": "ptd_genz_new_ly",
+       "alternatives": 0,
+       "candidates": [
+        "ptd_genz_new_ly"
+       ]
+      },
+      {
+       "text": "+70.8%",
+       "fact": "tabby_l4w_sales_yoy_pct",
+       "alternatives": 0,
+       "candidates": [
+        "tabby_l4w_sales_yoy_pct"
+       ]
+      },
+      {
+       "text": "+10.5 pts",
+       "fact": "tabby_l4w_contrib_pts",
+       "alternatives": 0,
+       "candidates": [
+        "tabby_l4w_contrib_pts"
+       ]
+      },
+      {
+       "text": "+14.4%",
+       "fact": "l4w_sales_yoy_pct",
+       "alternatives": 1,
+       "candidates": [
+        "l4w_sales_yoy_pct",
+        "ptd_sales_yoy_pct"
+       ]
+      }
+     ],
+     "status": "PASS"
+    }
+   },
+   {
+    "card_id": "stock",
+    "title": "Tabby franchise stock-out",
+    "pill": "Watch",
+    "pill_rank": 4,
+    "meta": "Inventory · Tabby franchise · W23",
+    "findings": [
+     "F11",
+     "F12",
+     "R1"
+    ],
+    "anomaly_ids": [],
+    "explore_tab": "G4",
+    "ask_prefill": "Why is Tabby flagged in week 23?",
+    "chart": {
+     "type": "bars",
+     "unit": "weeks of supply",
+     "rows": [
+      {
+       "label": "Tabby · TY",
+       "value": 6.74,
+       "fmt": "wos",
+       "tone": "accent"
+      },
+      {
+       "label": "Tabby · LY",
+       "value": 10.33,
+       "fmt": "wos",
+       "tone": "ly"
+      },
+      {
+       "label": "Pillow Tabby · TY",
+       "value": 17.8,
+       "fmt": "wos",
+       "tone": "accent"
+      },
+      {
+       "label": "Pillow Tabby · LY",
+       "value": 12.6,
+       "fmt": "wos",
+       "tone": "ly"
+      }
+     ]
+    },
+    "headline": "Tabby opens the period with 6.7 weeks of supply against 10.3 last year.",
+    "body": "This reading uses a 1-week sales window, so the inventory rules stay off until the window is full. Pillow Tabby shows 17.8 weeks (LY 12.6) on a single week of sales; read both as early signals, not alerts.",
+    "generated_by": "pregenerated",
+    "validation": {
+     "n_numbers": 4,
+     "n_matched": 4,
+     "unmatched": [],
+     "matches": [
+      {
+       "text": "6.7",
+       "fact": "tabby_wos",
+       "alternatives": 0,
+       "candidates": [
+        "tabby_wos"
+       ]
+      },
+      {
+       "text": "10.3",
+       "fact": "tabby_wos_ly_same_week",
+       "alternatives": 0,
+       "candidates": [
+        "tabby_wos_ly_same_week"
+       ]
+      },
+      {
+       "text": "17.8",
+       "fact": "pillow_tabby_wos",
+       "alternatives": 0,
+       "candidates": [
+        "pillow_tabby_wos"
+       ]
+      },
+      {
+       "text": "12.6",
+       "fact": "pillow_tabby_wos_ly_same_week",
+       "alternatives": 0,
+       "candidates": [
+        "pillow_tabby_wos_ly_same_week"
+       ]
+      }
+     ],
+     "status": "PASS"
+    }
+   },
+   {
+    "card_id": "overstock",
+    "title": "Apparel overstock",
+    "pill": "Watch",
+    "pill_rank": 4,
+    "meta": "Inventory · Halo apparel · W23",
+    "findings": [
+     "F10",
+     "F11",
+     "R2"
+    ],
+    "anomaly_ids": [],
+    "explore_tab": "G4",
+    "ask_prefill": "Which families have WOS above 15 in week 23?",
+    "chart": {
+     "type": "bars",
+     "unit": "weeks of supply",
+     "rows": [
+      {
+       "label": "Trench · TY",
+       "value": 32.5,
+       "fmt": "wos",
+       "tone": "accent"
+      },
+      {
+       "label": "Trench · LY",
+       "value": 6.73,
+       "fmt": "wos",
+       "tone": "ly"
+      },
+      {
+       "label": "Tailored Jacket · TY",
+       "value": 23.75,
+       "fmt": "wos",
+       "tone": "accent"
+      },
+      {
+       "label": "Tailored Jacket · LY",
+       "value": 6.64,
+       "fmt": "wos",
+       "tone": "ly"
+      }
+     ]
+    },
+    "headline": "Trench holds 32.5 weeks of supply against 6.7 last year.",
+    "body": "That reading rests on a single week of sales, so it is a watch item, not an alert. Tailored Jacket is at 23.8 weeks (LY 6.6).",
+    "generated_by": "pregenerated",
+    "validation": {
+     "n_numbers": 4,
+     "n_matched": 4,
+     "unmatched": [],
+     "matches": [
+      {
+       "text": "32.5",
+       "fact": "trench_wos",
+       "alternatives": 0,
+       "candidates": [
+        "trench_wos"
+       ]
+      },
+      {
+       "text": "6.7",
+       "fact": "trench_wos_ly_same_week",
+       "alternatives": 0,
+       "candidates": [
+        "trench_wos_ly_same_week"
+       ]
+      },
+      {
+       "text": "23.8",
+       "fact": "tailored_jacket_wos",
+       "alternatives": 0,
+       "candidates": [
+        "tailored_jacket_wos"
+       ]
+      },
+      {
+       "text": "6.6",
+       "fact": "tailored_jacket_wos_ly_same_week",
+       "alternatives": 0,
+       "candidates": [
+        "tailored_jacket_wos_ly_same_week"
+       ]
+      }
+     ],
+     "status": "PASS"
+    }
+   }
+  ]
+ },
+ "24": {
+  "week_label": "FY26 W24",
+  "is_partial_week": false,
+  "n_critical_alerts": 0,
+  "n_alerts_by_severity": {
+   "critical": 0,
+   "warning": 4,
+   "info": 1
+  },
+  "n_alerts": 5,
+  "n_rules": 18,
+  "rule_hits": {
+   "SALES_YOY_NEG": 0,
+   "SALES_YOY_DROP": 0,
+   "SALES_YOY_SPIKE": 0,
+   "SALES_WOW_SWING": 0,
+   "TXNS_YOY_NEG": 1,
+   "AOV_YOY_SWING": 1,
+   "GENZ_NEW_YOY_NEG": 0,
+   "GENZ_NEW_WOW_DROP": 0,
+   "GENZ_SHARE_BELOW_LY": 0,
+   "GENZ_NEW_INSIDER_LOW": 1,
+   "RETURNING_YOY_FLAT": 1,
+   "GENZ_RETURNING_YOY_NEG": 1,
+   "FAMILY_L4W_DECLINE": 0,
+   "WOS_LOW": 0,
+   "WOS_HIGH": 0,
+   "WOS_COLLAPSE_VS_LY": 0,
+   "RECEIPTS_BELOW_SALES": 0,
+   "PARTIAL_WEEK": 0
+  },
+  "n_needs_you": 1,
+  "n_fyi": 4,
+  "cards_file": "dashboard/facts/W24_cards.json",
+  "cards": [
+   {
+    "card_id": "retention",
+    "title": "Retention leak and Insider gap",
+    "pill": "Needs you",
+    "pill_rank": 1,
+    "meta": "Retention proxy · L4W ending W24",
+    "findings": [
+     "F6",
+     "F7",
+     "R3"
+    ],
+    "anomaly_ids": [
+     "AN004",
+     "AN005",
+     "AN006"
+    ],
+    "explore_tab": "G2",
+    "ask_prefill": "Why is retention flagged in week 24?",
+    "chart": {
+     "type": "bars",
+     "unit": "Insider attach of new customers, L4W",
+     "rows": [
+      {
+       "label": "Gen Z new · TY",
+       "value": 0.162791,
+       "fmt": "pct",
+       "tone": "accent"
+      },
+      {
+       "label": "Gen Z new · LY",
+       "value": 0.290323,
+       "fmt": "pct",
+       "tone": "ly"
+      },
+      {
+       "label": "All new · TY",
+       "value": 0.2,
+       "fmt": "pct",
+       "tone": "neutral"
+      },
+      {
+       "label": "All new · LY",
+       "value": 0.22807,
+       "fmt": "pct",
+       "tone": "ly"
+      }
+     ]
+    },
+    "headline": "Returning customers are -2.7% YoY over W23–W24, and returning Gen Z is down to 36 from 51.",
+    "body": "Returning Gen Z is -29.4% and new Gen Z Insider attach is 16.3% vs 29.0% LY, so last year's Gen Z buyers aren't visibly coming back. Insider enrolment at the first purchase is the lever to test.",
+    "generated_by": "pregenerated",
+    "validation": {
+     "n_numbers": 6,
+     "n_matched": 6,
+     "unmatched": [],
+     "matches": [
+      {
+       "text": "-2.7%",
+       "fact": "l4w_returning_yoy_pct",
+       "alternatives": 1,
+       "candidates": [
+        "l4w_returning_yoy_pct",
+        "ptd_returning_yoy_pct"
+       ]
+      },
+      {
+       "text": "36",
+       "fact": "l4w_genz_returning_ty",
+       "alternatives": 1,
+       "candidates": [
+        "l4w_genz_returning_ty",
+        "ptd_genz_returning_ty"
+       ]
+      },
+      {
+       "text": "51",
+       "fact": "l4w_genz_returning_ly",
+       "alternatives": 1,
+       "candidates": [
+        "l4w_genz_returning_ly",
+        "ptd_genz_returning_ly"
+       ]
+      },
+      {
+       "text": "-29.4%",
+       "fact": "l4w_genz_returning_yoy_pct",
+       "alternatives": 1,
+       "candidates": [
+        "l4w_genz_returning_yoy_pct",
+        "ptd_genz_returning_yoy_pct"
+       ]
+      },
+      {
+       "text": "16.3%",
+       "fact": "l4w_genz_new_insider_rate_ty",
+       "alternatives": 1,
+       "candidates": [
+        "l4w_genz_new_insider_rate_ty",
+        "ptd_genz_new_insider_rate_ty"
+       ]
+      },
+      {
+       "text": "29.0%",
+       "fact": "l4w_genz_new_insider_rate_ly",
+       "alternatives": 1,
+       "candidates": [
+        "l4w_genz_new_insider_rate_ly",
+        "ptd_genz_new_insider_rate_ly"
+       ]
+      }
+     ],
+     "status": "PASS"
+    }
+   },
+   {
+    "card_id": "pattern",
+    "title": "Gen Z share of new customers",
+    "pill": "Pattern",
+    "pill_rank": 2,
+    "meta": "Acquisition · Gen Z share of new · W23–W24",
+    "findings": [
+     "F5"
+    ],
+    "anomaly_ids": [],
+    "explore_tab": "G2",
+    "ask_prefill": "Gen Z share of new customers by week up to week 24?",
+    "chart": {
+     "type": "columns",
+     "unit": "Gen Z share of new customers, TY",
+     "fmt": "pct0",
+     "cols": [
+      {
+       "label": "W23",
+       "value": 0.333333,
+       "partial": false
+      },
+      {
+       "label": "W24",
+       "value": 0.328125,
+       "partial": false
+      }
+     ]
+    },
+    "headline": "Gen Z took 32.8% of new customers in W24, close to the 33.3% of the first week.",
+    "body": "Last year the same week was 25.8%. Weekly counts are small (21 Gen Z new), so a one-point move is noise.",
+    "generated_by": "pregenerated",
+    "validation": {
+     "n_numbers": 4,
+     "n_matched": 4,
+     "unmatched": [],
+     "matches": [
+      {
+       "text": "32.8%",
+       "fact": "week_genz_share_of_new_ty",
+       "alternatives": 0,
+       "candidates": [
+        "week_genz_share_of_new_ty"
+       ]
+      },
+      {
+       "text": "33.3%",
+       "fact": "first_week_genz_share_of_new_ty",
+       "alternatives": 0,
+       "candidates": [
+        "first_week_genz_share_of_new_ty"
+       ]
+      },
+      {
+       "text": "25.8%",
+       "fact": "week_genz_share_of_new_ly",
+       "alternatives": 0,
+       "candidates": [
+        "week_genz_share_of_new_ly"
+       ]
+      },
+      {
+       "text": "21",
+       "fact": "week_genz_new_ty",
+       "alternatives": 0,
+       "candidates": [
+        "week_genz_new_ty"
+       ]
+      }
+     ],
+     "status": "PASS"
+    }
+   },
+   {
+    "card_id": "win",
+    "title": "Gen Z acquisition and Tabby growth",
+    "pill": "Win",
+    "pill_rank": 3,
+    "meta": "Growth · PTD W23–W24 · L4W families",
+    "findings": [
+     "F4",
+     "F9"
+    ],
+    "anomaly_ids": [],
+    "explore_tab": "G3",
+    "ask_prefill": "Top 3 families by contribution in L4W for week 24",
+    "chart": {
+     "type": "bars",
+     "unit": "Gen Z new customers, PTD W23–W24 (sample)",
+     "rows": [
+      {
+       "label": "Gen Z new · LY",
+       "value": 31,
+       "fmt": "int",
+       "tone": "ly"
+      },
+      {
+       "label": "Gen Z new · TY",
+       "value": 43,
+       "fmt": "int",
+       "tone": "green"
+      }
+     ]
+    },
+    "headline": "Gen Z new customers are up +38.7% over W23–W24, 43 vs 31.",
+    "body": "Tabby more than doubled (+109% over L4W) and added +14.1 pts of growth. Demand is +11.6% period-to-date.",
+    "generated_by": "pregenerated",
+    "validation": {
+     "n_numbers": 6,
+     "n_matched": 6,
+     "unmatched": [],
+     "matches": [
+      {
+       "text": "+38.7%",
+       "fact": "ptd_genz_new_yoy_pct",
+       "alternatives": 0,
+       "candidates": [
+        "ptd_genz_new_yoy_pct"
+       ]
+      },
+      {
+       "text": "43",
+       "fact": "ptd_genz_new_ty",
+       "alternatives": 0,
+       "candidates": [
+        "ptd_genz_new_ty"
+       ]
+      },
+      {
+       "text": "31",
+       "fact": "ptd_genz_new_ly",
+       "alternatives": 0,
+       "candidates": [
+        "ptd_genz_new_ly"
+       ]
+      },
+      {
+       "text": "+109%",
+       "fact": "tabby_l4w_sales_yoy_pct",
+       "alternatives": 0,
+       "candidates": [
+        "tabby_l4w_sales_yoy_pct"
+       ]
+      },
+      {
+       "text": "+14.1 pts",
+       "fact": "tabby_l4w_contrib_pts",
+       "alternatives": 0,
+       "candidates": [
+        "tabby_l4w_contrib_pts"
+       ]
+      },
+      {
+       "text": "+11.6%",
+       "fact": "l4w_sales_yoy_pct",
+       "alternatives": 1,
+       "candidates": [
+        "l4w_sales_yoy_pct",
+        "ptd_sales_yoy_pct"
+       ]
+      }
+     ],
+     "status": "PASS"
+    }
+   },
+   {
+    "card_id": "stock",
+    "title": "Tabby franchise stock-out",
+    "pill": "Watch",
+    "pill_rank": 4,
+    "meta": "Inventory · Tabby franchise · W24",
+    "findings": [
+     "F11",
+     "F12",
+     "R1"
+    ],
+    "anomaly_ids": [],
+    "explore_tab": "G4",
+    "ask_prefill": "Why is Tabby flagged in week 24?",
+    "chart": {
+     "type": "bars",
+     "unit": "weeks of supply",
+     "rows": [
+      {
+       "label": "Tabby · TY",
+       "value": 5.07,
+       "fmt": "wos",
+       "tone": "accent"
+      },
+      {
+       "label": "Tabby · LY",
+       "value": 11.44,
+       "fmt": "wos",
+       "tone": "ly"
+      },
+      {
+       "label": "Pillow Tabby · TY",
+       "value": 11.2,
+       "fmt": "wos",
+       "tone": "accent"
+      },
+      {
+       "label": "Pillow Tabby · LY",
+       "value": 10.67,
+       "fmt": "wos",
+       "tone": "ly"
+      }
+     ]
+    },
+    "headline": "Tabby cover has fallen to 5.1 weeks, less than half of last year's 11.4.",
+    "body": "The sales window is still only 2 weeks, so no rule fires yet. Tabby holds 246 units; Pillow Tabby looks comfortable at 11.2 weeks (LY 10.7).",
+    "generated_by": "pregenerated",
+    "validation": {
+     "n_numbers": 6,
+     "n_matched": 6,
+     "unmatched": [],
+     "matches": [
+      {
+       "text": "5.1",
+       "fact": "tabby_wos",
+       "alternatives": 0,
+       "candidates": [
+        "tabby_wos"
+       ]
+      },
+      {
+       "text": "11.4",
+       "fact": "tabby_wos_ly_same_week",
+       "alternatives": 0,
+       "candidates": [
+        "tabby_wos_ly_same_week"
+       ]
+      },
+      {
+       "text": "2",
+       "fact": "pillow_tabby_wos_window_weeks",
+       "alternatives": 1,
+       "candidates": [
+        "pillow_tabby_wos_window_weeks",
+        "tabby_wos_window_weeks"
+       ]
+      },
+      {
+       "text": "246",
+       "fact": "tabby_on_hand_eow",
+       "alternatives": 0,
+       "candidates": [
+        "tabby_on_hand_eow"
+       ]
+      },
+      {
+       "text": "11.2",
+       "fact": "pillow_tabby_wos",
+       "alternatives": 0,
+       "candidates": [
+        "pillow_tabby_wos"
+       ]
+      },
+      {
+       "text": "10.7",
+       "fact": "pillow_tabby_wos_ly_same_week",
+       "alternatives": 0,
+       "candidates": [
+        "pillow_tabby_wos_ly_same_week"
+       ]
+      }
+     ],
+     "status": "PASS"
+    }
+   },
+   {
+    "card_id": "overstock",
+    "title": "Apparel overstock",
+    "pill": "Watch",
+    "pill_rank": 4,
+    "meta": "Inventory · Halo apparel · W24",
+    "findings": [
+     "F10",
+     "F11",
+     "R2"
+    ],
+    "anomaly_ids": [],
+    "explore_tab": "G4",
+    "ask_prefill": "Which families have WOS above 15 in week 24?",
+    "chart": {
+     "type": "bars",
+     "unit": "weeks of supply",
+     "rows": [
+      {
+       "label": "Tailored Jacket · TY",
+       "value": 22.44,
+       "fmt": "wos",
+       "tone": "accent"
+      },
+      {
+       "label": "Tailored Jacket · LY",
+       "value": 5.31,
+       "fmt": "wos",
+       "tone": "ly"
+      },
+      {
+       "label": "Trench · TY",
+       "value": 17.33,
+       "fmt": "wos",
+       "tone": "accent"
+      },
+      {
+       "label": "Trench · LY",
+       "value": 6.82,
+       "fmt": "wos",
+       "tone": "ly"
+      }
+     ]
+    },
+    "headline": "Tailored Jacket holds 22.4 weeks of supply against 5.3 last year.",
+    "body": "Trench is at 17.3 weeks (LY 6.8). The sales window is still truncated, so treat these as early signs of a Halo apparel overhang.",
+    "generated_by": "pregenerated",
+    "validation": {
+     "n_numbers": 4,
+     "n_matched": 4,
+     "unmatched": [],
+     "matches": [
+      {
+       "text": "22.4",
+       "fact": "tailored_jacket_wos",
+       "alternatives": 0,
+       "candidates": [
+        "tailored_jacket_wos"
+       ]
+      },
+      {
+       "text": "5.3",
+       "fact": "tailored_jacket_wos_ly_same_week",
+       "alternatives": 0,
+       "candidates": [
+        "tailored_jacket_wos_ly_same_week"
+       ]
+      },
+      {
+       "text": "17.3",
+       "fact": "trench_wos",
+       "alternatives": 0,
+       "candidates": [
+        "trench_wos"
+       ]
+      },
+      {
+       "text": "6.8",
+       "fact": "trench_wos_ly_same_week",
+       "alternatives": 0,
+       "candidates": [
+        "trench_wos_ly_same_week"
+       ]
+      }
+     ],
+     "status": "PASS"
+    }
+   }
+  ]
+ },
+ "25": {
+  "week_label": "FY26 W25",
+  "is_partial_week": false,
+  "n_critical_alerts": 0,
+  "n_alerts_by_severity": {
+   "critical": 0,
+   "warning": 4,
+   "info": 0
+  },
+  "n_alerts": 4,
+  "n_rules": 18,
+  "rule_hits": {
+   "SALES_YOY_NEG": 0,
+   "SALES_YOY_DROP": 0,
+   "SALES_YOY_SPIKE": 0,
+   "SALES_WOW_SWING": 1,
+   "TXNS_YOY_NEG": 0,
+   "AOV_YOY_SWING": 0,
+   "GENZ_NEW_YOY_NEG": 0,
+   "GENZ_NEW_WOW_DROP": 0,
+   "GENZ_SHARE_BELOW_LY": 0,
+   "GENZ_NEW_INSIDER_LOW": 1,
+   "RETURNING_YOY_FLAT": 1,
+   "GENZ_RETURNING_YOY_NEG": 1,
+   "FAMILY_L4W_DECLINE": 0,
+   "WOS_LOW": 0,
+   "WOS_HIGH": 0,
+   "WOS_COLLAPSE_VS_LY": 0,
+   "RECEIPTS_BELOW_SALES": 0,
+   "PARTIAL_WEEK": 0
+  },
+  "n_needs_you": 1,
+  "n_fyi": 4,
+  "cards_file": "dashboard/facts/W25_cards.json",
+  "cards": [
+   {
+    "card_id": "retention",
+    "title": "Retention leak and Insider gap",
+    "pill": "Needs you",
+    "pill_rank": 1,
+    "meta": "Retention proxy · L4W ending W25",
+    "findings": [
+     "F6",
+     "F7",
+     "R3"
+    ],
+    "anomaly_ids": [
+     "AN009",
+     "AN010",
+     "AN011"
+    ],
+    "explore_tab": "G2",
+    "ask_prefill": "Why is retention flagged in week 25?",
+    "chart": {
+     "type": "bars",
+     "unit": "Insider attach of new customers, L4W",
+     "rows": [
+      {
+       "label": "Gen Z new · TY",
+       "value": 0.194444,
+       "fmt": "pct",
+       "tone": "accent"
+      },
+      {
+       "label": "Gen Z new · LY",
+       "value": 0.27907,
+       "fmt": "pct",
+       "tone": "ly"
+      },
+      {
+       "label": "All new · TY",
+       "value": 0.21,
+       "fmt": "pct",
+       "tone": "neutral"
+      },
+      {
+       "label": "All new · LY",
+       "value": 0.219512,
+       "fmt": "pct",
+       "tone": "ly"
+      }
+     ]
+    },
+    "headline": "Returning customers fell -5.1% (463 vs 488) and returning Gen Z -26.9% over W23–W25.",
+    "body": "Only 19.4% of new Gen Z joined Insider vs 27.9% LY, while 21.0% of all new customers did. Without a loyalty hook, the Gen Z acquisition wave won't show up as returning demand.",
+    "generated_by": "pregenerated",
+    "validation": {
+     "n_numbers": 7,
+     "n_matched": 7,
+     "unmatched": [],
+     "matches": [
+      {
+       "text": "-5.1%",
+       "fact": "l4w_returning_yoy_pct",
+       "alternatives": 1,
+       "candidates": [
+        "l4w_returning_yoy_pct",
+        "ptd_returning_yoy_pct"
+       ]
+      },
+      {
+       "text": "463",
+       "fact": "l4w_returning_ty",
+       "alternatives": 1,
+       "candidates": [
+        "l4w_returning_ty",
+        "ptd_returning_ty"
+       ]
+      },
+      {
+       "text": "488",
+       "fact": "l4w_returning_ly",
+       "alternatives": 1,
+       "candidates": [
+        "l4w_returning_ly",
+        "ptd_returning_ly"
+       ]
+      },
+      {
+       "text": "-26.9%",
+       "fact": "l4w_genz_returning_yoy_pct",
+       "alternatives": 1,
+       "candidates": [
+        "l4w_genz_returning_yoy_pct",
+        "ptd_genz_returning_yoy_pct"
+       ]
+      },
+      {
+       "text": "19.4%",
+       "fact": "l4w_genz_new_insider_rate_ty",
+       "alternatives": 1,
+       "candidates": [
+        "l4w_genz_new_insider_rate_ty",
+        "ptd_genz_new_insider_rate_ty"
+       ]
+      },
+      {
+       "text": "27.9%",
+       "fact": "l4w_genz_new_insider_rate_ly",
+       "alternatives": 1,
+       "candidates": [
+        "l4w_genz_new_insider_rate_ly",
+        "ptd_genz_new_insider_rate_ly"
+       ]
+      },
+      {
+       "text": "21.0%",
+       "fact": "l4w_new_insider_rate_ty",
+       "alternatives": 1,
+       "candidates": [
+        "l4w_new_insider_rate_ty",
+        "ptd_new_insider_rate_ty"
+       ]
+      }
+     ],
+     "status": "PASS"
+    }
+   },
+   {
+    "card_id": "pattern",
+    "title": "Gen Z share of new customers",
+    "pill": "Pattern",
+    "pill_rank": 2,
+    "meta": "Acquisition · Gen Z share of new · W23–W25",
+    "findings": [
+     "F5"
+    ],
+    "anomaly_ids": [],
+    "explore_tab": "G2",
+    "ask_prefill": "Gen Z share of new customers by week up to week 25?",
+    "chart": {
+     "type": "columns",
+     "unit": "Gen Z share of new customers, TY",
+     "fmt": "pct0",
+     "cols": [
+      {
+       "label": "W23",
+       "value": 0.333333,
+       "partial": false
+      },
+      {
+       "label": "W24",
+       "value": 0.328125,
+       "partial": false
+      },
+      {
+       "label": "W25",
+       "value": 0.414286,
+       "partial": false
+      }
+     ]
+    },
+    "headline": "Gen Z share of new customers rose to 41.4%, from 33.3% in W23.",
+    "body": "Last year this week was 24.0%. 29 Gen Z customers were new this week, the momentum the acquisition goal is after.",
+    "generated_by": "pregenerated",
+    "validation": {
+     "n_numbers": 4,
+     "n_matched": 4,
+     "unmatched": [],
+     "matches": [
+      {
+       "text": "41.4%",
+       "fact": "week_genz_share_of_new_ty",
+       "alternatives": 0,
+       "candidates": [
+        "week_genz_share_of_new_ty"
+       ]
+      },
+      {
+       "text": "33.3%",
+       "fact": "first_week_genz_share_of_new_ty",
+       "alternatives": 0,
+       "candidates": [
+        "first_week_genz_share_of_new_ty"
+       ]
+      },
+      {
+       "text": "24.0%",
+       "fact": "week_genz_share_of_new_ly",
+       "alternatives": 0,
+       "candidates": [
+        "week_genz_share_of_new_ly"
+       ]
+      },
+      {
+       "text": "29",
+       "fact": "week_genz_new_ty",
+       "alternatives": 0,
+       "candidates": [
+        "week_genz_new_ty"
+       ]
+      }
+     ],
+     "status": "PASS"
+    }
+   },
+   {
+    "card_id": "win",
+    "title": "Gen Z acquisition and Tabby growth",
+    "pill": "Win",
+    "pill_rank": 3,
+    "meta": "Growth · PTD W23–W25 · L4W families",
+    "findings": [
+     "F4",
+     "F9"
+    ],
+    "anomaly_ids": [],
+    "explore_tab": "G3",
+    "ask_prefill": "Top 3 families by contribution in L4W for week 25",
+    "chart": {
+     "type": "bars",
+     "unit": "Gen Z new customers, PTD W23–W25 (sample)",
+     "rows": [
+      {
+       "label": "Gen Z new · LY",
+       "value": 43,
+       "fmt": "int",
+       "tone": "ly"
+      },
+      {
+       "label": "Gen Z new · TY",
+       "value": 72,
+       "fmt": "int",
+       "tone": "green"
+      }
+     ]
+    },
+    "headline": "Gen Z new customers are up +67.4% period-to-date: 72 vs 43.",
+    "body": "Tabby (+75.2%, +11.9 pts) and Pillow Tabby (+172%, +4.1 pts) lead L4W growth. Gen Z is 36.0% of new customers vs 26.2% LY.",
+    "generated_by": "pregenerated",
+    "validation": {
+     "n_numbers": 9,
+     "n_matched": 9,
+     "unmatched": [],
+     "matches": [
+      {
+       "text": "+67.4%",
+       "fact": "ptd_genz_new_yoy_pct",
+       "alternatives": 0,
+       "candidates": [
+        "ptd_genz_new_yoy_pct"
+       ]
+      },
+      {
+       "text": "72",
+       "fact": "ptd_genz_new_ty",
+       "alternatives": 0,
+       "candidates": [
+        "ptd_genz_new_ty"
+       ]
+      },
+      {
+       "text": "43",
+       "fact": "ptd_genz_new_ly",
+       "alternatives": 0,
+       "candidates": [
+        "ptd_genz_new_ly"
+       ]
+      },
+      {
+       "text": "+75.2%",
+       "fact": "tabby_l4w_sales_yoy_pct",
+       "alternatives": 0,
+       "candidates": [
+        "tabby_l4w_sales_yoy_pct"
+       ]
+      },
+      {
+       "text": "+11.9 pts",
+       "fact": "tabby_l4w_contrib_pts",
+       "alternatives": 0,
+       "candidates": [
+        "tabby_l4w_contrib_pts"
+       ]
+      },
+      {
+       "text": "+172%",
+       "fact": "pillow_tabby_l4w_sales_yoy_pct",
+       "alternatives": 0,
+       "candidates": [
+        "pillow_tabby_l4w_sales_yoy_pct"
+       ]
+      },
+      {
+       "text": "+4.1 pts",
+       "fact": "pillow_tabby_l4w_contrib_pts",
+       "alternatives": 0,
+       "candidates": [
+        "pillow_tabby_l4w_contrib_pts"
+       ]
+      },
+      {
+       "text": "36.0%",
+       "fact": "ptd_genz_share_of_new_ty",
+       "alternatives": 0,
+       "candidates": [
+        "ptd_genz_share_of_new_ty"
+       ]
+      },
+      {
+       "text": "26.2%",
+       "fact": "ptd_genz_share_of_new_ly",
+       "alternatives": 0,
+       "candidates": [
+        "ptd_genz_share_of_new_ly"
+       ]
+      }
+     ],
+     "status": "PASS"
+    }
+   },
+   {
+    "card_id": "stock",
+    "title": "Tabby franchise stock-out",
+    "pill": "Watch",
+    "pill_rank": 4,
+    "meta": "Inventory · Tabby franchise · W25",
+    "findings": [
+     "F11",
+     "F12",
+     "R1"
+    ],
+    "anomaly_ids": [],
+    "explore_tab": "G4",
+    "ask_prefill": "Why is Tabby flagged in week 25?",
+    "chart": {
+     "type": "bars",
+     "unit": "weeks of supply",
+     "rows": [
+      {
+       "label": "Tabby · TY",
+       "value": 4.5,
+       "fmt": "wos",
+       "tone": "accent"
+      },
+      {
+       "label": "Tabby · LY",
+       "value": 9.62,
+       "fmt": "wos",
+       "tone": "ly"
+      },
+      {
+       "label": "Pillow Tabby · TY",
+       "value": 6.56,
+       "fmt": "wos",
+       "tone": "accent"
+      },
+      {
+       "label": "Pillow Tabby · LY",
+       "value": 13.4,
+       "fmt": "wos",
+       "tone": "ly"
+      }
+     ]
+    },
+    "headline": "Tabby is down to 4.5 weeks of supply and Pillow Tabby to 6.6, against 9.6 and 13.4 last year.",
+    "body": "With 213 Tabby units on hand and a 3-week sales window, this is the trend the stock rules will judge once the window is full in W26.",
+    "generated_by": "pregenerated",
+    "validation": {
+     "n_numbers": 5,
+     "n_matched": 5,
+     "unmatched": [],
+     "matches": [
+      {
+       "text": "4.5",
+       "fact": "tabby_wos",
+       "alternatives": 0,
+       "candidates": [
+        "tabby_wos"
+       ]
+      },
+      {
+       "text": "6.6",
+       "fact": "pillow_tabby_wos",
+       "alternatives": 0,
+       "candidates": [
+        "pillow_tabby_wos"
+       ]
+      },
+      {
+       "text": "9.6",
+       "fact": "tabby_wos_ly_same_week",
+       "alternatives": 0,
+       "candidates": [
+        "tabby_wos_ly_same_week"
+       ]
+      },
+      {
+       "text": "13.4",
+       "fact": "pillow_tabby_wos_ly_same_week",
+       "alternatives": 0,
+       "candidates": [
+        "pillow_tabby_wos_ly_same_week"
+       ]
+      },
+      {
+       "text": "213",
+       "fact": "tabby_on_hand_eow",
+       "alternatives": 0,
+       "candidates": [
+        "tabby_on_hand_eow"
+       ]
+      }
+     ],
+     "status": "PASS"
+    }
+   },
+   {
+    "card_id": "overstock",
+    "title": "Apparel overstock",
+    "pill": "Watch",
+    "pill_rank": 4,
+    "meta": "Inventory · Halo apparel · W25",
+    "findings": [
+     "F10",
+     "F11",
+     "R2"
+    ],
+    "anomaly_ids": [],
+    "explore_tab": "G4",
+    "ask_prefill": "Which families have WOS above 15 in week 25?",
+    "chart": {
+     "type": "bars",
+     "unit": "weeks of supply",
+     "rows": [
+      {
+       "label": "Tailored Jacket · TY",
+       "value": 22.71,
+       "fmt": "wos",
+       "tone": "accent"
+      },
+      {
+       "label": "Tailored Jacket · LY",
+       "value": 5.13,
+       "fmt": "wos",
+       "tone": "ly"
+      },
+      {
+       "label": "Trench · TY",
+       "value": 18.55,
+       "fmt": "wos",
+       "tone": "accent"
+      },
+      {
+       "label": "Trench · LY",
+       "value": 8.57,
+       "fmt": "wos",
+       "tone": "ly"
+      }
+     ]
+    },
+    "headline": "Tailored Jacket is at 22.7 weeks of supply and Trench at 18.6, against 5.1 and 8.6 last year.",
+    "body": "Apparel stock is building while its demand isn't. These become rule-checked once the four-week window fills in W26.",
+    "generated_by": "pregenerated",
+    "validation": {
+     "n_numbers": 4,
+     "n_matched": 4,
+     "unmatched": [],
+     "matches": [
+      {
+       "text": "22.7",
+       "fact": "tailored_jacket_wos",
+       "alternatives": 0,
+       "candidates": [
+        "tailored_jacket_wos"
+       ]
+      },
+      {
+       "text": "18.6",
+       "fact": "trench_wos",
+       "alternatives": 0,
+       "candidates": [
+        "trench_wos"
+       ]
+      },
+      {
+       "text": "5.1",
+       "fact": "tailored_jacket_wos_ly_same_week",
+       "alternatives": 0,
+       "candidates": [
+        "tailored_jacket_wos_ly_same_week"
+       ]
+      },
+      {
+       "text": "8.6",
+       "fact": "trench_wos_ly_same_week",
+       "alternatives": 0,
+       "candidates": [
+        "trench_wos_ly_same_week"
+       ]
+      }
+     ],
+     "status": "PASS"
+    }
+   }
+  ]
+ },
+ "26": {
+  "week_label": "FY26 W26",
+  "is_partial_week": false,
+  "n_critical_alerts": 0,
+  "n_alerts_by_severity": {
+   "critical": 0,
+   "warning": 10,
+   "info": 0
+  },
+  "n_alerts": 10,
+  "n_rules": 18,
+  "rule_hits": {
+   "SALES_YOY_NEG": 0,
+   "SALES_YOY_DROP": 0,
+   "SALES_YOY_SPIKE": 0,
+   "SALES_WOW_SWING": 1,
+   "TXNS_YOY_NEG": 0,
+   "AOV_YOY_SWING": 0,
+   "GENZ_NEW_YOY_NEG": 0,
+   "GENZ_NEW_WOW_DROP": 0,
+   "GENZ_SHARE_BELOW_LY": 0,
+   "GENZ_NEW_INSIDER_LOW": 1,
+   "RETURNING_YOY_FLAT": 1,
+   "GENZ_RETURNING_YOY_NEG": 1,
+   "FAMILY_L4W_DECLINE": 3,
+   "WOS_LOW": 0,
+   "WOS_HIGH": 2,
+   "WOS_COLLAPSE_VS_LY": 1,
+   "RECEIPTS_BELOW_SALES": 0,
+   "PARTIAL_WEEK": 0
+  },
+  "n_needs_you": 2,
+  "n_fyi": 3,
+  "cards_file": "dashboard/facts/W26_cards.json",
+  "cards": [
+   {
+    "card_id": "stock",
+    "title": "Tabby franchise stock-out",
+    "pill": "Needs you",
+    "pill_rank": 1,
+    "meta": "Inventory · Tabby franchise · W26",
+    "findings": [
+     "F11",
+     "F12",
+     "R1"
+    ],
+    "anomaly_ids": [
+     "AN020"
+    ],
+    "explore_tab": "G4",
+    "ask_prefill": "Why is Tabby flagged in week 26?",
+    "chart": {
+     "type": "bars",
+     "unit": "weeks of supply",
+     "rows": [
+      {
+       "label": "Tabby · TY",
+       "value": 3.87,
+       "fmt": "wos",
+       "tone": "amber"
+      },
+      {
+       "label": "Tabby · LY",
+       "value": 8.43,
+       "fmt": "wos",
+       "tone": "ly"
+      },
+      {
+       "label": "Pillow Tabby · TY",
+       "value": 6.34,
+       "fmt": "wos",
+       "tone": "accent"
+      },
+      {
+       "label": "Pillow Tabby · LY",
+       "value": 12.18,
+       "fmt": "wos",
+       "tone": "ly"
+      }
+     ]
+    },
+    "headline": "Tabby has 3.9 weeks of supply, less than half of last year's 8.4.",
+    "body": "W26 is the first week with a full four-week window, and the WOS-collapse rule fires for Tabby (183 units on hand). Pillow Tabby is at 6.3 weeks vs 12.2 LY. Check inbound Tabby supply now; it is the main growth family.",
+    "generated_by": "pregenerated",
+    "validation": {
+     "n_numbers": 5,
+     "n_matched": 5,
+     "unmatched": [],
+     "matches": [
+      {
+       "text": "3.9",
+       "fact": "tabby_wos",
+       "alternatives": 0,
+       "candidates": [
+        "tabby_wos"
+       ]
+      },
+      {
+       "text": "8.4",
+       "fact": "tabby_wos_ly_same_week",
+       "alternatives": 0,
+       "candidates": [
+        "tabby_wos_ly_same_week"
+       ]
+      },
+      {
+       "text": "183",
+       "fact": "tabby_on_hand_eow",
+       "alternatives": 0,
+       "candidates": [
+        "tabby_on_hand_eow"
+       ]
+      },
+      {
+       "text": "6.3",
+       "fact": "pillow_tabby_wos",
+       "alternatives": 0,
+       "candidates": [
+        "pillow_tabby_wos"
+       ]
+      },
+      {
+       "text": "12.2",
+       "fact": "pillow_tabby_wos_ly_same_week",
+       "alternatives": 0,
+       "candidates": [
+        "pillow_tabby_wos_ly_same_week"
+       ]
+      }
+     ],
+     "status": "PASS"
+    }
+   },
+   {
+    "card_id": "retention",
+    "title": "Retention leak and Insider gap",
+    "pill": "Needs you",
+    "pill_rank": 1,
+    "meta": "Retention proxy · L4W ending W26",
+    "findings": [
+     "F6",
+     "F7",
+     "R3"
+    ],
+    "anomaly_ids": [
+     "AN016",
+     "AN017",
+     "AN018"
+    ],
+    "explore_tab": "G2",
+    "ask_prefill": "Why is retention flagged in week 26?",
+    "chart": {
+     "type": "bars",
+     "unit": "Insider attach of new customers, L4W",
+     "rows": [
+      {
+       "label": "Gen Z new · TY",
+       "value": 0.193878,
+       "fmt": "pct",
+       "tone": "accent"
+      },
+      {
+       "label": "Gen Z new · LY",
+       "value": 0.233333,
+       "fmt": "pct",
+       "tone": "ly"
+      },
+      {
+       "label": "All new · TY",
+       "value": 0.19573,
+       "fmt": "pct",
+       "tone": "neutral"
+      },
+      {
+       "label": "All new · LY",
+       "value": 0.215247,
+       "fmt": "pct",
+       "tone": "ly"
+      }
+     ]
+    },
+    "headline": "Returning Gen Z is down to 77 from 87 (-11.5%) over the first four weeks.",
+    "body": "All returning customers are -1.8% (646 vs 658). Insider attach of new Gen Z is 19.4% vs 23.3% LY, about level with all new customers at 19.6%.",
+    "generated_by": "pregenerated",
+    "validation": {
+     "n_numbers": 9,
+     "n_matched": 9,
+     "unmatched": [],
+     "matches": [
+      {
+       "text": "77",
+       "fact": "l4w_genz_returning_ty",
+       "alternatives": 1,
+       "candidates": [
+        "l4w_genz_returning_ty",
+        "ptd_genz_returning_ty"
+       ]
+      },
+      {
+       "text": "87",
+       "fact": "l4w_genz_returning_ly",
+       "alternatives": 1,
+       "candidates": [
+        "l4w_genz_returning_ly",
+        "ptd_genz_returning_ly"
+       ]
+      },
+      {
+       "text": "-11.5%",
+       "fact": "l4w_genz_returning_yoy_pct",
+       "alternatives": 1,
+       "candidates": [
+        "l4w_genz_returning_yoy_pct",
+        "ptd_genz_returning_yoy_pct"
+       ]
+      },
+      {
+       "text": "-1.8%",
+       "fact": "l4w_returning_yoy_pct",
+       "alternatives": 1,
+       "candidates": [
+        "l4w_returning_yoy_pct",
+        "ptd_returning_yoy_pct"
+       ]
+      },
+      {
+       "text": "646",
+       "fact": "l4w_returning_ty",
+       "alternatives": 1,
+       "candidates": [
+        "l4w_returning_ty",
+        "ptd_returning_ty"
+       ]
+      },
+      {
+       "text": "658",
+       "fact": "l4w_returning_ly",
+       "alternatives": 1,
+       "candidates": [
+        "l4w_returning_ly",
+        "ptd_returning_ly"
+       ]
+      },
+      {
+       "text": "19.4%",
+       "fact": "l4w_genz_new_insider_rate_ty",
+       "alternatives": 1,
+       "candidates": [
+        "l4w_genz_new_insider_rate_ty",
+        "ptd_genz_new_insider_rate_ty"
+       ]
+      },
+      {
+       "text": "23.3%",
+       "fact": "l4w_genz_new_insider_rate_ly",
+       "alternatives": 1,
+       "candidates": [
+        "l4w_genz_new_insider_rate_ly",
+        "ptd_genz_new_insider_rate_ly"
+       ]
+      },
+      {
+       "text": "19.6%",
+       "fact": "l4w_new_insider_rate_ty",
+       "alternatives": 1,
+       "candidates": [
+        "l4w_new_insider_rate_ty",
+        "ptd_new_insider_rate_ty"
+       ]
+      }
+     ],
+     "status": "PASS"
+    }
+   },
+   {
+    "card_id": "pattern",
+    "title": "Gen Z share of new customers",
+    "pill": "Pattern",
+    "pill_rank": 2,
+    "meta": "Acquisition · Gen Z share of new · W23–W26",
+    "findings": [
+     "F5"
+    ],
+    "anomaly_ids": [],
+    "explore_tab": "G2",
+    "ask_prefill": "Gen Z share of new customers by week up to week 26?",
+    "chart": {
+     "type": "columns",
+     "unit": "Gen Z share of new customers, TY",
+     "fmt": "pct0",
+     "cols": [
+      {
+       "label": "W23",
+       "value": 0.333333,
+       "partial": false
+      },
+      {
+       "label": "W24",
+       "value": 0.328125,
+       "partial": false
+      },
+      {
+       "label": "W25",
+       "value": 0.414286,
+       "partial": false
+      },
+      {
+       "label": "W26",
+       "value": 0.320988,
+       "partial": false
+      }
+     ]
+    },
+    "headline": "Gen Z share of new customers dipped to 32.1% in W26.",
+    "body": "It is still above last year's 28.8% and in line with the first week's 33.3%, on 26 new Gen Z customers vs 17 LY.",
+    "generated_by": "pregenerated",
+    "validation": {
+     "n_numbers": 5,
+     "n_matched": 5,
+     "unmatched": [],
+     "matches": [
+      {
+       "text": "32.1%",
+       "fact": "week_genz_share_of_new_ty",
+       "alternatives": 0,
+       "candidates": [
+        "week_genz_share_of_new_ty"
+       ]
+      },
+      {
+       "text": "28.8%",
+       "fact": "week_genz_share_of_new_ly",
+       "alternatives": 1,
+       "candidates": [
+        "week_genz_share_of_new_ly",
+        "first_week_genz_share_of_new_ly"
+       ]
+      },
+      {
+       "text": "33.3%",
+       "fact": "first_week_genz_share_of_new_ty",
+       "alternatives": 0,
+       "candidates": [
+        "first_week_genz_share_of_new_ty"
+       ]
+      },
+      {
+       "text": "26",
+       "fact": "week_genz_new_ty",
+       "alternatives": 0,
+       "candidates": [
+        "week_genz_new_ty"
+       ]
+      },
+      {
+       "text": "17",
+       "fact": "week_genz_new_ly",
+       "alternatives": 0,
+       "candidates": [
+        "week_genz_new_ly"
+       ]
+      }
+     ],
+     "status": "PASS"
+    }
+   },
+   {
+    "card_id": "win",
+    "title": "Gen Z acquisition and Tabby growth",
+    "pill": "Win",
+    "pill_rank": 3,
+    "meta": "Growth · PTD W23–W26 · L4W families",
+    "findings": [
+     "F4",
+     "F9"
+    ],
+    "anomaly_ids": [],
+    "explore_tab": "G3",
+    "ask_prefill": "Top 3 families by contribution in L4W for week 26",
+    "chart": {
+     "type": "bars",
+     "unit": "Gen Z new customers, PTD W23–W26 (sample)",
+     "rows": [
+      {
+       "label": "Gen Z new · LY",
+       "value": 60,
+       "fmt": "int",
+       "tone": "ly"
+      },
+      {
+       "label": "Gen Z new · TY",
+       "value": 98,
+       "fmt": "int",
+       "tone": "green"
+      }
+     ]
+    },
+    "headline": "Gen Z new customers are up +63.3% period-to-date, 98 vs 60.",
+    "body": "Gen Z share of new is 34.9% vs 26.9% LY. Tabby (+56.8%) and Pillow Tabby (+125%) add +9.6 and +3.3 pts of L4W growth, while total L4W demand is +8.8%.",
+    "generated_by": "pregenerated",
+    "validation": {
+     "n_numbers": 10,
+     "n_matched": 10,
+     "unmatched": [],
+     "matches": [
+      {
+       "text": "+63.3%",
+       "fact": "ptd_genz_new_yoy_pct",
+       "alternatives": 0,
+       "candidates": [
+        "ptd_genz_new_yoy_pct"
+       ]
+      },
+      {
+       "text": "98",
+       "fact": "ptd_genz_new_ty",
+       "alternatives": 0,
+       "candidates": [
+        "ptd_genz_new_ty"
+       ]
+      },
+      {
+       "text": "60",
+       "fact": "ptd_genz_new_ly",
+       "alternatives": 0,
+       "candidates": [
+        "ptd_genz_new_ly"
+       ]
+      },
+      {
+       "text": "34.9%",
+       "fact": "ptd_genz_share_of_new_ty",
+       "alternatives": 0,
+       "candidates": [
+        "ptd_genz_share_of_new_ty"
+       ]
+      },
+      {
+       "text": "26.9%",
+       "fact": "ptd_genz_share_of_new_ly",
+       "alternatives": 0,
+       "candidates": [
+        "ptd_genz_share_of_new_ly"
+       ]
+      },
+      {
+       "text": "+56.8%",
+       "fact": "tabby_l4w_sales_yoy_pct",
+       "alternatives": 0,
+       "candidates": [
+        "tabby_l4w_sales_yoy_pct"
+       ]
+      },
+      {
+       "text": "+125%",
+       "fact": "pillow_tabby_l4w_sales_yoy_pct",
+       "alternatives": 0,
+       "candidates": [
+        "pillow_tabby_l4w_sales_yoy_pct"
+       ]
+      },
+      {
+       "text": "+9.6",
+       "fact": "tabby_l4w_contrib_pts",
+       "alternatives": 0,
+       "candidates": [
+        "tabby_l4w_contrib_pts"
+       ]
+      },
+      {
+       "text": "+3.3 pts",
+       "fact": "pillow_tabby_l4w_contrib_pts",
+       "alternatives": 0,
+       "candidates": [
+        "pillow_tabby_l4w_contrib_pts"
+       ]
+      },
+      {
+       "text": "+8.8%",
+       "fact": "l4w_sales_yoy_pct",
+       "alternatives": 1,
+       "candidates": [
+        "l4w_sales_yoy_pct",
+        "ptd_sales_yoy_pct"
+       ]
+      }
+     ],
+     "status": "PASS"
+    }
+   },
+   {
+    "card_id": "overstock",
+    "title": "Apparel overstock",
+    "pill": "Watch",
+    "pill_rank": 4,
+    "meta": "Inventory · Halo apparel · W26",
+    "findings": [
+     "F10",
+     "F11",
+     "R2"
+    ],
+    "anomaly_ids": [
+     "AN021",
+     "AN022",
+     "AN013",
+     "AN014",
+     "AN015"
+    ],
+    "explore_tab": "G4",
+    "ask_prefill": "Which families have WOS above 15 in week 26?",
+    "chart": {
+     "type": "bars",
+     "unit": "weeks of supply",
+     "rows": [
+      {
+       "label": "Tailored Jacket · TY",
+       "value": 25.88,
+       "fmt": "wos",
+       "tone": "amber"
+      },
+      {
+       "label": "Tailored Jacket · LY",
+       "value": 6.42,
+       "fmt": "wos",
+       "tone": "ly"
+      },
+      {
+       "label": "Trench · TY",
+       "value": 17.94,
+       "fmt": "wos",
+       "tone": "amber"
+      },
+      {
+       "label": "Trench · LY",
+       "value": 8.0,
+       "fmt": "wos",
+       "tone": "ly"
+      }
+     ]
+    },
+    "headline": "Tailored Jacket has 25.9 weeks of supply while its demand is -56.3% over L4W.",
+    "body": "Trench holds 17.9 weeks (LY 8.0) and Knit Dress demand is -40.2%. Slow Halo apparel is tying up stock that the Tabby franchise needs; plan markdowns or transfers.",
+    "generated_by": "pregenerated",
+    "validation": {
+     "n_numbers": 5,
+     "n_matched": 5,
+     "unmatched": [],
+     "matches": [
+      {
+       "text": "25.9",
+       "fact": "tailored_jacket_wos",
+       "alternatives": 0,
+       "candidates": [
+        "tailored_jacket_wos"
+       ]
+      },
+      {
+       "text": "-56.3%",
+       "fact": "tailored_jacket_l4w_sales_yoy_pct",
+       "alternatives": 0,
+       "candidates": [
+        "tailored_jacket_l4w_sales_yoy_pct"
+       ]
+      },
+      {
+       "text": "17.9",
+       "fact": "trench_wos",
+       "alternatives": 0,
+       "candidates": [
+        "trench_wos"
+       ]
+      },
+      {
+       "text": "8.0",
+       "fact": "trench_wos_ly_same_week",
+       "alternatives": 0,
+       "candidates": [
+        "trench_wos_ly_same_week"
+       ]
+      },
+      {
+       "text": "-40.2%",
+       "fact": "knit_dress_l4w_sales_yoy_pct",
+       "alternatives": 0,
+       "candidates": [
+        "knit_dress_l4w_sales_yoy_pct"
+       ]
+      }
+     ],
+     "status": "PASS"
+    }
+   }
+  ]
+ },
+ "27": {
+  "week_label": "FY26 W27",
+  "is_partial_week": false,
+  "n_critical_alerts": 0,
+  "n_alerts_by_severity": {
+   "critical": 0,
+   "warning": 10,
+   "info": 0
+  },
+  "n_alerts": 10,
+  "n_rules": 18,
+  "rule_hits": {
+   "SALES_YOY_NEG": 0,
+   "SALES_YOY_DROP": 0,
+   "SALES_YOY_SPIKE": 0,
+   "SALES_WOW_SWING": 0,
+   "TXNS_YOY_NEG": 0,
+   "AOV_YOY_SWING": 0,
+   "GENZ_NEW_YOY_NEG": 0,
+   "GENZ_NEW_WOW_DROP": 0,
+   "GENZ_SHARE_BELOW_LY": 0,
+   "GENZ_NEW_INSIDER_LOW": 1,
+   "RETURNING_YOY_FLAT": 1,
+   "GENZ_RETURNING_YOY_NEG": 1,
+   "FAMILY_L4W_DECLINE": 4,
+   "WOS_LOW": 0,
+   "WOS_HIGH": 2,
+   "WOS_COLLAPSE_VS_LY": 1,
+   "RECEIPTS_BELOW_SALES": 0,
+   "PARTIAL_WEEK": 0
+  },
+  "n_needs_you": 2,
+  "n_fyi": 3,
+  "cards_file": "dashboard/facts/W27_cards.json",
+  "cards": [
+   {
+    "card_id": "stock",
+    "title": "Tabby franchise stock-out",
+    "pill": "Needs you",
+    "pill_rank": 1,
+    "meta": "Inventory · Tabby franchise · W27",
+    "findings": [
+     "F11",
+     "F12",
+     "R1"
+    ],
+    "anomaly_ids": [
+     "AN030"
+    ],
+    "explore_tab": "G4",
+    "ask_prefill": "Why is Tabby flagged in week 27?",
+    "chart": {
+     "type": "bars",
+     "unit": "weeks of supply",
+     "rows": [
+      {
+       "label": "Tabby · TY",
+       "value": 3.48,
+       "fmt": "wos",
+       "tone": "amber"
+      },
+      {
+       "label": "Tabby · LY",
+       "value": 7.42,
+       "fmt": "wos",
+       "tone": "ly"
+      },
+      {
+       "label": "Pillow Tabby · TY",
+       "value": 4.4,
+       "fmt": "wos",
+       "tone": "accent"
+      },
+      {
+       "label": "Pillow Tabby · LY",
+       "value": 7.62,
+       "fmt": "wos",
+       "tone": "ly"
+      }
+     ]
+    },
+    "headline": "Tabby is at 3.5 weeks of supply and Pillow Tabby at 4.4, versus 7.4 and 7.6 last year.",
+    "body": "Cover keeps shrinking while demand grows: Tabby is down to 160 units and Pillow Tabby to 55. If cover keeps falling, the low-stock rule escalates to critical because both are G3 winners and Gen Z gateways.",
+    "generated_by": "pregenerated",
+    "validation": {
+     "n_numbers": 6,
+     "n_matched": 6,
+     "unmatched": [],
+     "matches": [
+      {
+       "text": "3.5",
+       "fact": "tabby_wos",
+       "alternatives": 0,
+       "candidates": [
+        "tabby_wos"
+       ]
+      },
+      {
+       "text": "4.4",
+       "fact": "pillow_tabby_wos",
+       "alternatives": 0,
+       "candidates": [
+        "pillow_tabby_wos"
+       ]
+      },
+      {
+       "text": "7.4",
+       "fact": "tabby_wos_ly_same_week",
+       "alternatives": 0,
+       "candidates": [
+        "tabby_wos_ly_same_week"
+       ]
+      },
+      {
+       "text": "7.6",
+       "fact": "pillow_tabby_wos_ly_same_week",
+       "alternatives": 0,
+       "candidates": [
+        "pillow_tabby_wos_ly_same_week"
+       ]
+      },
+      {
+       "text": "160",
+       "fact": "tabby_on_hand_eow",
+       "alternatives": 0,
+       "candidates": [
+        "tabby_on_hand_eow"
+       ]
+      },
+      {
+       "text": "55",
+       "fact": "pillow_tabby_on_hand_eow",
+       "alternatives": 0,
+       "candidates": [
+        "pillow_tabby_on_hand_eow"
+       ]
+      }
+     ],
+     "status": "PASS"
+    }
+   },
+   {
+    "card_id": "retention",
+    "title": "Retention leak and Insider gap",
+    "pill": "Needs you",
+    "pill_rank": 1,
+    "meta": "Retention proxy · L4W ending W27",
+    "findings": [
+     "F6",
+     "F7",
+     "R3"
+    ],
+    "anomaly_ids": [
+     "AN027",
+     "AN028",
+     "AN029"
+    ],
+    "explore_tab": "G2",
+    "ask_prefill": "Why is retention flagged in week 27?",
+    "chart": {
+     "type": "bars",
+     "unit": "Insider attach of new customers, L4W",
+     "rows": [
+      {
+       "label": "Gen Z new · TY",
+       "value": 0.181818,
+       "fmt": "pct",
+       "tone": "accent"
+      },
+      {
+       "label": "Gen Z new · LY",
+       "value": 0.245614,
+       "fmt": "pct",
+       "tone": "ly"
+      },
+      {
+       "label": "All new · TY",
+       "value": 0.188552,
+       "fmt": "pct",
+       "tone": "neutral"
+      },
+      {
+       "label": "All new · LY",
+       "value": 0.220833,
+       "fmt": "pct",
+       "tone": "ly"
+      }
+     ]
+    },
+    "headline": "Returning customers are flat at 654 vs 654, and returning Gen Z is -8.0% over L4W.",
+    "body": "Period-to-date returning Gen Z is 97 vs 113 (-14.2%). New Gen Z Insider attach is 18.2% vs 24.6% LY, the gap that R3 targets.",
+    "generated_by": "pregenerated",
+    "validation": {
+     "n_numbers": 8,
+     "n_matched": 8,
+     "unmatched": [],
+     "matches": [
+      {
+       "text": "654",
+       "fact": "l4w_returning_ly",
+       "alternatives": 1,
+       "candidates": [
+        "l4w_returning_ly",
+        "l4w_returning_ty"
+       ]
+      },
+      {
+       "text": "654",
+       "fact": "l4w_returning_ly",
+       "alternatives": 1,
+       "candidates": [
+        "l4w_returning_ly",
+        "l4w_returning_ty"
+       ]
+      },
+      {
+       "text": "-8.0%",
+       "fact": "l4w_genz_returning_yoy_pct",
+       "alternatives": 0,
+       "candidates": [
+        "l4w_genz_returning_yoy_pct"
+       ]
+      },
+      {
+       "text": "97",
+       "fact": "ptd_genz_returning_ty",
+       "alternatives": 0,
+       "candidates": [
+        "ptd_genz_returning_ty"
+       ]
+      },
+      {
+       "text": "113",
+       "fact": "ptd_genz_returning_ly",
+       "alternatives": 0,
+       "candidates": [
+        "ptd_genz_returning_ly"
+       ]
+      },
+      {
+       "text": "-14.2%",
+       "fact": "ptd_genz_returning_yoy_pct",
+       "alternatives": 0,
+       "candidates": [
+        "ptd_genz_returning_yoy_pct"
+       ]
+      },
+      {
+       "text": "18.2%",
+       "fact": "l4w_genz_new_insider_rate_ty",
+       "alternatives": 1,
+       "candidates": [
+        "l4w_genz_new_insider_rate_ty",
+        "ptd_new_insider_rate_ty"
+       ]
+      },
+      {
+       "text": "24.6%",
+       "fact": "l4w_genz_new_insider_rate_ly",
+       "alternatives": 0,
+       "candidates": [
+        "l4w_genz_new_insider_rate_ly"
+       ]
+      }
+     ],
+     "status": "PASS"
+    }
+   },
+   {
+    "card_id": "pattern",
+    "title": "Gen Z share of new customers",
+    "pill": "Pattern",
+    "pill_rank": 2,
+    "meta": "Acquisition · Gen Z share of new · W23–W27",
+    "findings": [
+     "F5"
+    ],
+    "anomaly_ids": [],
+    "explore_tab": "G2",
+    "ask_prefill": "Gen Z share of new customers by week up to week 27?",
+    "chart": {
+     "type": "columns",
+     "unit": "Gen Z share of new customers, TY",
+     "fmt": "pct0",
+     "cols": [
+      {
+       "label": "W23",
+       "value": 0.333333,
+       "partial": false
+      },
+      {
+       "label": "W24",
+       "value": 0.328125,
+       "partial": false
+      },
+      {
+       "label": "W25",
+       "value": 0.414286,
+       "partial": false
+      },
+      {
+       "label": "W26",
+       "value": 0.320988,
+       "partial": false
+      },
+      {
+       "label": "W27",
+       "value": 0.414634,
+       "partial": false
+      }
+     ]
+    },
+    "headline": "Gen Z share of new customers is back up to 41.5% in W27, against 17.4% last year.",
+    "body": "The W23 starting point was 33.3%. This week 34 Gen Z customers were new vs 12 LY.",
+    "generated_by": "pregenerated",
+    "validation": {
+     "n_numbers": 5,
+     "n_matched": 5,
+     "unmatched": [],
+     "matches": [
+      {
+       "text": "41.5%",
+       "fact": "week_genz_share_of_new_ty",
+       "alternatives": 0,
+       "candidates": [
+        "week_genz_share_of_new_ty"
+       ]
+      },
+      {
+       "text": "17.4%",
+       "fact": "week_genz_share_of_new_ly",
+       "alternatives": 0,
+       "candidates": [
+        "week_genz_share_of_new_ly"
+       ]
+      },
+      {
+       "text": "33.3%",
+       "fact": "first_week_genz_share_of_new_ty",
+       "alternatives": 0,
+       "candidates": [
+        "first_week_genz_share_of_new_ty"
+       ]
+      },
+      {
+       "text": "34",
+       "fact": "week_genz_new_ty",
+       "alternatives": 0,
+       "candidates": [
+        "week_genz_new_ty"
+       ]
+      },
+      {
+       "text": "12",
+       "fact": "week_genz_new_ly",
+       "alternatives": 0,
+       "candidates": [
+        "week_genz_new_ly"
+       ]
+      }
+     ],
+     "status": "PASS"
+    }
+   },
+   {
+    "card_id": "win",
+    "title": "Gen Z acquisition and Tabby growth",
+    "pill": "Win",
+    "pill_rank": 3,
+    "meta": "Growth · PTD W23–W27 · L4W families",
+    "findings": [
+     "F4",
+     "F9"
+    ],
+    "anomaly_ids": [],
+    "explore_tab": "G3",
+    "ask_prefill": "Top 3 families by contribution in L4W for week 27",
+    "chart": {
+     "type": "bars",
+     "unit": "Gen Z new customers, PTD W23–W27 (sample)",
+     "rows": [
+      {
+       "label": "Gen Z new · LY",
+       "value": 72,
+       "fmt": "int",
+       "tone": "ly"
+      },
+      {
+       "label": "Gen Z new · TY",
+       "value": 132,
+       "fmt": "int",
+       "tone": "green"
+      }
+     ]
+    },
+    "headline": "Gen Z new customers are up +83.3% period-to-date, 132 vs 72.",
+    "body": "Gen Z is 36.4% of new customers vs 24.7% LY. Tabby (+36.8%, +6.8 pts) and Pillow Tabby (+84.6%, +3.3 pts) lead L4W growth.",
+    "generated_by": "pregenerated",
+    "validation": {
+     "n_numbers": 9,
+     "n_matched": 9,
+     "unmatched": [],
+     "matches": [
+      {
+       "text": "+83.3%",
+       "fact": "ptd_genz_new_yoy_pct",
+       "alternatives": 0,
+       "candidates": [
+        "ptd_genz_new_yoy_pct"
+       ]
+      },
+      {
+       "text": "132",
+       "fact": "ptd_genz_new_ty",
+       "alternatives": 0,
+       "candidates": [
+        "ptd_genz_new_ty"
+       ]
+      },
+      {
+       "text": "72",
+       "fact": "ptd_genz_new_ly",
+       "alternatives": 0,
+       "candidates": [
+        "ptd_genz_new_ly"
+       ]
+      },
+      {
+       "text": "36.4%",
+       "fact": "ptd_genz_share_of_new_ty",
+       "alternatives": 0,
+       "candidates": [
+        "ptd_genz_share_of_new_ty"
+       ]
+      },
+      {
+       "text": "24.7%",
+       "fact": "ptd_genz_share_of_new_ly",
+       "alternatives": 0,
+       "candidates": [
+        "ptd_genz_share_of_new_ly"
+       ]
+      },
+      {
+       "text": "+36.8%",
+       "fact": "tabby_l4w_sales_yoy_pct",
+       "alternatives": 0,
+       "candidates": [
+        "tabby_l4w_sales_yoy_pct"
+       ]
+      },
+      {
+       "text": "+6.8 pts",
+       "fact": "tabby_l4w_contrib_pts",
+       "alternatives": 0,
+       "candidates": [
+        "tabby_l4w_contrib_pts"
+       ]
+      },
+      {
+       "text": "+84.6%",
+       "fact": "pillow_tabby_l4w_sales_yoy_pct",
+       "alternatives": 0,
+       "candidates": [
+        "pillow_tabby_l4w_sales_yoy_pct"
+       ]
+      },
+      {
+       "text": "+3.3 pts",
+       "fact": "pillow_tabby_l4w_contrib_pts",
+       "alternatives": 0,
+       "candidates": [
+        "pillow_tabby_l4w_contrib_pts"
+       ]
+      }
+     ],
+     "status": "PASS"
+    }
+   },
+   {
+    "card_id": "overstock",
+    "title": "Apparel overstock",
+    "pill": "Watch",
+    "pill_rank": 4,
+    "meta": "Inventory · Halo apparel · W27",
+    "findings": [
+     "F10",
+     "F11",
+     "R2"
+    ],
+    "anomaly_ids": [
+     "AN031",
+     "AN032",
+     "AN023",
+     "AN024",
+     "AN025",
+     "AN026"
+    ],
+    "explore_tab": "G4",
+    "ask_prefill": "Which families have WOS above 15 in week 27?",
+    "chart": {
+     "type": "bars",
+     "unit": "weeks of supply",
+     "rows": [
+      {
+       "label": "Tailored Jacket · TY",
+       "value": 25.33,
+       "fmt": "wos",
+       "tone": "amber"
+      },
+      {
+       "label": "Tailored Jacket · LY",
+       "value": 6.9,
+       "fmt": "wos",
+       "tone": "ly"
+      },
+      {
+       "label": "Trench · TY",
+       "value": 18.5,
+       "fmt": "wos",
+       "tone": "amber"
+      },
+      {
+       "label": "Trench · LY",
+       "value": 8.0,
+       "fmt": "wos",
+       "tone": "ly"
+      }
+     ]
+    },
+    "headline": "Tailored Jacket holds 25.3 weeks of supply and Trench 18.5, against 6.9 and 8.0 last year.",
+    "body": "Demand keeps falling over L4W: Tailored Jacket -55.9%, Knit Dress -45.6%, Rogue -36.8% and Loafer -37.2%. Shift open-to-buy from Halo apparel toward Hero.",
+    "generated_by": "pregenerated",
+    "validation": {
+     "n_numbers": 8,
+     "n_matched": 8,
+     "unmatched": [],
+     "matches": [
+      {
+       "text": "25.3",
+       "fact": "tailored_jacket_wos",
+       "alternatives": 0,
+       "candidates": [
+        "tailored_jacket_wos"
+       ]
+      },
+      {
+       "text": "18.5",
+       "fact": "trench_wos",
+       "alternatives": 0,
+       "candidates": [
+        "trench_wos"
+       ]
+      },
+      {
+       "text": "6.9",
+       "fact": "tailored_jacket_wos_ly_same_week",
+       "alternatives": 0,
+       "candidates": [
+        "tailored_jacket_wos_ly_same_week"
+       ]
+      },
+      {
+       "text": "8.0",
+       "fact": "trench_wos_ly_same_week",
+       "alternatives": 0,
+       "candidates": [
+        "trench_wos_ly_same_week"
+       ]
+      },
+      {
+       "text": "-55.9%",
+       "fact": "tailored_jacket_l4w_sales_yoy_pct",
+       "alternatives": 0,
+       "candidates": [
+        "tailored_jacket_l4w_sales_yoy_pct"
+       ]
+      },
+      {
+       "text": "-45.6%",
+       "fact": "knit_dress_l4w_sales_yoy_pct",
+       "alternatives": 0,
+       "candidates": [
+        "knit_dress_l4w_sales_yoy_pct"
+       ]
+      },
+      {
+       "text": "-36.8%",
+       "fact": "rogue_l4w_sales_yoy_pct",
+       "alternatives": 0,
+       "candidates": [
+        "rogue_l4w_sales_yoy_pct"
+       ]
+      },
+      {
+       "text": "-37.2%",
+       "fact": "loafer_l4w_sales_yoy_pct",
+       "alternatives": 0,
+       "candidates": [
+        "loafer_l4w_sales_yoy_pct"
+       ]
+      }
+     ],
+     "status": "PASS"
+    }
+   }
+  ]
+ },
+ "28": {
+  "week_label": "FY26 W28",
+  "is_partial_week": false,
+  "n_critical_alerts": 2,
+  "n_alerts_by_severity": {
+   "critical": 2,
+   "warning": 11,
+   "info": 2
+  },
+  "n_alerts": 15,
+  "n_rules": 18,
+  "rule_hits": {
+   "SALES_YOY_NEG": 0,
+   "SALES_YOY_DROP": 0,
+   "SALES_YOY_SPIKE": 1,
+   "SALES_WOW_SWING": 0,
+   "TXNS_YOY_NEG": 0,
+   "AOV_YOY_SWING": 1,
+   "GENZ_NEW_YOY_NEG": 0,
+   "GENZ_NEW_WOW_DROP": 0,
+   "GENZ_SHARE_BELOW_LY": 0,
+   "GENZ_NEW_INSIDER_LOW": 1,
+   "RETURNING_YOY_FLAT": 1,
+   "GENZ_RETURNING_YOY_NEG": 1,
+   "FAMILY_L4W_DECLINE": 3,
+   "WOS_LOW": 2,
+   "WOS_HIGH": 3,
+   "WOS_COLLAPSE_VS_LY": 2,
+   "RECEIPTS_BELOW_SALES": 0,
+   "PARTIAL_WEEK": 0
+  },
+  "n_needs_you": 2,
+  "n_fyi": 3,
+  "cards_file": "dashboard/facts/W28_cards.json",
+  "cards": [
+   {
+    "card_id": "stock",
+    "title": "Tabby franchise stock-out",
+    "pill": "Needs you today",
+    "pill_rank": 0,
+    "meta": "Inventory · Tabby franchise · W28",
+    "findings": [
+     "F11",
+     "F12",
+     "R1"
+    ],
+    "anomaly_ids": [
+     "AN033",
+     "AN034",
+     "AN041",
+     "AN042"
+    ],
+    "explore_tab": "G4",
+    "ask_prefill": "Why is Tabby flagged in week 28?",
+    "chart": {
+     "type": "bars",
+     "unit": "weeks of supply",
+     "rows": [
+      {
+       "label": "Tabby · TY",
+       "value": 2.51,
+       "fmt": "wos",
+       "tone": "red"
+      },
+      {
+       "label": "Tabby · LY",
+       "value": 6.73,
+       "fmt": "wos",
+       "tone": "ly"
+      },
+      {
+       "label": "Pillow Tabby · TY",
+       "value": 2.83,
+       "fmt": "wos",
+       "tone": "red"
+      },
+      {
+       "label": "Pillow Tabby · LY",
+       "value": 7.75,
+       "fmt": "wos",
+       "tone": "ly"
+      }
+     ]
+    },
+    "headline": "Tabby and Pillow Tabby are down to 2.5 and 2.8 weeks of supply, against 6.7 and 7.8 last year.",
+    "body": "Both families are now in critical low stock, with 116 and 41 units left, and both are G3 winners and the Gen Z gateway. Open the inventory view and confirm inbound supply for Tabby first.",
+    "generated_by": "pregenerated",
+    "validation": {
+     "n_numbers": 6,
+     "n_matched": 6,
+     "unmatched": [],
+     "matches": [
+      {
+       "text": "2.5",
+       "fact": "tabby_wos",
+       "alternatives": 0,
+       "candidates": [
+        "tabby_wos"
+       ]
+      },
+      {
+       "text": "2.8",
+       "fact": "pillow_tabby_wos",
+       "alternatives": 0,
+       "candidates": [
+        "pillow_tabby_wos"
+       ]
+      },
+      {
+       "text": "6.7",
+       "fact": "tabby_wos_ly_same_week",
+       "alternatives": 0,
+       "candidates": [
+        "tabby_wos_ly_same_week"
+       ]
+      },
+      {
+       "text": "7.8",
+       "fact": "pillow_tabby_wos_ly_same_week",
+       "alternatives": 0,
+       "candidates": [
+        "pillow_tabby_wos_ly_same_week"
+       ]
+      },
+      {
+       "text": "116",
+       "fact": "tabby_on_hand_eow",
+       "alternatives": 0,
+       "candidates": [
+        "tabby_on_hand_eow"
+       ]
+      },
+      {
+       "text": "41",
+       "fact": "pillow_tabby_on_hand_eow",
+       "alternatives": 0,
+       "candidates": [
+        "pillow_tabby_on_hand_eow"
+       ]
+      }
+     ],
+     "status": "PASS"
+    }
+   },
+   {
+    "card_id": "retention",
+    "title": "Retention leak and Insider gap",
+    "pill": "Needs you",
+    "pill_rank": 1,
+    "meta": "Retention proxy · L4W ending W28",
+    "findings": [
+     "F6",
+     "F7",
+     "R3"
+    ],
+    "anomaly_ids": [
+     "AN038",
+     "AN039",
+     "AN040"
+    ],
+    "explore_tab": "G2",
+    "ask_prefill": "Why is retention flagged in week 28?",
+    "chart": {
+     "type": "bars",
+     "unit": "Insider attach of new customers, L4W",
+     "rows": [
+      {
+       "label": "Gen Z new · TY",
+       "value": 0.179688,
+       "fmt": "pct",
+       "tone": "accent"
+      },
+      {
+       "label": "Gen Z new · LY",
+       "value": 0.214286,
+       "fmt": "pct",
+       "tone": "ly"
+      },
+      {
+       "label": "All new · TY",
+       "value": 0.182663,
+       "fmt": "pct",
+       "tone": "neutral"
+      },
+      {
+       "label": "All new · LY",
+       "value": 0.192623,
+       "fmt": "pct",
+       "tone": "ly"
+      }
+     ]
+    },
+    "headline": "Returning customers grew only +0.9% over L4W, and returning Gen Z fell to 81 from 85.",
+    "body": "Period-to-date returning Gen Z is -14.0% (117 vs 136). Only 18.0% of new Gen Z joined Insider in L4W vs 21.4% last year.",
+    "generated_by": "pregenerated",
+    "validation": {
+     "n_numbers": 8,
+     "n_matched": 8,
+     "unmatched": [],
+     "matches": [
+      {
+       "text": "+0.9%",
+       "fact": "l4w_returning_yoy_pct",
+       "alternatives": 0,
+       "candidates": [
+        "l4w_returning_yoy_pct"
+       ]
+      },
+      {
+       "text": "81",
+       "fact": "l4w_genz_returning_ty",
+       "alternatives": 0,
+       "candidates": [
+        "l4w_genz_returning_ty"
+       ]
+      },
+      {
+       "text": "85",
+       "fact": "l4w_genz_returning_ly",
+       "alternatives": 0,
+       "candidates": [
+        "l4w_genz_returning_ly"
+       ]
+      },
+      {
+       "text": "-14.0%",
+       "fact": "ptd_genz_returning_yoy_pct",
+       "alternatives": 0,
+       "candidates": [
+        "ptd_genz_returning_yoy_pct"
+       ]
+      },
+      {
+       "text": "117",
+       "fact": "ptd_genz_returning_ty",
+       "alternatives": 0,
+       "candidates": [
+        "ptd_genz_returning_ty"
+       ]
+      },
+      {
+       "text": "136",
+       "fact": "ptd_genz_returning_ly",
+       "alternatives": 0,
+       "candidates": [
+        "ptd_genz_returning_ly"
+       ]
+      },
+      {
+       "text": "18.0%",
+       "fact": "l4w_genz_new_insider_rate_ty",
+       "alternatives": 0,
+       "candidates": [
+        "l4w_genz_new_insider_rate_ty"
+       ]
+      },
+      {
+       "text": "21.4%",
+       "fact": "l4w_genz_new_insider_rate_ly",
+       "alternatives": 0,
+       "candidates": [
+        "l4w_genz_new_insider_rate_ly"
+       ]
+      }
+     ],
+     "status": "PASS"
+    }
+   },
+   {
+    "card_id": "pattern",
+    "title": "Gen Z share of new customers",
+    "pill": "Pattern",
+    "pill_rank": 2,
+    "meta": "Acquisition · Gen Z share of new · W23–W28",
+    "findings": [
+     "F5"
+    ],
+    "anomaly_ids": [],
+    "explore_tab": "G2",
+    "ask_prefill": "Gen Z share of new customers by week up to week 28?",
+    "chart": {
+     "type": "columns",
+     "unit": "Gen Z share of new customers, TY",
+     "fmt": "pct0",
+     "cols": [
+      {
+       "label": "W23",
+       "value": 0.333333,
+       "partial": false
+      },
+      {
+       "label": "W24",
+       "value": 0.328125,
+       "partial": false
+      },
+      {
+       "label": "W25",
+       "value": 0.414286,
+       "partial": false
+      },
+      {
+       "label": "W26",
+       "value": 0.320988,
+       "partial": false
+      },
+      {
+       "label": "W27",
+       "value": 0.414634,
+       "partial": false
+      },
+      {
+       "label": "W28",
+       "value": 0.433333,
+       "partial": false
+      }
+     ]
+    },
+    "headline": "Gen Z share of new customers reached 43.3% in W28, up from 33.3% in W23.",
+    "body": "Last year's W28 was 22.7%, and 39 Gen Z customers were new vs 15.",
+    "generated_by": "pregenerated",
+    "validation": {
+     "n_numbers": 5,
+     "n_matched": 5,
+     "unmatched": [],
+     "matches": [
+      {
+       "text": "43.3%",
+       "fact": "week_genz_share_of_new_ty",
+       "alternatives": 0,
+       "candidates": [
+        "week_genz_share_of_new_ty"
+       ]
+      },
+      {
+       "text": "33.3%",
+       "fact": "first_week_genz_share_of_new_ty",
+       "alternatives": 0,
+       "candidates": [
+        "first_week_genz_share_of_new_ty"
+       ]
+      },
+      {
+       "text": "22.7%",
+       "fact": "week_genz_share_of_new_ly",
+       "alternatives": 0,
+       "candidates": [
+        "week_genz_share_of_new_ly"
+       ]
+      },
+      {
+       "text": "39",
+       "fact": "week_genz_new_ty",
+       "alternatives": 0,
+       "candidates": [
+        "week_genz_new_ty"
+       ]
+      },
+      {
+       "text": "15",
+       "fact": "week_genz_new_ly",
+       "alternatives": 0,
+       "candidates": [
+        "week_genz_new_ly"
+       ]
+      }
+     ],
+     "status": "PASS"
+    }
+   },
+   {
+    "card_id": "win",
+    "title": "Gen Z acquisition and Tabby growth",
+    "pill": "Win",
+    "pill_rank": 3,
+    "meta": "Growth · PTD W23–W28 · L4W families",
+    "findings": [
+     "F4",
+     "F9"
+    ],
+    "anomaly_ids": [
+     "AN047"
+    ],
+    "explore_tab": "G3",
+    "ask_prefill": "Top 3 families by contribution in L4W for week 28",
+    "chart": {
+     "type": "bars",
+     "unit": "Gen Z new customers, PTD W23–W28 (sample)",
+     "rows": [
+      {
+       "label": "Gen Z new · LY",
+       "value": 87,
+       "fmt": "int",
+       "tone": "ly"
+      },
+      {
+       "label": "Gen Z new · TY",
+       "value": 171,
+       "fmt": "int",
+       "tone": "green"
+      }
+     ]
+    },
+    "headline": "Gen Z new customers nearly doubled period-to-date: 171 vs 87 (+96.6%).",
+    "body": "Gen Z is 37.7% of new customers vs 24.3% LY. Pillow Tabby (+133%) and Tabby (+27.1%) add +5.0 and +5.5 pts of L4W growth; total L4W demand is +12.3%.",
+    "generated_by": "pregenerated",
+    "validation": {
+     "n_numbers": 10,
+     "n_matched": 10,
+     "unmatched": [],
+     "matches": [
+      {
+       "text": "171",
+       "fact": "ptd_genz_new_ty",
+       "alternatives": 0,
+       "candidates": [
+        "ptd_genz_new_ty"
+       ]
+      },
+      {
+       "text": "87",
+       "fact": "ptd_genz_new_ly",
+       "alternatives": 0,
+       "candidates": [
+        "ptd_genz_new_ly"
+       ]
+      },
+      {
+       "text": "+96.6%",
+       "fact": "ptd_genz_new_yoy_pct",
+       "alternatives": 0,
+       "candidates": [
+        "ptd_genz_new_yoy_pct"
+       ]
+      },
+      {
+       "text": "37.7%",
+       "fact": "ptd_genz_share_of_new_ty",
+       "alternatives": 0,
+       "candidates": [
+        "ptd_genz_share_of_new_ty"
+       ]
+      },
+      {
+       "text": "24.3%",
+       "fact": "ptd_genz_share_of_new_ly",
+       "alternatives": 0,
+       "candidates": [
+        "ptd_genz_share_of_new_ly"
+       ]
+      },
+      {
+       "text": "+133%",
+       "fact": "pillow_tabby_l4w_sales_yoy_pct",
+       "alternatives": 0,
+       "candidates": [
+        "pillow_tabby_l4w_sales_yoy_pct"
+       ]
+      },
+      {
+       "text": "+27.1%",
+       "fact": "tabby_l4w_sales_yoy_pct",
+       "alternatives": 0,
+       "candidates": [
+        "tabby_l4w_sales_yoy_pct"
+       ]
+      },
+      {
+       "text": "+5.0",
+       "fact": "pillow_tabby_l4w_contrib_pts",
+       "alternatives": 0,
+       "candidates": [
+        "pillow_tabby_l4w_contrib_pts"
+       ]
+      },
+      {
+       "text": "+5.5 pts",
+       "fact": "tabby_l4w_contrib_pts",
+       "alternatives": 0,
+       "candidates": [
+        "tabby_l4w_contrib_pts"
+       ]
+      },
+      {
+       "text": "+12.3%",
+       "fact": "l4w_sales_yoy_pct",
+       "alternatives": 0,
+       "candidates": [
+        "l4w_sales_yoy_pct"
+       ]
+      }
+     ],
+     "status": "PASS"
+    }
+   },
+   {
+    "card_id": "overstock",
+    "title": "Apparel overstock",
+    "pill": "Watch",
+    "pill_rank": 4,
+    "meta": "Inventory · Halo apparel · W28",
+    "findings": [
+     "F10",
+     "F11",
+     "R2"
+    ],
+    "anomaly_ids": [
+     "AN043",
+     "AN044",
+     "AN045",
+     "AN035",
+     "AN036",
+     "AN037"
+    ],
+    "explore_tab": "G4",
+    "ask_prefill": "Which families have WOS above 15 in week 28?",
+    "chart": {
+     "type": "bars",
+     "unit": "weeks of supply",
+     "rows": [
+      {
+       "label": "Knit Dress · TY",
+       "value": 21.25,
+       "fmt": "wos",
+       "tone": "amber"
+      },
+      {
+       "label": "Knit Dress · LY",
+       "value": 8.56,
+       "fmt": "wos",
+       "tone": "ly"
+      },
+      {
+       "label": "Tailored Jacket · TY",
+       "value": 15.57,
+       "fmt": "wos",
+       "tone": "amber"
+      },
+      {
+       "label": "Tailored Jacket · LY",
+       "value": 8.0,
+       "fmt": "wos",
+       "tone": "ly"
+      },
+      {
+       "label": "Trench · TY",
+       "value": 16.46,
+       "fmt": "wos",
+       "tone": "amber"
+      },
+      {
+       "label": "Trench · LY",
+       "value": 7.79,
+       "fmt": "wos",
+       "tone": "ly"
+      }
+     ]
+    },
+    "headline": "Knit Dress has 21.2 weeks of supply while its L4W demand is -62.6%.",
+    "body": "Trench (16.5, LY 7.8) and Tailored Jacket (15.6, LY 8.0) are also over the high-stock line, and Rogue demand is -44.6%. Clear the apparel overhang before buying more.",
+    "generated_by": "pregenerated",
+    "validation": {
+     "n_numbers": 7,
+     "n_matched": 7,
+     "unmatched": [],
+     "matches": [
+      {
+       "text": "21.2",
+       "fact": "knit_dress_wos",
+       "alternatives": 0,
+       "candidates": [
+        "knit_dress_wos"
+       ]
+      },
+      {
+       "text": "-62.6%",
+       "fact": "knit_dress_l4w_sales_yoy_pct",
+       "alternatives": 0,
+       "candidates": [
+        "knit_dress_l4w_sales_yoy_pct"
+       ]
+      },
+      {
+       "text": "16.5",
+       "fact": "trench_wos",
+       "alternatives": 0,
+       "candidates": [
+        "trench_wos"
+       ]
+      },
+      {
+       "text": "7.8",
+       "fact": "trench_wos_ly_same_week",
+       "alternatives": 0,
+       "candidates": [
+        "trench_wos_ly_same_week"
+       ]
+      },
+      {
+       "text": "15.6",
+       "fact": "tailored_jacket_wos",
+       "alternatives": 0,
+       "candidates": [
+        "tailored_jacket_wos"
+       ]
+      },
+      {
+       "text": "8.0",
+       "fact": "tailored_jacket_wos_ly_same_week",
+       "alternatives": 0,
+       "candidates": [
+        "tailored_jacket_wos_ly_same_week"
+       ]
+      },
+      {
+       "text": "-44.6%",
+       "fact": "rogue_l4w_sales_yoy_pct",
+       "alternatives": 0,
+       "candidates": [
+        "rogue_l4w_sales_yoy_pct"
+       ]
+      }
+     ],
+     "status": "PASS"
+    }
+   }
+  ]
+ },
+ "29": {
+  "week_label": "FY26 W29",
+  "is_partial_week": false,
+  "n_critical_alerts": 2,
+  "n_alerts_by_severity": {
+   "critical": 2,
+   "warning": 9,
+   "info": 0
+  },
+  "n_alerts": 11,
+  "n_rules": 18,
+  "rule_hits": {
+   "SALES_YOY_NEG": 0,
+   "SALES_YOY_DROP": 0,
+   "SALES_YOY_SPIKE": 0,
+   "SALES_WOW_SWING": 1,
+   "TXNS_YOY_NEG": 0,
+   "AOV_YOY_SWING": 0,
+   "GENZ_NEW_YOY_NEG": 0,
+   "GENZ_NEW_WOW_DROP": 0,
+   "GENZ_SHARE_BELOW_LY": 0,
+   "GENZ_NEW_INSIDER_LOW": 1,
+   "RETURNING_YOY_FLAT": 0,
+   "GENZ_RETURNING_YOY_NEG": 0,
+   "FAMILY_L4W_DECLINE": 2,
+   "WOS_LOW": 2,
+   "WOS_HIGH": 3,
+   "WOS_COLLAPSE_VS_LY": 2,
+   "RECEIPTS_BELOW_SALES": 0,
+   "PARTIAL_WEEK": 0
+  },
+  "n_needs_you": 2,
+  "n_fyi": 3,
+  "cards_file": "dashboard/facts/W29_cards.json",
+  "cards": [
+   {
+    "card_id": "stock",
+    "title": "Tabby franchise stock-out",
+    "pill": "Needs you today",
+    "pill_rank": 0,
+    "meta": "Inventory · Tabby franchise · W29",
+    "findings": [
+     "F11",
+     "F12",
+     "R1"
+    ],
+    "anomaly_ids": [
+     "AN048",
+     "AN049",
+     "AN054",
+     "AN055"
+    ],
+    "explore_tab": "G4",
+    "ask_prefill": "Why is Tabby flagged in week 29?",
+    "chart": {
+     "type": "bars",
+     "unit": "weeks of supply",
+     "rows": [
+      {
+       "label": "Tabby · TY",
+       "value": 2.08,
+       "fmt": "wos",
+       "tone": "red"
+      },
+      {
+       "label": "Tabby · LY",
+       "value": 7.03,
+       "fmt": "wos",
+       "tone": "ly"
+      },
+      {
+       "label": "Pillow Tabby · TY",
+       "value": 1.8,
+       "fmt": "wos",
+       "tone": "red"
+      },
+      {
+       "label": "Pillow Tabby · LY",
+       "value": 5.12,
+       "fmt": "wos",
+       "tone": "ly"
+      }
+     ]
+    },
+    "headline": "Tabby has 2.1 weeks of supply and Pillow Tabby 1.8, while replenishment covered only 28% of what Tabby sold.",
+    "body": "Last year the same week held 7.0 and 5.1 weeks, and Tabby receipts covered 95% of sales. At this pace Tabby runs out in about 2.6 weeks and Pillow Tabby in 2.2, putting $23.1K of sample demand at risk (7.7% of the next four weeks). Re-open replenishment on both now (R1).",
+    "generated_by": "pregenerated",
+    "validation": {
+     "n_numbers": 10,
+     "n_matched": 10,
+     "unmatched": [],
+     "matches": [
+      {
+       "text": "2.1",
+       "fact": "tabby_wos",
+       "alternatives": 0,
+       "candidates": [
+        "tabby_wos"
+       ]
+      },
+      {
+       "text": "1.8",
+       "fact": "pillow_tabby_wos",
+       "alternatives": 0,
+       "candidates": [
+        "pillow_tabby_wos"
+       ]
+      },
+      {
+       "text": "28%",
+       "fact": "tabby_receipts_to_sales_ty",
+       "alternatives": 0,
+       "candidates": [
+        "tabby_receipts_to_sales_ty"
+       ]
+      },
+      {
+       "text": "7.0",
+       "fact": "tabby_wos_ly_same_week",
+       "alternatives": 0,
+       "candidates": [
+        "tabby_wos_ly_same_week"
+       ]
+      },
+      {
+       "text": "5.1",
+       "fact": "pillow_tabby_wos_ly_same_week",
+       "alternatives": 0,
+       "candidates": [
+        "pillow_tabby_wos_ly_same_week"
+       ]
+      },
+      {
+       "text": "95%",
+       "fact": "tabby_receipts_to_sales_ly",
+       "alternatives": 0,
+       "candidates": [
+        "tabby_receipts_to_sales_ly"
+       ]
+      },
+      {
+       "text": "2.6",
+       "fact": "tabby_weeks_to_stockout",
+       "alternatives": 0,
+       "candidates": [
+        "tabby_weeks_to_stockout"
+       ]
+      },
+      {
+       "text": "2.2",
+       "fact": "pillow_tabby_weeks_to_stockout",
+       "alternatives": 0,
+       "candidates": [
+        "pillow_tabby_weeks_to_stockout"
+       ]
+      },
+      {
+       "text": "$23.1K",
+       "fact": "r1_demand_at_risk_usd",
+       "alternatives": 0,
+       "candidates": [
+        "r1_demand_at_risk_usd"
+       ]
+      },
+      {
+       "text": "7.7%",
+       "fact": "r1_demand_at_risk_pct_of_next_4wk",
+       "alternatives": 0,
+       "candidates": [
+        "r1_demand_at_risk_pct_of_next_4wk"
+       ]
+      }
+     ],
+     "status": "PASS"
+    }
+   },
+   {
+    "card_id": "retention",
+    "title": "Retention leak and Insider gap",
+    "pill": "Needs you",
+    "pill_rank": 1,
+    "meta": "Retention proxy · L4W ending W29",
+    "findings": [
+     "F6",
+     "F7",
+     "R3"
+    ],
+    "anomaly_ids": [
+     "AN052"
+    ],
+    "explore_tab": "G2",
+    "ask_prefill": "Why is retention flagged in week 29?",
+    "chart": {
+     "type": "bars",
+     "unit": "Insider attach of new customers (TY)",
+     "rows": [
+      {
+       "label": "Outlet · Gen Z new",
+       "value": 0.096774,
+       "fmt": "pct",
+       "tone": "accent"
+      },
+      {
+       "label": "Outlet · other new",
+       "value": 0.231481,
+       "fmt": "pct",
+       "tone": "neutral"
+      },
+      {
+       "label": "eComm · Gen Z new",
+       "value": 0.126582,
+       "fmt": "pct",
+       "tone": "accent"
+      },
+      {
+       "label": "eComm · other new",
+       "value": 0.192308,
+       "fmt": "pct",
+       "tone": "neutral"
+      },
+      {
+       "label": "Greater China · Gen Z new",
+       "value": 0.051282,
+       "fmt": "pct",
+       "tone": "accent"
+      },
+      {
+       "label": "Greater China · other new",
+       "value": 0.217391,
+       "fmt": "pct",
+       "tone": "neutral"
+      }
+     ]
+    },
+    "headline": "Only 16.4% of new Gen Z joined Insider over L4W, the gap behind a flat returning base.",
+    "body": "Period-to-date returning customers are 1,142 vs 1,142 and returning Gen Z is -6.5%, even though L4W improved (+3.8%). The gap is widest in Outlet (9.7% vs 23.1% for other new customers) and Greater China (5.1% vs 21.7%). Enrol at the first Gen Z purchase: +10% returning Gen Z is worth about 0.85% of demand (R3).",
+    "generated_by": "pregenerated",
+    "validation": {
+     "n_numbers": 11,
+     "n_matched": 11,
+     "unmatched": [],
+     "matches": [
+      {
+       "text": "16.4%",
+       "fact": "l4w_genz_new_insider_rate_ty",
+       "alternatives": 0,
+       "candidates": [
+        "l4w_genz_new_insider_rate_ty"
+       ]
+      },
+      {
+       "text": "1,142",
+       "fact": "ptd_returning_ly",
+       "alternatives": 1,
+       "candidates": [
+        "ptd_returning_ly",
+        "ptd_returning_ty"
+       ]
+      },
+      {
+       "text": "1,142",
+       "fact": "ptd_returning_ly",
+       "alternatives": 1,
+       "candidates": [
+        "ptd_returning_ly",
+        "ptd_returning_ty"
+       ]
+      },
+      {
+       "text": "-6.5%",
+       "fact": "ptd_genz_returning_yoy_pct",
+       "alternatives": 0,
+       "candidates": [
+        "ptd_genz_returning_yoy_pct"
+       ]
+      },
+      {
+       "text": "+3.8%",
+       "fact": "l4w_returning_yoy_pct",
+       "alternatives": 0,
+       "candidates": [
+        "l4w_returning_yoy_pct"
+       ]
+      },
+      {
+       "text": "9.7%",
+       "fact": "outlet_genz_new_insider_rate",
+       "alternatives": 0,
+       "candidates": [
+        "outlet_genz_new_insider_rate"
+       ]
+      },
+      {
+       "text": "23.1%",
+       "fact": "outlet_other_new_insider_rate",
+       "alternatives": 0,
+       "candidates": [
+        "outlet_other_new_insider_rate"
+       ]
+      },
+      {
+       "text": "5.1%",
+       "fact": "greater_china_genz_new_insider_rate",
+       "alternatives": 0,
+       "candidates": [
+        "greater_china_genz_new_insider_rate"
+       ]
+      },
+      {
+       "text": "21.7%",
+       "fact": "greater_china_other_new_insider_rate",
+       "alternatives": 0,
+       "candidates": [
+        "greater_china_other_new_insider_rate"
+       ]
+      },
+      {
+       "text": "+10%",
+       "fact": "r3_returning_genz_lift",
+       "alternatives": 1,
+       "candidates": [
+        "r3_returning_genz_lift",
+        "outlet_genz_new_insider_rate"
+       ]
+      },
+      {
+       "text": "0.85%",
+       "fact": "r3_pct_of_ty_demand",
+       "alternatives": 0,
+       "candidates": [
+        "r3_pct_of_ty_demand"
+       ]
+      }
+     ],
+     "status": "PASS"
+    }
+   },
+   {
+    "card_id": "pattern",
+    "title": "Gen Z share of new customers",
+    "pill": "Pattern",
+    "pill_rank": 2,
+    "meta": "Acquisition · Gen Z share of new · W23–W29",
+    "findings": [
+     "F5"
+    ],
+    "anomaly_ids": [],
+    "explore_tab": "G2",
+    "ask_prefill": "Gen Z share of new customers by week up to week 29?",
+    "chart": {
+     "type": "columns",
+     "unit": "Gen Z share of new customers, TY",
+     "fmt": "pct0",
+     "cols": [
+      {
+       "label": "W23",
+       "value": 0.333333,
+       "partial": false
+      },
+      {
+       "label": "W24",
+       "value": 0.328125,
+       "partial": false
+      },
+      {
+       "label": "W25",
+       "value": 0.414286,
+       "partial": false
+      },
+      {
+       "label": "W26",
+       "value": 0.320988,
+       "partial": false
+      },
+      {
+       "label": "W27",
+       "value": 0.414634,
+       "partial": false
+      },
+      {
+       "label": "W28",
+       "value": 0.433333,
+       "partial": false
+      },
+      {
+       "label": "W29",
+       "value": 0.471264,
+       "partial": false
+      }
+     ]
+    },
+    "headline": "Gen Z share of new customers climbed to 47.1% in W29, up from 33.3% in W23.",
+    "body": "Last year the same week was 27.6%. 41 Gen Z customers were new vs 16 LY; find out what drove it, because the extract can't explain it.",
+    "generated_by": "pregenerated",
+    "validation": {
+     "n_numbers": 5,
+     "n_matched": 5,
+     "unmatched": [],
+     "matches": [
+      {
+       "text": "47.1%",
+       "fact": "week_genz_share_of_new_ty",
+       "alternatives": 0,
+       "candidates": [
+        "week_genz_share_of_new_ty"
+       ]
+      },
+      {
+       "text": "33.3%",
+       "fact": "first_week_genz_share_of_new_ty",
+       "alternatives": 0,
+       "candidates": [
+        "first_week_genz_share_of_new_ty"
+       ]
+      },
+      {
+       "text": "27.6%",
+       "fact": "week_genz_share_of_new_ly",
+       "alternatives": 0,
+       "candidates": [
+        "week_genz_share_of_new_ly"
+       ]
+      },
+      {
+       "text": "41",
+       "fact": "week_genz_new_ty",
+       "alternatives": 0,
+       "candidates": [
+        "week_genz_new_ty"
+       ]
+      },
+      {
+       "text": "16",
+       "fact": "week_genz_new_ly",
+       "alternatives": 0,
+       "candidates": [
+        "week_genz_new_ly"
+       ]
+      }
+     ],
+     "status": "PASS"
+    }
+   },
+   {
+    "card_id": "win",
+    "title": "Gen Z acquisition and Tabby growth",
+    "pill": "Win",
+    "pill_rank": 3,
+    "meta": "Growth · PTD W23–W29 · L4W families",
+    "findings": [
+     "F4",
+     "F9"
+    ],
+    "anomaly_ids": [],
+    "explore_tab": "G3",
+    "ask_prefill": "Top 3 families by contribution in L4W for week 29",
+    "chart": {
+     "type": "bars",
+     "unit": "Gen Z new customers, PTD W23–W29 (sample)",
+     "rows": [
+      {
+       "label": "Gen Z new · LY",
+       "value": 103,
+       "fmt": "int",
+       "tone": "ly"
+      },
+      {
+       "label": "Gen Z new · TY",
+       "value": 212,
+       "fmt": "int",
+       "tone": "green"
+      }
+     ]
+    },
+    "headline": "Gen Z new customers have more than doubled period-to-date: 212 vs 103 (+106%).",
+    "body": "Gen Z is 39.3% of new customers vs 24.8% LY. Tabby (+26.9%, +5.0 pts) and Pillow Tabby (+60.3%, +3.2 pts) lead L4W growth, so the Tabby franchise is the template to share across the business.",
+    "generated_by": "pregenerated",
+    "validation": {
+     "n_numbers": 9,
+     "n_matched": 9,
+     "unmatched": [],
+     "matches": [
+      {
+       "text": "212",
+       "fact": "ptd_genz_new_ty",
+       "alternatives": 0,
+       "candidates": [
+        "ptd_genz_new_ty"
+       ]
+      },
+      {
+       "text": "103",
+       "fact": "ptd_genz_new_ly",
+       "alternatives": 0,
+       "candidates": [
+        "ptd_genz_new_ly"
+       ]
+      },
+      {
+       "text": "+106%",
+       "fact": "ptd_genz_new_yoy_pct",
+       "alternatives": 0,
+       "candidates": [
+        "ptd_genz_new_yoy_pct"
+       ]
+      },
+      {
+       "text": "39.3%",
+       "fact": "ptd_genz_share_of_new_ty",
+       "alternatives": 0,
+       "candidates": [
+        "ptd_genz_share_of_new_ty"
+       ]
+      },
+      {
+       "text": "24.8%",
+       "fact": "ptd_genz_share_of_new_ly",
+       "alternatives": 0,
+       "candidates": [
+        "ptd_genz_share_of_new_ly"
+       ]
+      },
+      {
+       "text": "+26.9%",
+       "fact": "tabby_l4w_sales_yoy_pct",
+       "alternatives": 0,
+       "candidates": [
+        "tabby_l4w_sales_yoy_pct"
+       ]
+      },
+      {
+       "text": "+5.0 pts",
+       "fact": "tabby_l4w_contrib_pts",
+       "alternatives": 0,
+       "candidates": [
+        "tabby_l4w_contrib_pts"
+       ]
+      },
+      {
+       "text": "+60.3%",
+       "fact": "pillow_tabby_l4w_sales_yoy_pct",
+       "alternatives": 0,
+       "candidates": [
+        "pillow_tabby_l4w_sales_yoy_pct"
+       ]
+      },
+      {
+       "text": "+3.2 pts",
+       "fact": "pillow_tabby_l4w_contrib_pts",
+       "alternatives": 0,
+       "candidates": [
+        "pillow_tabby_l4w_contrib_pts"
+       ]
+      }
+     ],
+     "status": "PASS"
+    }
+   },
+   {
+    "card_id": "overstock",
+    "title": "Apparel overstock",
+    "pill": "Watch",
+    "pill_rank": 4,
+    "meta": "Inventory · Halo apparel · W29",
+    "findings": [
+     "F10",
+     "F11",
+     "R2"
+    ],
+    "anomaly_ids": [
+     "AN056",
+     "AN057",
+     "AN058",
+     "AN050",
+     "AN051"
+    ],
+    "explore_tab": "G4",
+    "ask_prefill": "Which families have WOS above 15 in week 29?",
+    "chart": {
+     "type": "bars",
+     "unit": "weeks of supply",
+     "rows": [
+      {
+       "label": "Knit Dress · TY",
+       "value": 20.71,
+       "fmt": "wos",
+       "tone": "amber"
+      },
+      {
+       "label": "Knit Dress · LY",
+       "value": 7.79,
+       "fmt": "wos",
+       "tone": "ly"
+      },
+      {
+       "label": "Tailored Jacket · TY",
+       "value": 15.17,
+       "fmt": "wos",
+       "tone": "amber"
+      },
+      {
+       "label": "Tailored Jacket · LY",
+       "value": 12.0,
+       "fmt": "wos",
+       "tone": "ly"
+      },
+      {
+       "label": "Trench · TY",
+       "value": 16.22,
+       "fmt": "wos",
+       "tone": "amber"
+      },
+      {
+       "label": "Trench · LY",
+       "value": 7.8,
+       "fmt": "wos",
+       "tone": "ly"
+      }
+     ]
+    },
+    "headline": "Knit Dress, Trench and Tailored Jacket hold 20.7, 16.2 and 15.2 weeks of supply against a median of 7.9.",
+    "body": "That is 198 units, about $50.5K at retail, above median cover. Knit Dress demand is -62.7% over L4W and Rogue -35.9%; move that open-to-buy to Hero (R2).",
+    "generated_by": "pregenerated",
+    "validation": {
+     "n_numbers": 8,
+     "n_matched": 8,
+     "unmatched": [],
+     "matches": [
+      {
+       "text": "20.7",
+       "fact": "knit_dress_wos",
+       "alternatives": 0,
+       "candidates": [
+        "knit_dress_wos"
+       ]
+      },
+      {
+       "text": "16.2",
+       "fact": "trench_wos",
+       "alternatives": 0,
+       "candidates": [
+        "trench_wos"
+       ]
+      },
+      {
+       "text": "15.2",
+       "fact": "tailored_jacket_wos",
+       "alternatives": 0,
+       "candidates": [
+        "tailored_jacket_wos"
+       ]
+      },
+      {
+       "text": "7.9",
+       "fact": "median_wos",
+       "alternatives": 0,
+       "candidates": [
+        "median_wos"
+       ]
+      },
+      {
+       "text": "198",
+       "fact": "r2_excess_units",
+       "alternatives": 0,
+       "candidates": [
+        "r2_excess_units"
+       ]
+      },
+      {
+       "text": "$50.5K",
+       "fact": "r2_excess_retail_value_usd",
+       "alternatives": 0,
+       "candidates": [
+        "r2_excess_retail_value_usd"
+       ]
+      },
+      {
+       "text": "-62.7%",
+       "fact": "knit_dress_l4w_sales_yoy_pct",
+       "alternatives": 0,
+       "candidates": [
+        "knit_dress_l4w_sales_yoy_pct"
+       ]
+      },
+      {
+       "text": "-35.9%",
+       "fact": "rogue_l4w_sales_yoy_pct",
+       "alternatives": 0,
+       "candidates": [
+        "rogue_l4w_sales_yoy_pct"
+       ]
+      }
+     ],
+     "status": "PASS"
+    }
+   }
+  ]
+ },
+ "30": {
+  "week_label": "FY26 W30",
+  "is_partial_week": true,
+  "n_critical_alerts": 4,
+  "n_alerts_by_severity": {
+   "critical": 4,
+   "warning": 7,
+   "info": 2
+  },
+  "n_alerts": 13,
+  "n_rules": 18,
+  "rule_hits": {
+   "SALES_YOY_NEG": 0,
+   "SALES_YOY_DROP": 0,
+   "SALES_YOY_SPIKE": 1,
+   "SALES_WOW_SWING": 0,
+   "TXNS_YOY_NEG": 0,
+   "AOV_YOY_SWING": 0,
+   "GENZ_NEW_YOY_NEG": 0,
+   "GENZ_NEW_WOW_DROP": 0,
+   "GENZ_SHARE_BELOW_LY": 0,
+   "GENZ_NEW_INSIDER_LOW": 1,
+   "RETURNING_YOY_FLAT": 0,
+   "GENZ_RETURNING_YOY_NEG": 0,
+   "FAMILY_L4W_DECLINE": 1,
+   "WOS_LOW": 2,
+   "WOS_HIGH": 3,
+   "WOS_COLLAPSE_VS_LY": 2,
+   "RECEIPTS_BELOW_SALES": 2,
+   "PARTIAL_WEEK": 1
+  },
+  "n_needs_you": 2,
+  "n_fyi": 3,
+  "cards_file": "dashboard/facts/W30_cards.json",
+  "cards": [
+   {
+    "card_id": "stock",
+    "title": "Tabby franchise stock-out",
+    "pill": "Needs you today",
+    "pill_rank": 0,
+    "meta": "Inventory · Tabby franchise · W30",
+    "findings": [
+     "F11",
+     "F12",
+     "R1"
+    ],
+    "anomaly_ids": [
+     "AN059",
+     "AN060",
+     "AN061",
+     "AN062",
+     "AN065",
+     "AN066"
+    ],
+    "explore_tab": "G4",
+    "ask_prefill": "Why is Tabby flagged in week 30?",
+    "chart": {
+     "type": "bars",
+     "unit": "weeks of supply",
+     "rows": [
+      {
+       "label": "Tabby · TY",
+       "value": 1.85,
+       "fmt": "wos",
+       "tone": "red"
+      },
+      {
+       "label": "Tabby · LY",
+       "value": 7.52,
+       "fmt": "wos",
+       "tone": "ly"
+      },
+      {
+       "label": "Pillow Tabby · TY",
+       "value": 1.6,
+       "fmt": "wos",
+       "tone": "red"
+      },
+      {
+       "label": "Pillow Tabby · LY",
+       "value": 5.09,
+       "fmt": "wos",
+       "tone": "ly"
+      }
+     ]
+    },
+    "headline": "Tabby is down to 1.9 weeks of supply and Pillow Tabby to 1.6, after receipts covered only 28% and 29% of units sold.",
+    "body": "Last year the same snapshot held 7.5 and 5.1 weeks, with receipts at 95% and 85% of sales. Only 82 Tabby and 24 Pillow Tabby units remain; at the current pace the 4-week demand at risk is $23.1K, 7.7% of the next four weeks. Re-open replenishment now (R1).",
+    "generated_by": "pregenerated",
+    "validation": {
+     "n_numbers": 12,
+     "n_matched": 12,
+     "unmatched": [],
+     "matches": [
+      {
+       "text": "1.9",
+       "fact": "tabby_wos",
+       "alternatives": 0,
+       "candidates": [
+        "tabby_wos"
+       ]
+      },
+      {
+       "text": "1.6",
+       "fact": "pillow_tabby_wos",
+       "alternatives": 0,
+       "candidates": [
+        "pillow_tabby_wos"
+       ]
+      },
+      {
+       "text": "28%",
+       "fact": "tabby_receipts_to_sales_ty",
+       "alternatives": 0,
+       "candidates": [
+        "tabby_receipts_to_sales_ty"
+       ]
+      },
+      {
+       "text": "29%",
+       "fact": "pillow_tabby_receipts_to_sales_ty",
+       "alternatives": 0,
+       "candidates": [
+        "pillow_tabby_receipts_to_sales_ty"
+       ]
+      },
+      {
+       "text": "7.5",
+       "fact": "tabby_wos_ly_same_week",
+       "alternatives": 0,
+       "candidates": [
+        "tabby_wos_ly_same_week"
+       ]
+      },
+      {
+       "text": "5.1",
+       "fact": "pillow_tabby_wos_ly_same_week",
+       "alternatives": 0,
+       "candidates": [
+        "pillow_tabby_wos_ly_same_week"
+       ]
+      },
+      {
+       "text": "95%",
+       "fact": "tabby_receipts_to_sales_ly",
+       "alternatives": 0,
+       "candidates": [
+        "tabby_receipts_to_sales_ly"
+       ]
+      },
+      {
+       "text": "85%",
+       "fact": "pillow_tabby_receipts_to_sales_ly",
+       "alternatives": 0,
+       "candidates": [
+        "pillow_tabby_receipts_to_sales_ly"
+       ]
+      },
+      {
+       "text": "82",
+       "fact": "tabby_on_hand_eow",
+       "alternatives": 0,
+       "candidates": [
+        "tabby_on_hand_eow"
+       ]
+      },
+      {
+       "text": "24",
+       "fact": "pillow_tabby_on_hand_eow",
+       "alternatives": 0,
+       "candidates": [
+        "pillow_tabby_on_hand_eow"
+       ]
+      },
+      {
+       "text": "$23.1K",
+       "fact": "r1_demand_at_risk_usd",
+       "alternatives": 0,
+       "candidates": [
+        "r1_demand_at_risk_usd"
+       ]
+      },
+      {
+       "text": "7.7%",
+       "fact": "r1_demand_at_risk_pct_of_next_4wk",
+       "alternatives": 0,
+       "candidates": [
+        "r1_demand_at_risk_pct_of_next_4wk"
+       ]
+      }
+     ],
+     "status": "PASS"
+    }
+   },
+   {
+    "card_id": "retention",
+    "title": "Retention leak and Insider gap",
+    "pill": "Needs you",
+    "pill_rank": 1,
+    "meta": "Retention proxy · L4W ending W30",
+    "findings": [
+     "F6",
+     "F7",
+     "R3"
+    ],
+    "anomaly_ids": [
+     "AN064"
+    ],
+    "explore_tab": "G2",
+    "ask_prefill": "Why is retention flagged in week 30?",
+    "chart": {
+     "type": "bars",
+     "unit": "Insider attach of new customers (TY)",
+     "rows": [
+      {
+       "label": "Outlet · Gen Z new",
+       "value": 0.096774,
+       "fmt": "pct",
+       "tone": "accent"
+      },
+      {
+       "label": "Outlet · other new",
+       "value": 0.231481,
+       "fmt": "pct",
+       "tone": "neutral"
+      },
+      {
+       "label": "eComm · Gen Z new",
+       "value": 0.126582,
+       "fmt": "pct",
+       "tone": "accent"
+      },
+      {
+       "label": "eComm · other new",
+       "value": 0.192308,
+       "fmt": "pct",
+       "tone": "neutral"
+      },
+      {
+       "label": "Greater China · Gen Z new",
+       "value": 0.051282,
+       "fmt": "pct",
+       "tone": "accent"
+      },
+      {
+       "label": "Greater China · other new",
+       "value": 0.217391,
+       "fmt": "pct",
+       "tone": "neutral"
+      }
+     ]
+    },
+    "headline": "Insider attach of new Gen Z is 15.5% over L4W, against 23.4% for new Millennials.",
+    "body": "Period-to-date returning customers are flat (1,239 vs 1,236) and returning Gen Z is -3.1%. The gap sits in Outlet (9.7% vs 23.1%), eComm (12.7% vs 19.2%) and Greater China (5.1% vs 21.7%), so start Insider enrolment there (R3).",
+    "generated_by": "pregenerated",
+    "validation": {
+     "n_numbers": 11,
+     "n_matched": 11,
+     "unmatched": [],
+     "matches": [
+      {
+       "text": "15.5%",
+       "fact": "l4w_genz_new_insider_rate_ty",
+       "alternatives": 0,
+       "candidates": [
+        "l4w_genz_new_insider_rate_ty"
+       ]
+      },
+      {
+       "text": "23.4%",
+       "fact": "millennial_new_insider_rate",
+       "alternatives": 0,
+       "candidates": [
+        "millennial_new_insider_rate"
+       ]
+      },
+      {
+       "text": "1,239",
+       "fact": "ptd_returning_ty",
+       "alternatives": 0,
+       "candidates": [
+        "ptd_returning_ty"
+       ]
+      },
+      {
+       "text": "1,236",
+       "fact": "ptd_returning_ly",
+       "alternatives": 0,
+       "candidates": [
+        "ptd_returning_ly"
+       ]
+      },
+      {
+       "text": "-3.1%",
+       "fact": "ptd_genz_returning_yoy_pct",
+       "alternatives": 0,
+       "candidates": [
+        "ptd_genz_returning_yoy_pct"
+       ]
+      },
+      {
+       "text": "9.7%",
+       "fact": "outlet_genz_new_insider_rate",
+       "alternatives": 0,
+       "candidates": [
+        "outlet_genz_new_insider_rate"
+       ]
+      },
+      {
+       "text": "23.1%",
+       "fact": "outlet_other_new_insider_rate",
+       "alternatives": 0,
+       "candidates": [
+        "outlet_other_new_insider_rate"
+       ]
+      },
+      {
+       "text": "12.7%",
+       "fact": "ecomm_genz_new_insider_rate",
+       "alternatives": 0,
+       "candidates": [
+        "ecomm_genz_new_insider_rate"
+       ]
+      },
+      {
+       "text": "19.2%",
+       "fact": "ecomm_other_new_insider_rate",
+       "alternatives": 0,
+       "candidates": [
+        "ecomm_other_new_insider_rate"
+       ]
+      },
+      {
+       "text": "5.1%",
+       "fact": "greater_china_genz_new_insider_rate",
+       "alternatives": 0,
+       "candidates": [
+        "greater_china_genz_new_insider_rate"
+       ]
+      },
+      {
+       "text": "21.7%",
+       "fact": "greater_china_other_new_insider_rate",
+       "alternatives": 0,
+       "candidates": [
+        "greater_china_other_new_insider_rate"
+       ]
+      }
+     ],
+     "status": "PASS"
+    }
+   },
+   {
+    "card_id": "pattern",
+    "title": "Gen Z share of new customers",
+    "pill": "Pattern",
+    "pill_rank": 2,
+    "meta": "Acquisition · Gen Z share of new · W23–W30",
+    "findings": [
+     "F5"
+    ],
+    "anomaly_ids": [],
+    "explore_tab": "G2",
+    "ask_prefill": "Gen Z share of new customers by week up to week 30?",
+    "chart": {
+     "type": "columns",
+     "unit": "Gen Z share of new customers, TY",
+     "fmt": "pct0",
+     "cols": [
+      {
+       "label": "W23",
+       "value": 0.333333,
+       "partial": false
+      },
+      {
+       "label": "W24",
+       "value": 0.328125,
+       "partial": false
+      },
+      {
+       "label": "W25",
+       "value": 0.414286,
+       "partial": false
+      },
+      {
+       "label": "W26",
+       "value": 0.320988,
+       "partial": false
+      },
+      {
+       "label": "W27",
+       "value": 0.414634,
+       "partial": false
+      },
+      {
+       "label": "W28",
+       "value": 0.433333,
+       "partial": false
+      },
+      {
+       "label": "W29",
+       "value": 0.471264,
+       "partial": false
+      },
+      {
+       "label": "W30",
+       "value": 0.56,
+       "partial": true
+      }
+     ]
+    },
+    "headline": "Gen Z took 56.0% of new customers in the first four days of W30, up from 33.3% in W23.",
+    "body": "Last year the same four days were at 13.2%, on 28 Gen Z new vs 5. It's a partial week with small counts, but the direction matches the columns above.",
+    "generated_by": "pregenerated",
+    "validation": {
+     "n_numbers": 5,
+     "n_matched": 5,
+     "unmatched": [],
+     "matches": [
+      {
+       "text": "56.0%",
+       "fact": "week_genz_share_of_new_ty",
+       "alternatives": 0,
+       "candidates": [
+        "week_genz_share_of_new_ty"
+       ]
+      },
+      {
+       "text": "33.3%",
+       "fact": "first_week_genz_share_of_new_ty",
+       "alternatives": 0,
+       "candidates": [
+        "first_week_genz_share_of_new_ty"
+       ]
+      },
+      {
+       "text": "13.2%",
+       "fact": "week_genz_share_of_new_ly",
+       "alternatives": 0,
+       "candidates": [
+        "week_genz_share_of_new_ly"
+       ]
+      },
+      {
+       "text": "28",
+       "fact": "week_genz_new_ty",
+       "alternatives": 0,
+       "candidates": [
+        "week_genz_new_ty"
+       ]
+      },
+      {
+       "text": "5",
+       "fact": "week_genz_new_ly",
+       "alternatives": 0,
+       "candidates": [
+        "week_genz_new_ly"
+       ]
+      }
+     ],
+     "status": "PASS"
+    }
+   },
+   {
+    "card_id": "win",
+    "title": "Gen Z acquisition and Tabby growth",
+    "pill": "Win",
+    "pill_rank": 3,
+    "meta": "Growth · PTD W23–W30 · L4W families",
+    "findings": [
+     "F4",
+     "F9"
+    ],
+    "anomaly_ids": [
+     "AN071"
+    ],
+    "explore_tab": "G3",
+    "ask_prefill": "Top 3 families by contribution in L4W for week 30",
+    "chart": {
+     "type": "bars",
+     "unit": "Gen Z new customers, PTD W23–W30 (sample)",
+     "rows": [
+      {
+       "label": "Gen Z new · LY",
+       "value": 108,
+       "fmt": "int",
+       "tone": "ly"
+      },
+      {
+       "label": "Gen Z new · TY",
+       "value": 240,
+       "fmt": "int",
+       "tone": "green"
+      }
+     ]
+    },
+    "headline": "Gen Z new customers are up +122% like-for-like: 240 vs 108.",
+    "body": "Gen Z is 40.7% of new customers vs 23.8% LY. Over L4W, Tabby (+28.9%, +5.3 pts) and Pillow Tabby (+62.0%, +3.5 pts) lead the franchise, and total demand is +12.8% period-to-date.",
+    "generated_by": "pregenerated",
+    "validation": {
+     "n_numbers": 10,
+     "n_matched": 10,
+     "unmatched": [],
+     "matches": [
+      {
+       "text": "+122%",
+       "fact": "ptd_genz_new_yoy_pct",
+       "alternatives": 0,
+       "candidates": [
+        "ptd_genz_new_yoy_pct"
+       ]
+      },
+      {
+       "text": "240",
+       "fact": "ptd_genz_new_ty",
+       "alternatives": 0,
+       "candidates": [
+        "ptd_genz_new_ty"
+       ]
+      },
+      {
+       "text": "108",
+       "fact": "ptd_genz_new_ly",
+       "alternatives": 0,
+       "candidates": [
+        "ptd_genz_new_ly"
+       ]
+      },
+      {
+       "text": "40.7%",
+       "fact": "ptd_genz_share_of_new_ty",
+       "alternatives": 0,
+       "candidates": [
+        "ptd_genz_share_of_new_ty"
+       ]
+      },
+      {
+       "text": "23.8%",
+       "fact": "ptd_genz_share_of_new_ly",
+       "alternatives": 0,
+       "candidates": [
+        "ptd_genz_share_of_new_ly"
+       ]
+      },
+      {
+       "text": "+28.9%",
+       "fact": "tabby_l4w_sales_yoy_pct",
+       "alternatives": 0,
+       "candidates": [
+        "tabby_l4w_sales_yoy_pct"
+       ]
+      },
+      {
+       "text": "+5.3 pts",
+       "fact": "tabby_l4w_contrib_pts",
+       "alternatives": 0,
+       "candidates": [
+        "tabby_l4w_contrib_pts"
+       ]
+      },
+      {
+       "text": "+62.0%",
+       "fact": "pillow_tabby_l4w_sales_yoy_pct",
+       "alternatives": 0,
+       "candidates": [
+        "pillow_tabby_l4w_sales_yoy_pct"
+       ]
+      },
+      {
+       "text": "+3.5 pts",
+       "fact": "pillow_tabby_l4w_contrib_pts",
+       "alternatives": 0,
+       "candidates": [
+        "pillow_tabby_l4w_contrib_pts"
+       ]
+      },
+      {
+       "text": "+12.8%",
+       "fact": "ptd_sales_yoy_pct",
+       "alternatives": 0,
+       "candidates": [
+        "ptd_sales_yoy_pct"
+       ]
+      }
+     ],
+     "status": "PASS"
+    }
+   },
+   {
+    "card_id": "overstock",
+    "title": "Apparel overstock",
+    "pill": "Watch",
+    "pill_rank": 4,
+    "meta": "Inventory · Halo apparel · W30",
+    "findings": [
+     "F10",
+     "F11",
+     "R2"
+    ],
+    "anomaly_ids": [
+     "AN067",
+     "AN068",
+     "AN069",
+     "AN063"
+    ],
+    "explore_tab": "G4",
+    "ask_prefill": "Which families have WOS above 15 in week 30?",
+    "chart": {
+     "type": "bars",
+     "unit": "weeks of supply",
+     "rows": [
+      {
+       "label": "Knit Dress · TY",
+       "value": 21.18,
+       "fmt": "wos",
+       "tone": "amber"
+      },
+      {
+       "label": "Knit Dress · LY",
+       "value": 7.12,
+       "fmt": "wos",
+       "tone": "ly"
+      },
+      {
+       "label": "Tailored Jacket · TY",
+       "value": 16.28,
+       "fmt": "wos",
+       "tone": "amber"
+      },
+      {
+       "label": "Tailored Jacket · LY",
+       "value": 10.27,
+       "fmt": "wos",
+       "tone": "ly"
+      },
+      {
+       "label": "Trench · TY",
+       "value": 16.89,
+       "fmt": "wos",
+       "tone": "amber"
+      },
+      {
+       "label": "Trench · LY",
+       "value": 8.76,
+       "fmt": "wos",
+       "tone": "ly"
+      }
+     ]
+    },
+    "headline": "Knit Dress holds 21.2 weeks of supply, Trench 16.9 and Tailored Jacket 16.3, against a median of 7.9.",
+    "body": "Together that's 198 units and $50.5K at retail above median cover, while Knit Dress demand is -60.3% over L4W. Mark down or transfer, and move the open-to-buy to Hero (R2).",
+    "generated_by": "pregenerated",
+    "validation": {
+     "n_numbers": 7,
+     "n_matched": 7,
+     "unmatched": [],
+     "matches": [
+      {
+       "text": "21.2",
+       "fact": "knit_dress_wos",
+       "alternatives": 0,
+       "candidates": [
+        "knit_dress_wos"
+       ]
+      },
+      {
+       "text": "16.9",
+       "fact": "trench_wos",
+       "alternatives": 0,
+       "candidates": [
+        "trench_wos"
+       ]
+      },
+      {
+       "text": "16.3",
+       "fact": "tailored_jacket_wos",
+       "alternatives": 0,
+       "candidates": [
+        "tailored_jacket_wos"
+       ]
+      },
+      {
+       "text": "7.9",
+       "fact": "median_wos",
+       "alternatives": 0,
+       "candidates": [
+        "median_wos"
+       ]
+      },
+      {
+       "text": "198",
+       "fact": "r2_excess_units",
+       "alternatives": 0,
+       "candidates": [
+        "r2_excess_units"
+       ]
+      },
+      {
+       "text": "$50.5K",
+       "fact": "r2_excess_retail_value_usd",
+       "alternatives": 0,
+       "candidates": [
+        "r2_excess_retail_value_usd"
+       ]
+      },
+      {
+       "text": "-60.3%",
+       "fact": "knit_dress_l4w_sales_yoy_pct",
+       "alternatives": 0,
+       "candidates": [
+        "knit_dress_l4w_sales_yoy_pct"
+       ]
+      }
+     ],
+     "status": "PASS"
+    }
+   }
+  ]
+ }
+}
