@@ -31,7 +31,7 @@ Total 71: critical 8, warning 58, info 5
 | AN025 | 27 | warning | FAMILY_L4W_DECLINE | Rogue | Rogue L4W demand -36.8% YoY. |
 | AN026 | 27 | warning | FAMILY_L4W_DECLINE | Tailored Jacket | Tailored Jacket L4W demand -55.9% YoY. |
 | AN027 | 27 | warning | GENZ_NEW_INSIDER_LOW | genz | L4W (W24–W27) Insider attach of new Gen Z 18.2% (< 20%). |
-| AN028 | 27 | warning | GENZ_RETURNING_YOY_NEG | retention | L4W returning Gen Z 80 vs 87 LY (-8.1%). |
+| AN028 | 27 | warning | GENZ_RETURNING_YOY_NEG | retention | L4W returning Gen Z 80 vs 87 LY (-8.0%). |
 | AN029 | 27 | warning | RETURNING_YOY_FLAT | retention | L4W returning customers +0.0% YoY (654 vs 654). |
 | AN030 | 27 | warning | WOS_COLLAPSE_VS_LY | Tabby | Tabby weeks of supply 3.5 vs 7.4 LY (less than half). |
 | AN031 | 27 | warning | WOS_HIGH | Tailored Jacket | Tailored Jacket weeks of supply 25.3 (LY same week 6.9). |

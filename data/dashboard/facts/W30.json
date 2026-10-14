@@ -1,0 +1,343 @@
+{
+ "week": "FY26 W30",
+ "is_partial_week": true,
+ "days_in_week": 4,
+ "l1w_sales_ty": 44913.34,
+ "l1w_sales_ly": 36909.0,
+ "l1w_sales_yoy_pct": 0.216867,
+ "l1w_txns_yoy_pct": 0.113636,
+ "l1w_aov_ty": 305.532925,
+ "l1w_aov_yoy_pct": 0.092697,
+ "l1w_sales_wow_pct": null,
+ "l4w_weeks": [
+  27,
+  28,
+  29,
+  30
+ ],
+ "l4w_sales_yoy_pct": 0.172183,
+ "l4w_txns_yoy_pct": 0.114957,
+ "ptd_sales_yoy_pct": 0.128498,
+ "l1w_genz_new_ty": 28,
+ "l1w_genz_new_ly": 5,
+ "l1w_genz_new_yoy_pct": 4.6,
+ "l1w_genz_share_of_new_ty": 0.56,
+ "l1w_genz_share_of_new_ly": 0.131579,
+ "l4w_genz_new_ty": 142,
+ "l4w_genz_new_ly": 48,
+ "l4w_genz_new_yoy_pct": 1.958333,
+ "l4w_returning_yoy_pct": 0.025952,
+ "l4w_genz_new_insider_rate_ty": 0.15493,
+ "l4w_top_families_by_contrib": [
+  {
+   "family": "Tabby",
+   "contrib_pts": 5.306,
+   "sales_yoy_pct": 0.289024
+  },
+  {
+   "family": "Brooklyn",
+   "contrib_pts": 4.478,
+   "sales_yoy_pct": 0.514697
+  },
+  {
+   "family": "Pillow Tabby",
+   "contrib_pts": 3.479,
+   "sales_yoy_pct": 0.619844
+  }
+ ],
+ "l4w_bottom_families_by_contrib": [
+  {
+   "family": "Knit Dress",
+   "contrib_pts": -2.731,
+   "sales_yoy_pct": -0.602784
+  },
+  {
+   "family": "Rogue",
+   "contrib_pts": -1.622,
+   "sales_yoy_pct": -0.173499
+  }
+ ],
+ "lowest_wos_families": [
+  {
+   "family": "Pillow Tabby",
+   "wos": 1.6,
+   "wos_ly_same_week": 5.09
+  },
+  {
+   "family": "Tabby",
+   "wos": 1.85,
+   "wos_ly_same_week": 7.52
+  }
+ ],
+ "highest_wos_families": [
+  {
+   "family": "Knit Dress",
+   "wos": 21.18,
+   "wos_ly_same_week": 7.12
+  },
+  {
+   "family": "Trench",
+   "wos": 16.89,
+   "wos_ly_same_week": 8.76
+  }
+ ],
+ "anomalies": [
+  {
+   "id": "AN059",
+   "severity": "critical",
+   "rule_id": "RECEIPTS_BELOW_SALES",
+   "entity": "Pillow Tabby",
+   "message": "Pillow Tabby replenishment W24–29 covered 29% of units sold (LY 85%).",
+   "values": {
+    "receipts_to_sales_TY": 0.287356,
+    "receipts_to_sales_LY": 0.849057,
+    "receipts_W24_29_TY": 25.0,
+    "receipts_W24_29_LY": 45.0
+   },
+   "rule_threshold": 0.5
+  },
+  {
+   "id": "AN060",
+   "severity": "critical",
+   "rule_id": "RECEIPTS_BELOW_SALES",
+   "entity": "Tabby",
+   "message": "Tabby replenishment W24–29 covered 28% of units sold (LY 95%).",
+   "values": {
+    "receipts_to_sales_TY": 0.282609,
+    "receipts_to_sales_LY": 0.953052,
+    "receipts_W24_29_TY": 78.0,
+    "receipts_W24_29_LY": 203.0
+   },
+   "rule_threshold": 0.5
+  },
+  {
+   "id": "AN061",
+   "severity": "critical",
+   "rule_id": "WOS_LOW",
+   "entity": "Pillow Tabby",
+   "message": "Pillow Tabby weeks of supply 1.6 (LY same week 5.1) — G3 winner / Gen Z gateway.",
+   "values": {
+    "wos": 1.6,
+    "wos_ly_same_week": 5.09,
+    "on_hand_eow": 24
+   },
+   "rule_threshold": 3.0
+  },
+  {
+   "id": "AN062",
+   "severity": "critical",
+   "rule_id": "WOS_LOW",
+   "entity": "Tabby",
+   "message": "Tabby weeks of supply 1.9 (LY same week 7.5) — G3 winner / Gen Z gateway.",
+   "values": {
+    "wos": 1.85,
+    "wos_ly_same_week": 7.52,
+    "on_hand_eow": 82
+   },
+   "rule_threshold": 3.0
+  },
+  {
+   "id": "AN063",
+   "severity": "warning",
+   "rule_id": "FAMILY_L4W_DECLINE",
+   "entity": "Knit Dress",
+   "message": "Knit Dress L4W demand -60.3% YoY.",
+   "values": {
+    "sales_yoy_pct": -0.602784,
+    "sales_ty": 4314.6,
+    "sales_ly": 10862.09
+   },
+   "rule_threshold": -0.3
+  },
+  {
+   "id": "AN064",
+   "severity": "warning",
+   "rule_id": "GENZ_NEW_INSIDER_LOW",
+   "entity": "genz",
+   "message": "L4W (W27–W30) Insider attach of new Gen Z 15.5% (< 20%).",
+   "values": {
+    "genz_new_insider_rate_ty": 0.15493,
+    "weeks": [
+     27,
+     28,
+     29,
+     30
+    ]
+   },
+   "rule_threshold": 0.2
+  },
+  {
+   "id": "AN065",
+   "severity": "warning",
+   "rule_id": "WOS_COLLAPSE_VS_LY",
+   "entity": "Pillow Tabby",
+   "message": "Pillow Tabby weeks of supply 1.6 vs 5.1 LY (less than half).",
+   "values": {
+    "wos": 1.6,
+    "wos_ly_same_week": 5.09
+   },
+   "rule_threshold": 0.5
+  },
+  {
+   "id": "AN066",
+   "severity": "warning",
+   "rule_id": "WOS_COLLAPSE_VS_LY",
+   "entity": "Tabby",
+   "message": "Tabby weeks of supply 1.9 vs 7.5 LY (less than half).",
+   "values": {
+    "wos": 1.85,
+    "wos_ly_same_week": 7.52
+   },
+   "rule_threshold": 0.5
+  },
+  {
+   "id": "AN067",
+   "severity": "warning",
+   "rule_id": "WOS_HIGH",
+   "entity": "Knit Dress",
+   "message": "Knit Dress weeks of supply 21.2 (LY same week 7.1).",
+   "values": {
+    "wos": 21.18,
+    "wos_ly_same_week": 7.12,
+    "on_hand_eow": 90
+   },
+   "rule_threshold": 15.0
+  },
+  {
+   "id": "AN068",
+   "severity": "warning",
+   "rule_id": "WOS_HIGH",
+   "entity": "Tailored Jacket",
+   "message": "Tailored Jacket weeks of supply 16.3 (LY same week 10.3).",
+   "values": {
+    "wos": 16.28,
+    "wos_ly_same_week": 10.27,
+    "on_hand_eow": 118
+   },
+   "rule_threshold": 15.0
+  },
+  {
+   "id": "AN069",
+   "severity": "warning",
+   "rule_id": "WOS_HIGH",
+   "entity": "Trench",
+   "message": "Trench weeks of supply 16.9 (LY same week 8.8).",
+   "values": {
+    "wos": 16.89,
+    "wos_ly_same_week": 8.76,
+    "on_hand_eow": 152
+   },
+   "rule_threshold": 15.0
+  },
+  {
+   "id": "AN070",
+   "severity": "info",
+   "rule_id": "PARTIAL_WEEK",
+   "entity": "total",
+   "message": "W30 is a partial week (Sun–Wed); LY compared on the same 4 days.",
+   "values": {
+    "days": 4
+   },
+   "rule_threshold": null
+  },
+  {
+   "id": "AN071",
+   "severity": "info",
+   "rule_id": "SALES_YOY_SPIKE",
+   "entity": "total",
+   "message": "W30 demand +21.7% YoY (outperformance).",
+   "values": {
+    "sales_yoy_pct": 0.216867
+   },
+   "rule_threshold": 0.2
+  }
+ ],
+ "_sources": {
+  "l1w_sales_ty": "trailing.30.L1W.sales.ty",
+  "l1w_sales_ly": "trailing.30.L1W.sales.ly",
+  "l1w_sales_yoy_pct": "trailing.30.L1W.sales.yoy_pct",
+  "l1w_txns_yoy_pct": "trailing.30.L1W.txns.yoy_pct",
+  "l1w_aov_ty": "trailing.30.L1W.aov.ty",
+  "l1w_aov_yoy_pct": "trailing.30.L1W.aov.yoy_pct",
+  "l1w_sales_wow_pct": "trailing.30.L1W.wow.sales",
+  "l4w_sales_yoy_pct": "trailing.30.L4W.sales.yoy_pct",
+  "l4w_txns_yoy_pct": "trailing.30.L4W.txns.yoy_pct",
+  "ptd_sales_yoy_pct": "trailing.30.PTD.sales.yoy_pct",
+  "l1w_genz_new_ty": "trailing.30.L1W.genz_new.ty",
+  "l1w_genz_new_ly": "trailing.30.L1W.genz_new.ly",
+  "l1w_genz_new_yoy_pct": "trailing.30.L1W.genz_new.yoy_pct",
+  "l1w_genz_share_of_new_ty": "trailing.30.L1W.genz_share_of_new.ty",
+  "l1w_genz_share_of_new_ly": "trailing.30.L1W.genz_share_of_new.ly",
+  "l4w_genz_new_ty": "trailing.30.L4W.genz_new.ty",
+  "l4w_genz_new_ly": "trailing.30.L4W.genz_new.ly",
+  "l4w_genz_new_yoy_pct": "trailing.30.L4W.genz_new.yoy_pct",
+  "l4w_returning_yoy_pct": "trailing.30.L4W.returning_customers.yoy_pct",
+  "l4w_genz_new_insider_rate_ty": "trailing.30.L4W.genz_new_insider_rate.ty",
+  "days_in_week": "weekly[wk=30].days",
+  "l4w_top_families_by_contrib[0].contrib_pts": "products_by_week[wk=30, L4W, Tabby].contrib_pts",
+  "l4w_top_families_by_contrib[0].sales_yoy_pct": "products_by_week[wk=30, L4W, Tabby].sales_yoy_pct",
+  "l4w_top_families_by_contrib[1].contrib_pts": "products_by_week[wk=30, L4W, Brooklyn].contrib_pts",
+  "l4w_top_families_by_contrib[1].sales_yoy_pct": "products_by_week[wk=30, L4W, Brooklyn].sales_yoy_pct",
+  "l4w_top_families_by_contrib[2].contrib_pts": "products_by_week[wk=30, L4W, Pillow Tabby].contrib_pts",
+  "l4w_top_families_by_contrib[2].sales_yoy_pct": "products_by_week[wk=30, L4W, Pillow Tabby].sales_yoy_pct",
+  "l4w_bottom_families_by_contrib[0].contrib_pts": "products_by_week[wk=30, L4W, Knit Dress].contrib_pts",
+  "l4w_bottom_families_by_contrib[0].sales_yoy_pct": "products_by_week[wk=30, L4W, Knit Dress].sales_yoy_pct",
+  "l4w_bottom_families_by_contrib[1].contrib_pts": "products_by_week[wk=30, L4W, Rogue].contrib_pts",
+  "l4w_bottom_families_by_contrib[1].sales_yoy_pct": "products_by_week[wk=30, L4W, Rogue].sales_yoy_pct",
+  "lowest_wos_families[0].wos": "inventory_by_week[TY, wk=30, Pillow Tabby].wos",
+  "lowest_wos_families[0].wos_ly_same_week": "inventory_by_week[TY, wk=30, Pillow Tabby].wos_ly_same_week",
+  "lowest_wos_families[1].wos": "inventory_by_week[TY, wk=30, Tabby].wos",
+  "lowest_wos_families[1].wos_ly_same_week": "inventory_by_week[TY, wk=30, Tabby].wos_ly_same_week",
+  "highest_wos_families[0].wos": "inventory_by_week[TY, wk=30, Knit Dress].wos",
+  "highest_wos_families[0].wos_ly_same_week": "inventory_by_week[TY, wk=30, Knit Dress].wos_ly_same_week",
+  "highest_wos_families[1].wos": "inventory_by_week[TY, wk=30, Trench].wos",
+  "highest_wos_families[1].wos_ly_same_week": "inventory_by_week[TY, wk=30, Trench].wos_ly_same_week",
+  "anomalies[0].values.receipts_to_sales_TY": "anomalies.json AN059.values.receipts_to_sales_TY",
+  "anomalies[0].values.receipts_to_sales_LY": "anomalies.json AN059.values.receipts_to_sales_LY",
+  "anomalies[0].values.receipts_W24_29_TY": "anomalies.json AN059.values.receipts_W24_29_TY",
+  "anomalies[0].values.receipts_W24_29_LY": "anomalies.json AN059.values.receipts_W24_29_LY",
+  "anomalies[0].rule_threshold": "anomalies.json rules[RECEIPTS_BELOW_SALES].rule",
+  "anomalies[1].values.receipts_to_sales_TY": "anomalies.json AN060.values.receipts_to_sales_TY",
+  "anomalies[1].values.receipts_to_sales_LY": "anomalies.json AN060.values.receipts_to_sales_LY",
+  "anomalies[1].values.receipts_W24_29_TY": "anomalies.json AN060.values.receipts_W24_29_TY",
+  "anomalies[1].values.receipts_W24_29_LY": "anomalies.json AN060.values.receipts_W24_29_LY",
+  "anomalies[1].rule_threshold": "anomalies.json rules[RECEIPTS_BELOW_SALES].rule",
+  "anomalies[2].values.wos": "anomalies.json AN061.values.wos",
+  "anomalies[2].values.wos_ly_same_week": "anomalies.json AN061.values.wos_ly_same_week",
+  "anomalies[2].values.on_hand_eow": "anomalies.json AN061.values.on_hand_eow",
+  "anomalies[2].rule_threshold": "anomalies.json rules[WOS_LOW].rule",
+  "anomalies[3].values.wos": "anomalies.json AN062.values.wos",
+  "anomalies[3].values.wos_ly_same_week": "anomalies.json AN062.values.wos_ly_same_week",
+  "anomalies[3].values.on_hand_eow": "anomalies.json AN062.values.on_hand_eow",
+  "anomalies[3].rule_threshold": "anomalies.json rules[WOS_LOW].rule",
+  "anomalies[4].values.sales_yoy_pct": "anomalies.json AN063.values.sales_yoy_pct",
+  "anomalies[4].values.sales_ty": "anomalies.json AN063.values.sales_ty",
+  "anomalies[4].values.sales_ly": "anomalies.json AN063.values.sales_ly",
+  "anomalies[4].rule_threshold": "anomalies.json rules[FAMILY_L4W_DECLINE].rule",
+  "anomalies[5].values.genz_new_insider_rate_ty": "anomalies.json AN064.values.genz_new_insider_rate_ty",
+  "anomalies[5].values.weeks": "anomalies.json AN064.values.weeks",
+  "anomalies[5].rule_threshold": "anomalies.json rules[GENZ_NEW_INSIDER_LOW].rule",
+  "anomalies[6].values.wos": "anomalies.json AN065.values.wos",
+  "anomalies[6].values.wos_ly_same_week": "anomalies.json AN065.values.wos_ly_same_week",
+  "anomalies[6].rule_threshold": "anomalies.json rules[WOS_COLLAPSE_VS_LY].rule",
+  "anomalies[7].values.wos": "anomalies.json AN066.values.wos",
+  "anomalies[7].values.wos_ly_same_week": "anomalies.json AN066.values.wos_ly_same_week",
+  "anomalies[7].rule_threshold": "anomalies.json rules[WOS_COLLAPSE_VS_LY].rule",
+  "anomalies[8].values.wos": "anomalies.json AN067.values.wos",
+  "anomalies[8].values.wos_ly_same_week": "anomalies.json AN067.values.wos_ly_same_week",
+  "anomalies[8].values.on_hand_eow": "anomalies.json AN067.values.on_hand_eow",
+  "anomalies[8].rule_threshold": "anomalies.json rules[WOS_HIGH].rule",
+  "anomalies[9].values.wos": "anomalies.json AN068.values.wos",
+  "anomalies[9].values.wos_ly_same_week": "anomalies.json AN068.values.wos_ly_same_week",
+  "anomalies[9].values.on_hand_eow": "anomalies.json AN068.values.on_hand_eow",
+  "anomalies[9].rule_threshold": "anomalies.json rules[WOS_HIGH].rule",
+  "anomalies[10].values.wos": "anomalies.json AN069.values.wos",
+  "anomalies[10].values.wos_ly_same_week": "anomalies.json AN069.values.wos_ly_same_week",
+  "anomalies[10].values.on_hand_eow": "anomalies.json AN069.values.on_hand_eow",
+  "anomalies[10].rule_threshold": "anomalies.json rules[WOS_HIGH].rule",
+  "anomalies[11].values.days": "anomalies.json AN070.values.days",
+  "anomalies[11].rule_threshold": "anomalies.json rules[PARTIAL_WEEK].rule",
+  "anomalies[12].values.sales_yoy_pct": "anomalies.json AN071.values.sales_yoy_pct",
+  "anomalies[12].rule_threshold": "anomalies.json rules[SALES_YOY_SPIKE].rule"
+ }
+}

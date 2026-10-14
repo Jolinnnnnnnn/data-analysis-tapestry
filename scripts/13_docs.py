@@ -81,6 +81,9 @@ SECT = {
     "products_by_week": "Rows: wk, window (L1W|L4W), family, sales_ty/ly, sales_yoy_pct, units, txns, contrib_pts (PERCENTAGE POINTS), genz_txns_ty, genz_new_ty, genz_index_ty.",
     "inventory_by_week": "Rows: year, wk, family, on_hand_eow, units_sold, partial_sales_week, avg_weekly_units_trailing, wos_window_weeks, wos, wos_vs_week_median, wos_ly_same_week (TY rows), sell_through_wk, implied_receipts.",
     "inventory_totals_by_week": "Sum of snapshots ACROSS FAMILIES within a week (valid) — never across weeks.",
+    "w30_daily": "W30 demand by weekday, TY (Sun–Wed) and LY (Sun–Sat), with the like-for-like flag (naive vs like-for-like view).",
+    "stock_demand_shares": "Per family: stock share and L4W demand share, LY and TY (definitions of script 08), plus their correlations.",
+    "growth_drill": "PTD demand growth drill-down: total → drivers (log decomposition) → families (share of growth) → Tabby/Pillow Tabby styles.",
     "inventory_position": "Latest family position (08_g4_position.csv): EOH W29/W30, WOS TY/LY, sell-through, stock-vs-demand share gap, receipts, risk class, G3 flags.",
     "recommendations_sizing": "R1–R3 sizing from 10_sizing.json (sample-scale $ and % of demand).",
     "weekly_facts": "Keyed by week: COMPACT, LLM-ready facts for the weekly summary (every value is copied from trailing/inventory/products — no new math). Percent fields are fractions (0.1265 = 12.65%).",
@@ -107,6 +110,13 @@ for k, v in M.items():
     else:
         keys = ""
     S.append(f"| `{k}` | {typ} | {size} | {SECT.get(k, '')} | {keys} |")
+S += ["", "## meta fields", "", "| field | value / example |", "|---|---|"]
+META_NOTE = {"counts": "record counts (lines, txn/cust IDs, inventory snapshots, families)",
+             "week_dates_ty": "TY fiscal calendar per week: start (Sun), end (Sat), last_sale",
+             "basis_alternatives": "sales YoY under the D3 alternatives (like-for-like, naive all rows, full weeks only)",
+             "data_quality": "F13/F14 diagnostics: CUST_ID repeat surplus observed vs random expectation, lines per txn, TY last sale"}
+for k, v in M["meta"].items():
+    S.append(f"| `{k}` | {META_NOTE.get(k, '')} `{json.dumps(v, ensure_ascii=False)[:110]}` |")
 S += ["", "## weekly_facts fields", "", "| field | example (W29) |", "|---|---|"]
 for k, v in M["weekly_facts"]["29"].items():
     S.append(f"| `{k}` | `{json.dumps(v)[:90]}` |")

@@ -1,0 +1,365 @@
+{
+ "week": 24,
+ "week_label": "FY26 W24",
+ "is_partial_week": false,
+ "n_critical_alerts": 0,
+ "cards": [
+  {
+   "card_id": "retention",
+   "title": "Retention leak and Insider gap",
+   "meta": "Retention proxy · L4W ending W24",
+   "findings": [
+    "F6",
+    "F7",
+    "R3"
+   ],
+   "anomaly_ids": [
+    "AN004",
+    "AN005",
+    "AN006"
+   ],
+   "explore_tab": "G2",
+   "ask_prefill": "Why is retention flagged in week 24?",
+   "values": {
+    "l4w_returning_ty": 329,
+    "l4w_returning_ly": 338,
+    "l4w_returning_yoy_pct": -0.026627,
+    "l4w_genz_returning_ty": 36,
+    "l4w_genz_returning_ly": 51,
+    "l4w_genz_returning_yoy_pct": -0.294118,
+    "l4w_genz_new_insider_rate_ty": 0.162791,
+    "l4w_genz_new_insider_rate_ly": 0.290323,
+    "l4w_new_insider_rate_ty": 0.2,
+    "ptd_returning_ty": 329,
+    "ptd_returning_ly": 338,
+    "ptd_returning_yoy_pct": -0.026627,
+    "ptd_genz_returning_ty": 36,
+    "ptd_genz_returning_ly": 51,
+    "ptd_genz_returning_yoy_pct": -0.294118,
+    "ptd_genz_new_insider_rate_ty": 0.162791,
+    "ptd_genz_new_insider_rate_ly": 0.290323,
+    "ptd_new_insider_rate_ty": 0.2,
+    "l4w_weeks": [
+     23,
+     24
+    ]
+   },
+   "sources": {
+    "l4w_returning_ty": "trailing.24.L4W.returning_customers.ty",
+    "l4w_returning_ly": "trailing.24.L4W.returning_customers.ly",
+    "l4w_returning_yoy_pct": "trailing.24.L4W.returning_customers.yoy_pct",
+    "l4w_genz_returning_ty": "trailing.24.L4W.genz_returning.ty",
+    "l4w_genz_returning_ly": "trailing.24.L4W.genz_returning.ly",
+    "l4w_genz_returning_yoy_pct": "trailing.24.L4W.genz_returning.yoy_pct",
+    "l4w_genz_new_insider_rate_ty": "trailing.24.L4W.genz_new_insider_rate.ty",
+    "l4w_genz_new_insider_rate_ly": "trailing.24.L4W.genz_new_insider_rate.ly",
+    "l4w_new_insider_rate_ty": "trailing.24.L4W.new_insider_rate.ty",
+    "ptd_returning_ty": "trailing.24.PTD.returning_customers.ty",
+    "ptd_returning_ly": "trailing.24.PTD.returning_customers.ly",
+    "ptd_returning_yoy_pct": "trailing.24.PTD.returning_customers.yoy_pct",
+    "ptd_genz_returning_ty": "trailing.24.PTD.genz_returning.ty",
+    "ptd_genz_returning_ly": "trailing.24.PTD.genz_returning.ly",
+    "ptd_genz_returning_yoy_pct": "trailing.24.PTD.genz_returning.yoy_pct",
+    "ptd_genz_new_insider_rate_ty": "trailing.24.PTD.genz_new_insider_rate.ty",
+    "ptd_genz_new_insider_rate_ly": "trailing.24.PTD.genz_new_insider_rate.ly",
+    "ptd_new_insider_rate_ty": "trailing.24.PTD.new_insider_rate.ty",
+    "l4w_weeks": "trailing.24.L4W.weeks"
+   },
+   "chart": {
+    "type": "bars",
+    "unit": "Insider attach of new customers, L4W",
+    "rows": [
+     {
+      "label": "Gen Z new · TY",
+      "value": 0.162791,
+      "fmt": "pct",
+      "tone": "accent"
+     },
+     {
+      "label": "Gen Z new · LY",
+      "value": 0.290323,
+      "fmt": "pct",
+      "tone": "ly"
+     },
+     {
+      "label": "All new · TY",
+      "value": 0.2,
+      "fmt": "pct",
+      "tone": "neutral"
+     },
+     {
+      "label": "All new · LY",
+      "value": 0.22807,
+      "fmt": "pct",
+      "tone": "ly"
+     }
+    ]
+   },
+   "pill": "Needs you",
+   "pill_rank": 1
+  },
+  {
+   "card_id": "pattern",
+   "title": "Gen Z share of new customers",
+   "meta": "Acquisition · Gen Z share of new · W23–W24",
+   "findings": [
+    "F5"
+   ],
+   "anomaly_ids": [],
+   "explore_tab": "G2",
+   "ask_prefill": "Gen Z share of new customers by week up to week 24?",
+   "values": {
+    "first_week_genz_share_of_new_ty": 0.333333,
+    "first_week_genz_share_of_new_ly": 0.288462,
+    "week_genz_share_of_new_ty": 0.328125,
+    "week_genz_share_of_new_ly": 0.258065,
+    "first_week_genz_new_ty": 22.0,
+    "week_genz_new_ty": 21.0,
+    "week_genz_new_ly": 16.0
+   },
+   "sources": {
+    "first_week_genz_share_of_new_ty": "genz_weekly[WK=23].genz_share_of_new_TY",
+    "first_week_genz_share_of_new_ly": "genz_weekly[WK=23].genz_share_of_new_LY",
+    "week_genz_share_of_new_ty": "genz_weekly[WK=24].genz_share_of_new_TY",
+    "week_genz_share_of_new_ly": "genz_weekly[WK=24].genz_share_of_new_LY",
+    "first_week_genz_new_ty": "genz_weekly[WK=23].genz_new_TY",
+    "week_genz_new_ty": "genz_weekly[WK=24].genz_new_TY",
+    "week_genz_new_ly": "genz_weekly[WK=24].genz_new_LY"
+   },
+   "chart": {
+    "type": "columns",
+    "unit": "Gen Z share of new customers, TY",
+    "fmt": "pct0",
+    "cols": [
+     {
+      "label": "W23",
+      "value": 0.333333,
+      "partial": false
+     },
+     {
+      "label": "W24",
+      "value": 0.328125,
+      "partial": false
+     }
+    ]
+   },
+   "pill": "Pattern",
+   "pill_rank": 2
+  },
+  {
+   "card_id": "win",
+   "title": "Gen Z acquisition and Tabby growth",
+   "meta": "Growth · PTD W23–W24 · L4W families",
+   "findings": [
+    "F4",
+    "F9"
+   ],
+   "anomaly_ids": [],
+   "explore_tab": "G3",
+   "ask_prefill": "Top 3 families by contribution in L4W for week 24",
+   "values": {
+    "ptd_genz_new_ty": 43,
+    "ptd_genz_new_ly": 31,
+    "ptd_genz_new_yoy_pct": 0.387097,
+    "ptd_genz_share_of_new_ty": 0.330769,
+    "ptd_genz_share_of_new_ly": 0.27193,
+    "ptd_sales_yoy_pct": 0.116344,
+    "tabby_l4w_sales_yoy_pct": 1.086684,
+    "tabby_l4w_contrib_pts": 14.114,
+    "pillow_tabby_l4w_sales_yoy_pct": 0.38837,
+    "pillow_tabby_l4w_contrib_pts": 1.048,
+    "l4w_sales_yoy_pct": 0.116344
+   },
+   "sources": {
+    "ptd_genz_new_ty": "trailing.24.PTD.genz_new.ty",
+    "ptd_genz_new_ly": "trailing.24.PTD.genz_new.ly",
+    "ptd_genz_new_yoy_pct": "trailing.24.PTD.genz_new.yoy_pct",
+    "ptd_genz_share_of_new_ty": "trailing.24.PTD.genz_share_of_new.ty",
+    "ptd_genz_share_of_new_ly": "trailing.24.PTD.genz_share_of_new.ly",
+    "ptd_sales_yoy_pct": "trailing.24.PTD.sales.yoy_pct",
+    "tabby_l4w_sales_yoy_pct": "products_by_week[wk=24, window=L4W, family=Tabby].sales_yoy_pct",
+    "tabby_l4w_contrib_pts": "products_by_week[wk=24, window=L4W, family=Tabby].contrib_pts",
+    "pillow_tabby_l4w_sales_yoy_pct": "products_by_week[wk=24, window=L4W, family=Pillow Tabby].sales_yoy_pct",
+    "pillow_tabby_l4w_contrib_pts": "products_by_week[wk=24, window=L4W, family=Pillow Tabby].contrib_pts",
+    "l4w_sales_yoy_pct": "trailing.24.L4W.sales.yoy_pct"
+   },
+   "chart": {
+    "type": "bars",
+    "unit": "Gen Z new customers, PTD W23–W24 (sample)",
+    "rows": [
+     {
+      "label": "Gen Z new · LY",
+      "value": 31,
+      "fmt": "int",
+      "tone": "ly"
+     },
+     {
+      "label": "Gen Z new · TY",
+      "value": 43,
+      "fmt": "int",
+      "tone": "green"
+     }
+    ]
+   },
+   "pill": "Win",
+   "pill_rank": 3
+  },
+  {
+   "card_id": "stock",
+   "title": "Tabby franchise stock-out",
+   "meta": "Inventory · Tabby franchise · W24",
+   "findings": [
+    "F11",
+    "F12",
+    "R1"
+   ],
+   "anomaly_ids": [],
+   "explore_tab": "G4",
+   "ask_prefill": "Why is Tabby flagged in week 24?",
+   "values": {
+    "tabby_wos": 5.07,
+    "tabby_wos_ly_same_week": 11.44,
+    "tabby_on_hand_eow": 246,
+    "tabby_wos_window_weeks": 2,
+    "pillow_tabby_wos": 11.2,
+    "pillow_tabby_wos_ly_same_week": 10.67,
+    "pillow_tabby_on_hand_eow": 84,
+    "pillow_tabby_wos_window_weeks": 2
+   },
+   "sources": {
+    "tabby_wos": "inventory_by_week[year=TY, wk=24, family=Tabby].wos",
+    "tabby_wos_ly_same_week": "inventory_by_week[year=TY, wk=24, family=Tabby].wos_ly_same_week",
+    "tabby_on_hand_eow": "inventory_by_week[year=TY, wk=24, family=Tabby].on_hand_eow",
+    "tabby_wos_window_weeks": "inventory_by_week[year=TY, wk=24, family=Tabby].wos_window_weeks",
+    "pillow_tabby_wos": "inventory_by_week[year=TY, wk=24, family=Pillow Tabby].wos",
+    "pillow_tabby_wos_ly_same_week": "inventory_by_week[year=TY, wk=24, family=Pillow Tabby].wos_ly_same_week",
+    "pillow_tabby_on_hand_eow": "inventory_by_week[year=TY, wk=24, family=Pillow Tabby].on_hand_eow",
+    "pillow_tabby_wos_window_weeks": "inventory_by_week[year=TY, wk=24, family=Pillow Tabby].wos_window_weeks"
+   },
+   "chart": {
+    "type": "bars",
+    "unit": "weeks of supply",
+    "rows": [
+     {
+      "label": "Tabby · TY",
+      "value": 5.07,
+      "fmt": "wos",
+      "tone": "accent"
+     },
+     {
+      "label": "Tabby · LY",
+      "value": 11.44,
+      "fmt": "wos",
+      "tone": "ly"
+     },
+     {
+      "label": "Pillow Tabby · TY",
+      "value": 11.2,
+      "fmt": "wos",
+      "tone": "accent"
+     },
+     {
+      "label": "Pillow Tabby · LY",
+      "value": 10.67,
+      "fmt": "wos",
+      "tone": "ly"
+     }
+    ]
+   },
+   "pill": "Watch",
+   "pill_rank": 4
+  },
+  {
+   "card_id": "overstock",
+   "title": "Apparel overstock",
+   "meta": "Inventory · Halo apparel · W24",
+   "findings": [
+    "F10",
+    "F11",
+    "R2"
+   ],
+   "anomaly_ids": [],
+   "explore_tab": "G4",
+   "ask_prefill": "Which families have WOS above 15 in week 24?",
+   "values": {
+    "tailored_jacket_wos": 22.44,
+    "tailored_jacket_wos_ly_same_week": 5.31,
+    "tailored_jacket_wos_window_weeks": 2,
+    "trench_wos": 17.33,
+    "trench_wos_ly_same_week": 6.82,
+    "trench_wos_window_weeks": 2
+   },
+   "sources": {
+    "tailored_jacket_wos": "inventory_by_week[year=TY, wk=24, family=Tailored Jacket].wos",
+    "tailored_jacket_wos_ly_same_week": "inventory_by_week[year=TY, wk=24, family=Tailored Jacket].wos_ly_same_week",
+    "tailored_jacket_wos_window_weeks": "inventory_by_week[year=TY, wk=24, family=Tailored Jacket].wos_window_weeks",
+    "trench_wos": "inventory_by_week[year=TY, wk=24, family=Trench].wos",
+    "trench_wos_ly_same_week": "inventory_by_week[year=TY, wk=24, family=Trench].wos_ly_same_week",
+    "trench_wos_window_weeks": "inventory_by_week[year=TY, wk=24, family=Trench].wos_window_weeks"
+   },
+   "chart": {
+    "type": "bars",
+    "unit": "weeks of supply",
+    "rows": [
+     {
+      "label": "Tailored Jacket · TY",
+      "value": 22.44,
+      "fmt": "wos",
+      "tone": "accent"
+     },
+     {
+      "label": "Tailored Jacket · LY",
+      "value": 5.31,
+      "fmt": "wos",
+      "tone": "ly"
+     },
+     {
+      "label": "Trench · TY",
+      "value": 17.33,
+      "fmt": "wos",
+      "tone": "accent"
+     },
+     {
+      "label": "Trench · LY",
+      "value": 6.82,
+      "fmt": "wos",
+      "tone": "ly"
+     }
+    ]
+   },
+   "pill": "Watch",
+   "pill_rank": 4
+  }
+ ],
+ "n_alerts_by_severity": {
+  "critical": 0,
+  "warning": 4,
+  "info": 1
+ },
+ "n_alerts": 5,
+ "n_rules": 18,
+ "rule_hits": {
+  "SALES_YOY_NEG": 0,
+  "SALES_YOY_DROP": 0,
+  "SALES_YOY_SPIKE": 0,
+  "SALES_WOW_SWING": 0,
+  "TXNS_YOY_NEG": 1,
+  "AOV_YOY_SWING": 1,
+  "GENZ_NEW_YOY_NEG": 0,
+  "GENZ_NEW_WOW_DROP": 0,
+  "GENZ_SHARE_BELOW_LY": 0,
+  "GENZ_NEW_INSIDER_LOW": 1,
+  "RETURNING_YOY_FLAT": 1,
+  "GENZ_RETURNING_YOY_NEG": 1,
+  "FAMILY_L4W_DECLINE": 0,
+  "WOS_LOW": 0,
+  "WOS_HIGH": 0,
+  "WOS_COLLAPSE_VS_LY": 0,
+  "RECEIPTS_BELOW_SALES": 0,
+  "PARTIAL_WEEK": 0
+ },
+ "n_needs_you": 1,
+ "n_rules_fired": 5,
+ "n_alerts_all_weeks_max": 15,
+ "n_fyi": 4
+}

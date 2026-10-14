@@ -20,7 +20,7 @@ KPI = ["sales", "units", "txns", "customers", "aov", "upt", "aur"]
 raw_path = ROOT / "data/raw/TYLY_data_sample.xlsx"
 
 
-def r(x, n=4):
+def r(x, n=6):  # 6 dp so 1-dp percentages never hit a rounding tie (dashboard D19)
     if x is None or (isinstance(x, float) and (np.isnan(x) or np.isinf(x))):
         return None
     if isinstance(x, (np.integer,)):
@@ -99,6 +99,42 @@ meta = {
         "L1W": "selected week", "L4W": "selected week and 3 prior (truncated before W26)", "PTD": "W23 through selected week",
     },
     "ratio_rule": "Ratios are computed from totals, never averaged across weeks.",
+}
+
+# ---------- meta additions for the dashboard (counts, calendar, basis alternatives, data quality) ----------
+inv_rows = load_inventory()
+meta["counts"] = {
+    "lines_total": int(len(d)), "lines_ty": int((d.YEAR == "TY").sum()), "lines_ly": int((d.YEAR == "LY").sum()),
+    "lines_ly_excluded_like_for_like": int((~d.IN_TY_WINDOW).sum()),
+    "txn_ids_total": int(d.TXN_ID.nunique()), "cust_ids_total": int(d.CUST_ID.nunique()),
+    "inventory_snapshots": int(len(inv_rows)), "families": int(inv_rows.STYLE_GROUP.nunique()),
+}
+# TY fiscal calendar per week: Sunday start, Saturday end, and last day with sales (W30 is partial).
+_ty = d[d.YEAR == "TY"]
+meta["week_dates_ty"] = {
+    str(w): {"start": str(g.WK_START.min().date()),
+             "end": str((g.WK_START.min() + pd.Timedelta(days=6)).date()),
+             "last_sale": str(g.TXN_DT.max().date())}
+    for w, g in _ty.groupby("WK")
+}
+assert all(pd.Timestamp(v["start"]).dayofweek == 6 for v in meta["week_dates_ty"].values()), "TY weeks must start on Sunday"
+# Alternative YoY bases (D3 sensitivity, F2) copied from script 05.
+_k05 = pd.read_csv(TAB / "05_g1_kpi_windows.csv")
+_s05 = _k05[_k05.metric == "sales"].set_index("window")
+meta["basis_alternatives"] = {
+    "like_for_like_sales_yoy_pct": r(_s05.loc["PTD (W23–W30 Wed, like-for-like)", "yoy_pct"]),
+    "naive_all_rows_sales_yoy_pct": r(_s05.loc["PTD alt-a (all rows, LY full W30)", "yoy_pct"]),
+    "full_weeks_only_sales_yoy_pct": r(_s05.loc["Full weeks W23–W29", "yoy_pct"]),
+    "naive_ly_sales": r(_s05.loc["PTD alt-a (all rows, LY full W30)", "LY"], 2),
+}
+# CUST_ID diagnostics (F14), same closed form as script 04: surplus lines on repeated IDs vs C(n,2)/N for random 6-digit IDs.
+_n, _N = len(d), 999_999 - 100_000 + 1
+meta["data_quality"] = {
+    "cust_id_repeat_surplus_observed": int(_n - d.CUST_ID.nunique()),
+    "cust_id_repeat_surplus_expected_random": r(_n * (_n - 1) / 2 / _N, 2),
+    "lines_per_txn": r(len(d) / d.TXN_ID.nunique(), 2),
+    "ty_last_sale_date": str(asof.date()),
+    "ty_w30_stock_snapshot_present": bool(((inv_rows.YEAR == "TY") & (inv_rows.WK == 30)).any()),
 }
 
 # ---------- headline & decomposition ----------
@@ -236,8 +272,67 @@ for w in WEEKS:
         "anomalies": anom_placeholder,
     }
 
+# ---------- dashboard views (web app; precomputed so the front end does no arithmetic) ----------
+# Basis gap (F2): what the 3 extra LY days are worth and how many points they shave off the headline.
+meta["basis_alternatives"]["naive_gap_pts"] = r((meta["basis_alternatives"]["like_for_like_sales_yoy_pct"]
+                                                 - meta["basis_alternatives"]["naive_all_rows_sales_yoy_pct"]) * 100, 2)
+meta["basis_alternatives"]["ly_extra_days_sales"] = r(meta["basis_alternatives"]["naive_ly_sales"] - headline["sales"]["ly"], 2)
+# W30 by weekday (M6): TY has Sun–Wed only; LY Thu–Sat are outside the like-for-like window.
+_w30 = d[d.WK == 30].groupby(["YEAR", "DAY_IN_WK"]).DEMAND_AMT.sum()
+_DAYS = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"]
+w30_daily = [{"day": _DAYS[i], "ty": r(_w30.get(("TY", i)), 2) if ("TY", i) in _w30.index else None,
+              "ly": r(_w30.get(("LY", i)), 2), "ly_in_like_for_like": bool(i <= 3)} for i in range(7)]
+assert abs(sum(x["ly"] for x in w30_daily) - meta["ly_w30_full_week_sales"]) < 0.05
+assert abs(sum(x["ly"] for x in w30_daily if x["ly_in_like_for_like"]) - weekly[-1]["sales"]["ly"]) < 0.05
+# Stock share vs demand share per family (M5), same definitions as script 08: TY stock = W30 EOH, LY stock = W29 EOH,
+# demand = L4W (W26–W29) units of the same year.
+_pos = pd.DataFrame(inventory_position)
+_shares = pd.DataFrame({
+    "family": _pos.STYLE_GROUP,
+    "stock_share_ly": _pos.eoh_W29_LY / _pos.eoh_W29_LY.sum(), "demand_share_ly": _pos.l4w_units_LY / _pos.l4w_units_LY.sum(),
+    "stock_share_ty": _pos.eoh_W30_TY / _pos.eoh_W30_TY.sum(), "demand_share_ty": _pos.l4w_units_TY / _pos.l4w_units_TY.sum(),
+    "g3_class": _pos.g3_class, "prod_type": _pos.PROD_TYPE})
+stock_demand_shares = {
+    "families": [{k: (r(v) if isinstance(v, float) else v) for k, v in row.items()} for row in _shares.to_dict("records")],
+    "corr_ly": r(np.corrcoef(_pos.eoh_W29_LY, _pos.l4w_units_LY)[0, 1]),
+    "corr_ty": r(np.corrcoef(_pos.eoh_W30_TY, _pos.l4w_units_TY)[0, 1]),
+    "basis": "stock = end-of-week on hand (TY W30, LY W29); demand = L4W W26–W29 units; shares of the 21-family total",
+}
+assert round(stock_demand_shares["corr_ly"], 2) == 0.96 and round(stock_demand_shares["corr_ty"], 2) == 0.33, "corr vs FINDINGS F11"
+# Growth drill-down (M3): PTD demand growth → drivers → families → styles. Shares of total growth (sum to 1).
+_fam = sorted(products_ptd, key=lambda x: -x["share_of_growth"])
+_hero = [x for x in _fam if x["STYLE_GROUP"] in ("Tabby", "Pillow Tabby")]
+_dec = {x["factor"]: x for x in decomposition}
+growth_drill = {
+    "total": {"ty": headline["sales"]["ty"], "ly": headline["sales"]["ly"], "yoy_pct": headline["sales"]["yoy_pct"],
+              "usd_change": r(headline["sales"]["ty"] - headline["sales"]["ly"], 2)},
+    "drivers": [
+        {"label": "More customers", "share_of_growth": _dec["customers"]["share_of_growth"], "pct_chg": _dec["customers"]["pct_chg"]},
+        {"label": "Higher price per unit", "share_of_growth": _dec["AUR"]["share_of_growth"], "pct_chg": _dec["AUR"]["pct_chg"]},
+        {"label": "Basket & frequency", "share_of_growth": r(_dec["UPT"]["share_of_growth"] + _dec["frequency (txn/cust)"]["share_of_growth"]),
+         "pct_chg": None},
+    ],
+    "families": [{"family": x["STYLE_GROUP"], "share_of_growth": x["share_of_growth"], "sales_yoy_pct": x["sales_yoy_pct"],
+                  "class": x["class"]} for x in _fam],
+    "hero_share_of_growth": r(sum(x["share_of_growth"] for x in _hero)),
+    "other_gainers_share_of_growth": r(sum(x["share_of_growth"] for x in _fam if x["share_of_growth"] > 0 and x not in _hero)),
+    "drags_share_of_growth": r(sum(x["share_of_growth"] for x in _fam if x["share_of_growth"] < 0)),
+    "styles": {},
+}
+for fam_name in ("Tabby", "Pillow Tabby"):
+    sty = sorted([s for s in styles_ptd if s["STYLE_GROUP"] == fam_name], key=lambda s: -s["share_of_growth"])
+    fam_share = next(x["share_of_growth"] for x in _fam if x["STYLE_GROUP"] == fam_name)
+    growth_drill["styles"][fam_name] = {
+        "family_share_of_growth": fam_share,
+        "styles": [{"style": s["STYLE_DESC"], "share_of_growth": s["share_of_growth"], "sales_yoy_pct": s["sales_yoy_pct"]} for s in sty],
+        "other_styles_share_of_growth": r(fam_share - sum(s["share_of_growth"] for s in sty)),
+    }
+assert abs(growth_drill["hero_share_of_growth"] + growth_drill["other_gainers_share_of_growth"]
+           + growth_drill["drags_share_of_growth"] - 1) < 0.002, "family shares of growth must sum to 1"
+
 metrics = {
     "meta": meta, "headline_ptd": headline, "decomposition_ptd": decomposition, "weekly": weekly, "trailing": trailing,
+    "w30_daily": w30_daily, "stock_demand_shares": stock_demand_shares, "growth_drill": growth_drill,
     "generation_weekly": gen_weekly, "genz_weekly": genz_weekly, "generation_ptd": genz_ptd,
     "first_purchase_mix": first_purchase_mix, "new_genz_value": new_genz_value, "new_insider_by_segment": new_insider_by_segment,
     "products_ptd": products_ptd, "styles_ptd": styles_ptd, "products_by_week": products_by_week,
