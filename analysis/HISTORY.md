@@ -115,3 +115,10 @@
 - Result: both handoffs now reference DESIGN_SIGNAL.md; the old palette (#2a78d6 / #eb6834) is removed from both prompts.
 - Verification: tokens copied from the site's own CSS variables ([data-theme="light"/"dark"]), not eyeballed; fonts read from document.fonts (Geist 400/500/600, Instrument Serif 400, JetBrains Mono 400/500).
 - Next: run PROMPT_C, then PROMPT_D.
+
+## Iteration 15 — repo restructure
+- Goal: user asked to split the repo into the dashboard and deck, with the data analysis in its own folder.
+- Actions: `git mv` all analysis files (memory .md files, data/, scripts/, outputs/, run_all.sh, README) → `analysis/`; handoff/PROMPT_C_dashboard.md → `dashboard/PROMPT.md`; handoff/PROMPT_D_deck.md → `deck/PROMPT.md`; handoff/DESIGN_SIGNAL.md → `design/DESIGN_SIGNAL.md`. New root `run_all.sh` (analysis → dashboard → deck stages) and root README. `analysis/run_all.sh` now uses the repo-root `.venv`. Prompts rewritten to the new paths; each component keeps its own NOTES/HISTORY/PROMPTS/DECISIONS (numbering continues: D14+, P17+).
+- Result: scripts needed no code changes (paths resolve from `__file__`).
+- Verification: md5 of all 46 files in outputs/tables + data/processed identical before vs after the move (clean rebuild via the root `./run_all.sh --clean`); findings audit 30/30; regenerated PNGs show no git diff.
+- Next: run `dashboard/PROMPT.md`, then `deck/PROMPT.md`.
