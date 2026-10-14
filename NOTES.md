@@ -22,7 +22,7 @@
 
 ## Current state
 - ANALYSIS SESSION COMPLETE (13 iterations). FINDINGS F1–F15 + R1–R3; metrics.json / anomalies.json / metrics_schema.md built; findings audit 30/30; run_all reproducible.
-- Next sessions: handoff/PROMPT_C_dashboard.md (Streamlit app), handoff/PROMPT_D_deck.md (5–8 slides).
+- Next sessions: handoff/PROMPT_C_dashboard.md (Streamlit app), handoff/PROMPT_D_deck.md (5–8 slides). Both must follow handoff/DESIGN_SIGNAL.md (Signal style: Instrument Serif headlines, Geist UI, JetBrains Mono numbers, cool-gray tokens, one accent #2d54d3).
 
 ## Gotchas
 - Use `.venv/bin/python -W ignore`. `./run_all.sh --clean` rebuilds everything.

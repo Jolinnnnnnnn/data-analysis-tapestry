@@ -9,7 +9,8 @@ You are a senior analytics consultant working **alone** in this directory. Nobod
 4. `data/processed/metrics_schema.md`: fields of `metrics.json` / `anomalies.json`.
 5. `PROMPTS.md`: AI tools, prompts and verification for the "How it was built" slide.
 6. `outputs/tables/09_sensitivity.md` (robustness), `outputs/tables/10_sizing.md` (impact), `outputs/tables/14_findings_audit.md` (number audit), `outputs/tables/12_anomalies.md` (rules output).
-7. If `app/` exists, read its README and `app/summaries.json` for the dashboard/AI-feature slide.
+7. If `app/` exists, read its README, `app/summaries.json` and `app/briefing.json` for the dashboard/AI-feature slide, and take screenshots of the app for the "how it was built" slide.
+8. **`handoff/DESIGN_SIGNAL.md`: the REQUIRED visual design** (section 9 covers the deck). Open https://signal-agent-nu.vercel.app/ (briefing page and /build) for side-by-side comparison. The deck should look like the same product as the dashboard.
 
 ## 1. The exercise (source of truth, restated)
 - Dataset `data/raw/TYLY_data_sample.xlsx` (read-only): transaction-line sales FY26 (TY) vs FY25 (LY), fiscal weeks W23–W30, plus weekly stock by product family.
@@ -42,9 +43,24 @@ Basis: like-for-like period-to-date = FY26 W23–W30 (W30 = Sun–Wed, as-of 202
 ## 4. Build requirements
 - Pull **every number** from the outputs (FINDINGS.md, `metrics.json`, `outputs/tables/*`). Write `scripts/18_deck_numbers.py` that loads the numbers used on each slide from `metrics.json`/tables into `deck/deck_numbers.json`, and build slide text from that file. No hand-typed figures.
 - **Cross-check:** after building, extract all numbers from the slide text and check each against `deck/deck_numbers.json` (reuse the validator from the dashboard session if present, `scripts/17_validate_summaries.py`). Record the result in `HISTORY.md`.
-- Use the existing PNGs in `outputs/figures/` (don't redraw unless a chart is unreadable at slide size; if you redraw, do it in a saved script and log it).
-- Design: one message per slide, an action title (full sentence stating the takeaway), ≤ 5 bullets, consistent colours (TY blue `#2a78d6`, LY gray, Gen Z orange `#eb6834`), source footnote per slide ("Source: scripts/0X…, FY26 W23–W30 vs FY25 like-for-like, sample extract").
-- Export to `deck/`: `deck/TYLY_findings.pptx` (python-pptx or your slides tooling) and a PDF if tooling allows. Render each slide to an image, inspect it for overflow and overlaps, and fix.
+- **Restyle the figures to the Signal design first.** In `scripts/_common.py`, update the palette `C` and `style()` to the DESIGN_SIGNAL.md light tokens:
+  - surface `#ffffff` on bg `#f7f8fa`; text `#0f1318` / `#58616d`; grid `#e2e6eb`
+  - TY / highlight `#2d54d3`; LY / neutral `#cdd3db` / `#e5e8ed`; Gen Z = accent vs neutral others (replaces orange)
+  - red `#db423c`, amber `#e4a339`, green `#329d5a`, used for status only
+  - fonts: Geist (text), JetBrains Mono (numbers), Instrument Serif (chart titles, or drop in-chart titles and let the slide title carry the message)
+
+  Download the OFL font TTFs into `assets/fonts/` (log the source URLs in PROMPTS.md) and register them with matplotlib. Then re-run `./run_all.sh --clean`, confirm `outputs/tables/14_findings_audit.md` still shows 30/30 PASS and the tables are unchanged (only PNGs should differ; diff md5s of `outputs/tables` and `data/processed`), and inspect every PNG. Log this in HISTORY.md. Don't otherwise redraw charts unless one is unreadable at slide size, and if you do, use a saved script and log it.
+- **Design (Signal style, DESIGN_SIGNAL.md section 9):**
+  - 16:9, background `#f7f8fa`, generous margins.
+  - Mono uppercase eyebrow with an accent dot (e.g. "● G2 · GEN Z ACQUISITION").
+  - **Instrument Serif action title** written as a full sentence with the numbers (40–48pt).
+  - Geist body at 14–16pt in muted ink, ≤ 5 bullets, one message per slide.
+  - Pills for finding type (Needs you / Pattern / Win / Watch, soft background + ink colours).
+  - Mono evidence chips and source footnote in the footer ("F11 · F12 · scripts/08_g4_inventory.py · FY26 W23–W30 vs FY25 like-for-like, sample extract").
+  - The exec summary mirrors the briefing page: pill + serif sentence + one-line body, three times.
+  - The "how it was built" slide mirrors the reference /build page: a serif stat trio and the flow diagram data → metrics.json → rules → Claude → validator → UI.
+  - Embed the fonts, or fall back to Georgia / Helvetica / Menlo and note it in DECISIONS.md.
+- Export to `deck/`: `deck/TYLY_findings.pptx` (python-pptx or your slides tooling) and a PDF if tooling allows. Render each slide to an image, inspect it for overflow and overlaps, compare it side by side with the reference site (type scale, colours, pill shapes, spacing), and fix the differences.
 
 ## 5. Working rules (same as before)
 - Never modify `data/raw/`. Every number from a saved script. No new analysis without a numbered script + a `HISTORY.md` entry.

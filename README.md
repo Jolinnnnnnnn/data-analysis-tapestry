@@ -19,4 +19,4 @@ This creates `.venv` if needed (pandas, openpyxl, matplotlib, numpy, tabulate), 
 | Dashboard source of truth | `data/processed/metrics.json`, `anomalies.json`, `metrics_schema.md` |
 | Tables / charts | `outputs/tables/`, `outputs/figures/` |
 | Data dictionary | `outputs/tables/data_dictionary.md` |
-| Next-session prompts | `handoff/PROMPT_C_dashboard.md`, `handoff/PROMPT_D_deck.md` |
+| Next-session prompts | `handoff/PROMPT_C_dashboard.md`, `handoff/PROMPT_D_deck.md` (both follow `handoff/DESIGN_SIGNAL.md`) |

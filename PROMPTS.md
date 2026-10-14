@@ -25,3 +25,5 @@ Tooling: Claude Code (Claude Opus 5.5) acting as an autonomous analyst in this d
 - Memory lives on disk (NOTES.md, HISTORY.md, FINDINGS.md, DECISIONS.md), so the work survives context loss.
 - Guardrails: raw file read-only (chmod 444); every number from a saved script; run_all.sh rebuilds from scratch; a findings audit re-derives quoted numbers.
 - Where the AI added judgment beyond the brief: CUST_ID collision test (P4), implied-receipts scale check (P8), mix-standardised Gen Z share (P9), full-window anomaly guard (P12).
+
+| P16 | Design direction | User: "follow this design style https://signal-agent-nu.vercel.app/". AI inspected the site in a browser and extracted CSS variables, fonts and component metrics into a spec | handoff/DESIGN_SIGNAL.md; PROMPT_C / PROMPT_D updated | Values read from computed styles and the site's `[data-theme]` CSS rules; screenshots of 4 views reviewed |
