@@ -1,0 +1,31 @@
+*{box-sizing:border-box}
+html,body{margin:0;background:#F6F3FA;color:#1F2636;font-family:'Archivo',system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+a{color:#1F5DB5}
+button{font:inherit;cursor:pointer}
+input[type=range]{accent-color:#266DD3}
+.mono{font-family:'Space Mono',ui-monospace,monospace}
+.cond{font-stretch:72%}
+.panel{background:#fff;box-shadow:inset 0 0 0 1px rgba(52,64,85,.13)}
+.clickable{cursor:pointer}
+.hov-lav:hover{background:#F1ECF7}
+.hov-bright:hover{filter:brightness(1.08)}
+.hov-ring:hover{box-shadow:inset 0 0 0 1.5px #266DD3}
+.link{cursor:pointer;text-decoration:underline;text-underline-offset:3px}
+.btn-dark{white-space:nowrap;padding:7px 12px;border-radius:5px;background:#344055;color:#fff;cursor:pointer;border:0;font-weight:700;font-size:13px}
+.btn-line{white-space:nowrap;padding:7px 12px;border-radius:5px;box-shadow:inset 0 0 0 1.5px #344055;cursor:pointer;background:transparent;border:0;font-weight:700;font-size:13px;color:#1F2636}
+.seg{display:flex;border-radius:6px;font-family:'Space Mono',monospace;font-size:12px}
+.seg>span{padding:7px 14px;border-radius:6px;cursor:pointer;transition:background .2s ease,color .2s ease}
+.tbl{width:100%;border-collapse:collapse;font-size:13.5px}
+.tbl th{padding:9px 20px;border-bottom:2px solid #1F2636;font-family:'Space Mono',monospace;font-size:11px;font-weight:700;white-space:nowrap;user-select:none}
+.tbl td{padding:9px 20px;white-space:nowrap;border-bottom:1px solid rgba(52,64,85,.1)}
+.tbl tr.hl td{background:#EBDDF7}
+.fade-in{animation:fadeIn .3s ease both}
+@keyframes fadeIn{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:none}}
+@keyframes slideUp{from{opacity:0;transform:translateY(60%)}to{opacity:1;transform:none}}
+.swap{display:inline-block;animation:slideUp .28s cubic-bezier(.2,.7,.2,1) both}
+@media (prefers-reduced-motion: reduce){:root:not(.motion-on) *,:root:not(.motion-on) *::before,:root:not(.motion-on) *::after{animation-duration:0s!important;transition-duration:0s!important}}
+@media (max-width:900px){
+  .pad-x{padding-left:20px!important;padding-right:20px!important}
+  .h1-hero{font-size:42px!important}
+  .hide-narrow{display:none!important}
+}

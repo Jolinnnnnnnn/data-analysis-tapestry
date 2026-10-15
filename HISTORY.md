@@ -108,3 +108,18 @@
   - Medium-high: F6 (flat returning; proxy, not cohort), F12 (receipts inferred, not observed), F10 (Rogue/Knit Dress significant; Trench/Tailored Jacket not).
   - Medium: F3, F7 (segment gaps n=22–79), F8 (Tabby gateway solid; AUR premium downgraded to mix), F13.
   - Low / tentative: F15 (Mens Bag watch list, n=11). R3 impact (scenario-based).
+
+## Iteration 14 (dashboard: data layer)
+- Goal: give the new web dashboard (Claude Design "TYLY Dashboard") real data for every view and animation.
+- Actions: restored the 6-dp precision + meta fields in `11_metrics.py`; added `w30_daily`, `stock_demand_shares`, `growth_drill`, basis gap fields; documented in `13_docs.py`.
+- Verification: in-script asserts (W30 day sums = weekly totals; correlations = 0.96 / 0.33 as in F11; family shares of growth sum to 1); findings audit 30/30; anomalies unchanged.
+
+## Iteration 15 (dashboard: AI pipeline)
+- Actions: `15_build_facts.py` (week facts + upstream source path for every number; card facts; rule-picked playhead timeline), `16_generate_summaries.py` (headline + summary + cards; pregenerated / template / live plug-in), `17_validate_summaries.py`, `18_export_web.py` → `web/src/data/app.json`.
+- Result: 56/56 texts PASS (8 headlines, 8 summaries, 40 cards; 513 numbers). Injected error (12.7% → 13.7%) FLAGGED; with that edit in `ai/session_texts.json` the build exits non-zero.
+
+## Iteration 16 (dashboard: web app)
+- Actions: `web/` Vite + React app porting the Claude Design file: Briefing (M8 validator replay, held-back state, facts table with source paths, hover connector, 5 cards with micro-charts, rules + alerts rail), Explore G1 (M1 playhead) / G2 (M5 share morph) / G3 (M3 drill-down) / G4 (M5 scatter + WOS morph), Ask (8 templates), How it was built (M6 basis switch, system prompts, definitions); JS validator + parity check.
+- Bugs found and fixed while testing: playhead crash (first rAF timestamp precedes start → index −1); playhead resumed from the selected week instead of replaying; stale week ref after external week change; rule cells guessed WOS_LOW severity instead of reading the alerts; Tabby scatter label overflow; doubled parentheses in partial-week copy.
+- Finding: this Mac reports `prefers-reduced-motion: reduce`, so animations were (correctly) off; added an opt-in footer toggle and verified motion in headless Chrome with emulated `no-preference`.
+- Verification: headless Chrome (DevTools protocol) samples: playhead W23→W30 at 0.9 s/week with the global week following; M8 holds back at the injected number (6/27 ok); M6 +12.8% ↔ +7.5% with "≈5.4 pts lost to 3 extra days ($25.1K)"; M3 Demand → Drivers → Families → Tabby styles (Tabby 20 = 25% of growth); production build renders all pages for W23/W29/W30; no horizontal overflow at 900 px; two `./run_all.sh --clean` runs → 79 outputs byte-identical; raw md5 unchanged.
