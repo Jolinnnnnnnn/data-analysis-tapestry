@@ -20,7 +20,7 @@ KPI = ["sales", "units", "txns", "customers", "aov", "upt", "aur"]
 raw_path = ROOT / "data/raw/TYLY_data_sample.xlsx"
 
 
-def r(x, n=6):  # 6 dp so 1-dp percentages never hit a rounding tie (dashboard D19)
+def r(x, n=6):  # 6 dp so 1-dp percentages never hit a rounding tie (D16)
     if x is None or (isinstance(x, float) and (np.isnan(x) or np.isinf(x))):
         return None
     if isinstance(x, (np.integer,)):
