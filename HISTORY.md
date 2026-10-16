@@ -115,4 +115,4 @@
 - Verification: in-script asserts (W30 day sums = weekly totals; correlations = 0.96 / 0.33 as in F11; family shares of growth sum to 1); findings audit 30/30; anomalies unchanged.
 
 ## Iteration 15–16 (archived)
-- The AI briefing pipeline (scripts 15–18) and the web app (`web/`) were removed from main for a clean dashboard restart; the full build and its log are at git tag `archive/dashboard-v1`.
+- The AI briefing pipeline (scripts 15–18) and the web app (`web/`) were removed from main for a clean dashboard restart; the full build and its log are at git tag `archive/dashboard-v1`. The deck handoff prompt (`handoff/PROMPT_D_deck.md`) was removed too for a clean deck restart; it is kept at the same tag.

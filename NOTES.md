@@ -22,7 +22,7 @@
 
 ## Current state
 - ANALYSIS SESSION COMPLETE (13 iterations). FINDINGS F1–F15 + R1–R3; metrics.json / anomalies.json / metrics_schema.md built; findings audit 30/30; run_all reproducible.
-- DASHBOARD: not started (clean slate). The first build (web/, AI scripts 15–18) is archived at git tag `archive/dashboard-v1`. metrics.json keeps the extra views from HISTORY 14 (D16). PROMPT_D (deck) still open.
+- DASHBOARD: not started (clean slate). The first build (web/, AI scripts 15–18) is archived at git tag `archive/dashboard-v1`. metrics.json keeps the extra views from HISTORY 14 (D16). DECK: not started (clean slate); the old handoff prompt `handoff/PROMPT_D_deck.md` is archived at the same tag.
 
 ## Gotchas
 - Use `.venv/bin/python -W ignore`. `./run_all.sh --clean` rebuilds the analysis (scripts 01–14) from data/raw.

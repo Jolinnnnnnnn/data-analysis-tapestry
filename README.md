@@ -8,8 +8,8 @@ Consumer Intelligence & Analytics exercise on `TYLY_data_sample.xlsx` (FY26 vs F
 ```
 Creates `.venv` if needed and runs `scripts/01…14` (cleaning → G1–G4 analysis → challenge and sizing → `metrics.json`, `anomalies.json`, findings audit). The raw file in `data/raw/` is read-only.
 
-## Dashboard
-Not built yet: starting over from a clean slate. The first version (React web app + AI briefing pipeline) is archived at git tag `archive/dashboard-v1` (`git checkout archive/dashboard-v1` to see it). `data/processed/metrics.json`, `anomalies.json` and `metrics_schema.md` are the data source for the new one.
+## Dashboard and deck
+Not built yet: starting over from a clean slate. The first dashboard (React web app + AI briefing pipeline) and the deck handoff prompt are archived at git tag `archive/dashboard-v1` (`git checkout archive/dashboard-v1` to see it). `data/processed/metrics.json`, `anomalies.json` and `metrics_schema.md` are the data source for the new one.
 
 ## Where things are
 | What | Where |
@@ -23,4 +23,3 @@ Not built yet: starting over from a clean slate. The first version (React web ap
 | Metrics (dashboard source of truth) | `data/processed/metrics.json`, `anomalies.json`, `metrics_schema.md` |
 | Tables / charts | `outputs/tables/`, `outputs/figures/` |
 | Data dictionary | `outputs/tables/data_dictionary.md` |
-| Deck handoff prompt | `handoff/PROMPT_D_deck.md` |
