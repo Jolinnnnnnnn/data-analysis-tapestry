@@ -22,12 +22,10 @@
 
 ## Current state
 - ANALYSIS SESSION COMPLETE (13 iterations). FINDINGS F1–F15 + R1–R3; metrics.json / anomalies.json / metrics_schema.md built; findings audit 30/30; run_all reproducible.
-- DASHBOARD BUILT as a static web app (web/, React + Vite, Vercel) from the Claude Design file; AI pipeline scripts 15–18; see DECISIONS D14–D24, HISTORY 14–16. handoff/PROMPT_C (Streamlit) is superseded; PROMPT_D (deck) still open.
+- DASHBOARD: not started (clean slate). The first build (web/, AI scripts 15–18) is archived at git tag `archive/dashboard-v1`. metrics.json keeps the extra views from HISTORY 14 (D16). PROMPT_D (deck) still open.
 
 ## Gotchas
-- Use `.venv/bin/python -W ignore`. `./run_all.sh --clean` rebuilds analysis + AI texts + web data, then runs the JS parity check and `vite build`.
-- After editing a text in ai/session_texts.json: validate (scripts/17), then `scripts/16_generate_summaries.py --stamp`. Any facts change makes texts stale → template until re-stamped.
-- Local dev: `npm --prefix web run dev` (port 5199).
+- Use `.venv/bin/python -W ignore`. `./run_all.sh --clean` rebuilds the analysis (scripts 01–14) from data/raw.
 - Never sum ON_HAND_UNITS across weeks (summing across families within a week is fine).
 - Ratio metrics (AOV, UPT, AUR) must be recomputed from totals, never averaged across weeks.
 - 08 depends on 07 output (g3 scorecard); 10 depends on 08.

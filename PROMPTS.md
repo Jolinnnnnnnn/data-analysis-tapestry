@@ -19,10 +19,8 @@ Tooling: Claude Code (Claude Opus 5.5) acting as an autonomous analyst in this d
 | P13 | Docs | "Data dictionary + metrics schema generated from data" | scripts/13_docs.py | Caught & fixed FISCAL_WK definition collision between sheets |
 | P14 | Findings audit (accuracy design) | "Re-derive every headline number in FINDINGS.md from metrics.json and require it verbatim" | scripts/14_verify_findings.py → 14_findings_audit.md | 30/30 PASS after it caught one missing figure (Tabby 59% share of growth) |
 | P15 | Chart QA | AI rendered every PNG and inspected it visually (label collisions, legend errors, grid over bars, hard-coded numbers in titles) | outputs/figures/*.png | Fixed: W30 label overlap, WOS legend colour bug, hard-coded "+12.8%" and "72%" titles → now computed |
-| P16 | Design brief for Claude Design | "Write a design prompt: colourful, modern, motion that encodes information (playhead, drill-down, LY→TY morphs, naive vs like-for-like, validator replay); real W29 numbers; placeholders marked" | Claude Design → "Briefing directions" (9 rounds) → TYLY Dashboard prototype | Prototype numbers checked against metrics.json: mock alert IDs, rule states and several series were placeholders/wrong → replaced by data (DECISIONS D20) |
-| P17 | AI texts (headline, summary, cards) per week, written by the session as the model | Same system prompts as the live plug-in (`SYSTEM_HEADLINE`, `SYSTEM_SUMMARY`, `SYSTEM_CARD` in scripts/16): "Use ONLY numbers that appear in the JSON facts…" Input: `data/dashboard/facts/W<wk>.json` / `W<wk>_cards.json` only | ai/session_texts.json | 17_validate_summaries.py: 56/56 PASS, 513 numbers; md5-stamped to their facts |
-| P18 | Browser validator port + parity | "Port the validator line for line to JS; prove both agree on every text" | web/src/lib/validator.js, web/scripts/parity.mjs | 56 texts, 513 numbers, identical verdicts and fact matches; injected error flagged by both |
-| P19 | Web app from the Claude Design file | "Keep the look and interactions, wire every number to app.json, no arithmetic in the UI" | web/src/** | Headless Chrome checks of every page/week and of each animation (HISTORY Iteration 16); production build smoke test |
+
+P16–P19 (dashboard design brief, AI texts, browser validator, web app) are archived at git tag `archive/dashboard-v1`.
 
 ## Prompting approach (for the deck)
 - One master instruction, then an explicit loop: ORIENT (read NOTES/HISTORY/QUESTIONS) → PLAN → ACT (numbered script) → VERIFY (reconcile, second method) → RECORD → REFLECT.
