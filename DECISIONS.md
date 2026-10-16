@@ -97,46 +97,10 @@ Evidence scripts in brackets. Sensitivity numbers are filled from `scripts/09_ch
 - **Sensitivity:** with no window guard there were 91 anomalies (8 critical). With the guard, 71 (8 critical). The critical set is unchanged.
 
 ---
-# Dashboard (web app) decisions
+# Metrics-layer decisions (kept from the dashboard work)
 
-## D14 Front end: static React app on Vercel, not Streamlit
-- **Question:** the brief lets us choose the tools; the design calls for purposeful animation (playhead, morphs, drill-down zoom) and a shareable link.
-- **Choice:** Vite + React + TypeScript in `web/`, reading one precomputed JSON (`web/src/data/app.json`); deployed as a static site on Vercel. Charts are hand-built SVG/CSS (no chart library) so every transition is controllable.
-- **Rationale:** Streamlit reruns the whole page on every interaction, which fights animation; a static bundle needs no server or API key, so a reviewer just opens a link.
+D14–D15 and D17–D24 described the first web dashboard, now archived at git tag `archive/dashboard-v1`. D16 stays because those fields are still produced by `scripts/11_metrics.py`.
 
-## D15 Precompute everything; the browser does no arithmetic
-- **Choice:** all metrics come from `scripts/01–14` (metrics.json, anomalies.json); `scripts/15–18` select facts, word them, validate them and export `app.json`. The UI only selects, filters, sorts, compares to rule thresholds, and formats (0.128 → +12.8%, 71,311 → $71.3K); the only other arithmetic is drawing geometry (bar widths, chart coordinates).
-- **Consequence:** animated numbers never count through intermediate values; they swap between two stored values (e.g. +12.8% ↔ +7.5%). The playhead label shows the nearest week's stored value, not an interpolation.
-
-## D16 New precomputed fields and 6-decimal precision
+## D16 Metrics-layer additions and 6-decimal precision
 - `11_metrics.py` adds `meta.counts`, `meta.week_dates_ty`, `meta.basis_alternatives` (+ `naive_gap_pts`, `ly_extra_days_sales`), `meta.data_quality`, `w30_daily` (M6 day segments, real values; the design mock's daily splits were placeholders), `stock_demand_shares` (M5; same definitions as script 08, asserts the 0.96 → 0.33 correlation in F11) and `growth_drill` (M3; shares of growth sum to 1, asserted).
 - Fractions are now stored at 6 dp (was 4): at 4 dp, 1-dp percentages sit on rounding ties (the naive YoY rendered +7.4% vs +7.5% in FINDINGS; L1W W29 +12.6% vs +12.7%). Findings audit still 30/30; anomalies unchanged (71; 8 critical).
-
-## D17 Briefing cards and severity are decided by rules, not the AI
-- Five card types per week (stock, retention, pattern, win, overstock). Severity pill from that week's anomaly hits: critical → CRITICAL, warning → WARNING, else WATCH; pattern = PATTERN, win = WIN; overstock is always WATCH (a planning action). Ranked by that severity.
-- Time travel: each week's card uses only data as of that week; latest-position facts (receipts W24–29, R1/R2/R3 sizing, TY Insider segment gaps) only from W29.
-
-## D18 Number validator, implemented twice
-- Every printed number ($, %, K, pts, decimals, integers, signed) must equal some value in the facts the text was written from, within half a unit of the printed precision; explicit signs must match; week labels/FY/L1W/dates/"4-week" are masked; week-index fields are not citable; rule thresholds are.
-- Python (`scripts/17_validate_summaries.py`) gates the build; a JavaScript port (`web/src/lib/validator.js`) re-checks every text in the browser before showing it; `web/scripts/parity.mjs` asserts both reach identical verdicts and fact matches on all texts (56 texts, 513 numbers).
-- Limitation: an existence check, not a semantic one (a value several facts round to can match the "wrong" fact); mitigated by narrow per-card facts and a hand review of W28–W30.
-
-## D19 Who writes the text
-- Default: texts written by Claude (this build session, acting as the model) from each week's facts only, stored in `ai/session_texts.json` with the md5 of those facts; stale md5 → deterministic template + warning. With `ANTHROPIC_API_KEY`, `16_generate_summaries.py` calls `claude-opus-5-5` (plug-in point marked) through the same validator, one retry with the unmatched numbers, else template. Per week: masthead headline, ~150-word summary, 5 cards.
-
-## D20 Visual design: Claude Design "Briefing directions" → final TYLY Dashboard (single theme)
-- Palette Sapphire / Charcoal Blue / Lavender / Thistle, Archivo + Space Mono, flat colour blocks; single theme (no dark mode) by the user's choice.
-- Mock content replaced by data: alert IDs (mock AN098–AN108 → real AN048–AN058), rule states (mock showed RECEIPTS_BELOW_SALES firing in W29 and WOS_LOW as a warning; real: receipts fires only in W30, WOS_LOW escalates to critical for Tabby/Pillow Tabby, FAMILY_L4W_DECLINE fires twice), finding IDs (F5 pattern, F4/F9 win), weekly demand series, W30 TY ($44.9K, mock $41.6K), daily splits, family tables.
-
-## D21 Motion only where it carries information; reduced motion respected
-- M1 playhead (time), M3 drill-down zoom (part → whole), M5 LY → TY morphs (change), M6 naive vs like-for-like (basis), M8 validator replay (trust). No loops; UI transitions ≤ ~450 ms.
-- `prefers-reduced-motion: reduce` → final states immediately. A footer toggle ("Animations: … play them anyway") lets a viewer opt in; saved in localStorage only.
-
-## D22 Playhead events are chosen by rules
-- One event per week by priority: first-ever critical rule → first stock-rule hit → week-on-week swing → YoY spike → transactions below LY → partial week. Event text is the rule's deterministic message from anomalies.json (not AI).
-
-## D23 Ask = fixed query templates
-- Eight templates over app.json; offline a keyword/regex picker chooses template + parameters; a model may replace only the picker (returns template + params, never numbers). Answers list the template, parameters and data read. Unmatched questions get "no template matches" instead of a guess.
-
-## D24 Defaults and state
-- Default week W29 (last full week), window L4W, LY shown. All state lives in the URL hash (`#/explore/g4?wk=30&win=PTD&ly=0`), so any view is linkable; `&demo=blocked` shows the validator holding a text back.
