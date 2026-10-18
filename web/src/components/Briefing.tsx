@@ -43,6 +43,7 @@ function Summary() {
   const [hover, setHover] = useState<null | { i: number; x: number; y: number }>(null);
   const [conn, setConn] = useState<null | { d: string; x2: number; y2: number }>(null);
   const [run, setRun] = useState(0);
+  const [full, setFull] = useState(false);
   const root = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -97,6 +98,38 @@ function Summary() {
   }
   let k = -1;
   const hv = hover ? rows[hover.i] : null;
+  // Short view: the first 3 sentences as bullets. A sentence ends at a stop followed by a space (decimals have none).
+  const ends = [...text.matchAll(/[.!?](?=\s|$)/g)].map((m) => m.index! + 1);
+  const short = !full && !failed && ends.length > 3;
+  const bullets: any[][] = [[], [], []];
+  let pos = 0;
+  for (const sg of segs) {
+    let from = pos;
+    pos += sg.text.length;
+    while (from < pos) {
+      const si = ends.findIndex((e) => e > from);
+      if (si === -1 || si > 2) break;
+      const to = sg.num ? pos : Math.min(pos, ends[si]); // a number never spans a sentence end
+      bullets[si].push(sg.num ? sg : { ...sg, text: text.slice(from, to) });
+      from = to;
+    }
+  }
+  const renderSeg = (s: any, j: number) => {
+    if (!s.num) return <span key={j}>{s.text}</span>;
+    k += 1;
+    const i = k;
+    const g = s.fact ? goalOfFact(sourceOf(s.fact, src)) : 0;
+    const failing = failed && i === failIdx;
+    const ok = i < lit || phase === "done";
+    let bg = "transparent", color: string = C.ink, shadow = `inset 0 -1.5px 0 ${C.ly}`, weight = 400;
+    if (failing) { bg = flash ? C.crit : C.critTint; color = flash ? "#fff" : C.crit; shadow = "none"; weight = 700; }
+    else if (ok) { bg = GOALS[g].tint; color = GOALS[g].ink; shadow = "none"; weight = 700; }
+    if (hover?.i === i) shadow = `0 0 0 1.5px ${GOALS[g].ink}`;
+    return (
+      <span key={j} onMouseEnter={(e) => enter(i, e)} onMouseLeave={() => { setHover(null); setConn(null); }}
+        style={{ fontFamily: MONO, fontSize: 15.5, padding: "1px 4px", borderRadius: 3, cursor: "help", transition: "background .18s ease, color .18s ease, box-shadow .18s ease", fontWeight: weight, background: bg, color, boxShadow: shadow }}>{s.text}</span>
+    );
+  };
   return (
     <div ref={root} style={{ position: "relative", display: "flex", flexWrap: "wrap", gap: "16px 28px" }}>
       <div style={{ flex: "0 0 150px" }}>
@@ -116,24 +149,18 @@ function Summary() {
       </div>
       <div style={{ flex: "1 1 460px", minWidth: 0 }}>
         <div style={{ overflow: "hidden", transition: "max-height .3s ease, opacity .3s ease", maxHeight: phase === "folding" || folded ? 0 : 900, opacity: phase === "folding" || folded ? 0 : 1 }}>
-          <p style={{ margin: 0, maxWidth: 800, fontSize: 17, lineHeight: 1.7, textWrap: "pretty" as any }}>
-            {segs.map((s: any, j: number) => {
-              if (!s.num) return <span key={j}>{s.text}</span>;
-              k += 1;
-              const i = k;
-              const g = s.fact ? goalOfFact(sourceOf(s.fact, src)) : 0;
-              const failing = failed && i === failIdx;
-              const ok = i < lit || phase === "done";
-              let bg = "transparent", color: string = C.ink, shadow = `inset 0 -1.5px 0 ${C.ly}`, weight = 400;
-              if (failing) { bg = flash ? C.crit : C.critTint; color = flash ? "#fff" : C.crit; shadow = "none"; weight = 700; }
-              else if (ok) { bg = GOALS[g].tint; color = GOALS[g].ink; shadow = "none"; weight = 700; }
-              if (hover?.i === i) shadow = `0 0 0 1.5px ${GOALS[g].ink}`;
-              return (
-                <span key={j} onMouseEnter={(e) => enter(i, e)} onMouseLeave={() => { setHover(null); setConn(null); }}
-                  style={{ fontFamily: MONO, fontSize: 15.5, padding: "1px 4px", borderRadius: 3, cursor: "help", transition: "background .18s ease, color .18s ease, box-shadow .18s ease", fontWeight: weight, background: bg, color, boxShadow: shadow }}>{s.text}</span>
-              );
-            })}
-          </p>
+          {short ? (
+            <ul style={{ margin: 0, paddingLeft: 22, maxWidth: 800, fontSize: 17, lineHeight: 1.7 }}>
+              {bullets.map((b, bi) => <li key={bi} style={{ marginTop: bi ? 6 : 0 }}>{b.map(renderSeg)}</li>)}
+            </ul>
+          ) : (
+            <p style={{ margin: 0, maxWidth: 800, fontSize: 17, lineHeight: 1.7, textWrap: "pretty" as any }}>{segs.map(renderSeg)}</p>
+          )}
+          {ends.length > 3 && !failed && (
+            <button type="button" className="link" onClick={() => setFull((f) => !f)} style={{ marginTop: 10, padding: 0, border: 0, background: "none", font: "inherit", fontSize: 13, fontWeight: 700, cursor: "pointer" }}>
+              {full ? "Show the short version" : `Read the full summary (${ends.length} sentences)`}
+            </button>
+          )}
         </div>
         {folded && bad && (
           <div className="fade-in" style={{ padding: "18px 20px", background: "#fff", boxShadow: `inset 0 0 0 1.5px ${C.crit}` }}>
@@ -398,13 +425,33 @@ function Rail() {
   );
 }
 
+// The action each rule-picked card type points to (FINDINGS.md R1-R3); cards without one aren't actions.
+const ACTIONS: Record<string, string> = {
+  stock: "Re-open replenishment on Tabby and Pillow Tabby (R1)",
+  retention: "Enrol new Gen Z customers in Insider at their first purchase (R3)",
+  overstock: "Move open-to-buy from Halo apparel to Hero; mark down or transfer the overhang (R2)",
+};
+
 export default function Briefing() {
   const u = useUrl();
   const cards = weekAI(u.wk).cards;
+  const todo = cards.filter((c: any) => c.pill_rank <= 1 && ACTIONS[c.card_id]); // rules rank these "Needs you"
   return (
     <main style={{ display: "flex", flexWrap: "wrap" }} key={u.wk}>
       <div className="pad-x" style={{ flex: "999 1 620px", minWidth: 0, padding: "36px 44px 48px 40px" }}>
         <Summary />
+        {todo.length > 0 && (
+          <div style={{ marginTop: 28, padding: "16px 20px", background: C.lav2, boxShadow: `inset 3px 0 0 ${C.crit}` }}>
+            <div style={{ fontFamily: MONO, fontSize: 12, fontWeight: 700 }}>THIS WEEK · NEEDS YOU</div>
+            <ol style={{ margin: "8px 0 0", paddingLeft: 20, fontSize: 15, lineHeight: 1.5 }}>
+              {todo.map((c: any) => (
+                <li key={c.card_id} style={{ marginTop: 4 }}>
+                  <b>{ACTIONS[c.card_id]}</b> <span style={{ color: C.muted, fontSize: 13 }}>· {c.title}</span>
+                </li>
+              ))}
+            </ol>
+          </div>
+        )}
         <div style={{ display: "flex", alignItems: "baseline", gap: 14, flexWrap: "wrap", margin: "44px 0 0", paddingBottom: 12, borderBottom: `2px solid ${C.ink}` }}>
           <h2 className="cond" style={{ margin: 0, fontWeight: 800, fontSize: 30, whiteSpace: "nowrap" }}>Flagged this week</h2>
           <span style={{ fontFamily: MONO, fontSize: 12, color: C.muted }}>{cards.length} items · ranked by rule severity · each worded by Claude, numbers checked</span>

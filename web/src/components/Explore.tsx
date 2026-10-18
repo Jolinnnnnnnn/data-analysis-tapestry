@@ -3,6 +3,7 @@ import {
   C, D, EASE, GOALS, MONO, PARTIAL, SEV, WEEKS, WINDOWED, arrow, fmtMoney, fmtNum, fmtPct, fmtPts, fmtUsd0, fmtWos,
   SEGMENT_NAME, ruleThreshold, setUrl, tone, trailing, useReducedMotion, useUrl, weekAI,
 } from "../lib/core";
+import { PartialNote } from "./Header";
 
 export const drillBus = { weekMode: false };
 
@@ -50,14 +51,17 @@ function Table({ title, note, cols, rows, initial, highlight }: { title: string;
 
 function Kpis({ items }: { items: { label: string; value: string; delta: string; color?: string }[] }) {
   return (
-    <div className="panel" style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(170px,1fr))", overflow: "hidden" }}>
-      {items.map((k) => (
-        <div key={k.label} style={{ padding: "16px 18px", boxShadow: `1px 1px 0 ${C.hair}` }}>
-          <div style={{ fontSize: 12, fontWeight: 600, color: C.muted }}>{k.label}</div>
-          <div className="cond swap" style={{ marginTop: 6, fontWeight: 700, fontSize: 28, fontStretch: "80%" }}>{k.value}</div>
-          <div style={{ fontFamily: MONO, fontSize: 12, color: k.color || C.muted }}>{k.delta}</div>
-        </div>
-      ))}
+    <div className="panel" style={{ overflow: "hidden" }}>
+      <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(170px,1fr))" }}>
+        {items.map((k) => (
+          <div key={k.label} style={{ padding: "16px 18px", boxShadow: `1px 1px 0 ${C.hair}` }}>
+            <div style={{ fontSize: 12, fontWeight: 600, color: C.muted }}>{k.label}</div>
+            <div className="cond swap" style={{ marginTop: 6, fontWeight: 700, fontSize: 28, fontStretch: "80%" }}>{k.value}</div>
+            <div style={{ fontFamily: MONO, fontSize: 12, color: k.color || C.muted }}>{k.delta}</div>
+          </div>
+        ))}
+      </div>
+      <PartialNote />
     </div>
   );
 }
@@ -82,7 +86,6 @@ const yTicks = (lo: number, hi: number) => {
 // ---------- G1: M1 season playhead ----------
 function Playhead() {
   const u = useUrl();
-  const rm = useReducedMotion();
   const wk = D.weekly as any[];
   const n = wk.length;
   const [p, setP] = useState(u.wk - WEEKS[0]);
@@ -96,9 +99,14 @@ function Playhead() {
     const w = WEEKS[0] + Math.round(np);
     if (w !== lastWk.current) { lastWk.current = w; setUrl({ wk: w }); }
   };
+  const moved = useRef(false);
+  const seek = (np: number) => {
+    cancelAnimationFrame(raf.current); setPlaying(false); paused.current = true;
+    const v = Math.max(0, Math.min(n - 1, np));
+    setP(v); setWeekFromP(v);
+  };
   function play() {
     if (playing) { cancelAnimationFrame(raf.current); setPlaying(false); paused.current = true; return; }
-    if (rm) { setP(n - 1); setWeekFromP(n - 1); return; }
     const p0 = paused.current && p < n - 1 ? p : 0; // replay the season unless resuming a pause
     paused.current = false;
     const t0 = performance.now() - p0 * 900;
@@ -134,7 +142,7 @@ function Playhead() {
       <div style={{ display: "flex", alignItems: "center", gap: 16, flexWrap: "wrap" }}>
         <div style={{ flex: "1 1 260px" }}>
           <h2 className="cond" style={{ margin: 0, fontWeight: 800, fontSize: 26 }}>Season so far: weekly demand</h2>
-          <div style={{ marginTop: 4, fontSize: 13, color: C.muted }}>Press play to replay W23→W30. Where the playhead stops is the selected week for the whole dashboard. Click a point to see that week's family contributions.</div>
+          <div style={{ marginTop: 4, fontSize: 13, color: C.muted }}>Press play to replay W23→W30, or drag the playhead. Where it stops is the selected week for the whole dashboard. Click a point to see that week's family contributions.</div>
         </div>
         <button onClick={play} style={{ display: "flex", alignItems: "center", gap: 8, padding: "9px 16px", border: 0, borderRadius: 6, background: C.sapphire, color: "#fff", fontSize: 14, fontWeight: 700 }}>
           {playing ? "❚❚ Pause" : p >= n - 1 ? "▶ Replay season" : "▶ Play"}
@@ -175,14 +183,23 @@ function Playhead() {
             <title>W{r.wk}: {fmtMoney(r.sales.ty)} TY vs {fmtMoney(r.sales.ly)} LY ({fmtPct(r.sales.yoy_pct, true)}). Click for family contributions.</title>
           </circle>
         ))}
+        {/* playhead handle: drag (or arrow keys) to scrub; a tap without dragging drills into that week like the points */}
+        <rect x={X(p) - 14} y={14} width={28} height={248} fill="transparent" style={{ cursor: "ew-resize", touchAction: "none" }}
+          tabIndex={0} role="slider" aria-label="Playhead week" aria-valuemin={WEEKS[0]} aria-valuemax={WEEKS[n - 1]} aria-valuenow={cur.wk} aria-valuetext={`W${cur.wk}`}
+          onPointerDown={(e) => { e.currentTarget.setPointerCapture(e.pointerId); moved.current = false; }}
+          onPointerMove={(e) => {
+            if (!e.currentTarget.hasPointerCapture(e.pointerId)) return;
+            moved.current = true;
+            const r = e.currentTarget.ownerSVGElement!.getBoundingClientRect();
+            seek(((e.clientX - r.left) * (800 / r.width) - 60) / ((760 - 60) / (n - 1))); // screen x -> viewBox x -> week index
+          }}
+          onClick={() => { if (!moved.current) { seek(Math.round(p)); drillBus.weekMode = true; setUrl({ screen: "explore", tab: 2 }); } }}
+          onKeyDown={(e) => {
+            const d = e.key === "ArrowRight" || e.key === "ArrowUp" ? 1 : e.key === "ArrowLeft" || e.key === "ArrowDown" ? -1 : 0;
+            if (d) { e.preventDefault(); seek(Math.round(p) + d); }
+          }} />
         <text x={X(p) > 620 ? X(p) - 14 : X(p) + 12} y={yAt + (X(p) > 620 ? 22 : -12)} textAnchor={X(p) > 620 ? "end" : "start"} fontFamily="Space Mono" fontSize={12} fontWeight={700} fill={C.sapphireInk}>TY {fmtMoney(cur.sales.ty)}</text>
       </svg>
-      <div style={{ display: "flex", alignItems: "center", gap: 14, marginTop: 8 }}>
-        <span style={{ fontFamily: MONO, fontSize: 12, fontWeight: 700, whiteSpace: "nowrap" }}>W{cur.wk}</span>
-        <input type="range" min={0} max={n - 1} step={0.01} value={p} aria-label="Playhead week"
-          onChange={(e) => { cancelAnimationFrame(raf.current); setPlaying(false); paused.current = true; const v = +e.target.value; setP(v); setWeekFromP(v); }} style={{ flex: 1 }} />
-        <span className="hide-narrow" style={{ fontFamily: MONO, fontSize: 11, color: C.muted, whiteSpace: "nowrap" }}>0.9 s / week · pausable</span>
-      </div>
       <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(170px,1fr))", gap: 8, marginTop: 16 }}>
         {events.map((e, k) => {
           const vis = p >= evIdx(e) - 0.001;
