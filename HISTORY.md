@@ -166,3 +166,10 @@
 - Fix: `app.json` is a static JSON import (bundled into the function; `includeFiles` dropped), and catalog loading returns a JSON 500 (`catalog`) instead of crashing.
 - Verification: rebuilt with the Vercel CLI, `app.json` sits inside the function bundle and the probe answers 400 from any directory on Node 22 and 24; a new ask-test check changes directory before calling the function and fails on the old code; test scripts no longer print esbuild "build was canceled" (dependency discovery off for server-only loading).
 - Not run, at the user's request: a live call to Claude.
+
+## Iteration 20 (review items: motion, partial week, briefing, playhead)
+- Motion: a header chip ("Animations off (system setting) · Turn on") appears only under reduce-motion; Play always animates because the viewer asked for it.
+- Partial week: KPI rows (header band and Explore) say when the selected week is the partial one and that its window figures include it.
+- Briefing: the summary shows its first 3 sentences as bullets with "Read the full summary"; a "This week · needs you" list maps each card the rules rank "Needs you" to its recommendation (stock R1, retention R3, overstock R2). The AI text is unchanged, so the validator results are too.
+- Explore G1: the range slider is gone; the playhead is dragged directly, is a keyboard slider when focused (arrow keys), and a tap without dragging drills into that week like the points.
+- Verification: browser checks of bullets and toggle, the action list at W29, the partial note at W30, drag W30 to W26, arrow keys W26 to W28, tap drills to G3; verify and build pass.

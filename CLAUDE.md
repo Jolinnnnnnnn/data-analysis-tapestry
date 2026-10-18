@@ -146,7 +146,7 @@ The pipeline is data -> metrics -> rules -> facts -> AI words -> validator -> UI
    All state lives in the URL hash (`#/explore/g4?wk=30&win=PTD&ly=0`); `&demo=blocked|metric|direction|subject` shows the held-back state for each check.
    The browser re-validates every AI text with its citations before showing it, and a failing text is replaced by its facts table with the failed check named.
    Charts are hand-built SVG/CSS with CSS transitions and requestAnimationFrame.
-   Motion follows the OS `prefers-reduced-motion` setting unless the footer "Animations" toggle (localStorage `tyly-motion`) is on.
+   Motion follows the OS `prefers-reduced-motion` setting unless the viewer turns it on (header chip shown only under reduce-motion, or the footer "Animations" toggle; localStorage `tyly-motion`); pressing Play always animates, and the G1 playhead is dragged directly (arrow keys when focused).
    Ask: Claude (`api/ask.ts`, structured output) or, when it is unavailable, the keyword parser returns a route (one of 12 templates + parameters + premise + unmatched entities).
    The browser checks the route (week range, entities a template can't filter by, premises against stored YoY/WoW values) and code writes the answer; the model never sees or writes a data value.
 8. **Build and deploy.**
@@ -199,7 +199,7 @@ The pipeline is data -> metrics -> rules -> facts -> AI words -> validator -> UI
 **Process and docs**
 - Work in a loop: ORIENT (NOTES, HISTORY tail) -> PLAN -> ACT -> VERIFY (with a second method) -> RECORD -> REFLECT.
 - For bugs, reproduce end to end first, as close to the user's experience as possible.
-- Next numbers: D27 in DECISIONS, Iteration 20 in HISTORY, P22 in PROMPTS.
+- Next numbers: D27 in DECISIONS, Iteration 21 in HISTORY, P22 in PROMPTS.
   NOTES holds the current state only.
 - The Python 3.9 venv is `.venv`: install with `.venv/bin/python -m pip` and run scripts with `.venv/bin/python -W ignore`.
 

@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { annotate } from "../lib/validator.js";
 import {
   checkTitle,
-  C, D, GOALS, MONO, PARTIAL, WEEKS, arrow, dateWords, fmtMoney, fmtNum, fmtPct, setUrl, tone, trailing, useUrl, weekAI,
+  C, D, GOALS, MONO, PARTIAL, WEEKS, arrow, dateWords, fmtMoney, fmtNum, fmtPct, setForceMotion, setUrl, tone, trailing, useMotionPref, useUrl, weekAI,
 } from "../lib/core";
 
 // Findings for search (titles written without figures; numbers live in the data, not in UI copy)
@@ -83,6 +83,17 @@ function WeekStrip() {
   );
 }
 
+/** Shown under KPI rows when the selected week is the partial one, so its figures aren't read as a full week. */
+export function PartialNote({ dark = false }: { dark?: boolean }) {
+  const u = useUrl();
+  if (u.wk !== PARTIAL) return null;
+  return (
+    <div style={{ padding: "6px 20px", fontFamily: MONO, fontSize: 11.5, color: dark ? C.onDarkFaint : C.muted }}>
+      ◔ W{PARTIAL} is partial, {D.meta.partial_week_days}: {u.win} figures include it, compared with the same days last year.
+    </div>
+  );
+}
+
 export function KpiBand({ dark = true }: { dark?: boolean }) {
   const u = useUrl();
   const b = trailing(u.wk, u.win);
@@ -91,17 +102,20 @@ export function KpiBand({ dark = true }: { dark?: boolean }) {
     ["UPT", b.upt, (x: number) => fmtNum(x, 2)], ["AUR", b.aur, (x: number) => fmtMoney(x, false)], ["Customers", b.customers, fmtNum],
   ] as const;
   return (
-    <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(140px,1fr))", background: dark ? C.band : "#fff", borderTop: dark ? "1px solid rgba(255,255,255,.08)" : undefined, boxShadow: dark ? undefined : `inset 0 0 0 1px ${C.hair}` }}>
-      {k.map(([label, blk, f]) => (
-        <div key={label} style={{ padding: "18px 20px", boxShadow: dark ? "inset 1px 0 0 rgba(255,255,255,.1)" : `1px 1px 0 ${C.hair}` }}>
-          <div style={{ fontSize: 12, fontWeight: 600, color: dark ? C.onDarkMuted : C.muted }}>{label}</div>
-          <div key={`${u.wk}${u.win}`} className="swap cond" style={{ marginTop: 6, fontWeight: 700, fontSize: 28, fontStretch: "80%" }}>{f(blk.ty as number)}</div>
-          <div style={{ fontFamily: MONO, fontSize: 12, color: tone(blk.yoy_pct, dark), display: "flex", gap: 8, flexWrap: "wrap" }}>
-            <span>{arrow(blk.yoy_pct)}{fmtPct(Math.abs(blk.yoy_pct))}</span>
-            {u.ly && <span style={{ color: dark ? C.onDarkFaint : C.muted }}>LY {f(blk.ly as number)}</span>}
+    <div style={{ background: dark ? C.band : undefined }}>
+      <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(140px,1fr))", background: dark ? C.band : "#fff", borderTop: dark ? "1px solid rgba(255,255,255,.08)" : undefined, boxShadow: dark ? undefined : `inset 0 0 0 1px ${C.hair}` }}>
+        {k.map(([label, blk, f]) => (
+          <div key={label} style={{ padding: "18px 20px", boxShadow: dark ? "inset 1px 0 0 rgba(255,255,255,.1)" : `1px 1px 0 ${C.hair}` }}>
+            <div style={{ fontSize: 12, fontWeight: 600, color: dark ? C.onDarkMuted : C.muted }}>{label}</div>
+            <div key={`${u.wk}${u.win}`} className="swap cond" style={{ marginTop: 6, fontWeight: 700, fontSize: 28, fontStretch: "80%" }}>{f(blk.ty as number)}</div>
+            <div style={{ fontFamily: MONO, fontSize: 12, color: tone(blk.yoy_pct, dark), display: "flex", gap: 8, flexWrap: "wrap" }}>
+              <span>{arrow(blk.yoy_pct)}{fmtPct(Math.abs(blk.yoy_pct))}</span>
+              {u.ly && <span style={{ color: dark ? C.onDarkFaint : C.muted }}>LY {f(blk.ly as number)}</span>}
+            </div>
           </div>
-        </div>
-      ))}
+        ))}
+      </div>
+      <PartialNote dark={dark} />
     </div>
   );
 }
@@ -115,6 +129,7 @@ function Headline({ wk }: { wk: number }) {
 
 export default function Header() {
   const u = useUrl();
+  const m = useMotionPref();
   const w = weekAI(u.wk);
   const dates = D.meta.week_dates_ty[String(u.wk)];
   const sev = w.counts.n_alerts_by_severity;
@@ -134,6 +149,11 @@ export default function Header() {
           ))}
         </nav>
         <div style={{ flex: 1 }} />
+        {m.sysReduce && !m.force && (
+          <button type="button" onClick={() => setForceMotion(true)} style={{ padding: "5px 11px", border: "1px solid rgba(255,255,255,.3)", borderRadius: 999, background: "transparent", color: C.onDarkMuted, fontSize: 12, fontWeight: 600, cursor: "pointer", whiteSpace: "nowrap" }}>
+            Animations off (system setting) · Turn on
+          </button>
+        )}
         <Search />
       </div>
       <div className="pad-x" style={{ display: "flex", alignItems: "center", gap: 20, padding: "8px 40px 10px", borderTop: "1px solid rgba(255,255,255,.1)", flexWrap: "wrap" }}>
