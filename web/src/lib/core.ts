@@ -3,6 +3,7 @@
 // geometry (bar widths, chart coordinates) and display formatting (0.128 → +12.8%, 71311 → $71.3K).
 import { useEffect, useState, useSyncExternalStore } from "react";
 import raw from "../data/app.json";
+import { VOCAB } from "./validator.js";
 
 export const D: any = raw;
 export const WEEKS: number[] = D.meta.weeks;
@@ -60,11 +61,28 @@ export const SEV = {
   warning: { icon: "▲", label: "WARNING", color: C.warnText, cell: C.warn },
   info: { icon: "●", label: "INFO", color: C.info, cell: C.ly },
 } as const;
+/** Display names for the channel segments in new_insider_by_segment (regions keep their own names). */
+export const SEGMENT_NAME: Record<string, string> = { OUTLET: "Outlet", RETAIL: "Full-price retail", "Retail Store": "Stores", eComm: "eComm" };
 export const WINDOWED = ["FAMILY_L4W_DECLINE", "WOS_LOW", "WOS_HIGH", "WOS_COLLAPSE_VS_LY", "RECEIPTS_BELOW_SALES"];
 export const ruleThreshold = (id: string) => {
   const m = /([\d.]+)/.exec(ruleById(id)?.rule || "");
   return m ? parseFloat(m[1]) : null;
 };
+
+// ---------- validator checks and demos ----------
+export const CHECK_INFO: { id: string; title: string; text: string }[] = VOCAB.checks;
+export const checkTitle = (id: string) => CHECK_INFO.find((c) => c.id === id)?.title ?? id;
+/** Briefing "&demo=<id>": variants of the week's summary built by 16_generate_summaries.py; each must fail its check. */
+export const DEMOS = [
+  { id: "blocked", check: "citation", label: "Edited number", hint: "One printed number is changed after rendering, so it no longer matches the fact it cites",
+    banner: "one printed number in this week's AI summary was changed after rendering, so it no longer matches the fact it cites." },
+  { id: "metric", check: "metric", label: "Wrong metric", hint: "A real fact is quoted under the wrong metric word",
+    banner: "a sentence was put in front of this week's AI summary that quotes a real fact under the wrong metric word." },
+  { id: "direction", check: "direction", label: "Wrong direction", hint: "An up or down word contradicts the sign of the change it cites",
+    banner: "a sentence was put in front of this week's AI summary whose up or down word contradicts the sign of the change it cites." },
+  { id: "subject", check: "subject", label: "Wrong subject", hint: "A total-business fact is put under a named customer group",
+    banner: "a sentence was put in front of this week's AI summary that puts a total-business fact under a named customer group." },
+];
 
 /** Which goal a fact belongs to (colours numbers in the AI text). */
 export function goalOfFact(path: string): number {

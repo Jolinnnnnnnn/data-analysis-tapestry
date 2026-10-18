@@ -231,7 +231,7 @@
    "severity": "warning",
    "rule_id": "WOS_HIGH",
    "entity": "Knit Dress",
-   "message": "Knit Dress weeks of supply 21.2 (LY same week 8.6).",
+   "message": "Knit Dress weeks of supply 21.3 (LY same week 8.6).",
    "values": {
     "wos": 21.25,
     "wos_ly_same_week": 8.56,

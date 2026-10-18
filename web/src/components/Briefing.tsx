@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useRef, useState } from "react";
-import { annotate, injectError, nearestFact, validateText } from "../lib/validator.js";
+import { annotate, validateText } from "../lib/validator.js";
 import {
-  C, D, GOALS, MONO, SEV, WINDOWED, askBus, fmtMoney, fmtNum, fmtPct, fmtWos, goalOfFact, setUrl, useReducedMotion, useUrl, weekAI,
+  C, D, DEMOS, GOALS, MONO, SEV, WINDOWED, askBus, checkTitle, fmtNum, fmtPct, fmtWos, goalOfFact, setUrl, useReducedMotion, useUrl, weekAI,
 } from "../lib/core";
 
 // ---------- helpers ----------
@@ -19,13 +19,6 @@ function sourceOf(path: string, sources: Record<string, string>) {
 function rawStr(v: any) {
   return typeof v === "number" ? String(v) : JSON.stringify(v);
 }
-function formatLike(raw: string, v: number) {
-  const signed = /^[+\-−–]/.test(raw);
-  if (raw.includes("%")) return fmtPct(v, signed);
-  if (raw.includes("$")) return fmtMoney(v);
-  const dec = raw.includes(".") ? raw.split(".")[1].replace(/\D/g, "").length : 0;
-  return v.toFixed(dec);
-}
 
 // ---------- M8: the summary with its number check ----------
 type Phase = "checking" | "done" | "failed" | "folding" | "folded";
@@ -34,10 +27,15 @@ function Summary() {
   const u = useUrl();
   const rm = useReducedMotion();
   const w = weekAI(u.wk);
-  const text = u.demo === "blocked" ? injectError(w.summary) : w.summary;
-  const { segs, res } = useMemo(() => annotate(text, w.facts), [text, w.facts]);
+  // a demo (&demo=metric ...) swaps in a pipeline-built variant of this week's summary that one check must stop
+  const shown = w.demos[u.demo] || { text: w.summary, citations: w.summary_citations };
+  const text: string = shown.text;
+  const { segs, res } = useMemo(() => annotate(text, w.facts, shown.citations), [shown, w.facts]); // eslint-disable-line react-hooks/exhaustive-deps
   const nums = segs.filter((s: any) => s.num);
-  const failIdx = nums.findIndex((s: any) => s.fact == null);
+  const blocked = res.status !== "PASS";
+  const firstBad = nums.findIndex((s: any) => !s.ok);
+  // a claim with no number of its own (e.g. a rank word) fails after the last number has been checked
+  const failIdx = !blocked ? -1 : firstBad >= 0 ? firstBad : nums.length;
   const [lit, setLit] = useState(0);
   const [phase, setPhase] = useState<Phase>("checking");
   const [flash, setFlash] = useState(false);
@@ -49,7 +47,6 @@ function Summary() {
 
   useEffect(() => {
     const timers: any[] = [];
-    const blocked = failIdx >= 0;
     if (rm) { setLit(blocked ? failIdx : nums.length); setPhase(blocked ? "folded" : "done"); return; }
     setLit(0); setPhase("checking"); setFlash(false);
     let n = 0;
@@ -60,7 +57,7 @@ function Summary() {
         timers.push(setTimeout(() => setPhase("folding"), 700), setTimeout(() => setPhase("folded"), 1000));
         return;
       }
-      if (n + 1 >= nums.length) { clearInterval(iv); setLit(nums.length); setPhase("done"); return; }
+      if (!blocked && n + 1 >= nums.length) { clearInterval(iv); setLit(nums.length); setPhase("done"); return; }
       n += 1; setLit(n);
     }, 70);
     timers.push(iv);
@@ -71,17 +68,20 @@ function Summary() {
   const folded = phase === "folded";
   const factsShown = factsOpen || folded;
   const okCount = failed ? failIdx : phase === "done" ? nums.length : lit;
+  const bad = blocked ? res.failures[0] : null; // failures are sorted by position: the first one stops the replay
   const badge = phase === "done"
     ? { bg: "#E3F2E8", ink: C.up, l1: "✓ Every number", l2: `checked · ${res.n_matched}/${res.n_numbers}` }
-    : failed ? { bg: C.critTint, ink: C.crit, l1: `◆ ${res.unmatched.length} number failed`, l2: `held back · ${okCount}/${res.n_numbers} ok` }
+    : failed ? { bg: C.critTint, ink: C.crit, l1: `◆ ${checkTitle(bad.check)} check failed`, l2: `held back · ${okCount}/${res.n_numbers} ok` }
     : { bg: "#E9EDF7", ink: C.sapphireInk, l1: "Checking numbers", l2: `${lit}/${res.n_numbers}` };
   const src = w.facts._sources || {};
   const rows = nums.map((s: any, i: number) => {
     const fact = s.fact as string | null;
-    return { i, fact, text: s.text.trim(), path: fact ? sourceOf(fact, src) : "no matching fact", raw: fact ? rawStr(getPath(w.facts, fact)) : "—" };
+    const value = fact ? getPath(w.facts, fact) : undefined;
+    return {
+      i, fact, ok: s.ok, checks: s.checks as string[], failures: s.failures as any[], text: s.text.trim(),
+      path: fact ? sourceOf(fact, src) : "no citation", raw: value === undefined ? "not in facts" : rawStr(value),
+    };
   });
-  const bad = failIdx >= 0 ? rows[failIdx] : null;
-  const near = bad ? nearestFact(bad.text, w.facts) : null;
 
   function enter(i: number, e: React.MouseEvent<HTMLSpanElement>) {
     const R = root.current!.getBoundingClientRect();
@@ -106,9 +106,13 @@ function Summary() {
           <span style={{ whiteSpace: "nowrap" }}>{badge.l1}</span><span style={{ whiteSpace: "nowrap" }}>{badge.l2}</span>
         </div>
         <div className="link" onClick={() => setRun((x) => x + 1)} style={{ marginTop: 10, fontSize: 12, fontWeight: 600, color: C.muted }}>Replay check</div>
-        {u.demo === "blocked"
-          ? <div className="link" onClick={() => setUrl({ demo: "" })} style={{ marginTop: 6, fontSize: 12, fontWeight: 600, color: C.crit }}>Exit error demo</div>
-          : <div className="link" onClick={() => setUrl({ demo: "blocked" })} style={{ marginTop: 6, fontSize: 12, fontWeight: 600, color: C.muted }} title="Changes one number in the AI text (12.7% → 13.7%) to show what the validator does">Inject an error</div>}
+        <div style={{ marginTop: 14, fontFamily: MONO, fontSize: 10.5, fontWeight: 700, color: C.muted }}>TRY A WRONG TEXT</div>
+        {DEMOS.map((d) => (
+          <div key={d.id} className="link" onClick={() => setUrl({ demo: u.demo === d.id ? "" : d.id })} title={d.hint}
+            style={{ marginTop: 5, fontSize: 12, fontWeight: u.demo === d.id ? 700 : 600, color: u.demo === d.id ? C.crit : C.muted }}>
+            {u.demo === d.id ? `✕ ${d.label}` : d.label}
+          </div>
+        ))}
       </div>
       <div style={{ flex: "1 1 460px", minWidth: 0 }}>
         <div style={{ overflow: "hidden", transition: "max-height .3s ease, opacity .3s ease", maxHeight: phase === "folding" || folded ? 0 : 900, opacity: phase === "folding" || folded ? 0 : 1 }}>
@@ -135,24 +139,27 @@ function Summary() {
           <div className="fade-in" style={{ padding: "18px 20px", background: "#fff", boxShadow: `inset 0 0 0 1.5px ${C.crit}` }}>
             <div style={{ display: "flex", alignItems: "center", gap: 10, flexWrap: "wrap" }}>
               <span style={{ padding: "4px 8px", borderRadius: 4, background: C.crit, color: "#fff", fontFamily: MONO, fontSize: 11, fontWeight: 700, whiteSpace: "nowrap" }}>◆ HELD BACK</span>
-              <b style={{ fontSize: 18 }}>The summary is hidden because one number didn't match its source.</b>
+              <b style={{ fontSize: 18 }}>The summary is hidden because {failIdx < nums.length ? "one number" : "one claim"} failed the {checkTitle(bad.check).toLowerCase()} check.</b>
             </div>
             <p style={{ margin: "10px 0 0", fontSize: 14.5, lineHeight: 1.6, color: C.body, maxWidth: 760 }}>
-              The AI wrote <b style={{ fontFamily: MONO, color: C.crit }}>{bad.text}</b>. No fact in this week's facts matches it at that precision.
-              {near && <> The closest is <span style={{ fontFamily: MONO }}>{sourceOf(near.path, src)}</span> = <b style={{ fontFamily: MONO }}>{rawStr(near.value)}</b>, which formats to <b style={{ fontFamily: MONO }}>{formatLike(bad.text, near.value)}</b>.</>}
-              {" "}Nothing unchecked is shown, so you're seeing the raw facts the AI was given. The flagged items below come from the rules and are unaffected.
+              The AI wrote <b style={{ fontFamily: MONO, color: C.crit }}>{bad.text.trim()}</b>
+              {bad.key ? <>, citing <span style={{ fontFamily: MONO, fontWeight: 700 }}>{bad.key}</span>{getPath(w.facts, bad.key) !== undefined && <>{" "}(<span style={{ fontFamily: MONO }}>{sourceOf(bad.key, src)}</span> = <span style={{ fontFamily: MONO }}>{rawStr(getPath(w.facts, bad.key))}</span>)</>}</> : bad.check === "citation" ? " without citing a fact" : ""}.
+              {" "}What failed: <span style={{ fontFamily: MONO, fontSize: 13 }}>{bad.detail}</span>.
+            </p>
+            <p style={{ margin: "8px 0 0", fontSize: 14.5, lineHeight: 1.6, color: C.body, maxWidth: 760 }}>
+              Nothing unchecked is shown, so you're seeing the raw facts the AI was given. The flagged items below come from the rules and are unaffected.
             </p>
           </div>
         )}
         <div style={{ display: "flex", alignItems: "center", gap: 16, marginTop: 16, fontSize: 13, flexWrap: "wrap" }}>
           <b className="clickable" onClick={() => setFactsOpen(!factsOpen)}>{factsShown ? "− " : "+ "}Facts used ({res.n_numbers})</b>
-          <span style={{ color: C.muted }}>Hover any number to see its source. Rules decide what's unusual; the AI words the facts.</span>
+          <span style={{ color: C.muted }}>Hover any number to see the fact it cites and the checks it passed. Rules decide what's unusual; the AI words the facts.</span>
         </div>
         {factsShown && (
           <div className="panel fade-in" style={{ marginTop: 12, fontSize: 12.5, overflowX: "auto" }}>
             <div style={{ minWidth: 560 }}>
               <div style={{ display: "grid", gridTemplateColumns: "22px minmax(0,1.7fr) minmax(0,.7fr) minmax(0,.5fr)", gap: 10, padding: "9px 12px", borderBottom: `1.5px solid ${C.ink}`, fontFamily: MONO, fontSize: 10.5, fontWeight: 700 }}>
-                <span /><span>SOURCE PATH</span><span>RAW</span><span>SHOWN</span>
+                <span /><span>CITED FACT · SOURCE</span><span>RAW</span><span>SHOWN</span>
               </div>
               {rows.map((r: any) => {
                 const fail = failed && r.i === failIdx;
@@ -160,7 +167,10 @@ function Summary() {
                 return (
                   <div key={r.i} data-fact={r.i} style={{ display: "grid", gridTemplateColumns: "22px minmax(0,1.7fr) minmax(0,.7fr) minmax(0,.5fr)", gap: 10, padding: "7px 12px", borderBottom: "1px solid rgba(52,64,85,.08)", transition: "background .15s ease", background: hover?.i === r.i ? "#DCE8FA" : fail ? C.critTint : "transparent" }}>
                     <span style={{ fontWeight: 700, color: fail ? C.crit : done ? C.up : C.ly }}>{fail ? "✗" : done ? "✓" : "·"}</span>
-                    <span style={{ fontFamily: MONO, fontSize: 11, overflowWrap: "anywhere" }}>{r.path}</span>
+                    <span style={{ fontFamily: MONO, fontSize: 11, overflowWrap: "anywhere" }}>
+                      <b style={{ color: fail ? C.crit : C.ink }}>{r.fact ?? "no citation"}</b>
+                      {r.fact && r.path !== r.fact && <span style={{ display: "block", color: C.muted }}>{r.path}</span>}
+                    </span>
                     <span style={{ fontFamily: MONO, fontSize: 11 }}>{r.raw}</span>
                     <span style={{ fontFamily: MONO, fontSize: 11, fontWeight: 700, color: fail ? C.crit : C.ink }}>{r.text}</span>
                   </div>
@@ -177,9 +187,14 @@ function Summary() {
         </svg>
       )}
       {hover && hv && (
-        <div style={{ position: "absolute", zIndex: 20, width: 300, padding: "10px 12px", borderRadius: 6, background: C.ink, color: "#fff", font: `400 12px/1.5 ${MONO}`, boxShadow: "0 10px 30px rgba(0,0,0,.25)", pointerEvents: "none", left: hover.x, top: hover.y }}>
-          <span style={{ display: "block", color: hv.fact ? "#9FE0B8" : C.downOnDark }}>{hv.fact ? "✓ matched" : "✗ no match"}</span>
-          {hv.path}<br />= {hv.raw} → {hv.text}
+        <div style={{ position: "absolute", zIndex: 20, width: 320, padding: "10px 12px", borderRadius: 6, background: C.ink, color: "#fff", font: `400 12px/1.5 ${MONO}`, boxShadow: "0 10px 30px rgba(0,0,0,.25)", pointerEvents: "none", left: hover.x, top: hover.y, overflowWrap: "anywhere" }}>
+          <span style={{ display: "block", fontWeight: 700, color: hv.ok ? "#9FE0B8" : C.downOnDark }}>
+            {hv.ok ? "✓ cites " : hv.fact ? `✗ ${checkTitle(hv.failures[0]?.check || "citation")} check failed · ` : "✗ no citation"}
+            {hv.fact && <span style={{ color: "#fff" }}>{hv.fact}</span>}
+          </span>
+          {hv.fact && <><span style={{ color: C.onDarkMuted }}>{hv.path}</span><br />= {hv.raw} → {hv.text}</>}
+          {!hv.ok && hv.failures[0] && <span style={{ display: "block", marginTop: 4, color: C.downOnDark }}>{hv.failures[0].detail}</span>}
+          {hv.checks.length > 0 && <span style={{ display: "block", marginTop: 6, color: C.onDarkMuted }}>checked: {hv.checks.map(checkTitle).join(" · ").toLowerCase()}</span>}
         </div>
       )}
     </div>
@@ -298,7 +313,8 @@ function MicroChart({ card }: { card: any }) {
 function Card({ card, rank }: { card: any; rank: number }) {
   const pill = PILL[card.pill];
   const goal = GOALS[CARD_GOAL[card.card_id]];
-  const check = validateText(`${card.headline} ${card.body}`, card.values);
+  const check = validateText(`${card.headline} ${card.body}`, card.values, card.citations);
+  const why = check.failures[0];
   const ids = card.anomaly_ids as string[];
   const evidence = [...card.findings.filter((f: string) => f.startsWith("F")), ...ids.slice(0, 2)].join(" · ") + (ids.length > 2 ? ` +${ids.length - 2}` : "");
   return (
@@ -315,7 +331,10 @@ function Card({ card, rank }: { card: any; rank: number }) {
             <p style={{ margin: 0, fontSize: 14.5, lineHeight: 1.6, color: C.body }}>{card.body}</p>
           </>
         ) : (
-          <p style={{ margin: 0, fontSize: 14, color: C.crit }}><b>◆ Held back:</b> this item's wording had a number not found in its facts ({check.unmatched.join(", ")}).</p>
+          <p style={{ margin: 0, fontSize: 14, color: C.crit }}>
+            <b>◆ Held back:</b> this item failed the {checkTitle(why.check).toLowerCase()} check at <b style={{ fontFamily: MONO }}>{why.text.trim()}</b>
+            {why.key && <> (cites <span style={{ fontFamily: MONO }}>{why.key}</span>)</>}: {why.detail}.
+          </p>
         )}
         <div style={{ display: "flex", alignItems: "center", gap: 16, marginTop: 12, fontSize: 13, fontWeight: 700, flexWrap: "wrap" }}>
           <button className={rank === 1 ? "btn-dark" : "btn-line"} onClick={() => setUrl({ screen: "explore", tab: TAB_OF[card.explore_tab] }, true)}>Open details</button>

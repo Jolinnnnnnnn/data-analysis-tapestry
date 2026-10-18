@@ -1,11 +1,10 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import {
   C, D, EASE, GOALS, MONO, PARTIAL, SEV, WEEKS, WINDOWED, arrow, fmtMoney, fmtNum, fmtPct, fmtPts, fmtUsd0, fmtWos,
-  ruleThreshold, setUrl, tone, trailing, useReducedMotion, useUrl, weekAI,
+  SEGMENT_NAME, ruleThreshold, setUrl, tone, trailing, useReducedMotion, useUrl, weekAI,
 } from "../lib/core";
 
 export const drillBus = { weekMode: false };
-export const SEGMENT_NAME: Record<string, string> = { OUTLET: "Outlet", RETAIL: "Full-price retail", "Retail Store": "Stores", eComm: "eComm" };
 
 // ---------- shared pieces ----------
 function Panel({ title, note, children, style }: { title: string; note?: string; children: any; style?: any }) {

@@ -6,7 +6,7 @@ Consumer Intelligence & Analytics exercise on `TYLY_data_sample.xlsx` (FY26 vs F
 ```bash
 ./run_all.sh --clean
 ```
-Creates `.venv` if needed, runs `scripts/01…14` (analysis → `metrics.json`, `anomalies.json`, findings audit) and `scripts/15…18` (AI pipeline: facts → Claude-worded texts → number validator → `web/src/data/app.json`), then the web parity check and production build. It fails if any AI-written number doesn't match its facts. The raw file in `data/raw/` is read-only.
+Creates `.venv` if needed, runs `scripts/01…14` (analysis → `metrics.json`, `anomalies.json`, findings audit) and `scripts/15…18` (AI pipeline: facts → Claude-worded texts that cite fact keys → validator → `web/src/data/app.json`), then the web parity check and production build. It fails if any AI-written number is not the fact it cites, or the words around it disagree with that fact. The raw file in `data/raw/` is read-only.
 
 ## Dashboard
 ```bash

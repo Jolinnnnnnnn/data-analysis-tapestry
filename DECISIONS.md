@@ -120,6 +120,7 @@ Evidence scripts in brackets. Sensitivity numbers are filled from `scripts/09_ch
 - Every printed number ($, %, K, pts, decimals, integers, signed) must equal some value in the facts the text was written from, within half a unit of the printed precision; explicit signs must match; week labels/FY/L1W/dates/"4-week" are masked; week-index fields are not citable; rule thresholds are.
 - Python (`scripts/17_validate_summaries.py`) gates the build; a JavaScript port (`web/src/lib/validator.js`) re-checks every text in the browser before showing it; `web/scripts/parity.mjs` asserts both reach identical verdicts and fact matches on all texts (56 texts, 513 numbers).
 - Limitation: an existence check, not a semantic one (a value several facts round to can match the "wrong" fact); mitigated by narrow per-card facts and a hand review of W28–W30.
+- Superseded by D25 for AI texts: texts now cite fact keys and six checks run. This existence check stays as the second layer, and is what `validateText(text, facts)` runs for a caller without citations.
 
 ## D19 Who writes the text
 - Default: texts written by Claude (this build session, acting as the model) from each week's facts only, stored in `ai/session_texts.json` with the md5 of those facts; stale md5 → deterministic template + warning. With `ANTHROPIC_API_KEY`, `16_generate_summaries.py` calls `claude-opus-5-5` (plug-in point marked) through the same validator, one retry with the unmatched numbers, else template. Per week: masthead headline, ~150-word summary, 5 cards.
@@ -135,8 +136,38 @@ Evidence scripts in brackets. Sensitivity numbers are filled from `scripts/09_ch
 ## D22 Playhead events are chosen by rules
 - One event per week by priority: first-ever critical rule → first stock-rule hit → week-on-week swing → YoY spike → transactions below LY → partial week. Event text is the rule's deterministic message from anomalies.json (not AI).
 
-## D23 Ask = fixed query templates
+## D23 Ask = fixed query templates (superseded by D26)
 - Eight templates over app.json; offline a keyword/regex picker chooses template + parameters; a model may replace only the picker (returns template + params, never numbers). Answers list the template, parameters and data read. Unmatched questions get "no template matches" instead of a guess.
 
 ## D24 Defaults and state
-- Default week W29 (last full week), window L4W, LY shown. All state lives in the URL hash (`#/explore/g4?wk=30&win=PTD&ly=0`), so any view is linkable; `&demo=blocked` shows the validator holding a text back.
+- Default week W29 (last full week), window L4W, LY shown. All state lives in the URL hash (`#/explore/g4?wk=30&win=PTD&ly=0`), so any view is linkable; `&demo=blocked` (edited number), `&demo=metric`, `&demo=direction` and `&demo=subject` show the validator holding a text back (D25).
+
+## D25 AI texts cite fact keys; the validator checks meaning, not just existence
+- Question: D18 asked only whether some fact matched each printed number, so it passed misstatements.
+  "W29 transactions -1.8% YoY" (the AOV change), "W29 demand fell 12.7%" (it rose) and "Gen Z demand was $71.3K" (total demand) all passed.
+  It also passed two live texts for the wrong reason: W30 "29%" (Pillow Tabby receipts) matched Tabby's L4W demand growth, and W28 "85" (returning Gen Z LY) matched a stock count.
+- Options: (a) keep the existence check and narrow the facts further; (b) parse free text and guess which fact each number means; (c) have the writer cite the fact key and check the words against it.
+- Choice: (c).
+  - Texts are placeholder sources, `{fact key|format}`, with no typed figures.
+    Formats: money_k ($71.3K), money ($564,028), money2 ($285.25), pct (12.7%), pct+ (+12.7%), pct0 (28%), pct2 (0.85%), pct_abs (a change without its sign, only after an up or down word), pts+ (+5.0 pts), int (1,142), wos (2.1), ratio2 (0.33).
+  - `render()` in 17 turns a source into the shown text plus one citation per number (span, key, format, value); 16 stores source, text and citations, 18 exports all three, and the UI never formats AI numbers.
+  - Six checks run in Python (17) and JavaScript (`web/src/lib/validator.js`), from one vocabulary (`web/src/lib/vocabulary.json`): citation (key exists, format fits the kind of value, the shown figure re-reads to the cited value; uncited and spelled-out numbers fail), metric, subject, period (window, YoY/WoW, last-year label), direction, and comparison (half, majority, doubled, rank words against the ranked lists in the facts).
+  - Attribution is deterministic: clauses split at sentence ends, `;` `:`, top-level commas and spaced dashes; each number takes the word attached right after it ("2.1 weeks of supply", "+12.7% YoY"), else the nearest word before it in its clause, else the nearest word after it (a last-year label works the other way round: it labels the number right after it, else the nearest number before it).
+  - Comparison and rank words use the clause first and then the sentence; a claim with nothing in the facts to check it against fails.
+  - The shared corpus `web/scripts/validator_cases.json` (51 cases) runs in 17 and in `parity.mjs`; both exit 1 if a case changes verdict or Python and JS disagree, so the Vercel build fails.
+  - Demos (`&demo=blocked|metric|direction|subject`) are built by 16 from the week's facts and asserted by 17 to fail exactly their check.
+  - The win card's facts now include `l4w_top_families_by_contrib` (copied, no arithmetic) so "Tabby and Pillow Tabby lead L4W growth" can be checked.
+  - `render()` and the rule messages in 12 (`_common.fixed`) round like the UI's `Number.toFixed` (exact binary value, ties away from zero); Python's `format()` rounds exact ties to even, which had put "21.2" in an alert next to "21.3" in the chart (W28 Knit Dress, 21.25).
+- Rationale: a misattribution is now visible as a key name, and every claim type that the facts can settle is checked deterministically.
+  When a rule is too strict for an honest sentence, the sentence is reworded and the rule stays (HISTORY Iteration 17 lists the rewordings).
+- Sensitivity: claim types that remain unchecked are listed in `vocabulary.json` (`unchecked`) and on the How page.
+  The nearest-word rule cannot read "X and Y respectively", so writers give each number its own clause.
+  `validateText(text, facts)` without citations still runs the D18 existence check, so callers that cannot cite (for example a future live Ask answer) keep working but get the weaker guarantee.
+
+## D26 Ask: Claude picks the template, code checks the choice and answers
+- A Vercel function (`web/api/ask.ts`) sends the question to Claude (`claude-opus-5-5`, effort low, server-side refusal fallback) with structured output against a fixed schema: one of 12 templates plus parameters, any premise the question takes for granted, any entity the template cannot filter by, and a one-line reading.
+- Claude never sees or writes a data value; the schema enums (families, weeks, windows) are read from app.json, and the reading is shown only if it has no numbers beyond week labels.
+- The browser runs the route through the same checks as the offline keyword parser (`web/src/lib/ask/engine.ts`): week in range, unmatched products or regions refuse instead of answering for the whole business, family templates need a family, and a premise is checked against the stored YoY and WoW values and stated before the answer.
+- Any failure (no key, timeout, rate limit, refusal) falls back to the keyword parser and the answer says which picker ran, so the public page never depends on the function.
+- Abuse guard: 300-character questions, a per-IP limit per warm instance, a small in-memory cache, same-origin check, and the Anthropic console spend limit as the hard cap.
+- Why not let Claude answer directly: an answer written by a model would need the number validator plus a semantic check; routing keeps every number in code and makes wrong-entity answers impossible by construction.

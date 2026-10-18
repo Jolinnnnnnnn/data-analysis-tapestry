@@ -3,7 +3,7 @@ Rules run FIRST (before any LLM). Each anomaly carries the exact metric values t
 so the UI/LLM can cite them and the validator can check them. Thresholds are documented in RULES.
 """
 import json
-from _common import PROC, TAB
+from _common import PROC, TAB, fixed
 
 M = json.loads((PROC / "metrics.json").read_text())
 WEEKS = M["meta"]["weeks"]
@@ -42,7 +42,7 @@ def add(rule, wk, msg, values, entity="total", severity=None):
 
 
 def f_pct(x):
-    return f"{x*100:+.1f}%"
+    return f"{'-' if x < 0 else '+'}{fixed(abs(x) * 100, 1)}%"
 
 
 for w in WEEKS:
@@ -67,7 +67,7 @@ for w in WEEKS:
         add("TXNS_YOY_NEG", w, f"W{w} transactions {f_pct(l1['txns']['yoy_pct'])} YoY.", {"txns_yoy_pct": l1["txns"]["yoy_pct"]})
     a = l1["aov"]["yoy_pct"]
     if a is not None and abs(a) >= 0.10:
-        add("AOV_YOY_SWING", w, f"W{w} AOV {f_pct(a)} YoY (${l1['aov']['ty']:.2f} vs ${l1['aov']['ly']:.2f}).",
+        add("AOV_YOY_SWING", w, f"W{w} AOV {f_pct(a)} YoY (${fixed(l1['aov']['ty'], 2)} vs ${fixed(l1['aov']['ly'], 2)}).",
             {"aov_yoy_pct": a, "aov_ty": l1["aov"]["ty"], "aov_ly": l1["aov"]["ly"]})
     g = l1["genz_new"]
     if g["yoy_pct"] is not None and g["yoy_pct"] < 0:
@@ -77,11 +77,11 @@ for w in WEEKS:
         add("GENZ_NEW_WOW_DROP", w, f"W{w} Gen Z new customers {f_pct(wow['genz_new'])} WoW.", {"genz_new_wow_pct": wow["genz_new"]}, "genz")
     sh = l1["genz_share_of_new"]
     if sh["ty"] is not None and sh["ly"] is not None and sh["ty"] < sh["ly"]:
-        add("GENZ_SHARE_BELOW_LY", w, f"W{w} Gen Z share of new {sh['ty']*100:.1f}% vs {sh['ly']*100:.1f}% LY.",
+        add("GENZ_SHARE_BELOW_LY", w, f"W{w} Gen Z share of new {fixed(sh['ty']*100, 1)}% vs {fixed(sh['ly']*100, 1)}% LY.",
             {"genz_share_of_new_ty": sh["ty"], "genz_share_of_new_ly": sh["ly"]}, "genz")
     ins = l4["genz_new_insider_rate"]["ty"]
     if ins is not None and ins < 0.20:
-        add("GENZ_NEW_INSIDER_LOW", w, f"L4W (W{l4['weeks'][0]}–W{l4['weeks'][-1]}) Insider attach of new Gen Z {ins*100:.1f}% (< 20%).",
+        add("GENZ_NEW_INSIDER_LOW", w, f"L4W (W{l4['weeks'][0]}–W{l4['weeks'][-1]}) Insider attach of new Gen Z {fixed(ins*100, 1)}% (< 20%).",
             {"genz_new_insider_rate_ty": ins, "weeks": l4["weeks"]}, "genz")
     ry = l4["returning_customers"]["yoy_pct"]
     if ry is not None and ry < 0.02:
@@ -100,21 +100,21 @@ for w in WEEKS:
         fam = iv["family"]
         if iv["wos"] is not None and iv["wos"] < 3.0:
             sev = "critical" if (fam in WINNERS or fam in GATEWAYS) else "warning"
-            add("WOS_LOW", w, f"{fam} weeks of supply {iv['wos']:.1f} (LY same week {iv['wos_ly_same_week']:.1f})"
+            add("WOS_LOW", w, f"{fam} weeks of supply {fixed(iv['wos'], 1)} (LY same week {fixed(iv['wos_ly_same_week'], 1)})"
                 + (" — G3 winner / Gen Z gateway." if sev == "critical" else "."),
                 {"wos": iv["wos"], "wos_ly_same_week": iv["wos_ly_same_week"], "on_hand_eow": iv["on_hand_eow"]}, fam, sev)
         if iv["wos"] is not None and iv["wos"] > 15.0:
-            add("WOS_HIGH", w, f"{fam} weeks of supply {iv['wos']:.1f} (LY same week {iv['wos_ly_same_week']:.1f}).",
+            add("WOS_HIGH", w, f"{fam} weeks of supply {fixed(iv['wos'], 1)} (LY same week {fixed(iv['wos_ly_same_week'], 1)}).",
                 {"wos": iv["wos"], "wos_ly_same_week": iv["wos_ly_same_week"], "on_hand_eow": iv["on_hand_eow"]}, fam)
         if iv["wos"] and iv["wos_ly_same_week"] and iv["wos"] / iv["wos_ly_same_week"] < 0.5:
-            add("WOS_COLLAPSE_VS_LY", w, f"{fam} weeks of supply {iv['wos']:.1f} vs {iv['wos_ly_same_week']:.1f} LY (less than half).",
+            add("WOS_COLLAPSE_VS_LY", w, f"{fam} weeks of supply {fixed(iv['wos'], 1)} vs {fixed(iv['wos_ly_same_week'], 1)} LY (less than half).",
                 {"wos": iv["wos"], "wos_ly_same_week": iv["wos_ly_same_week"]}, fam)
 
 latest = WEEKS[-1]
 for fam, r in pos.items():
     if r["receipts_to_sales_TY"] is not None and r["receipts_to_sales_TY"] < 0.5:
         add("RECEIPTS_BELOW_SALES", latest,
-            f"{fam} replenishment W24–29 covered {r['receipts_to_sales_TY']*100:.0f}% of units sold (LY {r['receipts_to_sales_LY']*100:.0f}%).",
+            f"{fam} replenishment W24–29 covered {fixed(r['receipts_to_sales_TY']*100, 0)}% of units sold (LY {fixed(r['receipts_to_sales_LY']*100, 0)}%).",
             {"receipts_to_sales_TY": r["receipts_to_sales_TY"], "receipts_to_sales_LY": r["receipts_to_sales_LY"],
              "receipts_W24_29_TY": r["receipts_W24_29_TY"], "receipts_W24_29_LY": r["receipts_W24_29_LY"]}, fam)
 

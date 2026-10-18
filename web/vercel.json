@@ -1,6 +1,6 @@
 {
-  "$schema": "https://openapi.vercel.sh/vercel.json",
   "framework": "vite",
   "buildCommand": "npm run verify && npm run build",
-  "outputDirectory": "dist"
+  "outputDirectory": "dist",
+  "functions": { "api/ask.ts": { "maxDuration": 30, "includeFiles": "src/data/app.json" } }
 }

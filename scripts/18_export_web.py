@@ -1,8 +1,9 @@
 """18 - Export the single JSON file the web dashboard reads: web/src/data/app.json.
 
 Selection only (no arithmetic): the metrics.json sections the UI shows, the anomaly rules and alerts, the timeline,
-and for each week the AI texts (summary, headline, cards) together with the exact facts they were written from and
-the Python validator's verdict (the web app re-validates in the browser and web/scripts/parity.mjs checks both agree).
+and for each week the AI texts (summary, headline, cards) as placeholder source + rendered text + citations, together
+with the exact facts they cite, the validator demos, and the Python validator's verdicts (the web app re-validates in
+the browser and web/scripts/parity.mjs checks both agree, including on the shared corpus results in build).
 """
 import importlib.util
 import json
@@ -35,8 +36,14 @@ for wk in M["meta"]["weeks"]:
     facts = json.loads((ROOT / s["facts_file"]).read_text())
     card_facts = {c["card_id"]: c for c in json.loads((ROOT / b["cards_file"]).read_text())["cards"]}
     weeks[str(wk)] = {
-        "headline": s["headline"], "headline_validation": s["headline_validation"],
-        "summary": s["text"], "summary_validation": s["validation"], "generated_by": s["generated_by"],
+        "headline": s["headline"], "headline_source": s["headline_source"], "headline_citations": s["headline_citations"],
+        "headline_validation": s["headline_validation"], "headline_generated_by": s["headline_generated_by"],
+        "summary": s["text"], "summary_source": s["source"], "summary_citations": s["citations"],
+        "summary_validation": s["validation"], "generated_by": s["generated_by"],
+        # demos carry their compact verdict only (status, failures, unmatched): enough for the UI and the parity check
+        "demos": {k: {**{f: d[f] for f in ("text", "citations", "expect_check")},
+                      "validation": {f: d["validation"][f] for f in ("status", "failures", "unmatched")}}
+                  for k, d in s["demos"].items()},
         "facts_file": s["facts_file"], "facts": facts,
         "counts": {k: b[k] for k in ("n_critical_alerts", "n_alerts_by_severity", "n_alerts", "n_rules", "rule_hits", "n_needs_you", "n_fyi", "n_rules_fired", "n_alerts_all_weeks_max")},
         "cards": [{**c, "values": card_facts[c["card_id"]]["values"], "sources": card_facts[c["card_id"]]["sources"]} for c in b["cards"]],

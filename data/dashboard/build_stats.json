@@ -5,14 +5,707 @@
  "texts_pass": 56,
  "summaries_total": 8,
  "cards_total": 40,
- "numbers_checked": 513,
+ "numbers_checked": 514,
+ "checks_run": {
+  "citation": 514,
+  "metric": 374,
+  "subject": 314,
+  "period": 238,
+  "direction": 32,
+  "comparison": 14
+ },
  "selftest_injected": {
   "original_status": "PASS",
   "injected_status": "FLAGGED",
   "unmatched": [
    "+13.7%"
+  ],
+  "failed_checks": [
+   "citation"
   ]
  },
+ "corpus": [
+  {
+   "id": "repro-correct",
+   "status": "PASS",
+   "checks": [],
+   "failures": [],
+   "unmatched": []
+  },
+  {
+   "id": "repro-metric",
+   "status": "FLAGGED",
+   "checks": [
+    "metric"
+   ],
+   "failures": [
+    [
+     "metric",
+     "l1w_aov_yoy_pct",
+     "-1.8%",
+     "'transactions' means transactions, but l1w_aov_yoy_pct is AOV"
+    ]
+   ],
+   "unmatched": [
+    "-1.8%"
+   ]
+  },
+  {
+   "id": "repro-direction",
+   "status": "FLAGGED",
+   "checks": [
+    "direction"
+   ],
+   "failures": [
+    [
+     "direction",
+     "l1w_sales_yoy_pct",
+     "12.7%",
+     "'fell' says down, but l1w_sales_yoy_pct is positive"
+    ]
+   ],
+   "unmatched": [
+    "12.7%"
+   ]
+  },
+  {
+   "id": "repro-subject",
+   "status": "FLAGGED",
+   "checks": [
+    "subject"
+   ],
+   "failures": [
+    [
+     "subject",
+     "l1w_sales_ty",
+     "$71.3K",
+     "'Gen Z' is named, but l1w_sales_ty belongs to the total business"
+    ]
+   ],
+   "unmatched": [
+    "$71.3K"
+   ]
+  },
+  {
+   "id": "repro-existence-mode-misses-it",
+   "status": "PASS",
+   "checks": [],
+   "failures": [],
+   "unmatched": []
+  },
+  {
+   "id": "negative-with-down-word-before",
+   "status": "PASS",
+   "checks": [],
+   "failures": [],
+   "unmatched": []
+  },
+  {
+   "id": "negative-with-down-word-after",
+   "status": "PASS",
+   "checks": [],
+   "failures": [],
+   "unmatched": []
+  },
+  {
+   "id": "unsigned-change-with-down-word",
+   "status": "PASS",
+   "checks": [],
+   "failures": [],
+   "unmatched": []
+  },
+  {
+   "id": "unsigned-change-with-wrong-word",
+   "status": "FLAGGED",
+   "checks": [
+    "direction"
+   ],
+   "failures": [
+    [
+     "direction",
+     "l1w_sales_wow_pct",
+     "18.8%",
+     "'rose' says up, but l1w_sales_wow_pct is negative"
+    ]
+   ],
+   "unmatched": [
+    "18.8%"
+   ]
+  },
+  {
+   "id": "unsigned-change-without-word",
+   "status": "FLAGGED",
+   "checks": [
+    "direction"
+   ],
+   "failures": [
+    [
+     "direction",
+     "l1w_sales_wow_pct",
+     "18.8%",
+     "an unsigned change (pct_abs) needs an up or down word in its clause"
+    ]
+   ],
+   "unmatched": [
+    "18.8%"
+   ]
+  },
+  {
+   "id": "attached-label-wins",
+   "status": "PASS",
+   "checks": [],
+   "failures": [],
+   "unmatched": []
+  },
+  {
+   "id": "attached-label-swapped",
+   "status": "FLAGGED",
+   "checks": [
+    "period"
+   ],
+   "failures": [
+    [
+     "period",
+     "l1w_sales_wow_pct",
+     "-18.8%",
+     "'YoY' is YOY, but l1w_sales_wow_pct is WOW"
+    ],
+    [
+     "period",
+     "l1w_sales_yoy_pct",
+     "+12.7%",
+     "'WoW' is WOW, but l1w_sales_yoy_pct is YOY"
+    ]
+   ],
+   "unmatched": [
+    "-18.8%",
+    "+12.7%"
+   ]
+  },
+  {
+   "id": "attached-subject-wins",
+   "status": "PASS",
+   "checks": [],
+   "failures": [],
+   "unmatched": []
+  },
+  {
+   "id": "small-share-two-decimals",
+   "status": "PASS",
+   "checks": [],
+   "failures": [],
+   "unmatched": []
+  },
+  {
+   "id": "positive-with-down-word",
+   "status": "FLAGGED",
+   "checks": [
+    "direction"
+   ],
+   "failures": [
+    [
+     "direction",
+     "l4w_sales_yoy_pct",
+     "+13.2%",
+     "'dropped' says down, but l4w_sales_yoy_pct is positive"
+    ]
+   ],
+   "unmatched": [
+    "+13.2%"
+   ]
+  },
+  {
+   "id": "uncited-literal",
+   "status": "FLAGGED",
+   "checks": [
+    "citation"
+   ],
+   "failures": [
+    [
+     "citation",
+     null,
+     "+12.7%",
+     "printed number with no citation"
+    ]
+   ],
+   "unmatched": [
+    "+12.7%"
+   ]
+  },
+  {
+   "id": "missing-key",
+   "status": "FLAGGED",
+   "checks": [
+    "citation"
+   ],
+   "failures": [
+    [
+     "citation",
+     "l1w_sales_yoy",
+     "+12.7%",
+     "not a citable number in this text's facts"
+    ]
+   ],
+   "unmatched": [
+    "+12.7%"
+   ]
+  },
+  {
+   "id": "week-index-not-citable",
+   "status": "FLAGGED",
+   "checks": [
+    "citation"
+   ],
+   "failures": [
+    [
+     "citation",
+     "l4w_weeks[3]",
+     "29",
+     "not a citable number in this text's facts"
+    ]
+   ],
+   "unmatched": [
+    "29"
+   ]
+  },
+  {
+   "id": "edited-number",
+   "status": "FLAGGED",
+   "checks": [
+    "citation"
+   ],
+   "failures": [
+    [
+     "citation",
+     "l1w_sales_yoy_pct",
+     "+13.7%",
+     "the printed figure does not match the cited value"
+    ]
+   ],
+   "unmatched": [
+    "+13.7%"
+   ]
+  },
+  {
+   "id": "edited-sign",
+   "status": "FLAGGED",
+   "checks": [
+    "citation"
+   ],
+   "failures": [
+    [
+     "citation",
+     "l1w_sales_yoy_pct",
+     "-12.7%",
+     "the printed figure does not match the cited value"
+    ]
+   ],
+   "unmatched": [
+    "-12.7%"
+   ]
+  },
+  {
+   "id": "format-does-not-fit-key",
+   "status": "FLAGGED",
+   "checks": [
+    "citation"
+   ],
+   "failures": [
+    [
+     "citation",
+     "l1w_sales_yoy_pct",
+     "$0.0K",
+     "format money_k does not fit a fraction value"
+    ]
+   ],
+   "unmatched": [
+    "$0.0K"
+   ]
+  },
+  {
+   "id": "spelled-out-number",
+   "status": "FLAGGED",
+   "checks": [
+    "citation"
+   ],
+   "failures": [
+    [
+     "citation",
+     null,
+     "Two",
+     "spelled-out number with no citation"
+    ]
+   ],
+   "unmatched": [
+    "Two"
+   ]
+  },
+  {
+   "id": "ly-label-on-this-year",
+   "status": "FLAGGED",
+   "checks": [
+    "period"
+   ],
+   "failures": [
+    [
+     "period",
+     "lowest_wos_families[1].wos",
+     "2.1",
+     "'last year' labels a last-year number, but lowest_wos_families[1].wos is this year"
+    ]
+   ],
+   "unmatched": [
+    "2.1"
+   ]
+  },
+  {
+   "id": "ly-label-correct",
+   "status": "PASS",
+   "checks": [],
+   "failures": [],
+   "unmatched": []
+  },
+  {
+   "id": "ly-label-before-number",
+   "status": "PASS",
+   "checks": [],
+   "failures": [],
+   "unmatched": []
+  },
+  {
+   "id": "window-mismatch",
+   "status": "FLAGGED",
+   "checks": [
+    "period"
+   ],
+   "failures": [
+    [
+     "period",
+     "l1w_sales_yoy_pct",
+     "+12.7%",
+     "'L4W' is a L4W window, but l1w_sales_yoy_pct is L1W"
+    ]
+   ],
+   "unmatched": [
+    "+12.7%"
+   ]
+  },
+  {
+   "id": "basis-mismatch",
+   "status": "FLAGGED",
+   "checks": [
+    "period"
+   ],
+   "failures": [
+    [
+     "period",
+     "l1w_sales_wow_pct",
+     "-18.8%",
+     "'YoY' is YOY, but l1w_sales_wow_pct is WOW"
+    ]
+   ],
+   "unmatched": [
+    "-18.8%"
+   ]
+  },
+  {
+   "id": "doubled-holds",
+   "status": "PASS",
+   "checks": [],
+   "failures": [],
+   "unmatched": []
+  },
+  {
+   "id": "doubled-does-not-hold",
+   "status": "FLAGGED",
+   "checks": [
+    "comparison"
+   ],
+   "failures": [
+    [
+     "comparison",
+     "l1w_txns_yoy_pct",
+     "doubled",
+     "'doubled' does not hold for l1w_txns_yoy_pct"
+    ]
+   ],
+   "unmatched": []
+  },
+  {
+   "id": "doubled-nothing-to-check",
+   "status": "FLAGGED",
+   "checks": [
+    "comparison"
+   ],
+   "failures": [
+    [
+     "comparison",
+     null,
+     "doubled",
+     "'doubled' has no cited change in its sentence to check against"
+    ]
+   ],
+   "unmatched": []
+  },
+  {
+   "id": "less-than-half-holds",
+   "status": "PASS",
+   "checks": [],
+   "failures": [],
+   "unmatched": []
+  },
+  {
+   "id": "majority-does-not-hold",
+   "status": "FLAGGED",
+   "checks": [
+    "comparison"
+   ],
+   "failures": [
+    [
+     "comparison",
+     "l4w_genz_new_insider_rate_ty",
+     "majority",
+     "'majority' does not hold for l4w_genz_new_insider_rate_ty"
+    ]
+   ],
+   "unmatched": []
+  },
+  {
+   "id": "rank-leader-holds",
+   "status": "PASS",
+   "checks": [],
+   "failures": [],
+   "unmatched": []
+  },
+  {
+   "id": "rank-leader-does-not-hold",
+   "status": "FLAGGED",
+   "checks": [
+    "comparison"
+   ],
+   "failures": [
+    [
+     "comparison",
+     "l4w_top_families_by_contrib",
+     "leads",
+     "'leads' does not hold for Rogue in l4w_top_families_by_contrib, highest_wos_families"
+    ]
+   ],
+   "unmatched": []
+  },
+  {
+   "id": "rank-claim-names-nothing",
+   "status": "FLAGGED",
+   "checks": [
+    "comparison"
+   ],
+   "failures": [
+    [
+     "comparison",
+     null,
+     "leaders",
+     "'leaders' names no product family to rank"
+    ]
+   ],
+   "unmatched": []
+  },
+  {
+   "id": "rank-largest-drag-holds",
+   "status": "PASS",
+   "checks": [],
+   "failures": [],
+   "unmatched": []
+  },
+  {
+   "id": "rank-largest-wrong-position",
+   "status": "FLAGGED",
+   "checks": [
+    "comparison"
+   ],
+   "failures": [
+    [
+     "comparison",
+     "l4w_top_families_by_contrib",
+     "largest contributor",
+     "'largest contributor' does not hold for Pillow Tabby in l4w_top_families_by_contrib"
+    ]
+   ],
+   "unmatched": []
+  },
+  {
+   "id": "rank-lowest-cover-holds",
+   "status": "PASS",
+   "checks": [],
+   "failures": [],
+   "unmatched": []
+  },
+  {
+   "id": "level-with-down-word",
+   "status": "PASS",
+   "checks": [],
+   "failures": [],
+   "unmatched": []
+  },
+  {
+   "id": "family-record-mismatch",
+   "status": "FLAGGED",
+   "checks": [
+    "subject"
+   ],
+   "failures": [
+    [
+     "subject",
+     "lowest_wos_families[0].wos",
+     "1.8",
+     "'Tabby' is named, but lowest_wos_families[0].wos belongs to pillow_tabby"
+    ]
+   ],
+   "unmatched": [
+    "1.8"
+   ]
+  },
+  {
+   "id": "anomaly-total-change-correct",
+   "status": "PASS",
+   "checks": [],
+   "failures": [],
+   "unmatched": []
+  },
+  {
+   "id": "share-not-count",
+   "status": "PASS",
+   "checks": [],
+   "failures": [],
+   "unmatched": []
+  },
+  {
+   "id": "card-stock-correct",
+   "status": "PASS",
+   "checks": [],
+   "failures": [],
+   "unmatched": []
+  },
+  {
+   "id": "card-stock-swapped",
+   "status": "FLAGGED",
+   "checks": [
+    "subject"
+   ],
+   "failures": [
+    [
+     "subject",
+     "pillow_tabby_wos",
+     "1.8",
+     "'Tabby' is named, but pillow_tabby_wos belongs to pillow_tabby"
+    ],
+    [
+     "subject",
+     "tabby_wos",
+     "2.1",
+     "'Pillow Tabby' is named, but tabby_wos belongs to tabby"
+    ]
+   ],
+   "unmatched": [
+    "1.8",
+    "2.1"
+   ]
+  },
+  {
+   "id": "card-group-name",
+   "status": "PASS",
+   "checks": [],
+   "failures": [],
+   "unmatched": []
+  },
+  {
+   "id": "card-win-subject-swap",
+   "status": "FLAGGED",
+   "checks": [
+    "subject"
+   ],
+   "failures": [
+    [
+     "subject",
+     "tabby_l4w_contrib_pts",
+     "+5.0 pts",
+     "'Pillow Tabby' is named, but tabby_l4w_contrib_pts belongs to tabby"
+    ]
+   ],
+   "unmatched": [
+    "+5.0 pts"
+   ]
+  },
+  {
+   "id": "card-total-under-segment",
+   "status": "FLAGGED",
+   "checks": [
+    "subject"
+   ],
+   "failures": [
+    [
+     "subject",
+     "ptd_returning_ty",
+     "1,142",
+     "'Outlet' is named, but ptd_returning_ty belongs to the total business"
+    ]
+   ],
+   "unmatched": [
+    "1,142"
+   ]
+  },
+  {
+   "id": "card-segment-correct",
+   "status": "PASS",
+   "checks": [],
+   "failures": [],
+   "unmatched": []
+  },
+  {
+   "id": "nearest-subject-rule-is-strict",
+   "status": "FLAGGED",
+   "checks": [
+    "subject"
+   ],
+   "failures": [
+    [
+     "subject",
+     "outlet_other_new_insider_rate",
+     "23.1%",
+     "'Gen Z' is named, but outlet_other_new_insider_rate belongs to other/outlet"
+    ]
+   ],
+   "unmatched": [
+    "23.1%"
+   ]
+  },
+  {
+   "id": "money-sales-vs-retail-value",
+   "status": "PASS",
+   "checks": [],
+   "failures": [],
+   "unmatched": []
+  },
+  {
+   "id": "money-misread-as-demand",
+   "status": "FLAGGED",
+   "checks": [
+    "metric"
+   ],
+   "failures": [
+    [
+     "metric",
+     "r2_excess_retail_value_usd",
+     "$50.5K",
+     "'demand' means demand, but r2_excess_retail_value_usd is retail value"
+    ]
+   ],
+   "unmatched": [
+    "$50.5K"
+   ]
+  }
+ ],
+ "corpus_total": 51,
+ "corpus_pass": 51,
  "scripts": [
   "01_inventory_workbook.py",
   "02_profile.py",
@@ -35,6 +728,6 @@
  ],
  "n_scripts": 18,
  "generated_by_counts": {
-  "pregenerated": 48
+  "pregenerated": 56
  }
 }

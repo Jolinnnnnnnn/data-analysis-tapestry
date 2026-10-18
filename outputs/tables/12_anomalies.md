@@ -46,7 +46,7 @@ Total 71: critical 8, warning 58, info 5
 | AN040 | 28 | warning | RETURNING_YOY_FLAT | retention | L4W returning customers +0.9% YoY (650 vs 644). |
 | AN041 | 28 | warning | WOS_COLLAPSE_VS_LY | Pillow Tabby | Pillow Tabby weeks of supply 2.8 vs 7.8 LY (less than half). |
 | AN042 | 28 | warning | WOS_COLLAPSE_VS_LY | Tabby | Tabby weeks of supply 2.5 vs 6.7 LY (less than half). |
-| AN043 | 28 | warning | WOS_HIGH | Knit Dress | Knit Dress weeks of supply 21.2 (LY same week 8.6). |
+| AN043 | 28 | warning | WOS_HIGH | Knit Dress | Knit Dress weeks of supply 21.3 (LY same week 8.6). |
 | AN044 | 28 | warning | WOS_HIGH | Tailored Jacket | Tailored Jacket weeks of supply 15.6 (LY same week 8.0). |
 | AN045 | 28 | warning | WOS_HIGH | Trench | Trench weeks of supply 16.5 (LY same week 7.8). |
 | AN046 | 28 | info | AOV_YOY_SWING | total | W28 AOV +13.0% YoY ($343.16 vs $303.72). |

@@ -168,7 +168,24 @@
     "tabby_l4w_contrib_pts": 14.114,
     "pillow_tabby_l4w_sales_yoy_pct": 0.38837,
     "pillow_tabby_l4w_contrib_pts": 1.048,
-    "l4w_sales_yoy_pct": 0.116344
+    "l4w_sales_yoy_pct": 0.116344,
+    "l4w_top_families_by_contrib": [
+     {
+      "family": "Tabby",
+      "contrib_pts": 14.114,
+      "sales_yoy_pct": 1.086684
+     },
+     {
+      "family": "Willow",
+      "contrib_pts": 2.921,
+      "sales_yoy_pct": 0.237687
+     },
+     {
+      "family": "Mens SLG",
+      "contrib_pts": 1.807,
+      "sales_yoy_pct": 0.683105
+     }
+    ]
    },
    "sources": {
     "ptd_genz_new_ty": "trailing.24.PTD.genz_new.ty",
@@ -181,7 +198,8 @@
     "tabby_l4w_contrib_pts": "products_by_week[wk=24, window=L4W, family=Tabby].contrib_pts",
     "pillow_tabby_l4w_sales_yoy_pct": "products_by_week[wk=24, window=L4W, family=Pillow Tabby].sales_yoy_pct",
     "pillow_tabby_l4w_contrib_pts": "products_by_week[wk=24, window=L4W, family=Pillow Tabby].contrib_pts",
-    "l4w_sales_yoy_pct": "trailing.24.L4W.sales.yoy_pct"
+    "l4w_sales_yoy_pct": "trailing.24.L4W.sales.yoy_pct",
+    "l4w_top_families_by_contrib": "weekly_facts.24.l4w_top_families_by_contrib (products_by_week[wk=24, L4W] ranked by contrib_pts)"
    },
    "chart": {
     "type": "bars",

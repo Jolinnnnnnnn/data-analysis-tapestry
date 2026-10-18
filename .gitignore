@@ -1,1 +1,7 @@
-.venv/
+.venv
+
+# local secrets (ANTHROPIC_API_KEY for the Ask router in dev)
+.env
+.env.*
+!.env.example
+.DS_Store
