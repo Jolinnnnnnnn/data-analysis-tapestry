@@ -42,10 +42,10 @@ TYLY_data_sample.xlsx      copy of the raw file (the canonical copy is data/raw/
 run_all.sh                 one command rebuilds everything (see below)
 CLAUDE.md                  this file
 NOTES.md                   working memory: assumptions A1-A8, gotchas, current state
-DECISIONS.md               interpretation choices D1-D13 (analysis) and D14-D24 (dashboard)
+DECISIONS.md               interpretation choices D1-D13 (analysis) and D14-D25 (dashboard)
 FINDINGS.md                F1-F15 with evidence paths, recommendations R1-R3
-HISTORY.md                 iteration log ("## Iteration N"); latest is 16
-PROMPTS.md                 AI-assisted steps and how each was verified (P1-P19)
+HISTORY.md                 iteration log ("## Iteration N"); latest is 17
+PROMPTS.md                 AI-assisted steps and how each was verified (P1-P20)
 QUESTIONS.md               hypothesis backlog (all resolved or dropped)
 scripts/
   _common.py               shared loaders and KPI definitions (the one place for metric formulas)
@@ -55,22 +55,24 @@ scripts/
   13_docs.py               -> metrics_schema.md, data_dictionary.md
   14_verify_findings.py    -> outputs/tables/14_findings_audit.md (30/30 headline numbers re-derived)
   15_build_facts.py        -> data/dashboard/facts/W<wk>.json, W<wk>_cards.json, timeline.json
-  16_generate_summaries.py -> data/dashboard/summaries.json, briefing.json (AI texts; live plug-in point)
-  17_validate_summaries.py -> number validator, build_stats.json; exits 1 on any unverified number
+  16_generate_summaries.py -> data/dashboard/summaries.json, briefing.json (AI texts as source + text + citations, demos)
+  17_validate_summaries.py -> render() and the six-check validator, corpus, build_stats.json, 17_number_trace.md; exits 1 on any FLAGGED text
   18_export_web.py         -> web/src/data/app.json (the only file the web app reads)
-ai/session_texts.json      AI texts written by Claude (headline, summary, 5 cards per week), md5-stamped to their facts
+ai/session_texts.json      AI texts by Claude as {fact key|format} placeholder sources (headline, summary, 5 cards per week), md5-stamped to their facts
 data/raw/                  READ-ONLY input
 data/processed/            metrics.json, anomalies.json, metrics_schema.md, tidy CSVs (generated)
 data/dashboard/            facts, summaries, briefing, timeline, build_stats (generated)
-outputs/tables, figures/   analysis tables (01-14) and PNG charts (generated)
-handoff/                   prompts for later sessions (PROMPT_C is superseded; PROMPT_D is still open)
+outputs/tables, figures/   analysis tables (01-14), the AI number trace (17) and PNG charts (generated)
+handoff/                   prompts for later sessions (PROMPT_C is superseded; PROMPT_D is still open; PROMPT_E is done)
 web/                       Vite + React + TypeScript dashboard (see web/README.md)
-  src/lib/core.ts          design tokens, display formatting, data access, URL hash state, motion preference
+  src/lib/core.ts          design tokens, display formatting, data access, URL hash state, motion preference, demos
   src/lib/validator.js     JS port of the Python validator (must stay line-for-line equivalent)
+  src/lib/vocabulary.json  the validator's words, formats, checks and unchecked claim types (read by 17 too)
   src/lib/ask/             Ask: catalog.ts (12 templates, routing schema + prompt from app.json), engine.ts (parser, checks, answers)
   src/components/          Header, Briefing, Explore (G1-G4), Ask, HowBuilt, LikeForLike
   api/ask.ts               Vercel function: Claude routes a question to one template (needs ANTHROPIC_API_KEY)
-  scripts/parity.mjs       JS validator == Python validator on every text (gates every build)
+  scripts/parity.mjs       JS validator == Python validator on every text, demo and corpus case (gates every build)
+  scripts/validator_cases.json  shared adversarial corpus for both validators
   scripts/ask-test.mjs     Ask routing, checks and every template x week x window (gates every build)
   scripts/ask-live.mjs     live router run against Claude (spends credits; not in verify)
   vercel.json              build = `npm run verify && npm run build`, output `dist`, function config for api/ask.ts
@@ -99,6 +101,8 @@ web/                       Vite + React + TypeScript dashboard (see web/README.m
 | F#, R#, D#, P# | Finding, recommendation, decision and prompt-log IDs. |
 | AN### | Alert IDs in `anomalies.json`; W29's are AN048-AN058. |
 | Facts | The JSON payload an AI text may cite, per week or per card. |
+| Placeholder / citation | `{fact key\|format}` in an AI text's source; once rendered, each number's span, key, format and value. |
+| Checks | The validator's six checks: citation, metric, subject, period, direction, comparison (D25). |
 | Cards / severity | The 5 "flagged this week" items (stock, retention, pattern, win, overstock), labelled CRITICAL, WARNING, PATTERN, WIN or WATCH by rules. |
 | Route | What Ask's picker returns: template id, parameters, premise, unmatched entities and a one-line reading. |
 | Pregenerated / template / live | Who wrote a text: Claude at build time (`ai/session_texts.json`), the deterministic fallback, or the live API (`claude-opus-5-5`). |
@@ -124,20 +128,23 @@ The pipeline is data -> metrics -> rules -> facts -> AI words -> validator -> UI
    Card facts hold the exact values each card may cite, with their sources and the chart series.
    It also writes the playhead timeline: one event per week chosen by rule priority, with the rule's own message as its text.
 4. **Writer (16).**
+   Every text is a placeholder source: no typed figures, each number is `{fact key|format}` (formats in `web/src/lib/vocabulary.json`).
    It uses live Claude if `ANTHROPIC_API_KEY` is set (marked `=== LIVE MODEL PLUG-IN POINT ===`), else a pregenerated text whose facts md5 matches, else the template.
    A stale md5 means the facts changed, so the template is used and a warning is printed.
    `--stamp` records the facts md5 for every pregenerated text.
+   It renders each source once (17's `render()`) and stores source, shown text and citations, plus the four validator demos per week.
 5. **Validator (17, plus `web/src/lib/validator.js`).**
-   Every printed number ($, %, K, pts, decimals, integers, signed) must match some fact within half a unit of its printed precision.
-   Week labels, FY labels, L1W/L4W, ISO dates and words like "4-week" are masked.
-   An explicit sign must match; unsigned numbers are compared to the absolute value; week-index fields are never citable.
-   The build self-tests by changing 12.7% to 13.7% and expecting FLAGGED.
-   It is an existence check, not a semantic one, so hand-review a number trace whenever wording changes.
+   It checks that each printed number is the fact it cites and that the words around it agree (DECISIONS D25).
+   Six checks share one vocabulary: citation (key exists, format fits, the shown figure re-reads to the value; uncited and spelled-out numbers fail), metric, subject, period, direction and comparison.
+   Each number takes the word attached right after it, else the nearest word before it in its clause, else the nearest after; "X and Y respectively" cannot be checked.
+   The old existence check stays as a second layer, and is all that `validateText(text, facts)` runs without citations.
+   The shared corpus `web/scripts/validator_cases.json` runs in 17 and in `parity.mjs`; any change in verdict fails the build, as does the edited-number self-test.
+   It writes `outputs/tables/17_number_trace.md` (printed number → key → value → upstream path); hand-check it whenever wording changes.
 6. **Export (18).**
-   It writes `web/src/data/app.json` (about 540 KB), which is committed because Vercel does not run Python.
+   It writes `web/src/data/app.json` (about 760 KB), which is committed because Vercel does not run Python.
 7. **Web app.**
-   All state lives in the URL hash (`#/explore/g4?wk=30&win=PTD&ly=0`); `&demo=blocked` shows the held-back state.
-   The browser re-validates every AI text before showing it, and a failing text is replaced by its facts table.
+   All state lives in the URL hash (`#/explore/g4?wk=30&win=PTD&ly=0`); `&demo=blocked|metric|direction|subject` shows the held-back state for each check.
+   The browser re-validates every AI text with its citations before showing it, and a failing text is replaced by its facts table with the failed check named.
    Charts are hand-built SVG/CSS with CSS transitions and requestAnimationFrame.
    Motion follows the OS `prefers-reduced-motion` setting unless the footer "Animations" toggle (localStorage `tyly-motion`) is on.
    Ask: Claude (`api/ask.ts`, structured output) or, when it is unavailable, the keyword parser returns a route (one of 12 templates + parameters + premise + unmatched entities).
@@ -165,7 +172,8 @@ The pipeline is data -> metrics -> rules -> facts -> AI words -> validator -> UI
   Label partial weeks ("so far") and truncated windows, and call counts "sample-scale".
 
 **AI texts**
-- The AI may cite only numbers that are in its facts.
+- The AI may cite only numbers that are in its facts, and only as `{fact key|format}` placeholders.
+- Give each number its own clause, with its metric word and subject next to it; when a check flags an honest sentence, reword the sentence, never the rule.
 - After changing text in `ai/session_texts.json`, run 17 (it must PASS), then `16 --stamp`, then 16, 17 and 18.
 - Changing `15_build_facts.py` changes the facts md5s and makes every text stale.
   Re-validate the texts against the new facts before re-stamping, and never stamp blindly.
@@ -191,7 +199,7 @@ The pipeline is data -> metrics -> rules -> facts -> AI words -> validator -> UI
 **Process and docs**
 - Work in a loop: ORIENT (NOTES, HISTORY tail) -> PLAN -> ACT -> VERIFY (with a second method) -> RECORD -> REFLECT.
 - For bugs, reproduce end to end first, as close to the user's experience as possible.
-- Next numbers: D27 in DECISIONS, Iteration 19 in HISTORY, P22 in PROMPTS (D25 / Iteration 17 / P20 are reserved by `handoff/PROMPT_E_validator.md`).
+- Next numbers: D27 in DECISIONS, Iteration 19 in HISTORY, P22 in PROMPTS.
   NOTES holds the current state only.
 - The Python 3.9 venv is `.venv`: install with `.venv/bin/python -m pip` and run scripts with `.venv/bin/python -W ignore`.
 
@@ -223,6 +231,10 @@ Update an existing entry rather than duplicating it, and promote a rule into Con
   Week-index keys are excluded from the validator's leaves.
 - 2026-10-13: I typed example numbers into UI copy ("12.7% to 13.7%", "4 days ... 7").
   Read figures from data or reword the copy.
+- 2026-10-18: The existence-only validator passed live texts for the wrong reason: W30 "29%" (Pillow Tabby receipts) matched Tabby's +28.9% demand growth, and W28 "85" (returning Gen Z LY) matched a stock count.
+  A number matching some fact proves nothing about meaning; texts cite fact keys and the six checks run (D25).
+- 2026-10-18: Python's `format()` rounds exact ties to even (21.25 → 21.2, 31.25 → 31.2) while the UI's `toFixed` rounds them up, so an alert and a chart on one screen disagreed.
+  Format numbers for the UI with `_common.fixed` or 17's `render()`, which follow `toFixed`.
 - 2026-10-18: Ask's keyword picker dropped words it did not know, so "Show me Tabby performance" got whole-business numbers and "Why did sales drop?" was answered without saying demand rose YoY.
   Correct numbers for the wrong question are still wrong: a picker must report entities it can't honour and premises it assumes, and code must refuse or correct before answering.
 - 2026-10-14: The Claude Design prototype's numbers were placeholders, and several were wrong (alert IDs AN098+, `RECEIPTS_BELOW_SALES` firing in W29, `WOS_LOW` as a warning, TY W30 at $41.6K).
@@ -244,6 +256,10 @@ Update an existing entry rather than duplicating it, and promote a rule into Con
   Run `git fetch --prune` first, then delete only refs that exist.
 - 2026-10-18: The scratchpad is cleared between sessions, which lost the headless-Chrome CDP driver.
   Save reusable test tools in the repo if they will be needed again.
+- 2026-10-18: In a worktree, `.gitignore`'s `.venv/` did not match the symlinked venv (a file, not a directory), and the main checkout's dev server already held port 5199.
+  The pattern is now `.venv`; run a second preview on another port with `--strictPort` and do not commit that launch entry.
+- 2026-10-18: Worktree sessions refuse heredocs and compound shell commands that start an interpreter.
+  Write helper scripts to the scratchpad and run them with one plain command each.
 
 *Web and animation*
 - 2026-10-14: The user's Mac has Reduce motion on, and the Claude browser pane and headless Chrome inherit it, so animations looked missing or without object persistence.

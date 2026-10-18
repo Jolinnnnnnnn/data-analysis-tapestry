@@ -23,11 +23,13 @@
 ## Current state
 - ANALYSIS SESSION COMPLETE (13 iterations). FINDINGS F1–F15 + R1–R3; metrics.json / anomalies.json / metrics_schema.md built; findings audit 30/30; run_all reproducible.
 - DASHBOARD BUILT as a static web app (web/, React + Vite, Vercel) from the Claude Design file; AI pipeline scripts 15–18; see DECISIONS D14–D24, HISTORY 14–16. handoff/PROMPT_C (Streamlit) is superseded; PROMPT_D (deck) still open.
-- ASK IS LIVE-ROUTED (D26, Iteration 18): Claude picks one of 12 templates via `web/api/ask.ts` (needs `ANTHROPIC_API_KEY` in the Vercel project), code checks and answers; keyword parser fallback. handoff/PROMPT_E (semantic validator) is open and reserves D25 / Iteration 17 / P20.
+- VALIDATOR CHECKS MEANING (D25, HISTORY 17): AI texts are placeholder sources that cite fact keys; six checks in Python and JS from `web/src/lib/vocabulary.json`; shared corpus `web/scripts/validator_cases.json` (51 cases); 56/56 texts PASS; demos `&demo=blocked|metric|direction|subject`.
+- ASK IS LIVE-ROUTED (D26, Iteration 18): Claude picks one of 12 templates via `web/api/ask.ts` (needs `ANTHROPIC_API_KEY` in the Vercel project), code checks and answers; keyword parser fallback.
 
 ## Gotchas
 - Use `.venv/bin/python -W ignore`. `./run_all.sh --clean` rebuilds analysis + AI texts + web data, then runs the JS parity check and `vite build`.
 - After editing a text in ai/session_texts.json: validate (scripts/17), then `scripts/16_generate_summaries.py --stamp`. Any facts change makes texts stale → template until re-stamped.
+- Texts never type figures: write `{fact key|format}`. Give each number its own clause with its metric word and subject next to it; "X and Y respectively" cannot be checked. A flagged honest sentence is reworded, never the rule.
 - Local dev: `npm --prefix web run dev` (port 5199). For live Ask locally, put `ANTHROPIC_API_KEY=...` in `web/.env.local` (git-ignored); `npm --prefix web run ask-live` prints live routes (spends credits).
 - Never sum ON_HAND_UNITS across weeks (summing across families within a week is fine).
 - Ratio metrics (AOV, UPT, AUR) must be recomputed from totals, never averaged across weeks.

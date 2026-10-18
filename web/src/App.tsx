@@ -4,7 +4,7 @@ import Explore from "./components/Explore";
 import Header from "./components/Header";
 import HowBuilt from "./components/HowBuilt";
 import { LikeForLikeStrip } from "./components/LikeForLike";
-import { C, MONO, setForceMotion, useMotionPref, useUrl } from "./lib/core";
+import { C, DEMOS, MONO, checkTitle, setForceMotion, setUrl, useMotionPref, useUrl } from "./lib/core";
 
 function MotionToggle() {
   const m = useMotionPref();
@@ -18,13 +18,15 @@ function MotionToggle() {
 
 export default function App() {
   const u = useUrl();
+  const demo = DEMOS.find((d) => d.id === u.demo);
   return (
     <div style={{ minHeight: "100vh", background: C.page, color: C.ink }}>
       <Header />
       <LikeForLikeStrip />
-      {u.demo === "blocked" && u.screen === "briefing" && (
-        <div className="pad-x" style={{ padding: "9px 40px", background: C.critTint, color: C.crit, fontSize: 12.5, fontFamily: MONO }}>
-          Validator demo: the first percentage in this week's AI summary was raised by one point on purpose, to show what happens when a number doesn't match its source.
+      {demo && u.screen === "briefing" && (
+        <div className="pad-x" style={{ display: "flex", flexWrap: "wrap", gap: "4px 16px", padding: "9px 40px", background: C.critTint, color: C.crit, fontSize: 12.5, fontFamily: MONO }}>
+          <span style={{ flex: "1 1 480px" }}>Validator demo ({checkTitle(demo.check).toLowerCase()} check): {demo.banner}</span>
+          <span className="link" onClick={() => setUrl({ demo: "" })} style={{ fontWeight: 700, whiteSpace: "nowrap" }}>Exit demo</span>
         </div>
       )}
       {u.screen === "briefing" && <Briefing />}

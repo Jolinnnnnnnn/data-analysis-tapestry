@@ -107,6 +107,21 @@ refused("unknown template", route({ template: "forecast_next_week" }));
   check("a model reading with only week labels is kept", ok.ok && ok.reading.includes(`W${LAST_FULL}`), ok.reading);
 }
 
+// Cards shown by "actions" get the full cited check, so a tampered card is held back
+{
+  const V = await vite.ssrLoadModule("/src/lib/validator.js");
+  for (const wk of WEEKS) {
+    const plan = E.resolveRoute(route({ template: "actions", week: wk }), DEF);
+    const shown = E.runPlan(plan).cards;
+    check(`actions W${wk}: every card passes the cited check`, shown.length === D.weeks_ai[String(wk)].cards.length && shown.every((c) => c.ok));
+  }
+  const c = D.weeks_ai[String(LAST_FULL)].cards[0];
+  const text = `${c.headline} ${c.body}`;
+  check("cards carry citations", Array.isArray(c.citations) && c.citations.length > 0);
+  const tampered = V.injectErrorCited(text, c.citations);
+  check("a card with an edited number fails the cited check", tampered.text !== text && V.validateText(tampered.text, c.values, tampered.citations).status === "FLAGGED");
+}
+
 // 4. Every template runs everywhere with no missing values
 const leak = /undefined|NaN|null|\[object/;
 const variants = [

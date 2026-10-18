@@ -120,3 +120,10 @@ def save(fig, name):
 
 def fmt_pct(x, d=1):
     return f"{x*100:+.{d}f}%" if pd.notna(x) else "n/a"
+
+
+def fixed(x, d=1):
+    """Format like the dashboard's JavaScript Number.toFixed: on the exact binary value, ties away from zero.
+    Python's own format() rounds exact ties to even (21.25 → "21.2"), which would disagree with the charts ("21.3")."""
+    from decimal import ROUND_HALF_UP, Decimal
+    return f"{Decimal(x).quantize(Decimal(1).scaleb(-d), rounding=ROUND_HALF_UP):.{d}f}"

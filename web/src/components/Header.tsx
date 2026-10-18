@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { annotate } from "../lib/validator.js";
 import {
+  checkTitle,
   C, D, GOALS, MONO, PARTIAL, WEEKS, arrow, dateWords, fmtMoney, fmtNum, fmtPct, setUrl, tone, trailing, useUrl, weekAI,
 } from "../lib/core";
 
@@ -107,8 +108,8 @@ export function KpiBand({ dark = true }: { dark?: boolean }) {
 
 function Headline({ wk }: { wk: number }) {
   const w = weekAI(wk);
-  const { segs, res } = annotate(w.headline, w.facts);
-  if (res.status !== "PASS") return <>Headline held back: a number did not match its source.</>;
+  const { segs, res } = annotate(w.headline, w.facts, w.headline_citations);
+  if (res.status !== "PASS") return <>Headline held back: it failed the {checkTitle(res.failures[0].check).toLowerCase()} check.</>;
   return <>{segs.map((s: any, i: number) => (s.num ? <span key={i} style={{ color: C.sapphireLight }}>{s.text}</span> : <span key={i}>{s.text}</span>))}</>;
 }
 

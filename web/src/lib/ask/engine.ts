@@ -343,8 +343,8 @@ export function runPlan(plan: Extract<Plan, { ok: true }>): Content {
       const all = weekAI(w).cards;
       const cards = !s || s === "total" ? all : all.filter((c: any) => c.anomaly_ids.some((id: string) => anomaly(id)?.entity === s));
       return {
-        read: `weeks_ai.${w}.cards${s && s !== "total" ? ` · alerts with entity=${s}` : ""} · ${cards.length} cards`,
-        method: "Card text was written by AI ahead of time; every number in it was re-checked against that card's facts just now, and a card that fails is held back.",
+        read: `weeks_ai.${w}.cards${s && s !== "total" ? ` · alerts with entity=${s}` : ""} · ${cards.length} ${plural(cards.length, "card", "cards")}`,
+        method: "Card text was written by AI ahead of time; every number in it was re-checked just now against the fact it cites (all validator checks), and a card that fails is held back.",
         text: cards.length
           ? `${cards.length === 1 ? "One flagged card" : `${cards.length} flagged cards`} for ${subjectName(s)} in W${w}, with the action the rules point to.`
           : `No flagged card is about ${subjectName(s)} in W${w}. Try: Why is ${s === "genz" ? "Gen Z" : s} flagged in week ${w}?`,
@@ -352,7 +352,7 @@ export function runPlan(plan: Extract<Plan, { ok: true }>): Content {
         rows: [],
         cards: cards.map((c: any) => {
           const text = `${c.headline} ${c.body}`;
-          return { title: c.title, pill: c.pill, text, ok: validateText(text, c.values).status === "PASS" };
+          return { title: c.title, pill: c.pill, text, ok: validateText(text, c.values, c.citations).status === "PASS" };
         }),
       };
     }

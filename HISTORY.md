@@ -124,6 +124,35 @@
 - Finding: this Mac reports `prefers-reduced-motion: reduce`, so animations were (correctly) off; added an opt-in footer toggle and verified motion in headless Chrome with emulated `no-preference`.
 - Verification: headless Chrome (DevTools protocol) samples: playhead W23→W30 at 0.9 s/week with the global week following; M8 holds back at the injected number (6/27 ok); M6 +12.8% ↔ +7.5% with "≈5.4 pts lost to 3 extra days ($25.1K)"; M3 Demand → Drivers → Families → Tabby styles (Tabby 20 = 25% of growth); production build renders all pages for W23/W29/W30; no horizontal overflow at 900 px; two `./run_all.sh --clean` runs → 79 outputs byte-identical; raw md5 unchanged.
 
+## Iteration 17 (validator: meaning, not just existence)
+- Goal: make the AI-text validator check that each printed number is the fact it cites and that the words around it agree (handoff/PROMPT_E_validator.md, DECISIONS D25).
+- Reproduction first: with the real W29 facts, "W29 transactions -1.8% YoY", "W29 demand fell 12.7% YoY" and "Gen Z demand was $71.3K in W29" all PASSED in both the Python and the JS validator, matched to `l1w_aov_yoy_pct`, `l1w_sales_yoy_pct` and `l1w_sales_ty`.
+- Actions:
+  - Texts became placeholder sources (`{fact key|format}`); 17 gained `render()`, citations and six checks (citation, metric, subject, period, direction, comparison) driven by one vocabulary, `web/src/lib/vocabulary.json`; `web/src/lib/validator.js` was ported line for line.
+  - Shared corpus `web/scripts/validator_cases.json` (51 cases, including the four reproduction sentences); 17 and `parity.mjs` both run it and exit 1 on any change in verdict.
+  - 16: placeholder system prompts and template, render and store source + text + citations, demos per week (edited number, wrong metric, wrong direction, wrong subject). 18 exports them. 15: the win card carries `l4w_top_families_by_contrib` so rank words can be checked.
+  - All 56 texts rewritten in placeholder form, validated, then stamped; 17 now writes `outputs/tables/17_number_trace.md` (printed number → cited key → value → upstream path).
+  - UI: tooltips show the cited key, its source path and the checks that ran; the held-back panel names the failed check, the cited key and why (no more nearest-fact guessing); four demo links; How page lists the six checks with run counts and the unchecked claim types.
+  - Rounding: `render()` and 12's rule messages now round like the UI's `toFixed` (`_common.fixed`); one alert message changed (W28 Knit Dress 21.2 → 21.3, value 21.25), matching the chart.
+- Honest sentences that had to be reworded, and why:
+  - "Three retention warnings", "Two critical stock alerts" (W23, W28, W29): spelled-out counts are uncited numbers and the facts hold no alert count.
+  - "less than half of last year's" (W24 and W26 stock cards, W26 summary): no cited fraction backs it, and the validator does no arithmetic between two numbers.
+  - "These are the period's growth leaders" (W29): a rank claim must name the families; now "Tabby and Pillow Tabby are L4W growth leaders".
+  - "The gap is widest in Outlet" (W29 retention) and "the main growth family/engine" (W26 stock, W28 summary): the facts hold no ranking for them, so the rank words were dropped.
+  - "add +5.0 and +5.5 pts", "with 27 and 92 units", "2.5 and 2.8 weeks ... 6.7 and 7.8 last year": the nearest-word rule cannot read "respectively", so each number got its own clause with its family.
+  - "(+70.8% YoY)" after "contribution", "and holds 22.4 weeks" after "demand", "+18.9% WoW" in a YoY clause, "17.8 weeks ... of sales", "+21.7% YoY on the same 4 days": the nearest word named another metric or basis, so the clauses were reordered or split.
+  - "traffic-led rebound": "led" is a rank word; now "a rebound driven by traffic".
+  - "four weeks" and "first four days" became "4-week" and "so far", and the en dashes the old texts had typed in week and day ranges became plain hyphens.
+- Result: 56/56 texts PASS all checks (514 numbers; checks run: citation 514, metric 374, subject 314, period 238, direction 32, comparison 14); corpus 51/51 in Python and JS; 32 demos each FLAGGED by exactly their check; the edited-number self-test is FLAGGED.
+- Verification:
+  - Printed numbers of every old vs new text compared as multisets: only the two rounding ties above and the window/days counts that are now cited changed.
+  - Number trace hand-checked for W28, W29 and W30 (headline, summary, 5 cards each): every figure lands on the metric, family, window and year its sentence names.
+  - Negative tests: re-pointing one W29 citation to `l1w_aov_yoy_pct` makes 17 exit 1 (metric); flipping one corpus expectation makes 17 and `npm run verify` exit 1.
+  - Browser (port 5201): W23, W29, W30 and all four demos for W23/W29/W30 hold back with the right check, key and source; tooltips and facts table checked; no console errors.
+  - Two `./run_all.sh --clean` runs → 80 outputs byte-identical (79 before plus the number trace); raw md5 unchanged (1e0cdc15…).
+- Surprises / errors: the old validator had passed W30 "29%" (Pillow Tabby receipts) as Tabby's +28.9% demand growth, and W28 "85" (returning Gen Z LY) as a stock count; Python's `format()` and the UI's `toFixed` disagreed on exact ties; `.gitignore` `.venv/` did not match a symlinked venv in a worktree.
+- Next: the deck (handoff/PROMPT_D_deck.md) can quote the validator story; a live Ask answer would need placeholders to get the semantic checks.
+
 ## Iteration 18 (Ask: live Claude routing)
 - Goal: fix Ask giving correct numbers to the wrong question (a strict review found "Show me Tabby performance" returned whole-business numbers, "Why did sales drop in W29?" never mentioned that demand rose YoY, and 6 of 8 everyday questions matched no template).
 - Actions: `web/src/lib/ask/catalog.ts` (12 templates, routing schema and prompt built from app.json), `engine.ts` (keyword parser, checks, premise note, answers), `web/api/ask.ts` (Claude router with fallbacks, rate limit, cache), Ask screen rewrite (source chip, reading, premise box, refusals, keyboard-accessible buttons), Vite dev middleware for `/api/ask`, How page note.

@@ -6,7 +6,7 @@ Static React app (Vite + TypeScript) that shows how the business is performing w
 ```bash
 npm install
 npm run dev        # http://localhost:5199
-npm run verify     # browser validator == Python validator on every AI text, plus the Ask tests
+npm run verify     # browser validator == Python validator on every AI text, demo and corpus case, plus the Ask tests
 npm run ask-live   # live Ask routes from Claude (needs ANTHROPIC_API_KEY in .env.local; spends credits)
 npm run build      # → dist/
 ```
@@ -19,7 +19,8 @@ Import the GitHub repo in Vercel and set **Root Directory = `web`**. `vercel.jso
 | Path | What |
 |---|---|
 | `src/lib/core.ts` | design tokens, formatting (display only), data access, URL state, motion preference |
-| `src/lib/validator.js` | number validator (port of `scripts/17_validate_summaries.py`) |
+| `src/lib/validator.js` | AI-text validator, a port of `scripts/17_validate_summaries.py`: each printed number must be the fact it cites, and its metric, subject, period, direction and comparison words must agree (DECISIONS D25) |
+| `src/lib/vocabulary.json` | the validator's shared vocabulary (formats, metric words, subjects, direction, period and rank words, the six checks and the unchecked claim types shown on the How page) |
 | `src/components/Header.tsx` | nav, search, week strip, window + LY controls, hero, KPI band |
 | `src/components/Briefing.tsx` | AI summary with live number check (M8), flagged cards, rules + alerts rail |
 | `src/components/Explore.tsx` | G1 playhead (M1), G2 morph (M5), G3 drill-down (M3), G4 scatter + WOS morphs (M5), tables |
@@ -28,7 +29,10 @@ Import the GitHub repo in Vercel and set **Root Directory = `web`**. `vercel.jso
 | `src/lib/ask/engine.ts` | keyword parser, route checks, premise note, answers |
 | `api/ask.ts` | Vercel function: Claude returns a route as structured output; never sees data values |
 | `src/components/HowBuilt.tsx`, `LikeForLike.tsx` | pipeline, prompts, definitions; naive vs like-for-like switch (M6) |
-| `scripts/parity.mjs` | parity check run before every build |
+| `scripts/parity.mjs` | parity check run before every build: Python and JS verdicts on every text and demo, plus the corpus |
+| `scripts/validator_cases.json` | shared adversarial corpus (text with `{{shown\|key\|format}}` citations, facts, expected verdict and failed checks) |
 | `scripts/ask-test.mjs` | Ask tests run before every build |
 
-Useful links: `#/briefing?wk=30` (partial week), `#/explore/g1` (press Play), `#/briefing?wk=29&demo=blocked` (validator holding back a wrong number).
+AI texts reach the app already rendered: `weeks_ai[wk]` holds `summary`, `summary_source` (placeholders such as `{l1w_sales_ty|money_k}`) and `summary_citations` (span, key, format, value), and the same for the headline and each card. The app never formats an AI number; it re-validates each text with its citations before showing it.
+
+Useful links: `#/briefing?wk=30` (partial week), `#/explore/g1` (press Play), and the validator demos `#/briefing?wk=29&demo=blocked` (edited number), `&demo=metric`, `&demo=direction`, `&demo=subject`.
