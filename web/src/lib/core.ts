@@ -60,6 +60,8 @@ export const SEV = {
   warning: { icon: "▲", label: "WARNING", color: C.warnText, cell: C.warn },
   info: { icon: "●", label: "INFO", color: C.info, cell: C.ly },
 } as const;
+/** Display names for the channel segments in new_insider_by_segment (regions keep their own names). */
+export const SEGMENT_NAME: Record<string, string> = { OUTLET: "Outlet", RETAIL: "Full-price retail", "Retail Store": "Stores", eComm: "eComm" };
 export const WINDOWED = ["FAMILY_L4W_DECLINE", "WOS_LOW", "WOS_HIGH", "WOS_COLLAPSE_VS_LY", "RECEIPTS_BELOW_SALES"];
 export const ruleThreshold = (id: string) => {
   const m = /([\d.]+)/.exec(ruleById(id)?.rule || "");

@@ -23,11 +23,12 @@
 ## Current state
 - ANALYSIS SESSION COMPLETE (13 iterations). FINDINGS F1–F15 + R1–R3; metrics.json / anomalies.json / metrics_schema.md built; findings audit 30/30; run_all reproducible.
 - DASHBOARD BUILT as a static web app (web/, React + Vite, Vercel) from the Claude Design file; AI pipeline scripts 15–18; see DECISIONS D14–D24, HISTORY 14–16. handoff/PROMPT_C (Streamlit) is superseded; PROMPT_D (deck) still open.
+- ASK IS LIVE-ROUTED (D26, Iteration 18): Claude picks one of 12 templates via `web/api/ask.ts` (needs `ANTHROPIC_API_KEY` in the Vercel project), code checks and answers; keyword parser fallback. handoff/PROMPT_E (semantic validator) is open and reserves D25 / Iteration 17 / P20.
 
 ## Gotchas
 - Use `.venv/bin/python -W ignore`. `./run_all.sh --clean` rebuilds analysis + AI texts + web data, then runs the JS parity check and `vite build`.
 - After editing a text in ai/session_texts.json: validate (scripts/17), then `scripts/16_generate_summaries.py --stamp`. Any facts change makes texts stale → template until re-stamped.
-- Local dev: `npm --prefix web run dev` (port 5199).
+- Local dev: `npm --prefix web run dev` (port 5199). For live Ask locally, put `ANTHROPIC_API_KEY=...` in `web/.env.local` (git-ignored); `npm --prefix web run ask-live` prints live routes (spends credits).
 - Never sum ON_HAND_UNITS across weeks (summing across families within a week is fine).
 - Ratio metrics (AOV, UPT, AUR) must be recomputed from totals, never averaged across weeks.
 - 08 depends on 07 output (g3 scorecard); 10 depends on 08.

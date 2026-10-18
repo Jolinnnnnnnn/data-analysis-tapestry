@@ -135,8 +135,16 @@ Evidence scripts in brackets. Sensitivity numbers are filled from `scripts/09_ch
 ## D22 Playhead events are chosen by rules
 - One event per week by priority: first-ever critical rule → first stock-rule hit → week-on-week swing → YoY spike → transactions below LY → partial week. Event text is the rule's deterministic message from anomalies.json (not AI).
 
-## D23 Ask = fixed query templates
+## D23 Ask = fixed query templates (superseded by D26)
 - Eight templates over app.json; offline a keyword/regex picker chooses template + parameters; a model may replace only the picker (returns template + params, never numbers). Answers list the template, parameters and data read. Unmatched questions get "no template matches" instead of a guess.
 
 ## D24 Defaults and state
 - Default week W29 (last full week), window L4W, LY shown. All state lives in the URL hash (`#/explore/g4?wk=30&win=PTD&ly=0`), so any view is linkable; `&demo=blocked` shows the validator holding a text back.
+
+## D26 Ask: Claude picks the template, code checks the choice and answers
+- A Vercel function (`web/api/ask.ts`) sends the question to Claude (`claude-opus-5-5`, effort low, server-side refusal fallback) with structured output against a fixed schema: one of 12 templates plus parameters, any premise the question takes for granted, any entity the template cannot filter by, and a one-line reading.
+- Claude never sees or writes a data value; the schema enums (families, weeks, windows) are read from app.json, and the reading is shown only if it has no numbers beyond week labels.
+- The browser runs the route through the same checks as the offline keyword parser (`web/src/lib/ask/engine.ts`): week in range, unmatched products or regions refuse instead of answering for the whole business, family templates need a family, and a premise is checked against the stored YoY and WoW values and stated before the answer.
+- Any failure (no key, timeout, rate limit, refusal) falls back to the keyword parser and the answer says which picker ran, so the public page never depends on the function.
+- Abuse guard: 300-character questions, a per-IP limit per warm instance, a small in-memory cache, same-origin check, and the Anthropic console spend limit as the hard cap.
+- Why not let Claude answer directly: an answer written by a model would need the number validator plus a semantic check; routing keeps every number in code and makes wrong-entity answers impossible by construction.

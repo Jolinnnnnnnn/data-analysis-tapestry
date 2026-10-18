@@ -1,5 +1,6 @@
 import { BasisSwitch } from "./LikeForLike";
 import { C, D, GOALS, MONO, dateWords, fmtNum, fmtPct, setUrl } from "../lib/core";
+import { TEMPLATES } from "../lib/ask/catalog";
 
 export default function HowBuilt() {
   const b = D.build;
@@ -46,6 +47,12 @@ export default function HowBuilt() {
         <p style={{ margin: "12px 0 0", fontSize: 13.5, color: C.body, maxWidth: 820, lineHeight: 1.55 }}>
           The validator runs twice with two implementations: in Python at build time, and in this page before any AI text is shown. A parity check makes sure both agree on every text. {" "}
           <span className="link" onClick={() => setUrl({ screen: "briefing", demo: "blocked" }, true)} style={{ fontWeight: 700, color: C.crit }}>See it block a wrong number →</span>
+        </p>
+        <p style={{ margin: "10px 0 0", fontSize: 13.5, color: C.body, maxWidth: 820, lineHeight: 1.55 }}>
+          Ask follows the same rule. Claude only picks one of {TEMPLATES.length} query templates and fills its parameters, as structured output against a fixed schema; it never sees or writes a data value.
+          Code then checks that choice (the week exists, any product or region named can actually be filtered, any change the question takes for granted is true) and writes the answer from metrics.json.
+          If Claude is unavailable, a keyword parser picks the template and the same checks run. {" "}
+          <span className="link" onClick={() => setUrl({ screen: "ask" }, true)} style={{ fontWeight: 700 }}>Try Ask →</span>
         </p>
       </section>
 

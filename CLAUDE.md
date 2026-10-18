@@ -67,9 +67,13 @@ handoff/                   prompts for later sessions (PROMPT_C is superseded; P
 web/                       Vite + React + TypeScript dashboard (see web/README.md)
   src/lib/core.ts          design tokens, display formatting, data access, URL hash state, motion preference
   src/lib/validator.js     JS port of the Python validator (must stay line-for-line equivalent)
+  src/lib/ask/             Ask: catalog.ts (12 templates, routing schema + prompt from app.json), engine.ts (parser, checks, answers)
   src/components/          Header, Briefing, Explore (G1-G4), Ask, HowBuilt, LikeForLike
+  api/ask.ts               Vercel function: Claude routes a question to one template (needs ANTHROPIC_API_KEY)
   scripts/parity.mjs       JS validator == Python validator on every text (gates every build)
-  vercel.json              build = `npm run verify && npm run build`, output `dist`
+  scripts/ask-test.mjs     Ask routing, checks and every template x week x window (gates every build)
+  scripts/ask-live.mjs     live router run against Claude (spends credits; not in verify)
+  vercel.json              build = `npm run verify && npm run build`, output `dist`, function config for api/ask.ts
 .claude/launch.json        dev server config for the Claude desktop preview (`web`, port 5199)
 ```
 
@@ -96,6 +100,7 @@ web/                       Vite + React + TypeScript dashboard (see web/README.m
 | AN### | Alert IDs in `anomalies.json`; W29's are AN048-AN058. |
 | Facts | The JSON payload an AI text may cite, per week or per card. |
 | Cards / severity | The 5 "flagged this week" items (stock, retention, pattern, win, overstock), labelled CRITICAL, WARNING, PATTERN, WIN or WATCH by rules. |
+| Route | What Ask's picker returns: template id, parameters, premise, unmatched entities and a one-line reading. |
 | Pregenerated / template / live | Who wrote a text: Claude at build time (`ai/session_texts.json`), the deterministic fallback, or the live API (`claude-opus-5-5`). |
 | M1, M3, M5, M6, M8 | Motion pieces: season playhead, growth drill-down zoom, LY-to-TY morphs, naive vs LFL switch, validator replay. |
 
@@ -135,7 +140,8 @@ The pipeline is data -> metrics -> rules -> facts -> AI words -> validator -> UI
    The browser re-validates every AI text before showing it, and a failing text is replaced by its facts table.
    Charts are hand-built SVG/CSS with CSS transitions and requestAnimationFrame.
    Motion follows the OS `prefers-reduced-motion` setting unless the footer "Animations" toggle (localStorage `tyly-motion`) is on.
-   Ask picks one of 8 query templates with a keyword/regex parser, and code renders the answer with its steps shown.
+   Ask: Claude (`api/ask.ts`, structured output) or, when it is unavailable, the keyword parser returns a route (one of 12 templates + parameters + premise + unmatched entities).
+   The browser checks the route (week range, entities a template can't filter by, premises against stored YoY/WoW values) and code writes the answer; the model never sees or writes a data value.
 8. **Build and deploy.**
    `run_all.sh` runs Python 01-18, then `npm --prefix web run verify` (parity) and `vite build`.
    On Vercel the Root Directory is `web`, and the build runs verify first, so an unverified number fails the deploy.
@@ -185,7 +191,7 @@ The pipeline is data -> metrics -> rules -> facts -> AI words -> validator -> UI
 **Process and docs**
 - Work in a loop: ORIENT (NOTES, HISTORY tail) -> PLAN -> ACT -> VERIFY (with a second method) -> RECORD -> REFLECT.
 - For bugs, reproduce end to end first, as close to the user's experience as possible.
-- Next numbers: D25 in DECISIONS, Iteration 17 in HISTORY, P20 in PROMPTS.
+- Next numbers: D27 in DECISIONS, Iteration 19 in HISTORY, P22 in PROMPTS (D25 / Iteration 17 / P20 are reserved by `handoff/PROMPT_E_validator.md`).
   NOTES holds the current state only.
 - The Python 3.9 venv is `.venv`: install with `.venv/bin/python -m pip` and run scripts with `.venv/bin/python -W ignore`.
 
@@ -195,6 +201,7 @@ The pipeline is data -> metrics -> rules -> facts -> AI words -> validator -> UI
 - Never add a `Co-Authored-By` (or any agent-name) trailer to commit messages.
 - Before deleting a branch with unmerged commits, tag it `archive/<name>`.
 - Never log in to Vercel or GitHub for the user; point them to the dashboard step instead.
+- API keys live only in the Vercel project's environment variables or a git-ignored `web/.env.local`; never in chat, code or commits.
 
 ## Learnings
 When a mistake is made, whether by Claude or caught by the user, add an entry here before moving on.
@@ -216,6 +223,8 @@ Update an existing entry rather than duplicating it, and promote a rule into Con
   Week-index keys are excluded from the validator's leaves.
 - 2026-10-13: I typed example numbers into UI copy ("12.7% to 13.7%", "4 days ... 7").
   Read figures from data or reword the copy.
+- 2026-10-18: Ask's keyword picker dropped words it did not know, so "Show me Tabby performance" got whole-business numbers and "Why did sales drop?" was answered without saying demand rose YoY.
+  Correct numbers for the wrong question are still wrong: a picker must report entities it can't honour and premises it assumes, and code must refuse or correct before answering.
 - 2026-10-14: The Claude Design prototype's numbers were placeholders, and several were wrong (alert IDs AN098+, `RECEIPTS_BELOW_SALES` firing in W29, `WOS_LOW` as a warning, TY W30 at $41.6K).
   Never trust mock data; wire everything to `app.json`.
 

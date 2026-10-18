@@ -196,7 +196,7 @@ export default function Header() {
       )}
       {u.screen === "ask" && (
         <div className="pad-x" style={hero}>
-          <span style={{ fontFamily: MONO, fontSize: 12, color: C.onDarkMuted }}>Ask · answers come from query templates over metrics.json</span>
+          <span style={{ fontFamily: MONO, fontSize: 12, color: C.onDarkMuted }}>Ask · Claude picks a query template, code answers from metrics.json</span>
           <h1 className="cond h1-hero" style={{ margin: "10px 0 0", fontWeight: 800, fontSize: 44, lineHeight: 1 }}>Ask the data</h1>
         </div>
       )}
