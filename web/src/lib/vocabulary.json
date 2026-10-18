@@ -1,0 +1,138 @@
+{
+ "_about": "Shared vocabulary of the AI-text validator. Read by scripts/17_validate_summaries.py and web/src/lib/validator.js, so both run the same checks. Words are matched case-insensitively as whole words; longer phrases win. Edit only together with web/scripts/validator_cases.json, and run ./run_all.sh (17 and the web parity check must pass).",
+ "formats": {
+  "money_k": {"kinds": ["money"], "example": "$71.3K"},
+  "money": {"kinds": ["money"], "example": "$564,028"},
+  "money2": {"kinds": ["money"], "example": "$285.25"},
+  "pct": {"kinds": ["fraction", "threshold"], "example": "12.7% (156% at 100% or more; a negative prints -62.7%)"},
+  "pct+": {"kinds": ["fraction", "threshold"], "example": "+12.7% (always signed)"},
+  "pct0": {"kinds": ["fraction", "threshold"], "example": "28% (whole percent)"},
+  "pct2": {"kinds": ["fraction"], "example": "0.85% (two decimals, for small shares)"},
+  "pct_abs": {"kinds": ["fraction"], "example": "2.9% (a change without its sign, only right after an up or down word: fell {x|pct_abs})"},
+  "pts+": {"kinds": ["pts"], "example": "+5.0 pts"},
+  "int": {"kinds": ["count"], "example": "1,142"},
+  "wos": {"kinds": ["weeks", "threshold"], "example": "2.1 (weeks, 1 decimal)"},
+  "ratio2": {"kinds": ["ratio"], "example": "0.33"}
+ },
+ "key_kinds": [
+  ["threshold", "rule_threshold"],
+  ["fraction", "pct|rate|share|_to_sales|lift"],
+  ["pts", "pts"],
+  ["count", "window_weeks"],
+  ["money", "sales|usd|aov|value"],
+  ["weeks", "wos|weeks_to_stockout"],
+  ["count", "genz_new|returning|on_hand|units|days|receipts_w"],
+  ["ratio", "corr"]
+ ],
+ "change_keys": "(yoy|wow)_pct|contrib_pts|_lift",
+ "ly_keys": "(^|_)ly(_|$)",
+ "number_words": ["two", "three", "four", "five", "six", "seven", "eight", "nine", "ten", "eleven", "twelve", "twenty", "thirty", "forty", "fifty", "sixty", "seventy", "eighty", "ninety", "hundred", "thousand", "million", "billion", "dozen", "half"],
+ "metrics": [
+  {"class": "sales", "label": "demand", "key": "(?<!to_)sales|demand", "words": ["demand", "sales", "revenue"]},
+  {"class": "txns", "label": "transactions", "key": "txns", "words": ["transactions", "transaction", "orders", "traffic"]},
+  {"class": "aov", "label": "AOV", "key": "aov", "words": ["AOV", "average order value", "basket", "baskets"]},
+  {"class": "wos", "label": "weeks of supply", "key": "wos(?!_window)", "words": ["weeks of supply", "week of supply", "weeks of cover", "cover", "WOS"]},
+  {"class": "stockout", "label": "weeks to stock-out", "key": "stockout", "words": ["runs out", "run out", "stock-out", "stockout", "out of stock"]},
+  {"class": "receipts", "label": "receipts", "key": "receipts", "words": ["receipts", "replenishment", "received"]},
+  {"class": "share", "label": "a share", "key": "share|pct_of", "words": ["share", "share of new customers", "share of new"]},
+  {"class": "new", "label": "new customers", "key": "genz_new(?!_insider)|share_of_new", "words": ["new customers", "new customer", "new Gen Z customers", "acquisition"]},
+  {"class": "returning", "label": "returning customers", "key": "returning", "words": ["returning", "returning customers", "retained", "retention"]},
+  {"class": "insider", "label": "Insider attach", "key": "insider", "words": ["Insider", "attach", "enrolment", "enrollment", "loyalty"]},
+  {"class": "contribution", "label": "contribution", "key": "contrib", "words": ["contribution", "contributed", "contributor", "contributors"]},
+  {"class": "units", "label": "units", "key": "on_hand|units|receipts_w", "words": ["units", "on hand"]},
+  {"class": "days", "label": "days", "key": "days", "words": ["days", "day"]},
+  {"class": "value", "label": "retail value", "key": "value", "words": ["at retail", "retail value"]}
+ ],
+ "entities": [
+  {"slug": "genz", "kind": "generation", "names": ["Gen Z", "GenZ"]},
+  {"slug": "millennial", "kind": "generation", "names": ["Millennial", "Millennials"]},
+  {"slug": "genx", "kind": "generation", "names": ["Gen X"]},
+  {"slug": "boomer", "kind": "generation", "names": ["Boomer", "Boomers"]},
+  {"slug": "belt_bag", "kind": "family", "names": ["Belt Bag"]},
+  {"slug": "brooklyn", "kind": "family", "names": ["Brooklyn"]},
+  {"slug": "card_case", "kind": "family", "names": ["Card Case"]},
+  {"slug": "charms", "kind": "family", "names": ["Charms"]},
+  {"slug": "fragrance", "kind": "family", "names": ["Fragrance"]},
+  {"slug": "jewelry", "kind": "family", "names": ["Jewelry"]},
+  {"slug": "knit_dress", "kind": "family", "names": ["Knit Dress"]},
+  {"slug": "loafer", "kind": "family", "names": ["Loafer"]},
+  {"slug": "lowline_sneaker", "kind": "family", "names": ["Lowline Sneaker"]},
+  {"slug": "mens_bag", "kind": "family", "names": ["Mens Bag"]},
+  {"slug": "mens_footwear", "kind": "family", "names": ["Mens Footwear"]},
+  {"slug": "mens_slg", "kind": "family", "names": ["Mens SLG"]},
+  {"slug": "pillow_tabby", "kind": "family", "names": ["Pillow Tabby"]},
+  {"slug": "rogue", "kind": "family", "names": ["Rogue"]},
+  {"slug": "sculpted_sandal", "kind": "family", "names": ["Sculpted Sandal"]},
+  {"slug": "tabby", "kind": "family", "names": ["Tabby"]},
+  {"slug": "tailored_jacket", "kind": "family", "names": ["Tailored Jacket"]},
+  {"slug": "trench", "kind": "family", "names": ["Trench"]},
+  {"slug": "wallet", "kind": "family", "names": ["Wallet"]},
+  {"slug": "willow", "kind": "family", "names": ["Willow"]},
+  {"slug": "wristlet", "kind": "family", "names": ["Wristlet"]},
+  {"slug": "outlet", "kind": "segment", "names": ["Outlet", "outlets"]},
+  {"slug": "ecomm", "kind": "segment", "names": ["eComm", "e-commerce", "online"]},
+  {"slug": "retail_store", "kind": "segment", "names": ["Retail Store", "retail stores"]},
+  {"slug": "greater_china", "kind": "segment", "names": ["Greater China"]},
+  {"slug": "europe", "kind": "segment", "names": ["Europe"]},
+  {"slug": "japan", "kind": "segment", "names": ["Japan"]},
+  {"slug": "north_america", "kind": "segment", "names": ["North America"]},
+  {"slug": "other", "kind": "segment", "names": ["other new customers", "other customers"]},
+  {"slug": "tabby_franchise", "kind": "group", "names": ["Tabby franchise", "Hero"], "members": ["tabby", "pillow_tabby"]},
+  {"slug": "halo_apparel", "kind": "group", "names": ["Halo apparel", "apparel"], "members": ["knit_dress", "trench", "tailored_jacket"]}
+ ],
+ "directions": {
+  "up": ["up", "rose", "rise", "rises", "rising", "grew", "grow", "grows", "growing", "gained", "gain", "gains", "ahead", "increase", "increased", "increases", "climbed", "climb", "climbs", "improved", "improve", "higher", "jumped", "surged"],
+  "down": ["down", "fell", "fall", "falls", "falling", "dropped", "drop", "drops", "declined", "decline", "declines", "drag", "drags", "decrease", "decreased", "decreases", "lower", "slipped", "slid", "shrank", "dipped"]
+ },
+ "windows": {
+  "l1w": ["L1W"],
+  "l4w": ["L4W"],
+  "ptd": ["period-to-date", "period to date", "PTD", "season-to-date"]
+ },
+ "bases": {
+  "yoy": ["YoY", "year on year", "year-on-year"],
+  "wow": ["WoW", "week on week", "week-on-week"]
+ },
+ "ly_markers": ["LY", "last year", "last year's", "a year ago"],
+ "comparisons": [
+  {"phrases": ["less than half", "under half", "below half", "minority"], "test": "lt", "value": 0.5, "on": "level fraction"},
+  {"phrases": ["more than half", "over half", "majority"], "test": "gt", "value": 0.5, "on": "level fraction"},
+  {"phrases": ["nearly doubled", "almost doubled"], "test": "range", "value": 0.9, "upper": 1.0, "on": "change"},
+  {"phrases": ["more than doubled", "doubled", "double", "twice"], "test": "ge", "value": 1.0, "on": "change"},
+  {"phrases": ["tripled"], "test": "ge", "value": 2.0, "on": "change"},
+  {"phrases": ["halved"], "test": "le", "value": -0.5, "on": "change"}
+ ],
+ "ranks": [
+  {"phrases": ["next lowest", "second lowest"], "polarity": "bottom", "position": 1},
+  {"phrases": ["next largest", "second largest", "next highest", "second highest"], "polarity": "top", "position": 1},
+  {"phrases": ["largest drag", "biggest drag", "bottom contributor", "lowest", "smallest", "worst", "weakest"], "polarity": "bottom", "position": 0},
+  {"phrases": ["largest contributor", "biggest contributor", "top contributor", "the leader", "largest", "biggest", "highest", "best", "widest", "main"], "polarity": "top", "position": 0},
+  {"phrases": ["lead", "leads", "led", "leading", "leader", "leaders", "top"], "polarity": "top", "position": "member"},
+  {"phrases": ["laggards", "bottom"], "polarity": "bottom", "position": "member"}
+ ],
+ "rank_lists": [
+  {"name": "top|highest", "polarity": "top"},
+  {"name": "bottom|lowest", "polarity": "bottom"}
+ ],
+ "rank_list_metrics": [
+  ["contribution", "contrib"],
+  ["wos", "wos"]
+ ],
+ "checks": [
+  {"id": "citation", "title": "Citation", "text": "Every printed number is a placeholder that names one fact key. The key must exist in this text's facts, its format must fit the kind of value (a percent for a rate, dollars for demand), and the printed figure must re-read to the cited value within half a unit of its precision. A number with no citation, or a spelled-out number such as \"two\", is held back."},
+  {"id": "metric", "title": "Metric", "text": "The metric word nearest the number in its clause (demand, transactions, AOV, weeks of supply, receipts, share, new customers, returning, Insider, contribution, units) must match the cited key."},
+  {"id": "subject", "title": "Subject", "text": "If the clause names a generation, product family, segment or the Tabby franchise, the cited key must belong to it. A total-business key under a named subject is held back."},
+  {"id": "period", "title": "Period", "text": "Window words (L1W, L4W, period-to-date), YoY or WoW, and a last-year label (LY, last year) must agree with the cited key."},
+  {"id": "direction", "title": "Direction", "text": "Up-words (rose, grew, up) and down-words (fell, dropped, down, drag) must agree with the sign of a cited change (YoY, WoW, contribution)."},
+  {"id": "comparison", "title": "Comparison", "text": "\"Less than half\", \"majority\", \"doubled\", and rank words (leads, top, largest, lowest, largest drag) must hold against the cited value or the ranked lists in the facts; a claim with nothing in the facts to check it against is held back."}
+ ],
+ "unchecked": [
+  "Causal and explanatory claims (\"because\", \"driven by\", \"basket, not traffic\").",
+  "Direction words next to a level (\"is down to ... weeks of supply\"): a level has no sign, so movement is only checked where a change is cited.",
+  "How two printed numbers compare (\"vs ... last year\", \"against a median of ...\"): the validator does no arithmetic. \"Less than half\" or \"doubled\" is held back unless a cited fraction or change backs it.",
+  "Qualitative words: flat, only, small, spike, momentum, comfortable, about.",
+  "The word \"one\", which is too often a pronoun to treat as a number.",
+  "Recommendations and actions (\"re-open replenishment\", \"move open-to-buy to Hero\").",
+  "Which number a word belongs to beyond the nearest-word rule: \"X and Y respectively\" is not understood, so each number needs its own clause."
+ ]
+}

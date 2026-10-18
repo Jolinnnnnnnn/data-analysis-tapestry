@@ -84,8 +84,61 @@
       }
      ]
     },
-    "headline": "Returning customers were flat at 159 vs 159, and returning Gen Z fell to 17 from 26.",
+    "headline": "Returning customers were flat at 159 vs 159 LY, and returning Gen Z fell to 17 from 26.",
     "body": "That is -34.6% for returning Gen Z, and only 4.5% of new Gen Z joined Insider (LY 26.7%). This is a mix proxy (D8): CUST_ID can't link buyers across years, so read it as a direction, not a cohort rate.",
+    "headline_source": "Returning customers were flat at {l4w_returning_ty|int} vs {l4w_returning_ly|int} LY, and returning Gen Z fell to {l4w_genz_returning_ty|int} from {l4w_genz_returning_ly|int}.",
+    "body_source": "That is {l4w_genz_returning_yoy_pct|pct+} for returning Gen Z, and only {l4w_genz_new_insider_rate_ty|pct} of new Gen Z joined Insider (LY {l4w_genz_new_insider_rate_ly|pct}). This is a mix proxy (D8): CUST_ID can't link buyers across years, so read it as a direction, not a cohort rate.",
+    "citations": [
+     {
+      "start": 33,
+      "end": 36,
+      "key": "l4w_returning_ty",
+      "fmt": "int",
+      "value": 159.0
+     },
+     {
+      "start": 40,
+      "end": 43,
+      "key": "l4w_returning_ly",
+      "fmt": "int",
+      "value": 159.0
+     },
+     {
+      "start": 76,
+      "end": 78,
+      "key": "l4w_genz_returning_ty",
+      "fmt": "int",
+      "value": 17.0
+     },
+     {
+      "start": 84,
+      "end": 86,
+      "key": "l4w_genz_returning_ly",
+      "fmt": "int",
+      "value": 26.0
+     },
+     {
+      "start": 96,
+      "end": 102,
+      "key": "l4w_genz_returning_yoy_pct",
+      "fmt": "pct+",
+      "value": -0.346154
+     },
+     {
+      "start": 133,
+      "end": 137,
+      "key": "l4w_genz_new_insider_rate_ty",
+      "fmt": "pct",
+      "value": 0.045455
+     },
+     {
+      "start": 170,
+      "end": 175,
+      "key": "l4w_genz_new_insider_rate_ly",
+      "fmt": "pct",
+      "value": 0.266667
+     }
+    ],
     "generated_by": "pregenerated",
     "validation": {
      "n_numbers": 7,
@@ -94,73 +147,115 @@
      "matches": [
       {
        "text": "159",
-       "fact": "l4w_returning_ly",
-       "alternatives": 3,
+       "fact": "l4w_returning_ty",
+       "alternatives": 0,
        "candidates": [
-        "l4w_returning_ly",
-        "l4w_returning_ty",
-        "ptd_returning_ly",
-        "ptd_returning_ty"
+        "l4w_returning_ty"
+       ],
+       "ok": true,
+       "checks": [
+        "citation",
+        "metric"
        ]
       },
       {
        "text": "159",
        "fact": "l4w_returning_ly",
-       "alternatives": 3,
+       "alternatives": 0,
        "candidates": [
-        "l4w_returning_ly",
-        "l4w_returning_ty",
-        "ptd_returning_ly",
-        "ptd_returning_ty"
+        "l4w_returning_ly"
+       ],
+       "ok": true,
+       "checks": [
+        "citation",
+        "metric",
+        "period"
        ]
       },
       {
        "text": "17",
        "fact": "l4w_genz_returning_ty",
-       "alternatives": 1,
+       "alternatives": 0,
        "candidates": [
-        "l4w_genz_returning_ty",
-        "ptd_genz_returning_ty"
+        "l4w_genz_returning_ty"
+       ],
+       "ok": true,
+       "checks": [
+        "citation",
+        "metric",
+        "subject"
        ]
       },
       {
        "text": "26",
        "fact": "l4w_genz_returning_ly",
-       "alternatives": 1,
+       "alternatives": 0,
        "candidates": [
-        "l4w_genz_returning_ly",
-        "ptd_genz_returning_ly"
+        "l4w_genz_returning_ly"
+       ],
+       "ok": true,
+       "checks": [
+        "citation",
+        "metric",
+        "subject"
        ]
       },
       {
        "text": "-34.6%",
        "fact": "l4w_genz_returning_yoy_pct",
-       "alternatives": 1,
+       "alternatives": 0,
        "candidates": [
-        "l4w_genz_returning_yoy_pct",
-        "ptd_genz_returning_yoy_pct"
+        "l4w_genz_returning_yoy_pct"
+       ],
+       "ok": true,
+       "checks": [
+        "citation",
+        "metric",
+        "subject"
        ]
       },
       {
        "text": "4.5%",
        "fact": "l4w_genz_new_insider_rate_ty",
-       "alternatives": 1,
+       "alternatives": 0,
        "candidates": [
-        "l4w_genz_new_insider_rate_ty",
-        "ptd_genz_new_insider_rate_ty"
+        "l4w_genz_new_insider_rate_ty"
+       ],
+       "ok": true,
+       "checks": [
+        "citation",
+        "metric",
+        "subject"
        ]
       },
       {
        "text": "26.7%",
        "fact": "l4w_genz_new_insider_rate_ly",
-       "alternatives": 1,
+       "alternatives": 0,
        "candidates": [
-        "l4w_genz_new_insider_rate_ly",
-        "ptd_genz_new_insider_rate_ly"
+        "l4w_genz_new_insider_rate_ly"
+       ],
+       "ok": true,
+       "checks": [
+        "citation",
+        "metric",
+        "subject",
+        "period"
        ]
       }
      ],
-     "status": "PASS"
+     "status": "PASS",
+     "mode": "semantic",
+     "failures": [],
+     "checks": {
+      "citation": 7,
+      "metric": 7,
+      "subject": 5,
+      "period": 2,
+      "direction": 0,
+      "comparison": 0
+     },
+     "n_citations": 7
     }
    },
    {
@@ -188,7 +283,39 @@
      ]
     },
     "headline": "Gen Z is 33.3% of new customers in the first week, up from 28.8% last year.",
-    "body": "That is 22 Gen Z new customers vs 15. One week isn't a trend yet; I'll track the share week by week.",
+    "body": "That is 22 Gen Z new customers vs 15 LY. One week isn't a trend yet; I'll track the share week by week.",
+    "headline_source": "Gen Z is {first_week_genz_share_of_new_ty|pct} of new customers in the first week, up from {first_week_genz_share_of_new_ly|pct} last year.",
+    "body_source": "That is {week_genz_new_ty|int} Gen Z new customers vs {week_genz_new_ly|int} LY. One week isn't a trend yet; I'll track the share week by week.",
+    "citations": [
+     {
+      "start": 9,
+      "end": 14,
+      "key": "first_week_genz_share_of_new_ty",
+      "fmt": "pct",
+      "value": 0.333333
+     },
+     {
+      "start": 59,
+      "end": 64,
+      "key": "first_week_genz_share_of_new_ly",
+      "fmt": "pct",
+      "value": 0.288462
+     },
+     {
+      "start": 84,
+      "end": 86,
+      "key": "week_genz_new_ty",
+      "fmt": "int",
+      "value": 22.0
+     },
+     {
+      "start": 110,
+      "end": 112,
+      "key": "week_genz_new_ly",
+      "fmt": "int",
+      "value": 15.0
+     }
+    ],
     "generated_by": "pregenerated",
     "validation": {
      "n_numbers": 4,
@@ -198,28 +325,42 @@
       {
        "text": "33.3%",
        "fact": "first_week_genz_share_of_new_ty",
-       "alternatives": 1,
+       "alternatives": 0,
        "candidates": [
-        "first_week_genz_share_of_new_ty",
-        "week_genz_share_of_new_ty"
+        "first_week_genz_share_of_new_ty"
+       ],
+       "ok": true,
+       "checks": [
+        "citation",
+        "metric",
+        "subject"
        ]
       },
       {
        "text": "28.8%",
        "fact": "first_week_genz_share_of_new_ly",
-       "alternatives": 1,
+       "alternatives": 0,
        "candidates": [
-        "first_week_genz_share_of_new_ly",
-        "week_genz_share_of_new_ly"
+        "first_week_genz_share_of_new_ly"
+       ],
+       "ok": true,
+       "checks": [
+        "citation",
+        "period"
        ]
       },
       {
        "text": "22",
-       "fact": "first_week_genz_new_ty",
-       "alternatives": 1,
+       "fact": "week_genz_new_ty",
+       "alternatives": 0,
        "candidates": [
-        "first_week_genz_new_ty",
         "week_genz_new_ty"
+       ],
+       "ok": true,
+       "checks": [
+        "citation",
+        "metric",
+        "subject"
        ]
       },
       {
@@ -228,10 +369,28 @@
        "alternatives": 0,
        "candidates": [
         "week_genz_new_ly"
+       ],
+       "ok": true,
+       "checks": [
+        "citation",
+        "metric",
+        "subject",
+        "period"
        ]
       }
      ],
-     "status": "PASS"
+     "status": "PASS",
+     "mode": "semantic",
+     "failures": [],
+     "checks": {
+      "citation": 4,
+      "metric": 3,
+      "subject": 3,
+      "period": 2,
+      "direction": 0,
+      "comparison": 0
+     },
+     "n_citations": 4
     }
    },
    {
@@ -265,8 +424,54 @@
       }
      ]
     },
-    "headline": "Gen Z new customers are up +46.7% in the first week, 22 vs 15.",
+    "headline": "Gen Z new customers are up +46.7% in the first week, 22 vs 15 LY.",
     "body": "Tabby drives the start: +70.8% YoY and +10.5 pts of growth on its own. Total demand is +14.4%.",
+    "headline_source": "Gen Z new customers are up {ptd_genz_new_yoy_pct|pct+} in the first week, {ptd_genz_new_ty|int} vs {ptd_genz_new_ly|int} LY.",
+    "body_source": "Tabby drives the start: {tabby_l4w_sales_yoy_pct|pct+} YoY and {tabby_l4w_contrib_pts|pts+} of growth on its own. Total demand is {l4w_sales_yoy_pct|pct+}.",
+    "citations": [
+     {
+      "start": 27,
+      "end": 33,
+      "key": "ptd_genz_new_yoy_pct",
+      "fmt": "pct+",
+      "value": 0.466667
+     },
+     {
+      "start": 53,
+      "end": 55,
+      "key": "ptd_genz_new_ty",
+      "fmt": "int",
+      "value": 22.0
+     },
+     {
+      "start": 59,
+      "end": 61,
+      "key": "ptd_genz_new_ly",
+      "fmt": "int",
+      "value": 15.0
+     },
+     {
+      "start": 90,
+      "end": 96,
+      "key": "tabby_l4w_sales_yoy_pct",
+      "fmt": "pct+",
+      "value": 0.707536
+     },
+     {
+      "start": 105,
+      "end": 114,
+      "key": "tabby_l4w_contrib_pts",
+      "fmt": "pts+",
+      "value": 10.476
+     },
+     {
+      "start": 153,
+      "end": 159,
+      "key": "l4w_sales_yoy_pct",
+      "fmt": "pct+",
+      "value": 0.14438
+     }
+    ],
     "generated_by": "pregenerated",
     "validation": {
      "n_numbers": 6,
@@ -279,6 +484,13 @@
        "alternatives": 0,
        "candidates": [
         "ptd_genz_new_yoy_pct"
+       ],
+       "ok": true,
+       "checks": [
+        "citation",
+        "metric",
+        "subject",
+        "direction"
        ]
       },
       {
@@ -287,6 +499,10 @@
        "alternatives": 0,
        "candidates": [
         "ptd_genz_new_ty"
+       ],
+       "ok": true,
+       "checks": [
+        "citation"
        ]
       },
       {
@@ -295,6 +511,11 @@
        "alternatives": 0,
        "candidates": [
         "ptd_genz_new_ly"
+       ],
+       "ok": true,
+       "checks": [
+        "citation",
+        "period"
        ]
       },
       {
@@ -303,6 +524,11 @@
        "alternatives": 0,
        "candidates": [
         "tabby_l4w_sales_yoy_pct"
+       ],
+       "ok": true,
+       "checks": [
+        "citation",
+        "period"
        ]
       },
       {
@@ -311,19 +537,38 @@
        "alternatives": 0,
        "candidates": [
         "tabby_l4w_contrib_pts"
+       ],
+       "ok": true,
+       "checks": [
+        "citation"
        ]
       },
       {
        "text": "+14.4%",
        "fact": "l4w_sales_yoy_pct",
-       "alternatives": 1,
+       "alternatives": 0,
        "candidates": [
-        "l4w_sales_yoy_pct",
-        "ptd_sales_yoy_pct"
+        "l4w_sales_yoy_pct"
+       ],
+       "ok": true,
+       "checks": [
+        "citation",
+        "metric"
        ]
       }
      ],
-     "status": "PASS"
+     "status": "PASS",
+     "mode": "semantic",
+     "failures": [],
+     "checks": {
+      "citation": 6,
+      "metric": 2,
+      "subject": 1,
+      "period": 2,
+      "direction": 1,
+      "comparison": 0
+     },
+     "n_citations": 6
     }
    },
    {
@@ -371,7 +616,39 @@
      ]
     },
     "headline": "Tabby opens the period with 6.7 weeks of supply against 10.3 last year.",
-    "body": "This reading uses a 1-week sales window, so the inventory rules stay off until the window is full. Pillow Tabby shows 17.8 weeks (LY 12.6) on a single week of sales; read both as early signals, not alerts.",
+    "body": "This reading uses a one-week sales window, so the inventory rules stay off until the window is full. Pillow Tabby shows 17.8 weeks of supply (LY 12.6) on a single week of sales; read both as early signals, not alerts.",
+    "headline_source": "Tabby opens the period with {tabby_wos|wos} weeks of supply against {tabby_wos_ly_same_week|wos} last year.",
+    "body_source": "This reading uses a one-week sales window, so the inventory rules stay off until the window is full. Pillow Tabby shows {pillow_tabby_wos|wos} weeks of supply (LY {pillow_tabby_wos_ly_same_week|wos}) on a single week of sales; read both as early signals, not alerts.",
+    "citations": [
+     {
+      "start": 28,
+      "end": 31,
+      "key": "tabby_wos",
+      "fmt": "wos",
+      "value": 6.74
+     },
+     {
+      "start": 56,
+      "end": 60,
+      "key": "tabby_wos_ly_same_week",
+      "fmt": "wos",
+      "value": 10.33
+     },
+     {
+      "start": 192,
+      "end": 196,
+      "key": "pillow_tabby_wos",
+      "fmt": "wos",
+      "value": 17.8
+     },
+     {
+      "start": 217,
+      "end": 221,
+      "key": "pillow_tabby_wos_ly_same_week",
+      "fmt": "wos",
+      "value": 12.6
+     }
+    ],
     "generated_by": "pregenerated",
     "validation": {
      "n_numbers": 4,
@@ -384,6 +661,12 @@
        "alternatives": 0,
        "candidates": [
         "tabby_wos"
+       ],
+       "ok": true,
+       "checks": [
+        "citation",
+        "metric",
+        "subject"
        ]
       },
       {
@@ -392,6 +675,13 @@
        "alternatives": 0,
        "candidates": [
         "tabby_wos_ly_same_week"
+       ],
+       "ok": true,
+       "checks": [
+        "citation",
+        "metric",
+        "subject",
+        "period"
        ]
       },
       {
@@ -400,6 +690,12 @@
        "alternatives": 0,
        "candidates": [
         "pillow_tabby_wos"
+       ],
+       "ok": true,
+       "checks": [
+        "citation",
+        "metric",
+        "subject"
        ]
       },
       {
@@ -408,10 +704,28 @@
        "alternatives": 0,
        "candidates": [
         "pillow_tabby_wos_ly_same_week"
+       ],
+       "ok": true,
+       "checks": [
+        "citation",
+        "metric",
+        "subject",
+        "period"
        ]
       }
      ],
-     "status": "PASS"
+     "status": "PASS",
+     "mode": "semantic",
+     "failures": [],
+     "checks": {
+      "citation": 4,
+      "metric": 4,
+      "subject": 4,
+      "period": 2,
+      "direction": 0,
+      "comparison": 0
+     },
+     "n_citations": 4
     }
    },
    {
@@ -460,6 +774,38 @@
     },
     "headline": "Trench holds 32.5 weeks of supply against 6.7 last year.",
     "body": "That reading rests on a single week of sales, so it is a watch item, not an alert. Tailored Jacket is at 23.8 weeks (LY 6.6).",
+    "headline_source": "Trench holds {trench_wos|wos} weeks of supply against {trench_wos_ly_same_week|wos} last year.",
+    "body_source": "That reading rests on a single week of sales, so it is a watch item, not an alert. Tailored Jacket is at {tailored_jacket_wos|wos} weeks (LY {tailored_jacket_wos_ly_same_week|wos}).",
+    "citations": [
+     {
+      "start": 13,
+      "end": 17,
+      "key": "trench_wos",
+      "fmt": "wos",
+      "value": 32.5
+     },
+     {
+      "start": 42,
+      "end": 45,
+      "key": "trench_wos_ly_same_week",
+      "fmt": "wos",
+      "value": 6.73
+     },
+     {
+      "start": 162,
+      "end": 166,
+      "key": "tailored_jacket_wos",
+      "fmt": "wos",
+      "value": 23.75
+     },
+     {
+      "start": 177,
+      "end": 180,
+      "key": "tailored_jacket_wos_ly_same_week",
+      "fmt": "wos",
+      "value": 6.64
+     }
+    ],
     "generated_by": "pregenerated",
     "validation": {
      "n_numbers": 4,
@@ -472,6 +818,12 @@
        "alternatives": 0,
        "candidates": [
         "trench_wos"
+       ],
+       "ok": true,
+       "checks": [
+        "citation",
+        "metric",
+        "subject"
        ]
       },
       {
@@ -480,6 +832,13 @@
        "alternatives": 0,
        "candidates": [
         "trench_wos_ly_same_week"
+       ],
+       "ok": true,
+       "checks": [
+        "citation",
+        "metric",
+        "subject",
+        "period"
        ]
       },
       {
@@ -488,6 +847,11 @@
        "alternatives": 0,
        "candidates": [
         "tailored_jacket_wos"
+       ],
+       "ok": true,
+       "checks": [
+        "citation",
+        "subject"
        ]
       },
       {
@@ -496,10 +860,27 @@
        "alternatives": 0,
        "candidates": [
         "tailored_jacket_wos_ly_same_week"
+       ],
+       "ok": true,
+       "checks": [
+        "citation",
+        "subject",
+        "period"
        ]
       }
      ],
-     "status": "PASS"
+     "status": "PASS",
+     "mode": "semantic",
+     "failures": [],
+     "checks": {
+      "citation": 4,
+      "metric": 2,
+      "subject": 4,
+      "period": 2,
+      "direction": 0,
+      "comparison": 0
+     },
+     "n_citations": 4
     }
    }
   ]
@@ -589,8 +970,54 @@
       }
      ]
     },
-    "headline": "Returning customers are -2.7% YoY over W23–W24, and returning Gen Z is down to 36 from 51.",
+    "headline": "Returning customers are -2.7% YoY over W23-W24, and returning Gen Z is down to 36 from 51.",
     "body": "Returning Gen Z is -29.4% and new Gen Z Insider attach is 16.3% vs 29.0% LY, so last year's Gen Z buyers aren't visibly coming back. Insider enrolment at the first purchase is the lever to test.",
+    "headline_source": "Returning customers are {l4w_returning_yoy_pct|pct+} YoY over W23-W24, and returning Gen Z is down to {l4w_genz_returning_ty|int} from {l4w_genz_returning_ly|int}.",
+    "body_source": "Returning Gen Z is {l4w_genz_returning_yoy_pct|pct+} and new Gen Z Insider attach is {l4w_genz_new_insider_rate_ty|pct} vs {l4w_genz_new_insider_rate_ly|pct} LY, so last year's Gen Z buyers aren't visibly coming back. Insider enrolment at the first purchase is the lever to test.",
+    "citations": [
+     {
+      "start": 24,
+      "end": 29,
+      "key": "l4w_returning_yoy_pct",
+      "fmt": "pct+",
+      "value": -0.026627
+     },
+     {
+      "start": 79,
+      "end": 81,
+      "key": "l4w_genz_returning_ty",
+      "fmt": "int",
+      "value": 36.0
+     },
+     {
+      "start": 87,
+      "end": 89,
+      "key": "l4w_genz_returning_ly",
+      "fmt": "int",
+      "value": 51.0
+     },
+     {
+      "start": 110,
+      "end": 116,
+      "key": "l4w_genz_returning_yoy_pct",
+      "fmt": "pct+",
+      "value": -0.294118
+     },
+     {
+      "start": 149,
+      "end": 154,
+      "key": "l4w_genz_new_insider_rate_ty",
+      "fmt": "pct",
+      "value": 0.162791
+     },
+     {
+      "start": 158,
+      "end": 163,
+      "key": "l4w_genz_new_insider_rate_ly",
+      "fmt": "pct",
+      "value": 0.290323
+     }
+    ],
     "generated_by": "pregenerated",
     "validation": {
      "n_numbers": 6,
@@ -600,59 +1027,101 @@
       {
        "text": "-2.7%",
        "fact": "l4w_returning_yoy_pct",
-       "alternatives": 1,
+       "alternatives": 0,
        "candidates": [
-        "l4w_returning_yoy_pct",
-        "ptd_returning_yoy_pct"
+        "l4w_returning_yoy_pct"
+       ],
+       "ok": true,
+       "checks": [
+        "citation",
+        "metric",
+        "period"
        ]
       },
       {
        "text": "36",
        "fact": "l4w_genz_returning_ty",
-       "alternatives": 1,
+       "alternatives": 0,
        "candidates": [
-        "l4w_genz_returning_ty",
-        "ptd_genz_returning_ty"
+        "l4w_genz_returning_ty"
+       ],
+       "ok": true,
+       "checks": [
+        "citation",
+        "metric",
+        "subject"
        ]
       },
       {
        "text": "51",
        "fact": "l4w_genz_returning_ly",
-       "alternatives": 1,
+       "alternatives": 0,
        "candidates": [
-        "l4w_genz_returning_ly",
-        "ptd_genz_returning_ly"
+        "l4w_genz_returning_ly"
+       ],
+       "ok": true,
+       "checks": [
+        "citation",
+        "metric",
+        "subject"
        ]
       },
       {
        "text": "-29.4%",
        "fact": "l4w_genz_returning_yoy_pct",
-       "alternatives": 1,
+       "alternatives": 0,
        "candidates": [
-        "l4w_genz_returning_yoy_pct",
-        "ptd_genz_returning_yoy_pct"
+        "l4w_genz_returning_yoy_pct"
+       ],
+       "ok": true,
+       "checks": [
+        "citation",
+        "metric",
+        "subject"
        ]
       },
       {
        "text": "16.3%",
        "fact": "l4w_genz_new_insider_rate_ty",
-       "alternatives": 1,
+       "alternatives": 0,
        "candidates": [
-        "l4w_genz_new_insider_rate_ty",
-        "ptd_genz_new_insider_rate_ty"
+        "l4w_genz_new_insider_rate_ty"
+       ],
+       "ok": true,
+       "checks": [
+        "citation",
+        "metric",
+        "subject"
        ]
       },
       {
        "text": "29.0%",
        "fact": "l4w_genz_new_insider_rate_ly",
-       "alternatives": 1,
+       "alternatives": 0,
        "candidates": [
-        "l4w_genz_new_insider_rate_ly",
-        "ptd_genz_new_insider_rate_ly"
+        "l4w_genz_new_insider_rate_ly"
+       ],
+       "ok": true,
+       "checks": [
+        "citation",
+        "metric",
+        "subject",
+        "period"
        ]
       }
      ],
-     "status": "PASS"
+     "status": "PASS",
+     "mode": "semantic",
+     "failures": [],
+     "checks": {
+      "citation": 6,
+      "metric": 6,
+      "subject": 5,
+      "period": 2,
+      "direction": 0,
+      "comparison": 0
+     },
+     "n_citations": 6
     }
    },
    {
@@ -685,7 +1154,39 @@
      ]
     },
     "headline": "Gen Z took 32.8% of new customers in W24, close to the 33.3% of the first week.",
-    "body": "Last year the same week was 25.8%. Weekly counts are small (21 Gen Z new), so a one-point move is noise.",
+    "body": "Last year the same week was 25.8%. Weekly counts are small (21 Gen Z new customers), so a one-point move is noise.",
+    "headline_source": "Gen Z took {week_genz_share_of_new_ty|pct} of new customers in W24, close to the {first_week_genz_share_of_new_ty|pct} of the first week.",
+    "body_source": "Last year the same week was {week_genz_share_of_new_ly|pct}. Weekly counts are small ({week_genz_new_ty|int} Gen Z new customers), so a one-point move is noise.",
+    "citations": [
+     {
+      "start": 11,
+      "end": 16,
+      "key": "week_genz_share_of_new_ty",
+      "fmt": "pct",
+      "value": 0.328125
+     },
+     {
+      "start": 55,
+      "end": 60,
+      "key": "first_week_genz_share_of_new_ty",
+      "fmt": "pct",
+      "value": 0.333333
+     },
+     {
+      "start": 108,
+      "end": 113,
+      "key": "week_genz_share_of_new_ly",
+      "fmt": "pct",
+      "value": 0.258065
+     },
+     {
+      "start": 140,
+      "end": 142,
+      "key": "week_genz_new_ty",
+      "fmt": "int",
+      "value": 21.0
+     }
+    ],
     "generated_by": "pregenerated",
     "validation": {
      "n_numbers": 4,
@@ -698,6 +1199,12 @@
        "alternatives": 0,
        "candidates": [
         "week_genz_share_of_new_ty"
+       ],
+       "ok": true,
+       "checks": [
+        "citation",
+        "metric",
+        "subject"
        ]
       },
       {
@@ -706,6 +1213,10 @@
        "alternatives": 0,
        "candidates": [
         "first_week_genz_share_of_new_ty"
+       ],
+       "ok": true,
+       "checks": [
+        "citation"
        ]
       },
       {
@@ -714,6 +1225,11 @@
        "alternatives": 0,
        "candidates": [
         "week_genz_share_of_new_ly"
+       ],
+       "ok": true,
+       "checks": [
+        "citation",
+        "period"
        ]
       },
       {
@@ -722,10 +1238,27 @@
        "alternatives": 0,
        "candidates": [
         "week_genz_new_ty"
+       ],
+       "ok": true,
+       "checks": [
+        "citation",
+        "metric",
+        "subject"
        ]
       }
      ],
-     "status": "PASS"
+     "status": "PASS",
+     "mode": "semantic",
+     "failures": [],
+     "checks": {
+      "citation": 4,
+      "metric": 2,
+      "subject": 2,
+      "period": 1,
+      "direction": 0,
+      "comparison": 0
+     },
+     "n_citations": 4
     }
    },
    {
@@ -759,8 +1292,54 @@
       }
      ]
     },
-    "headline": "Gen Z new customers are up +38.7% over W23–W24, 43 vs 31.",
-    "body": "Tabby more than doubled (+109% over L4W) and added +14.1 pts of growth. Demand is +11.6% period-to-date.",
+    "headline": "Gen Z new customers are up +38.7% over W23-W24, 43 vs 31 LY.",
+    "body": "Tabby added +14.1 pts of contribution and more than doubled its L4W demand (+109%). Demand is +11.6% period-to-date.",
+    "headline_source": "Gen Z new customers are up {ptd_genz_new_yoy_pct|pct+} over W23-W24, {ptd_genz_new_ty|int} vs {ptd_genz_new_ly|int} LY.",
+    "body_source": "Tabby added {tabby_l4w_contrib_pts|pts+} of contribution and more than doubled its L4W demand ({tabby_l4w_sales_yoy_pct|pct+}). Demand is {ptd_sales_yoy_pct|pct+} period-to-date.",
+    "citations": [
+     {
+      "start": 27,
+      "end": 33,
+      "key": "ptd_genz_new_yoy_pct",
+      "fmt": "pct+",
+      "value": 0.387097
+     },
+     {
+      "start": 48,
+      "end": 50,
+      "key": "ptd_genz_new_ty",
+      "fmt": "int",
+      "value": 43.0
+     },
+     {
+      "start": 54,
+      "end": 56,
+      "key": "ptd_genz_new_ly",
+      "fmt": "int",
+      "value": 31.0
+     },
+     {
+      "start": 73,
+      "end": 82,
+      "key": "tabby_l4w_contrib_pts",
+      "fmt": "pts+",
+      "value": 14.114
+     },
+     {
+      "start": 137,
+      "end": 142,
+      "key": "tabby_l4w_sales_yoy_pct",
+      "fmt": "pct+",
+      "value": 1.086684
+     },
+     {
+      "start": 155,
+      "end": 161,
+      "key": "ptd_sales_yoy_pct",
+      "fmt": "pct+",
+      "value": 0.116344
+     }
+    ],
     "generated_by": "pregenerated",
     "validation": {
      "n_numbers": 6,
@@ -773,6 +1352,13 @@
        "alternatives": 0,
        "candidates": [
         "ptd_genz_new_yoy_pct"
+       ],
+       "ok": true,
+       "checks": [
+        "citation",
+        "metric",
+        "subject",
+        "direction"
        ]
       },
       {
@@ -781,6 +1367,10 @@
        "alternatives": 0,
        "candidates": [
         "ptd_genz_new_ty"
+       ],
+       "ok": true,
+       "checks": [
+        "citation"
        ]
       },
       {
@@ -789,14 +1379,11 @@
        "alternatives": 0,
        "candidates": [
         "ptd_genz_new_ly"
-       ]
-      },
-      {
-       "text": "+109%",
-       "fact": "tabby_l4w_sales_yoy_pct",
-       "alternatives": 0,
-       "candidates": [
-        "tabby_l4w_sales_yoy_pct"
+       ],
+       "ok": true,
+       "checks": [
+        "citation",
+        "period"
        ]
       },
       {
@@ -805,19 +1392,58 @@
        "alternatives": 0,
        "candidates": [
         "tabby_l4w_contrib_pts"
+       ],
+       "ok": true,
+       "checks": [
+        "citation",
+        "metric",
+        "subject",
+        "period"
+       ]
+      },
+      {
+       "text": "+109%",
+       "fact": "tabby_l4w_sales_yoy_pct",
+       "alternatives": 0,
+       "candidates": [
+        "tabby_l4w_sales_yoy_pct"
+       ],
+       "ok": true,
+       "checks": [
+        "citation",
+        "metric",
+        "subject",
+        "period",
+        "comparison"
        ]
       },
       {
        "text": "+11.6%",
-       "fact": "l4w_sales_yoy_pct",
-       "alternatives": 1,
+       "fact": "ptd_sales_yoy_pct",
+       "alternatives": 0,
        "candidates": [
-        "l4w_sales_yoy_pct",
         "ptd_sales_yoy_pct"
+       ],
+       "ok": true,
+       "checks": [
+        "citation",
+        "metric",
+        "period"
        ]
       }
      ],
-     "status": "PASS"
+     "status": "PASS",
+     "mode": "semantic",
+     "failures": [],
+     "checks": {
+      "citation": 6,
+      "metric": 4,
+      "subject": 3,
+      "period": 4,
+      "direction": 1,
+      "comparison": 1
+     },
+     "n_citations": 6
     }
    },
    {
@@ -864,8 +1490,54 @@
       }
      ]
     },
-    "headline": "Tabby cover has fallen to 5.1 weeks, less than half of last year's 11.4.",
-    "body": "The sales window is still only 2 weeks, so no rule fires yet. Tabby holds 246 units; Pillow Tabby looks comfortable at 11.2 weeks (LY 10.7).",
+    "headline": "Tabby cover has fallen to 5.1 weeks, against 11.4 last year.",
+    "body": "The trailing window is still only 2 weeks long, so no rule fires yet. Tabby holds 246 units; Pillow Tabby looks comfortable at 11.2 weeks vs 10.7 LY.",
+    "headline_source": "Tabby cover has fallen to {tabby_wos|wos} weeks, against {tabby_wos_ly_same_week|wos} last year.",
+    "body_source": "The trailing window is still only {tabby_wos_window_weeks|int} weeks long, so no rule fires yet. Tabby holds {tabby_on_hand_eow|int} units; Pillow Tabby looks comfortable at {pillow_tabby_wos|wos} weeks vs {pillow_tabby_wos_ly_same_week|wos} LY.",
+    "citations": [
+     {
+      "start": 26,
+      "end": 29,
+      "key": "tabby_wos",
+      "fmt": "wos",
+      "value": 5.07
+     },
+     {
+      "start": 45,
+      "end": 49,
+      "key": "tabby_wos_ly_same_week",
+      "fmt": "wos",
+      "value": 11.44
+     },
+     {
+      "start": 95,
+      "end": 96,
+      "key": "tabby_wos_window_weeks",
+      "fmt": "int",
+      "value": 2.0
+     },
+     {
+      "start": 143,
+      "end": 146,
+      "key": "tabby_on_hand_eow",
+      "fmt": "int",
+      "value": 246.0
+     },
+     {
+      "start": 188,
+      "end": 192,
+      "key": "pillow_tabby_wos",
+      "fmt": "wos",
+      "value": 11.2
+     },
+     {
+      "start": 202,
+      "end": 206,
+      "key": "pillow_tabby_wos_ly_same_week",
+      "fmt": "wos",
+      "value": 10.67
+     }
+    ],
     "generated_by": "pregenerated",
     "validation": {
      "n_numbers": 6,
@@ -878,6 +1550,12 @@
        "alternatives": 0,
        "candidates": [
         "tabby_wos"
+       ],
+       "ok": true,
+       "checks": [
+        "citation",
+        "metric",
+        "subject"
        ]
       },
       {
@@ -886,15 +1564,23 @@
        "alternatives": 0,
        "candidates": [
         "tabby_wos_ly_same_week"
+       ],
+       "ok": true,
+       "checks": [
+        "citation",
+        "period"
        ]
       },
       {
        "text": "2",
-       "fact": "pillow_tabby_wos_window_weeks",
-       "alternatives": 1,
+       "fact": "tabby_wos_window_weeks",
+       "alternatives": 0,
        "candidates": [
-        "pillow_tabby_wos_window_weeks",
         "tabby_wos_window_weeks"
+       ],
+       "ok": true,
+       "checks": [
+        "citation"
        ]
       },
       {
@@ -903,6 +1589,12 @@
        "alternatives": 0,
        "candidates": [
         "tabby_on_hand_eow"
+       ],
+       "ok": true,
+       "checks": [
+        "citation",
+        "metric",
+        "subject"
        ]
       },
       {
@@ -911,6 +1603,11 @@
        "alternatives": 0,
        "candidates": [
         "pillow_tabby_wos"
+       ],
+       "ok": true,
+       "checks": [
+        "citation",
+        "subject"
        ]
       },
       {
@@ -919,10 +1616,27 @@
        "alternatives": 0,
        "candidates": [
         "pillow_tabby_wos_ly_same_week"
+       ],
+       "ok": true,
+       "checks": [
+        "citation",
+        "subject",
+        "period"
        ]
       }
      ],
-     "status": "PASS"
+     "status": "PASS",
+     "mode": "semantic",
+     "failures": [],
+     "checks": {
+      "citation": 6,
+      "metric": 2,
+      "subject": 4,
+      "period": 2,
+      "direction": 0,
+      "comparison": 0
+     },
+     "n_citations": 6
     }
    },
    {
@@ -970,7 +1684,39 @@
      ]
     },
     "headline": "Tailored Jacket holds 22.4 weeks of supply against 5.3 last year.",
-    "body": "Trench is at 17.3 weeks (LY 6.8). The sales window is still truncated, so treat these as early signs of a Halo apparel overhang.",
+    "body": "Trench is at 17.3 weeks vs 6.8 LY. The sales window is still truncated, so treat these as early signs of a Halo apparel overhang.",
+    "headline_source": "Tailored Jacket holds {tailored_jacket_wos|wos} weeks of supply against {tailored_jacket_wos_ly_same_week|wos} last year.",
+    "body_source": "Trench is at {trench_wos|wos} weeks vs {trench_wos_ly_same_week|wos} LY. The sales window is still truncated, so treat these as early signs of a Halo apparel overhang.",
+    "citations": [
+     {
+      "start": 22,
+      "end": 26,
+      "key": "tailored_jacket_wos",
+      "fmt": "wos",
+      "value": 22.44
+     },
+     {
+      "start": 51,
+      "end": 54,
+      "key": "tailored_jacket_wos_ly_same_week",
+      "fmt": "wos",
+      "value": 5.31
+     },
+     {
+      "start": 79,
+      "end": 83,
+      "key": "trench_wos",
+      "fmt": "wos",
+      "value": 17.33
+     },
+     {
+      "start": 93,
+      "end": 96,
+      "key": "trench_wos_ly_same_week",
+      "fmt": "wos",
+      "value": 6.82
+     }
+    ],
     "generated_by": "pregenerated",
     "validation": {
      "n_numbers": 4,
@@ -983,6 +1729,12 @@
        "alternatives": 0,
        "candidates": [
         "tailored_jacket_wos"
+       ],
+       "ok": true,
+       "checks": [
+        "citation",
+        "metric",
+        "subject"
        ]
       },
       {
@@ -991,6 +1743,13 @@
        "alternatives": 0,
        "candidates": [
         "tailored_jacket_wos_ly_same_week"
+       ],
+       "ok": true,
+       "checks": [
+        "citation",
+        "metric",
+        "subject",
+        "period"
        ]
       },
       {
@@ -999,6 +1758,11 @@
        "alternatives": 0,
        "candidates": [
         "trench_wos"
+       ],
+       "ok": true,
+       "checks": [
+        "citation",
+        "subject"
        ]
       },
       {
@@ -1007,10 +1771,27 @@
        "alternatives": 0,
        "candidates": [
         "trench_wos_ly_same_week"
+       ],
+       "ok": true,
+       "checks": [
+        "citation",
+        "subject",
+        "period"
        ]
       }
      ],
-     "status": "PASS"
+     "status": "PASS",
+     "mode": "semantic",
+     "failures": [],
+     "checks": {
+      "citation": 4,
+      "metric": 2,
+      "subject": 4,
+      "period": 2,
+      "direction": 0,
+      "comparison": 0
+     },
+     "n_citations": 4
     }
    }
   ]
@@ -1100,8 +1881,61 @@
       }
      ]
     },
-    "headline": "Returning customers fell -5.1% (463 vs 488) and returning Gen Z -26.9% over W23–W25.",
-    "body": "Only 19.4% of new Gen Z joined Insider vs 27.9% LY, while 21.0% of all new customers did. Without a loyalty hook, the Gen Z acquisition wave won't show up as returning demand.",
+    "headline": "Returning customers fell 5.1% (463 vs 488 LY); returning Gen Z fell 26.9% over W23-W25.",
+    "body": "Only 19.4% of new Gen Z joined Insider vs 27.9% LY, against 21.0% attach for all new customers. Without a loyalty hook, the Gen Z acquisition wave won't show up as returning demand.",
+    "headline_source": "Returning customers fell {l4w_returning_yoy_pct|pct_abs} ({l4w_returning_ty|int} vs {l4w_returning_ly|int} LY); returning Gen Z fell {l4w_genz_returning_yoy_pct|pct_abs} over W23-W25.",
+    "body_source": "Only {l4w_genz_new_insider_rate_ty|pct} of new Gen Z joined Insider vs {l4w_genz_new_insider_rate_ly|pct} LY, against {l4w_new_insider_rate_ty|pct} attach for all new customers. Without a loyalty hook, the Gen Z acquisition wave won't show up as returning demand.",
+    "citations": [
+     {
+      "start": 25,
+      "end": 29,
+      "key": "l4w_returning_yoy_pct",
+      "fmt": "pct_abs",
+      "value": -0.05123
+     },
+     {
+      "start": 31,
+      "end": 34,
+      "key": "l4w_returning_ty",
+      "fmt": "int",
+      "value": 463.0
+     },
+     {
+      "start": 38,
+      "end": 41,
+      "key": "l4w_returning_ly",
+      "fmt": "int",
+      "value": 488.0
+     },
+     {
+      "start": 68,
+      "end": 73,
+      "key": "l4w_genz_returning_yoy_pct",
+      "fmt": "pct_abs",
+      "value": -0.268657
+     },
+     {
+      "start": 93,
+      "end": 98,
+      "key": "l4w_genz_new_insider_rate_ty",
+      "fmt": "pct",
+      "value": 0.194444
+     },
+     {
+      "start": 130,
+      "end": 135,
+      "key": "l4w_genz_new_insider_rate_ly",
+      "fmt": "pct",
+      "value": 0.27907
+     },
+     {
+      "start": 148,
+      "end": 153,
+      "key": "l4w_new_insider_rate_ty",
+      "fmt": "pct",
+      "value": 0.21
+     }
+    ],
     "generated_by": "pregenerated",
     "validation": {
      "n_numbers": 7,
@@ -1109,70 +1943,116 @@
      "unmatched": [],
      "matches": [
       {
-       "text": "-5.1%",
+       "text": "5.1%",
        "fact": "l4w_returning_yoy_pct",
-       "alternatives": 1,
+       "alternatives": 0,
        "candidates": [
-        "l4w_returning_yoy_pct",
-        "ptd_returning_yoy_pct"
+        "l4w_returning_yoy_pct"
+       ],
+       "ok": true,
+       "checks": [
+        "citation",
+        "metric",
+        "direction"
        ]
       },
       {
        "text": "463",
        "fact": "l4w_returning_ty",
-       "alternatives": 1,
+       "alternatives": 0,
        "candidates": [
-        "l4w_returning_ty",
-        "ptd_returning_ty"
+        "l4w_returning_ty"
+       ],
+       "ok": true,
+       "checks": [
+        "citation",
+        "metric"
        ]
       },
       {
        "text": "488",
        "fact": "l4w_returning_ly",
-       "alternatives": 1,
+       "alternatives": 0,
        "candidates": [
-        "l4w_returning_ly",
-        "ptd_returning_ly"
+        "l4w_returning_ly"
+       ],
+       "ok": true,
+       "checks": [
+        "citation",
+        "metric",
+        "period"
        ]
       },
       {
-       "text": "-26.9%",
+       "text": "26.9%",
        "fact": "l4w_genz_returning_yoy_pct",
-       "alternatives": 1,
+       "alternatives": 0,
        "candidates": [
-        "l4w_genz_returning_yoy_pct",
-        "ptd_genz_returning_yoy_pct"
+        "l4w_genz_returning_yoy_pct"
+       ],
+       "ok": true,
+       "checks": [
+        "citation",
+        "metric",
+        "subject",
+        "direction"
        ]
       },
       {
        "text": "19.4%",
        "fact": "l4w_genz_new_insider_rate_ty",
-       "alternatives": 1,
+       "alternatives": 0,
        "candidates": [
-        "l4w_genz_new_insider_rate_ty",
-        "ptd_genz_new_insider_rate_ty"
+        "l4w_genz_new_insider_rate_ty"
+       ],
+       "ok": true,
+       "checks": [
+        "citation",
+        "metric",
+        "subject"
        ]
       },
       {
        "text": "27.9%",
        "fact": "l4w_genz_new_insider_rate_ly",
-       "alternatives": 1,
+       "alternatives": 0,
        "candidates": [
-        "l4w_genz_new_insider_rate_ly",
-        "ptd_genz_new_insider_rate_ly"
+        "l4w_genz_new_insider_rate_ly"
+       ],
+       "ok": true,
+       "checks": [
+        "citation",
+        "metric",
+        "subject",
+        "period"
        ]
       },
       {
        "text": "21.0%",
        "fact": "l4w_new_insider_rate_ty",
-       "alternatives": 1,
+       "alternatives": 0,
        "candidates": [
-        "l4w_new_insider_rate_ty",
-        "ptd_new_insider_rate_ty"
+        "l4w_new_insider_rate_ty"
+       ],
+       "ok": true,
+       "checks": [
+        "citation",
+        "metric"
        ]
       }
      ],
-     "status": "PASS"
+     "status": "PASS",
+     "mode": "semantic",
+     "failures": [],
+     "checks": {
+      "citation": 7,
+      "metric": 7,
+      "subject": 3,
+      "period": 2,
+      "direction": 2,
+      "comparison": 0
+     },
+     "n_citations": 7
     }
    },
    {
@@ -1211,6 +2091,38 @@
     },
     "headline": "Gen Z share of new customers rose to 41.4%, from 33.3% in W23.",
     "body": "Last year this week was 24.0%. 29 Gen Z customers were new this week, the momentum the acquisition goal is after.",
+    "headline_source": "Gen Z share of new customers rose to {week_genz_share_of_new_ty|pct}, from {first_week_genz_share_of_new_ty|pct} in W23.",
+    "body_source": "Last year this week was {week_genz_share_of_new_ly|pct}. {week_genz_new_ty|int} Gen Z customers were new this week, the momentum the acquisition goal is after.",
+    "citations": [
+     {
+      "start": 37,
+      "end": 42,
+      "key": "week_genz_share_of_new_ty",
+      "fmt": "pct",
+      "value": 0.414286
+     },
+     {
+      "start": 49,
+      "end": 54,
+      "key": "first_week_genz_share_of_new_ty",
+      "fmt": "pct",
+      "value": 0.333333
+     },
+     {
+      "start": 87,
+      "end": 92,
+      "key": "week_genz_share_of_new_ly",
+      "fmt": "pct",
+      "value": 0.24
+     },
+     {
+      "start": 94,
+      "end": 96,
+      "key": "week_genz_new_ty",
+      "fmt": "int",
+      "value": 29.0
+     }
+    ],
     "generated_by": "pregenerated",
     "validation": {
      "n_numbers": 4,
@@ -1223,6 +2135,12 @@
        "alternatives": 0,
        "candidates": [
         "week_genz_share_of_new_ty"
+       ],
+       "ok": true,
+       "checks": [
+        "citation",
+        "metric",
+        "subject"
        ]
       },
       {
@@ -1231,6 +2149,10 @@
        "alternatives": 0,
        "candidates": [
         "first_week_genz_share_of_new_ty"
+       ],
+       "ok": true,
+       "checks": [
+        "citation"
        ]
       },
       {
@@ -1239,6 +2161,11 @@
        "alternatives": 0,
        "candidates": [
         "week_genz_share_of_new_ly"
+       ],
+       "ok": true,
+       "checks": [
+        "citation",
+        "period"
        ]
       },
       {
@@ -1247,10 +2174,26 @@
        "alternatives": 0,
        "candidates": [
         "week_genz_new_ty"
+       ],
+       "ok": true,
+       "checks": [
+        "citation",
+        "subject"
        ]
       }
      ],
-     "status": "PASS"
+     "status": "PASS",
+     "mode": "semantic",
+     "failures": [],
+     "checks": {
+      "citation": 4,
+      "metric": 1,
+      "subject": 2,
+      "period": 1,
+      "direction": 0,
+      "comparison": 0
+     },
+     "n_citations": 4
     }
    },
    {
@@ -1284,8 +2227,75 @@
       }
      ]
     },
-    "headline": "Gen Z new customers are up +67.4% period-to-date: 72 vs 43.",
-    "body": "Tabby (+75.2%, +11.9 pts) and Pillow Tabby (+172%, +4.1 pts) lead L4W growth. Gen Z is 36.0% of new customers vs 26.2% LY.",
+    "headline": "Gen Z new customers are up +67.4% period-to-date: 72 vs 43 LY.",
+    "body": "Tabby (demand +75.2%, contribution +11.9 pts) and Pillow Tabby (demand +172%, contribution +4.1 pts) lead L4W growth. Gen Z is 36.0% of new customers vs 26.2% LY.",
+    "headline_source": "Gen Z new customers are up {ptd_genz_new_yoy_pct|pct+} period-to-date: {ptd_genz_new_ty|int} vs {ptd_genz_new_ly|int} LY.",
+    "body_source": "Tabby (demand {tabby_l4w_sales_yoy_pct|pct+}, contribution {tabby_l4w_contrib_pts|pts+}) and Pillow Tabby (demand {pillow_tabby_l4w_sales_yoy_pct|pct+}, contribution {pillow_tabby_l4w_contrib_pts|pts+}) lead L4W growth. Gen Z is {ptd_genz_share_of_new_ty|pct} of new customers vs {ptd_genz_share_of_new_ly|pct} LY.",
+    "citations": [
+     {
+      "start": 27,
+      "end": 33,
+      "key": "ptd_genz_new_yoy_pct",
+      "fmt": "pct+",
+      "value": 0.674419
+     },
+     {
+      "start": 50,
+      "end": 52,
+      "key": "ptd_genz_new_ty",
+      "fmt": "int",
+      "value": 72.0
+     },
+     {
+      "start": 56,
+      "end": 58,
+      "key": "ptd_genz_new_ly",
+      "fmt": "int",
+      "value": 43.0
+     },
+     {
+      "start": 77,
+      "end": 83,
+      "key": "tabby_l4w_sales_yoy_pct",
+      "fmt": "pct+",
+      "value": 0.751656
+     },
+     {
+      "start": 98,
+      "end": 107,
+      "key": "tabby_l4w_contrib_pts",
+      "fmt": "pts+",
+      "value": 11.924
+     },
+     {
+      "start": 134,
+      "end": 139,
+      "key": "pillow_tabby_l4w_sales_yoy_pct",
+      "fmt": "pct+",
+      "value": 1.724359
+     },
+     {
+      "start": 154,
+      "end": 162,
+      "key": "pillow_tabby_l4w_contrib_pts",
+      "fmt": "pts+",
+      "value": 4.136
+     },
+     {
+      "start": 190,
+      "end": 195,
+      "key": "ptd_genz_share_of_new_ty",
+      "fmt": "pct",
+      "value": 0.36
+     },
+     {
+      "start": 216,
+      "end": 221,
+      "key": "ptd_genz_share_of_new_ly",
+      "fmt": "pct",
+      "value": 0.262195
+     }
+    ],
     "generated_by": "pregenerated",
     "validation": {
      "n_numbers": 9,
@@ -1298,6 +2308,14 @@
        "alternatives": 0,
        "candidates": [
         "ptd_genz_new_yoy_pct"
+       ],
+       "ok": true,
+       "checks": [
+        "citation",
+        "metric",
+        "subject",
+        "period",
+        "direction"
        ]
       },
       {
@@ -1306,6 +2324,10 @@
        "alternatives": 0,
        "candidates": [
         "ptd_genz_new_ty"
+       ],
+       "ok": true,
+       "checks": [
+        "citation"
        ]
       },
       {
@@ -1314,6 +2336,11 @@
        "alternatives": 0,
        "candidates": [
         "ptd_genz_new_ly"
+       ],
+       "ok": true,
+       "checks": [
+        "citation",
+        "period"
        ]
       },
       {
@@ -1322,6 +2349,13 @@
        "alternatives": 0,
        "candidates": [
         "tabby_l4w_sales_yoy_pct"
+       ],
+       "ok": true,
+       "checks": [
+        "citation",
+        "metric",
+        "subject",
+        "period"
        ]
       },
       {
@@ -1330,6 +2364,13 @@
        "alternatives": 0,
        "candidates": [
         "tabby_l4w_contrib_pts"
+       ],
+       "ok": true,
+       "checks": [
+        "citation",
+        "metric",
+        "subject",
+        "period"
        ]
       },
       {
@@ -1338,6 +2379,13 @@
        "alternatives": 0,
        "candidates": [
         "pillow_tabby_l4w_sales_yoy_pct"
+       ],
+       "ok": true,
+       "checks": [
+        "citation",
+        "metric",
+        "subject",
+        "period"
        ]
       },
       {
@@ -1346,6 +2394,13 @@
        "alternatives": 0,
        "candidates": [
         "pillow_tabby_l4w_contrib_pts"
+       ],
+       "ok": true,
+       "checks": [
+        "citation",
+        "metric",
+        "subject",
+        "period"
        ]
       },
       {
@@ -1354,6 +2409,12 @@
        "alternatives": 0,
        "candidates": [
         "ptd_genz_share_of_new_ty"
+       ],
+       "ok": true,
+       "checks": [
+        "citation",
+        "metric",
+        "subject"
        ]
       },
       {
@@ -1362,10 +2423,28 @@
        "alternatives": 0,
        "candidates": [
         "ptd_genz_share_of_new_ly"
+       ],
+       "ok": true,
+       "checks": [
+        "citation",
+        "metric",
+        "subject",
+        "period"
        ]
       }
      ],
-     "status": "PASS"
+     "status": "PASS",
+     "mode": "semantic",
+     "failures": [],
+     "checks": {
+      "citation": 9,
+      "metric": 7,
+      "subject": 7,
+      "period": 7,
+      "direction": 1,
+      "comparison": 1
+     },
+     "n_citations": 9
     }
    },
    {
@@ -1413,11 +2492,57 @@
      ]
     },
     "headline": "Tabby is down to 4.5 weeks of supply and Pillow Tabby to 6.6, against 9.6 and 13.4 last year.",
-    "body": "With 213 Tabby units on hand and a 3-week sales window, this is the trend the stock rules will judge once the window is full in W26.",
+    "body": "With only 3 weeks in the trailing window, and 213 Tabby units on hand, this is the trend the stock rules will judge once the window is full in W26.",
+    "headline_source": "Tabby is down to {tabby_wos|wos} weeks of supply and Pillow Tabby to {pillow_tabby_wos|wos}, against {tabby_wos_ly_same_week|wos} and {pillow_tabby_wos_ly_same_week|wos} last year.",
+    "body_source": "With only {tabby_wos_window_weeks|int} weeks in the trailing window, and {tabby_on_hand_eow|int} Tabby units on hand, this is the trend the stock rules will judge once the window is full in W26.",
+    "citations": [
+     {
+      "start": 17,
+      "end": 20,
+      "key": "tabby_wos",
+      "fmt": "wos",
+      "value": 4.5
+     },
+     {
+      "start": 57,
+      "end": 60,
+      "key": "pillow_tabby_wos",
+      "fmt": "wos",
+      "value": 6.56
+     },
+     {
+      "start": 70,
+      "end": 73,
+      "key": "tabby_wos_ly_same_week",
+      "fmt": "wos",
+      "value": 9.62
+     },
+     {
+      "start": 78,
+      "end": 82,
+      "key": "pillow_tabby_wos_ly_same_week",
+      "fmt": "wos",
+      "value": 13.4
+     },
+     {
+      "start": 104,
+      "end": 105,
+      "key": "tabby_wos_window_weeks",
+      "fmt": "int",
+      "value": 3.0
+     },
+     {
+      "start": 140,
+      "end": 143,
+      "key": "tabby_on_hand_eow",
+      "fmt": "int",
+      "value": 213.0
+     }
+    ],
     "generated_by": "pregenerated",
     "validation": {
-     "n_numbers": 5,
-     "n_matched": 5,
+     "n_numbers": 6,
+     "n_matched": 6,
      "unmatched": [],
      "matches": [
       {
@@ -1426,6 +2551,12 @@
        "alternatives": 0,
        "candidates": [
         "tabby_wos"
+       ],
+       "ok": true,
+       "checks": [
+        "citation",
+        "metric",
+        "subject"
        ]
       },
       {
@@ -1434,6 +2565,12 @@
        "alternatives": 0,
        "candidates": [
         "pillow_tabby_wos"
+       ],
+       "ok": true,
+       "checks": [
+        "citation",
+        "metric",
+        "subject"
        ]
       },
       {
@@ -1442,6 +2579,10 @@
        "alternatives": 0,
        "candidates": [
         "tabby_wos_ly_same_week"
+       ],
+       "ok": true,
+       "checks": [
+        "citation"
        ]
       },
       {
@@ -1450,6 +2591,23 @@
        "alternatives": 0,
        "candidates": [
         "pillow_tabby_wos_ly_same_week"
+       ],
+       "ok": true,
+       "checks": [
+        "citation",
+        "period"
+       ]
+      },
+      {
+       "text": "3",
+       "fact": "tabby_wos_window_weeks",
+       "alternatives": 0,
+       "candidates": [
+        "tabby_wos_window_weeks"
+       ],
+       "ok": true,
+       "checks": [
+        "citation"
        ]
       },
       {
@@ -1458,10 +2616,27 @@
        "alternatives": 0,
        "candidates": [
         "tabby_on_hand_eow"
+       ],
+       "ok": true,
+       "checks": [
+        "citation",
+        "metric",
+        "subject"
        ]
       }
      ],
-     "status": "PASS"
+     "status": "PASS",
+     "mode": "semantic",
+     "failures": [],
+     "checks": {
+      "citation": 6,
+      "metric": 3,
+      "subject": 3,
+      "period": 1,
+      "direction": 0,
+      "comparison": 0
+     },
+     "n_citations": 6
     }
    },
    {
@@ -1509,7 +2684,39 @@
      ]
     },
     "headline": "Tailored Jacket is at 22.7 weeks of supply and Trench at 18.6, against 5.1 and 8.6 last year.",
-    "body": "Apparel stock is building while its demand isn't. These become rule-checked once the four-week window fills in W26.",
+    "body": "Apparel stock is building while its demand isn't. These become rule-checked once the 4-week window fills in W26.",
+    "headline_source": "Tailored Jacket is at {tailored_jacket_wos|wos} weeks of supply and Trench at {trench_wos|wos}, against {tailored_jacket_wos_ly_same_week|wos} and {trench_wos_ly_same_week|wos} last year.",
+    "body_source": "Apparel stock is building while its demand isn't. These become rule-checked once the 4-week window fills in W26.",
+    "citations": [
+     {
+      "start": 22,
+      "end": 26,
+      "key": "tailored_jacket_wos",
+      "fmt": "wos",
+      "value": 22.71
+     },
+     {
+      "start": 57,
+      "end": 61,
+      "key": "trench_wos",
+      "fmt": "wos",
+      "value": 18.55
+     },
+     {
+      "start": 71,
+      "end": 74,
+      "key": "tailored_jacket_wos_ly_same_week",
+      "fmt": "wos",
+      "value": 5.13
+     },
+     {
+      "start": 79,
+      "end": 82,
+      "key": "trench_wos_ly_same_week",
+      "fmt": "wos",
+      "value": 8.57
+     }
+    ],
     "generated_by": "pregenerated",
     "validation": {
      "n_numbers": 4,
@@ -1522,6 +2729,12 @@
        "alternatives": 0,
        "candidates": [
         "tailored_jacket_wos"
+       ],
+       "ok": true,
+       "checks": [
+        "citation",
+        "metric",
+        "subject"
        ]
       },
       {
@@ -1530,6 +2743,12 @@
        "alternatives": 0,
        "candidates": [
         "trench_wos"
+       ],
+       "ok": true,
+       "checks": [
+        "citation",
+        "metric",
+        "subject"
        ]
       },
       {
@@ -1538,6 +2757,10 @@
        "alternatives": 0,
        "candidates": [
         "tailored_jacket_wos_ly_same_week"
+       ],
+       "ok": true,
+       "checks": [
+        "citation"
        ]
       },
       {
@@ -1546,10 +2769,26 @@
        "alternatives": 0,
        "candidates": [
         "trench_wos_ly_same_week"
+       ],
+       "ok": true,
+       "checks": [
+        "citation",
+        "period"
        ]
       }
      ],
-     "status": "PASS"
+     "status": "PASS",
+     "mode": "semantic",
+     "failures": [],
+     "checks": {
+      "citation": 4,
+      "metric": 2,
+      "subject": 2,
+      "period": 1,
+      "direction": 0,
+      "comparison": 0
+     },
+     "n_citations": 4
     }
    }
   ]
@@ -1637,8 +2876,47 @@
       }
      ]
     },
-    "headline": "Tabby has 3.9 weeks of supply, less than half of last year's 8.4.",
-    "body": "W26 is the first week with a full four-week window, and the WOS-collapse rule fires for Tabby (183 units on hand). Pillow Tabby is at 6.3 weeks vs 12.2 LY. Check inbound Tabby supply now; it is the main growth family.",
+    "headline": "Tabby has 3.9 weeks of supply against 8.4 last year.",
+    "body": "W26 is the first week with a full 4-week window, and the weeks-of-supply collapse rule fires for Tabby, which has 183 units on hand. Pillow Tabby is at 6.3 weeks vs 12.2 LY. Check inbound Tabby supply now; Tabby is the growth engine.",
+    "headline_source": "Tabby has {tabby_wos|wos} weeks of supply against {tabby_wos_ly_same_week|wos} last year.",
+    "body_source": "W26 is the first week with a full 4-week window, and the weeks-of-supply collapse rule fires for Tabby, which has {tabby_on_hand_eow|int} units on hand. Pillow Tabby is at {pillow_tabby_wos|wos} weeks vs {pillow_tabby_wos_ly_same_week|wos} LY. Check inbound Tabby supply now; Tabby is the growth engine.",
+    "citations": [
+     {
+      "start": 10,
+      "end": 13,
+      "key": "tabby_wos",
+      "fmt": "wos",
+      "value": 3.87
+     },
+     {
+      "start": 38,
+      "end": 41,
+      "key": "tabby_wos_ly_same_week",
+      "fmt": "wos",
+      "value": 8.43
+     },
+     {
+      "start": 167,
+      "end": 170,
+      "key": "tabby_on_hand_eow",
+      "fmt": "int",
+      "value": 183.0
+     },
+     {
+      "start": 205,
+      "end": 208,
+      "key": "pillow_tabby_wos",
+      "fmt": "wos",
+      "value": 6.34
+     },
+     {
+      "start": 218,
+      "end": 222,
+      "key": "pillow_tabby_wos_ly_same_week",
+      "fmt": "wos",
+      "value": 12.18
+     }
+    ],
     "generated_by": "pregenerated",
     "validation": {
      "n_numbers": 5,
@@ -1651,6 +2929,12 @@
        "alternatives": 0,
        "candidates": [
         "tabby_wos"
+       ],
+       "ok": true,
+       "checks": [
+        "citation",
+        "metric",
+        "subject"
        ]
       },
       {
@@ -1659,6 +2943,13 @@
        "alternatives": 0,
        "candidates": [
         "tabby_wos_ly_same_week"
+       ],
+       "ok": true,
+       "checks": [
+        "citation",
+        "metric",
+        "subject",
+        "period"
        ]
       },
       {
@@ -1667,6 +2958,11 @@
        "alternatives": 0,
        "candidates": [
         "tabby_on_hand_eow"
+       ],
+       "ok": true,
+       "checks": [
+        "citation",
+        "metric"
        ]
       },
       {
@@ -1675,6 +2971,11 @@
        "alternatives": 0,
        "candidates": [
         "pillow_tabby_wos"
+       ],
+       "ok": true,
+       "checks": [
+        "citation",
+        "subject"
        ]
       },
       {
@@ -1683,10 +2984,27 @@
        "alternatives": 0,
        "candidates": [
         "pillow_tabby_wos_ly_same_week"
+       ],
+       "ok": true,
+       "checks": [
+        "citation",
+        "subject",
+        "period"
        ]
       }
      ],
-     "status": "PASS"
+     "status": "PASS",
+     "mode": "semantic",
+     "failures": [],
+     "checks": {
+      "citation": 5,
+      "metric": 3,
+      "subject": 4,
+      "period": 2,
+      "direction": 0,
+      "comparison": 0
+     },
+     "n_citations": 5
     }
    },
    {
@@ -1737,8 +3055,75 @@
       }
      ]
     },
-    "headline": "Returning Gen Z is down to 77 from 87 (-11.5%) over the first four weeks.",
-    "body": "All returning customers are -1.8% (646 vs 658). Insider attach of new Gen Z is 19.4% vs 23.3% LY, about level with all new customers at 19.6%.",
+    "headline": "Returning Gen Z is down to 77 from 87 (-11.5%) over L4W.",
+    "body": "All returning customers are -1.8% (646 vs 658 LY). Insider attach of new Gen Z is 19.4% vs 23.3% LY, about level with the 19.6% attach of all new customers.",
+    "headline_source": "Returning Gen Z is down to {l4w_genz_returning_ty|int} from {l4w_genz_returning_ly|int} ({l4w_genz_returning_yoy_pct|pct+}) over L4W.",
+    "body_source": "All returning customers are {l4w_returning_yoy_pct|pct+} ({l4w_returning_ty|int} vs {l4w_returning_ly|int} LY). Insider attach of new Gen Z is {l4w_genz_new_insider_rate_ty|pct} vs {l4w_genz_new_insider_rate_ly|pct} LY, about level with the {l4w_new_insider_rate_ty|pct} attach of all new customers.",
+    "citations": [
+     {
+      "start": 27,
+      "end": 29,
+      "key": "l4w_genz_returning_ty",
+      "fmt": "int",
+      "value": 77.0
+     },
+     {
+      "start": 35,
+      "end": 37,
+      "key": "l4w_genz_returning_ly",
+      "fmt": "int",
+      "value": 87.0
+     },
+     {
+      "start": 39,
+      "end": 45,
+      "key": "l4w_genz_returning_yoy_pct",
+      "fmt": "pct+",
+      "value": -0.114943
+     },
+     {
+      "start": 85,
+      "end": 90,
+      "key": "l4w_returning_yoy_pct",
+      "fmt": "pct+",
+      "value": -0.018237
+     },
+     {
+      "start": 92,
+      "end": 95,
+      "key": "l4w_returning_ty",
+      "fmt": "int",
+      "value": 646.0
+     },
+     {
+      "start": 99,
+      "end": 102,
+      "key": "l4w_returning_ly",
+      "fmt": "int",
+      "value": 658.0
+     },
+     {
+      "start": 139,
+      "end": 144,
+      "key": "l4w_genz_new_insider_rate_ty",
+      "fmt": "pct",
+      "value": 0.193878
+     },
+     {
+      "start": 148,
+      "end": 153,
+      "key": "l4w_genz_new_insider_rate_ly",
+      "fmt": "pct",
+      "value": 0.233333
+     },
+     {
+      "start": 179,
+      "end": 184,
+      "key": "l4w_new_insider_rate_ty",
+      "fmt": "pct",
+      "value": 0.19573
+     }
+    ],
     "generated_by": "pregenerated",
     "validation": {
      "n_numbers": 9,
@@ -1748,86 +3133,144 @@
       {
        "text": "77",
        "fact": "l4w_genz_returning_ty",
-       "alternatives": 1,
+       "alternatives": 0,
        "candidates": [
-        "l4w_genz_returning_ty",
-        "ptd_genz_returning_ty"
+        "l4w_genz_returning_ty"
+       ],
+       "ok": true,
+       "checks": [
+        "citation",
+        "metric",
+        "subject",
+        "period"
        ]
       },
       {
        "text": "87",
        "fact": "l4w_genz_returning_ly",
-       "alternatives": 1,
+       "alternatives": 0,
        "candidates": [
-        "l4w_genz_returning_ly",
-        "ptd_genz_returning_ly"
+        "l4w_genz_returning_ly"
+       ],
+       "ok": true,
+       "checks": [
+        "citation",
+        "metric",
+        "subject",
+        "period"
        ]
       },
       {
        "text": "-11.5%",
        "fact": "l4w_genz_returning_yoy_pct",
-       "alternatives": 1,
+       "alternatives": 0,
        "candidates": [
-        "l4w_genz_returning_yoy_pct",
-        "ptd_genz_returning_yoy_pct"
+        "l4w_genz_returning_yoy_pct"
+       ],
+       "ok": true,
+       "checks": [
+        "citation",
+        "metric",
+        "subject",
+        "period",
+        "direction"
        ]
       },
       {
        "text": "-1.8%",
        "fact": "l4w_returning_yoy_pct",
-       "alternatives": 1,
+       "alternatives": 0,
        "candidates": [
-        "l4w_returning_yoy_pct",
-        "ptd_returning_yoy_pct"
+        "l4w_returning_yoy_pct"
+       ],
+       "ok": true,
+       "checks": [
+        "citation",
+        "metric"
        ]
       },
       {
        "text": "646",
        "fact": "l4w_returning_ty",
-       "alternatives": 1,
+       "alternatives": 0,
        "candidates": [
-        "l4w_returning_ty",
-        "ptd_returning_ty"
+        "l4w_returning_ty"
+       ],
+       "ok": true,
+       "checks": [
+        "citation",
+        "metric"
        ]
       },
       {
        "text": "658",
        "fact": "l4w_returning_ly",
-       "alternatives": 1,
+       "alternatives": 0,
        "candidates": [
-        "l4w_returning_ly",
-        "ptd_returning_ly"
+        "l4w_returning_ly"
+       ],
+       "ok": true,
+       "checks": [
+        "citation",
+        "metric",
+        "period"
        ]
       },
       {
        "text": "19.4%",
        "fact": "l4w_genz_new_insider_rate_ty",
-       "alternatives": 1,
+       "alternatives": 0,
        "candidates": [
-        "l4w_genz_new_insider_rate_ty",
-        "ptd_genz_new_insider_rate_ty"
+        "l4w_genz_new_insider_rate_ty"
+       ],
+       "ok": true,
+       "checks": [
+        "citation",
+        "metric",
+        "subject"
        ]
       },
       {
        "text": "23.3%",
        "fact": "l4w_genz_new_insider_rate_ly",
-       "alternatives": 1,
+       "alternatives": 0,
        "candidates": [
-        "l4w_genz_new_insider_rate_ly",
-        "ptd_genz_new_insider_rate_ly"
+        "l4w_genz_new_insider_rate_ly"
+       ],
+       "ok": true,
+       "checks": [
+        "citation",
+        "metric",
+        "subject",
+        "period"
        ]
       },
       {
        "text": "19.6%",
        "fact": "l4w_new_insider_rate_ty",
-       "alternatives": 1,
+       "alternatives": 0,
        "candidates": [
-        "l4w_new_insider_rate_ty",
-        "ptd_new_insider_rate_ty"
+        "l4w_new_insider_rate_ty"
+       ],
+       "ok": true,
+       "checks": [
+        "citation",
+        "metric"
        ]
       }
      ],
-     "status": "PASS"
+     "status": "PASS",
+     "mode": "semantic",
+     "failures": [],
+     "checks": {
+      "citation": 9,
+      "metric": 9,
+      "subject": 5,
+      "period": 5,
+      "direction": 1,
+      "comparison": 0
+     },
+     "n_citations": 9
     }
    },
    {
@@ -1871,6 +3314,45 @@
     },
     "headline": "Gen Z share of new customers dipped to 32.1% in W26.",
     "body": "It is still above last year's 28.8% and in line with the first week's 33.3%, on 26 new Gen Z customers vs 17 LY.",
+    "headline_source": "Gen Z share of new customers dipped to {week_genz_share_of_new_ty|pct} in W26.",
+    "body_source": "It is still above last year's {week_genz_share_of_new_ly|pct} and in line with the first week's {first_week_genz_share_of_new_ty|pct}, on {week_genz_new_ty|int} new Gen Z customers vs {week_genz_new_ly|int} LY.",
+    "citations": [
+     {
+      "start": 39,
+      "end": 44,
+      "key": "week_genz_share_of_new_ty",
+      "fmt": "pct",
+      "value": 0.320988
+     },
+     {
+      "start": 83,
+      "end": 88,
+      "key": "week_genz_share_of_new_ly",
+      "fmt": "pct",
+      "value": 0.288136
+     },
+     {
+      "start": 123,
+      "end": 128,
+      "key": "first_week_genz_share_of_new_ty",
+      "fmt": "pct",
+      "value": 0.333333
+     },
+     {
+      "start": 133,
+      "end": 135,
+      "key": "week_genz_new_ty",
+      "fmt": "int",
+      "value": 26.0
+     },
+     {
+      "start": 159,
+      "end": 161,
+      "key": "week_genz_new_ly",
+      "fmt": "int",
+      "value": 17.0
+     }
+    ],
     "generated_by": "pregenerated",
     "validation": {
      "n_numbers": 5,
@@ -1883,15 +3365,25 @@
        "alternatives": 0,
        "candidates": [
         "week_genz_share_of_new_ty"
+       ],
+       "ok": true,
+       "checks": [
+        "citation",
+        "metric",
+        "subject"
        ]
       },
       {
        "text": "28.8%",
        "fact": "week_genz_share_of_new_ly",
-       "alternatives": 1,
+       "alternatives": 0,
        "candidates": [
-        "week_genz_share_of_new_ly",
-        "first_week_genz_share_of_new_ly"
+        "week_genz_share_of_new_ly"
+       ],
+       "ok": true,
+       "checks": [
+        "citation",
+        "period"
        ]
       },
       {
@@ -1900,6 +3392,10 @@
        "alternatives": 0,
        "candidates": [
         "first_week_genz_share_of_new_ty"
+       ],
+       "ok": true,
+       "checks": [
+        "citation"
        ]
       },
       {
@@ -1908,6 +3404,12 @@
        "alternatives": 0,
        "candidates": [
         "week_genz_new_ty"
+       ],
+       "ok": true,
+       "checks": [
+        "citation",
+        "metric",
+        "subject"
        ]
       },
       {
@@ -1916,10 +3418,28 @@
        "alternatives": 0,
        "candidates": [
         "week_genz_new_ly"
+       ],
+       "ok": true,
+       "checks": [
+        "citation",
+        "metric",
+        "subject",
+        "period"
        ]
       }
      ],
-     "status": "PASS"
+     "status": "PASS",
+     "mode": "semantic",
+     "failures": [],
+     "checks": {
+      "citation": 5,
+      "metric": 3,
+      "subject": 3,
+      "period": 2,
+      "direction": 0,
+      "comparison": 0
+     },
+     "n_citations": 5
     }
    },
    {
@@ -1953,8 +3473,82 @@
       }
      ]
     },
-    "headline": "Gen Z new customers are up +63.3% period-to-date, 98 vs 60.",
-    "body": "Gen Z share of new is 34.9% vs 26.9% LY. Tabby (+56.8%) and Pillow Tabby (+125%) add +9.6 and +3.3 pts of L4W growth, while total L4W demand is +8.8%.",
+    "headline": "Gen Z new customers are up +63.3% period-to-date, 98 vs 60 LY.",
+    "body": "Gen Z share of new customers is 34.9% vs 26.9% LY. Tabby (demand +56.8%, contribution +9.6 pts) and Pillow Tabby (demand +125%, contribution +3.3 pts) lead L4W growth, while total L4W demand is +8.8%.",
+    "headline_source": "Gen Z new customers are up {ptd_genz_new_yoy_pct|pct+} period-to-date, {ptd_genz_new_ty|int} vs {ptd_genz_new_ly|int} LY.",
+    "body_source": "Gen Z share of new customers is {ptd_genz_share_of_new_ty|pct} vs {ptd_genz_share_of_new_ly|pct} LY. Tabby (demand {tabby_l4w_sales_yoy_pct|pct+}, contribution {tabby_l4w_contrib_pts|pts+}) and Pillow Tabby (demand {pillow_tabby_l4w_sales_yoy_pct|pct+}, contribution {pillow_tabby_l4w_contrib_pts|pts+}) lead L4W growth, while total L4W demand is {l4w_sales_yoy_pct|pct+}.",
+    "citations": [
+     {
+      "start": 27,
+      "end": 33,
+      "key": "ptd_genz_new_yoy_pct",
+      "fmt": "pct+",
+      "value": 0.633333
+     },
+     {
+      "start": 50,
+      "end": 52,
+      "key": "ptd_genz_new_ty",
+      "fmt": "int",
+      "value": 98.0
+     },
+     {
+      "start": 56,
+      "end": 58,
+      "key": "ptd_genz_new_ly",
+      "fmt": "int",
+      "value": 60.0
+     },
+     {
+      "start": 95,
+      "end": 100,
+      "key": "ptd_genz_share_of_new_ty",
+      "fmt": "pct",
+      "value": 0.348754
+     },
+     {
+      "start": 104,
+      "end": 109,
+      "key": "ptd_genz_share_of_new_ly",
+      "fmt": "pct",
+      "value": 0.269058
+     },
+     {
+      "start": 128,
+      "end": 134,
+      "key": "tabby_l4w_sales_yoy_pct",
+      "fmt": "pct+",
+      "value": 0.568109
+     },
+     {
+      "start": 149,
+      "end": 157,
+      "key": "tabby_l4w_contrib_pts",
+      "fmt": "pts+",
+      "value": 9.625
+     },
+     {
+      "start": 184,
+      "end": 189,
+      "key": "pillow_tabby_l4w_sales_yoy_pct",
+      "fmt": "pct+",
+      "value": 1.249424
+     },
+     {
+      "start": 204,
+      "end": 212,
+      "key": "pillow_tabby_l4w_contrib_pts",
+      "fmt": "pts+",
+      "value": 3.33
+     },
+     {
+      "start": 257,
+      "end": 262,
+      "key": "l4w_sales_yoy_pct",
+      "fmt": "pct+",
+      "value": 0.088233
+     }
+    ],
     "generated_by": "pregenerated",
     "validation": {
      "n_numbers": 10,
@@ -1967,6 +3561,14 @@
        "alternatives": 0,
        "candidates": [
         "ptd_genz_new_yoy_pct"
+       ],
+       "ok": true,
+       "checks": [
+        "citation",
+        "metric",
+        "subject",
+        "period",
+        "direction"
        ]
       },
       {
@@ -1975,6 +3577,10 @@
        "alternatives": 0,
        "candidates": [
         "ptd_genz_new_ty"
+       ],
+       "ok": true,
+       "checks": [
+        "citation"
        ]
       },
       {
@@ -1983,6 +3589,11 @@
        "alternatives": 0,
        "candidates": [
         "ptd_genz_new_ly"
+       ],
+       "ok": true,
+       "checks": [
+        "citation",
+        "period"
        ]
       },
       {
@@ -1991,6 +3602,12 @@
        "alternatives": 0,
        "candidates": [
         "ptd_genz_share_of_new_ty"
+       ],
+       "ok": true,
+       "checks": [
+        "citation",
+        "metric",
+        "subject"
        ]
       },
       {
@@ -1999,6 +3616,13 @@
        "alternatives": 0,
        "candidates": [
         "ptd_genz_share_of_new_ly"
+       ],
+       "ok": true,
+       "checks": [
+        "citation",
+        "metric",
+        "subject",
+        "period"
        ]
       },
       {
@@ -2007,6 +3631,28 @@
        "alternatives": 0,
        "candidates": [
         "tabby_l4w_sales_yoy_pct"
+       ],
+       "ok": true,
+       "checks": [
+        "citation",
+        "metric",
+        "subject",
+        "period"
+       ]
+      },
+      {
+       "text": "+9.6 pts",
+       "fact": "tabby_l4w_contrib_pts",
+       "alternatives": 0,
+       "candidates": [
+        "tabby_l4w_contrib_pts"
+       ],
+       "ok": true,
+       "checks": [
+        "citation",
+        "metric",
+        "subject",
+        "period"
        ]
       },
       {
@@ -2015,14 +3661,13 @@
        "alternatives": 0,
        "candidates": [
         "pillow_tabby_l4w_sales_yoy_pct"
-       ]
-      },
-      {
-       "text": "+9.6",
-       "fact": "tabby_l4w_contrib_pts",
-       "alternatives": 0,
-       "candidates": [
-        "tabby_l4w_contrib_pts"
+       ],
+       "ok": true,
+       "checks": [
+        "citation",
+        "metric",
+        "subject",
+        "period"
        ]
       },
       {
@@ -2031,19 +3676,42 @@
        "alternatives": 0,
        "candidates": [
         "pillow_tabby_l4w_contrib_pts"
+       ],
+       "ok": true,
+       "checks": [
+        "citation",
+        "metric",
+        "subject",
+        "period"
        ]
       },
       {
        "text": "+8.8%",
        "fact": "l4w_sales_yoy_pct",
-       "alternatives": 1,
+       "alternatives": 0,
        "candidates": [
-        "l4w_sales_yoy_pct",
-        "ptd_sales_yoy_pct"
+        "l4w_sales_yoy_pct"
+       ],
+       "ok": true,
+       "checks": [
+        "citation",
+        "metric",
+        "period"
        ]
       }
      ],
-     "status": "PASS"
+     "status": "PASS",
+     "mode": "semantic",
+     "failures": [],
+     "checks": {
+      "citation": 10,
+      "metric": 8,
+      "subject": 7,
+      "period": 8,
+      "direction": 1,
+      "comparison": 1
+     },
+     "n_citations": 10
     }
    },
    {
@@ -2097,7 +3765,46 @@
      ]
     },
     "headline": "Tailored Jacket has 25.9 weeks of supply while its demand is -56.3% over L4W.",
-    "body": "Trench holds 17.9 weeks (LY 8.0) and Knit Dress demand is -40.2%. Slow Halo apparel is tying up stock that the Tabby franchise needs; plan markdowns or transfers.",
+    "body": "Trench holds 17.9 weeks vs 8.0 LY, and Knit Dress demand is -40.2%. Slow Halo apparel is tying up stock that the Tabby franchise needs; plan markdowns or transfers.",
+    "headline_source": "Tailored Jacket has {tailored_jacket_wos|wos} weeks of supply while its demand is {tailored_jacket_l4w_sales_yoy_pct|pct+} over L4W.",
+    "body_source": "Trench holds {trench_wos|wos} weeks vs {trench_wos_ly_same_week|wos} LY, and Knit Dress demand is {knit_dress_l4w_sales_yoy_pct|pct+}. Slow Halo apparel is tying up stock that the Tabby franchise needs; plan markdowns or transfers.",
+    "citations": [
+     {
+      "start": 20,
+      "end": 24,
+      "key": "tailored_jacket_wos",
+      "fmt": "wos",
+      "value": 25.88
+     },
+     {
+      "start": 61,
+      "end": 67,
+      "key": "tailored_jacket_l4w_sales_yoy_pct",
+      "fmt": "pct+",
+      "value": -0.562745
+     },
+     {
+      "start": 91,
+      "end": 95,
+      "key": "trench_wos",
+      "fmt": "wos",
+      "value": 17.94
+     },
+     {
+      "start": 105,
+      "end": 108,
+      "key": "trench_wos_ly_same_week",
+      "fmt": "wos",
+      "value": 8.0
+     },
+     {
+      "start": 138,
+      "end": 144,
+      "key": "knit_dress_l4w_sales_yoy_pct",
+      "fmt": "pct+",
+      "value": -0.402015
+     }
+    ],
     "generated_by": "pregenerated",
     "validation": {
      "n_numbers": 5,
@@ -2110,6 +3817,12 @@
        "alternatives": 0,
        "candidates": [
         "tailored_jacket_wos"
+       ],
+       "ok": true,
+       "checks": [
+        "citation",
+        "metric",
+        "subject"
        ]
       },
       {
@@ -2118,6 +3831,13 @@
        "alternatives": 0,
        "candidates": [
         "tailored_jacket_l4w_sales_yoy_pct"
+       ],
+       "ok": true,
+       "checks": [
+        "citation",
+        "metric",
+        "subject",
+        "period"
        ]
       },
       {
@@ -2126,6 +3846,11 @@
        "alternatives": 0,
        "candidates": [
         "trench_wos"
+       ],
+       "ok": true,
+       "checks": [
+        "citation",
+        "subject"
        ]
       },
       {
@@ -2134,6 +3859,12 @@
        "alternatives": 0,
        "candidates": [
         "trench_wos_ly_same_week"
+       ],
+       "ok": true,
+       "checks": [
+        "citation",
+        "subject",
+        "period"
        ]
       },
       {
@@ -2142,10 +3873,27 @@
        "alternatives": 0,
        "candidates": [
         "knit_dress_l4w_sales_yoy_pct"
+       ],
+       "ok": true,
+       "checks": [
+        "citation",
+        "metric",
+        "subject"
        ]
       }
      ],
-     "status": "PASS"
+     "status": "PASS",
+     "mode": "semantic",
+     "failures": [],
+     "checks": {
+      "citation": 5,
+      "metric": 3,
+      "subject": 5,
+      "period": 2,
+      "direction": 0,
+      "comparison": 0
+     },
+     "n_citations": 5
     }
    }
   ]
@@ -2233,8 +3981,54 @@
       }
      ]
     },
-    "headline": "Tabby is at 3.5 weeks of supply and Pillow Tabby at 4.4, versus 7.4 and 7.6 last year.",
+    "headline": "Tabby is at 3.5 weeks of supply vs 7.4 LY, and Pillow Tabby at 4.4 vs 7.6 LY.",
     "body": "Cover keeps shrinking while demand grows: Tabby is down to 160 units and Pillow Tabby to 55. If cover keeps falling, the low-stock rule escalates to critical because both are G3 winners and Gen Z gateways.",
+    "headline_source": "Tabby is at {tabby_wos|wos} weeks of supply vs {tabby_wos_ly_same_week|wos} LY, and Pillow Tabby at {pillow_tabby_wos|wos} vs {pillow_tabby_wos_ly_same_week|wos} LY.",
+    "body_source": "Cover keeps shrinking while demand grows: Tabby is down to {tabby_on_hand_eow|int} units and Pillow Tabby to {pillow_tabby_on_hand_eow|int}. If cover keeps falling, the low-stock rule escalates to critical because both are G3 winners and Gen Z gateways.",
+    "citations": [
+     {
+      "start": 12,
+      "end": 15,
+      "key": "tabby_wos",
+      "fmt": "wos",
+      "value": 3.48
+     },
+     {
+      "start": 35,
+      "end": 38,
+      "key": "tabby_wos_ly_same_week",
+      "fmt": "wos",
+      "value": 7.42
+     },
+     {
+      "start": 63,
+      "end": 66,
+      "key": "pillow_tabby_wos",
+      "fmt": "wos",
+      "value": 4.4
+     },
+     {
+      "start": 70,
+      "end": 73,
+      "key": "pillow_tabby_wos_ly_same_week",
+      "fmt": "wos",
+      "value": 7.62
+     },
+     {
+      "start": 137,
+      "end": 140,
+      "key": "tabby_on_hand_eow",
+      "fmt": "int",
+      "value": 160.0
+     },
+     {
+      "start": 167,
+      "end": 169,
+      "key": "pillow_tabby_on_hand_eow",
+      "fmt": "int",
+      "value": 55.0
+     }
+    ],
     "generated_by": "pregenerated",
     "validation": {
      "n_numbers": 6,
@@ -2247,14 +4041,12 @@
        "alternatives": 0,
        "candidates": [
         "tabby_wos"
-       ]
-      },
-      {
-       "text": "4.4",
-       "fact": "pillow_tabby_wos",
-       "alternatives": 0,
-       "candidates": [
-        "pillow_tabby_wos"
+       ],
+       "ok": true,
+       "checks": [
+        "citation",
+        "metric",
+        "subject"
        ]
       },
       {
@@ -2263,6 +4055,26 @@
        "alternatives": 0,
        "candidates": [
         "tabby_wos_ly_same_week"
+       ],
+       "ok": true,
+       "checks": [
+        "citation",
+        "metric",
+        "subject",
+        "period"
+       ]
+      },
+      {
+       "text": "4.4",
+       "fact": "pillow_tabby_wos",
+       "alternatives": 0,
+       "candidates": [
+        "pillow_tabby_wos"
+       ],
+       "ok": true,
+       "checks": [
+        "citation",
+        "subject"
        ]
       },
       {
@@ -2271,6 +4083,12 @@
        "alternatives": 0,
        "candidates": [
         "pillow_tabby_wos_ly_same_week"
+       ],
+       "ok": true,
+       "checks": [
+        "citation",
+        "subject",
+        "period"
        ]
       },
       {
@@ -2279,6 +4097,12 @@
        "alternatives": 0,
        "candidates": [
         "tabby_on_hand_eow"
+       ],
+       "ok": true,
+       "checks": [
+        "citation",
+        "metric",
+        "subject"
        ]
       },
       {
@@ -2287,10 +4111,27 @@
        "alternatives": 0,
        "candidates": [
         "pillow_tabby_on_hand_eow"
+       ],
+       "ok": true,
+       "checks": [
+        "citation",
+        "metric",
+        "subject"
        ]
       }
      ],
-     "status": "PASS"
+     "status": "PASS",
+     "mode": "semantic",
+     "failures": [],
+     "checks": {
+      "citation": 6,
+      "metric": 4,
+      "subject": 6,
+      "period": 2,
+      "direction": 0,
+      "comparison": 0
+     },
+     "n_citations": 6
     }
    },
    {
@@ -2341,8 +4182,68 @@
       }
      ]
     },
-    "headline": "Returning customers are flat at 654 vs 654, and returning Gen Z is -8.0% over L4W.",
-    "body": "Period-to-date returning Gen Z is 97 vs 113 (-14.2%). New Gen Z Insider attach is 18.2% vs 24.6% LY, the gap that R3 targets.",
+    "headline": "Returning customers are flat at 654 vs 654 LY, and returning Gen Z is -8.0% over L4W.",
+    "body": "Period-to-date returning Gen Z is 97 vs 113 LY (-14.2%). New Gen Z Insider attach is 18.2% vs 24.6% LY, the gap that R3 targets.",
+    "headline_source": "Returning customers are flat at {l4w_returning_ty|int} vs {l4w_returning_ly|int} LY, and returning Gen Z is {l4w_genz_returning_yoy_pct|pct+} over L4W.",
+    "body_source": "Period-to-date returning Gen Z is {ptd_genz_returning_ty|int} vs {ptd_genz_returning_ly|int} LY ({ptd_genz_returning_yoy_pct|pct+}). New Gen Z Insider attach is {l4w_genz_new_insider_rate_ty|pct} vs {l4w_genz_new_insider_rate_ly|pct} LY, the gap that R3 targets.",
+    "citations": [
+     {
+      "start": 32,
+      "end": 35,
+      "key": "l4w_returning_ty",
+      "fmt": "int",
+      "value": 654.0
+     },
+     {
+      "start": 39,
+      "end": 42,
+      "key": "l4w_returning_ly",
+      "fmt": "int",
+      "value": 654.0
+     },
+     {
+      "start": 70,
+      "end": 75,
+      "key": "l4w_genz_returning_yoy_pct",
+      "fmt": "pct+",
+      "value": -0.08046
+     },
+     {
+      "start": 120,
+      "end": 122,
+      "key": "ptd_genz_returning_ty",
+      "fmt": "int",
+      "value": 97.0
+     },
+     {
+      "start": 126,
+      "end": 129,
+      "key": "ptd_genz_returning_ly",
+      "fmt": "int",
+      "value": 113.0
+     },
+     {
+      "start": 134,
+      "end": 140,
+      "key": "ptd_genz_returning_yoy_pct",
+      "fmt": "pct+",
+      "value": -0.141593
+     },
+     {
+      "start": 171,
+      "end": 176,
+      "key": "l4w_genz_new_insider_rate_ty",
+      "fmt": "pct",
+      "value": 0.181818
+     },
+     {
+      "start": 180,
+      "end": 185,
+      "key": "l4w_genz_new_insider_rate_ly",
+      "fmt": "pct",
+      "value": 0.245614
+     }
+    ],
     "generated_by": "pregenerated",
     "validation": {
      "n_numbers": 8,
@@ -2351,20 +4252,29 @@
      "matches": [
       {
        "text": "654",
-       "fact": "l4w_returning_ly",
-       "alternatives": 1,
+       "fact": "l4w_returning_ty",
+       "alternatives": 0,
        "candidates": [
-        "l4w_returning_ly",
         "l4w_returning_ty"
+       ],
+       "ok": true,
+       "checks": [
+        "citation",
+        "metric"
        ]
       },
       {
        "text": "654",
        "fact": "l4w_returning_ly",
-       "alternatives": 1,
+       "alternatives": 0,
        "candidates": [
-        "l4w_returning_ly",
-        "l4w_returning_ty"
+        "l4w_returning_ly"
+       ],
+       "ok": true,
+       "checks": [
+        "citation",
+        "metric",
+        "period"
        ]
       },
       {
@@ -2373,6 +4283,13 @@
        "alternatives": 0,
        "candidates": [
         "l4w_genz_returning_yoy_pct"
+       ],
+       "ok": true,
+       "checks": [
+        "citation",
+        "metric",
+        "subject",
+        "period"
        ]
       },
       {
@@ -2381,6 +4298,13 @@
        "alternatives": 0,
        "candidates": [
         "ptd_genz_returning_ty"
+       ],
+       "ok": true,
+       "checks": [
+        "citation",
+        "metric",
+        "subject",
+        "period"
        ]
       },
       {
@@ -2389,6 +4313,13 @@
        "alternatives": 0,
        "candidates": [
         "ptd_genz_returning_ly"
+       ],
+       "ok": true,
+       "checks": [
+        "citation",
+        "metric",
+        "subject",
+        "period"
        ]
       },
       {
@@ -2397,15 +4328,27 @@
        "alternatives": 0,
        "candidates": [
         "ptd_genz_returning_yoy_pct"
+       ],
+       "ok": true,
+       "checks": [
+        "citation",
+        "metric",
+        "subject",
+        "period"
        ]
       },
       {
        "text": "18.2%",
        "fact": "l4w_genz_new_insider_rate_ty",
-       "alternatives": 1,
+       "alternatives": 0,
        "candidates": [
-        "l4w_genz_new_insider_rate_ty",
-        "ptd_new_insider_rate_ty"
+        "l4w_genz_new_insider_rate_ty"
+       ],
+       "ok": true,
+       "checks": [
+        "citation",
+        "metric",
+        "subject"
        ]
       },
       {
@@ -2414,10 +4357,28 @@
        "alternatives": 0,
        "candidates": [
         "l4w_genz_new_insider_rate_ly"
+       ],
+       "ok": true,
+       "checks": [
+        "citation",
+        "metric",
+        "subject",
+        "period"
        ]
       }
      ],
-     "status": "PASS"
+     "status": "PASS",
+     "mode": "semantic",
+     "failures": [],
+     "checks": {
+      "citation": 8,
+      "metric": 8,
+      "subject": 6,
+      "period": 7,
+      "direction": 0,
+      "comparison": 0
+     },
+     "n_citations": 8
     }
    },
    {
@@ -2466,6 +4427,45 @@
     },
     "headline": "Gen Z share of new customers is back up to 41.5% in W27, against 17.4% last year.",
     "body": "The W23 starting point was 33.3%. This week 34 Gen Z customers were new vs 12 LY.",
+    "headline_source": "Gen Z share of new customers is back up to {week_genz_share_of_new_ty|pct} in W27, against {week_genz_share_of_new_ly|pct} last year.",
+    "body_source": "The W23 starting point was {first_week_genz_share_of_new_ty|pct}. This week {week_genz_new_ty|int} Gen Z customers were new vs {week_genz_new_ly|int} LY.",
+    "citations": [
+     {
+      "start": 43,
+      "end": 48,
+      "key": "week_genz_share_of_new_ty",
+      "fmt": "pct",
+      "value": 0.414634
+     },
+     {
+      "start": 65,
+      "end": 70,
+      "key": "week_genz_share_of_new_ly",
+      "fmt": "pct",
+      "value": 0.173913
+     },
+     {
+      "start": 109,
+      "end": 114,
+      "key": "first_week_genz_share_of_new_ty",
+      "fmt": "pct",
+      "value": 0.333333
+     },
+     {
+      "start": 126,
+      "end": 128,
+      "key": "week_genz_new_ty",
+      "fmt": "int",
+      "value": 34.0
+     },
+     {
+      "start": 157,
+      "end": 159,
+      "key": "week_genz_new_ly",
+      "fmt": "int",
+      "value": 12.0
+     }
+    ],
     "generated_by": "pregenerated",
     "validation": {
      "n_numbers": 5,
@@ -2478,6 +4478,12 @@
        "alternatives": 0,
        "candidates": [
         "week_genz_share_of_new_ty"
+       ],
+       "ok": true,
+       "checks": [
+        "citation",
+        "metric",
+        "subject"
        ]
       },
       {
@@ -2486,6 +4492,11 @@
        "alternatives": 0,
        "candidates": [
         "week_genz_share_of_new_ly"
+       ],
+       "ok": true,
+       "checks": [
+        "citation",
+        "period"
        ]
       },
       {
@@ -2494,6 +4505,10 @@
        "alternatives": 0,
        "candidates": [
         "first_week_genz_share_of_new_ty"
+       ],
+       "ok": true,
+       "checks": [
+        "citation"
        ]
       },
       {
@@ -2502,6 +4517,11 @@
        "alternatives": 0,
        "candidates": [
         "week_genz_new_ty"
+       ],
+       "ok": true,
+       "checks": [
+        "citation",
+        "subject"
        ]
       },
       {
@@ -2510,10 +4530,27 @@
        "alternatives": 0,
        "candidates": [
         "week_genz_new_ly"
+       ],
+       "ok": true,
+       "checks": [
+        "citation",
+        "subject",
+        "period"
        ]
       }
      ],
-     "status": "PASS"
+     "status": "PASS",
+     "mode": "semantic",
+     "failures": [],
+     "checks": {
+      "citation": 5,
+      "metric": 1,
+      "subject": 3,
+      "period": 2,
+      "direction": 0,
+      "comparison": 0
+     },
+     "n_citations": 5
     }
    },
    {
@@ -2547,8 +4584,75 @@
       }
      ]
     },
-    "headline": "Gen Z new customers are up +83.3% period-to-date, 132 vs 72.",
-    "body": "Gen Z is 36.4% of new customers vs 24.7% LY. Tabby (+36.8%, +6.8 pts) and Pillow Tabby (+84.6%, +3.3 pts) lead L4W growth.",
+    "headline": "Gen Z new customers are up +83.3% period-to-date, 132 vs 72 LY.",
+    "body": "Gen Z is 36.4% of new customers vs 24.7% LY. Tabby (demand +36.8%, contribution +6.8 pts) and Pillow Tabby (demand +84.6%, contribution +3.3 pts) lead L4W growth.",
+    "headline_source": "Gen Z new customers are up {ptd_genz_new_yoy_pct|pct+} period-to-date, {ptd_genz_new_ty|int} vs {ptd_genz_new_ly|int} LY.",
+    "body_source": "Gen Z is {ptd_genz_share_of_new_ty|pct} of new customers vs {ptd_genz_share_of_new_ly|pct} LY. Tabby (demand {tabby_l4w_sales_yoy_pct|pct+}, contribution {tabby_l4w_contrib_pts|pts+}) and Pillow Tabby (demand {pillow_tabby_l4w_sales_yoy_pct|pct+}, contribution {pillow_tabby_l4w_contrib_pts|pts+}) lead L4W growth.",
+    "citations": [
+     {
+      "start": 27,
+      "end": 33,
+      "key": "ptd_genz_new_yoy_pct",
+      "fmt": "pct+",
+      "value": 0.833333
+     },
+     {
+      "start": 50,
+      "end": 53,
+      "key": "ptd_genz_new_ty",
+      "fmt": "int",
+      "value": 132.0
+     },
+     {
+      "start": 57,
+      "end": 59,
+      "key": "ptd_genz_new_ly",
+      "fmt": "int",
+      "value": 72.0
+     },
+     {
+      "start": 73,
+      "end": 78,
+      "key": "ptd_genz_share_of_new_ty",
+      "fmt": "pct",
+      "value": 0.363636
+     },
+     {
+      "start": 99,
+      "end": 104,
+      "key": "ptd_genz_share_of_new_ly",
+      "fmt": "pct",
+      "value": 0.246575
+     },
+     {
+      "start": 123,
+      "end": 129,
+      "key": "tabby_l4w_sales_yoy_pct",
+      "fmt": "pct+",
+      "value": 0.367734
+     },
+     {
+      "start": 144,
+      "end": 152,
+      "key": "tabby_l4w_contrib_pts",
+      "fmt": "pts+",
+      "value": 6.769
+     },
+     {
+      "start": 179,
+      "end": 185,
+      "key": "pillow_tabby_l4w_sales_yoy_pct",
+      "fmt": "pct+",
+      "value": 0.846255
+     },
+     {
+      "start": 200,
+      "end": 208,
+      "key": "pillow_tabby_l4w_contrib_pts",
+      "fmt": "pts+",
+      "value": 3.283
+     }
+    ],
     "generated_by": "pregenerated",
     "validation": {
      "n_numbers": 9,
@@ -2561,6 +4665,14 @@
        "alternatives": 0,
        "candidates": [
         "ptd_genz_new_yoy_pct"
+       ],
+       "ok": true,
+       "checks": [
+        "citation",
+        "metric",
+        "subject",
+        "period",
+        "direction"
        ]
       },
       {
@@ -2569,6 +4681,10 @@
        "alternatives": 0,
        "candidates": [
         "ptd_genz_new_ty"
+       ],
+       "ok": true,
+       "checks": [
+        "citation"
        ]
       },
       {
@@ -2577,6 +4693,11 @@
        "alternatives": 0,
        "candidates": [
         "ptd_genz_new_ly"
+       ],
+       "ok": true,
+       "checks": [
+        "citation",
+        "period"
        ]
       },
       {
@@ -2585,6 +4706,12 @@
        "alternatives": 0,
        "candidates": [
         "ptd_genz_share_of_new_ty"
+       ],
+       "ok": true,
+       "checks": [
+        "citation",
+        "metric",
+        "subject"
        ]
       },
       {
@@ -2593,6 +4720,13 @@
        "alternatives": 0,
        "candidates": [
         "ptd_genz_share_of_new_ly"
+       ],
+       "ok": true,
+       "checks": [
+        "citation",
+        "metric",
+        "subject",
+        "period"
        ]
       },
       {
@@ -2601,6 +4735,13 @@
        "alternatives": 0,
        "candidates": [
         "tabby_l4w_sales_yoy_pct"
+       ],
+       "ok": true,
+       "checks": [
+        "citation",
+        "metric",
+        "subject",
+        "period"
        ]
       },
       {
@@ -2609,6 +4750,13 @@
        "alternatives": 0,
        "candidates": [
         "tabby_l4w_contrib_pts"
+       ],
+       "ok": true,
+       "checks": [
+        "citation",
+        "metric",
+        "subject",
+        "period"
        ]
       },
       {
@@ -2617,6 +4765,13 @@
        "alternatives": 0,
        "candidates": [
         "pillow_tabby_l4w_sales_yoy_pct"
+       ],
+       "ok": true,
+       "checks": [
+        "citation",
+        "metric",
+        "subject",
+        "period"
        ]
       },
       {
@@ -2625,10 +4780,28 @@
        "alternatives": 0,
        "candidates": [
         "pillow_tabby_l4w_contrib_pts"
+       ],
+       "ok": true,
+       "checks": [
+        "citation",
+        "metric",
+        "subject",
+        "period"
        ]
       }
      ],
-     "status": "PASS"
+     "status": "PASS",
+     "mode": "semantic",
+     "failures": [],
+     "checks": {
+      "citation": 9,
+      "metric": 7,
+      "subject": 7,
+      "period": 7,
+      "direction": 1,
+      "comparison": 1
+     },
+     "n_citations": 9
     }
    },
    {
@@ -2682,8 +4855,68 @@
       }
      ]
     },
-    "headline": "Tailored Jacket holds 25.3 weeks of supply and Trench 18.5, against 6.9 and 8.0 last year.",
+    "headline": "Tailored Jacket holds 25.3 weeks of supply vs 6.9 LY, and Trench 18.5 vs 8.0 LY.",
     "body": "Demand keeps falling over L4W: Tailored Jacket -55.9%, Knit Dress -45.6%, Rogue -36.8% and Loafer -37.2%. Shift open-to-buy from Halo apparel toward Hero.",
+    "headline_source": "Tailored Jacket holds {tailored_jacket_wos|wos} weeks of supply vs {tailored_jacket_wos_ly_same_week|wos} LY, and Trench {trench_wos|wos} vs {trench_wos_ly_same_week|wos} LY.",
+    "body_source": "Demand keeps falling over L4W: Tailored Jacket {tailored_jacket_l4w_sales_yoy_pct|pct+}, Knit Dress {knit_dress_l4w_sales_yoy_pct|pct+}, Rogue {rogue_l4w_sales_yoy_pct|pct+} and Loafer {loafer_l4w_sales_yoy_pct|pct+}. Shift open-to-buy from Halo apparel toward Hero.",
+    "citations": [
+     {
+      "start": 22,
+      "end": 26,
+      "key": "tailored_jacket_wos",
+      "fmt": "wos",
+      "value": 25.33
+     },
+     {
+      "start": 46,
+      "end": 49,
+      "key": "tailored_jacket_wos_ly_same_week",
+      "fmt": "wos",
+      "value": 6.9
+     },
+     {
+      "start": 65,
+      "end": 69,
+      "key": "trench_wos",
+      "fmt": "wos",
+      "value": 18.5
+     },
+     {
+      "start": 73,
+      "end": 76,
+      "key": "trench_wos_ly_same_week",
+      "fmt": "wos",
+      "value": 8.0
+     },
+     {
+      "start": 128,
+      "end": 134,
+      "key": "tailored_jacket_l4w_sales_yoy_pct",
+      "fmt": "pct+",
+      "value": -0.559044
+     },
+     {
+      "start": 147,
+      "end": 153,
+      "key": "knit_dress_l4w_sales_yoy_pct",
+      "fmt": "pct+",
+      "value": -0.456196
+     },
+     {
+      "start": 161,
+      "end": 167,
+      "key": "rogue_l4w_sales_yoy_pct",
+      "fmt": "pct+",
+      "value": -0.367861
+     },
+     {
+      "start": 179,
+      "end": 185,
+      "key": "loafer_l4w_sales_yoy_pct",
+      "fmt": "pct+",
+      "value": -0.371905
+     }
+    ],
     "generated_by": "pregenerated",
     "validation": {
      "n_numbers": 8,
@@ -2696,14 +4929,12 @@
        "alternatives": 0,
        "candidates": [
         "tailored_jacket_wos"
-       ]
-      },
-      {
-       "text": "18.5",
-       "fact": "trench_wos",
-       "alternatives": 0,
-       "candidates": [
-        "trench_wos"
+       ],
+       "ok": true,
+       "checks": [
+        "citation",
+        "metric",
+        "subject"
        ]
       },
       {
@@ -2712,6 +4943,26 @@
        "alternatives": 0,
        "candidates": [
         "tailored_jacket_wos_ly_same_week"
+       ],
+       "ok": true,
+       "checks": [
+        "citation",
+        "metric",
+        "subject",
+        "period"
+       ]
+      },
+      {
+       "text": "18.5",
+       "fact": "trench_wos",
+       "alternatives": 0,
+       "candidates": [
+        "trench_wos"
+       ],
+       "ok": true,
+       "checks": [
+        "citation",
+        "subject"
        ]
       },
       {
@@ -2720,6 +4971,12 @@
        "alternatives": 0,
        "candidates": [
         "trench_wos_ly_same_week"
+       ],
+       "ok": true,
+       "checks": [
+        "citation",
+        "subject",
+        "period"
        ]
       },
       {
@@ -2728,6 +4985,11 @@
        "alternatives": 0,
        "candidates": [
         "tailored_jacket_l4w_sales_yoy_pct"
+       ],
+       "ok": true,
+       "checks": [
+        "citation",
+        "subject"
        ]
       },
       {
@@ -2736,6 +4998,11 @@
        "alternatives": 0,
        "candidates": [
         "knit_dress_l4w_sales_yoy_pct"
+       ],
+       "ok": true,
+       "checks": [
+        "citation",
+        "subject"
        ]
       },
       {
@@ -2744,6 +5011,11 @@
        "alternatives": 0,
        "candidates": [
         "rogue_l4w_sales_yoy_pct"
+       ],
+       "ok": true,
+       "checks": [
+        "citation",
+        "subject"
        ]
       },
       {
@@ -2752,10 +5024,26 @@
        "alternatives": 0,
        "candidates": [
         "loafer_l4w_sales_yoy_pct"
+       ],
+       "ok": true,
+       "checks": [
+        "citation",
+        "subject"
        ]
       }
      ],
-     "status": "PASS"
+     "status": "PASS",
+     "mode": "semantic",
+     "failures": [],
+     "checks": {
+      "citation": 8,
+      "metric": 2,
+      "subject": 8,
+      "period": 2,
+      "direction": 0,
+      "comparison": 0
+     },
+     "n_citations": 8
     }
    }
   ]
@@ -2846,8 +5134,54 @@
       }
      ]
     },
-    "headline": "Tabby and Pillow Tabby are down to 2.5 and 2.8 weeks of supply, against 6.7 and 7.8 last year.",
-    "body": "Both families are now in critical low stock, with 116 and 41 units left, and both are G3 winners and the Gen Z gateway. Open the inventory view and confirm inbound supply for Tabby first.",
+    "headline": "Tabby is down to 2.5 weeks of supply vs 6.7 LY, and Pillow Tabby to 2.8 vs 7.8 LY.",
+    "body": "Both families are now in critical low stock, with only 116 Tabby and 41 Pillow Tabby units left, and both are G3 winners and the Gen Z gateway. Open the inventory view and confirm inbound supply for Tabby first.",
+    "headline_source": "Tabby is down to {tabby_wos|wos} weeks of supply vs {tabby_wos_ly_same_week|wos} LY, and Pillow Tabby to {pillow_tabby_wos|wos} vs {pillow_tabby_wos_ly_same_week|wos} LY.",
+    "body_source": "Both families are now in critical low stock, with only {tabby_on_hand_eow|int} Tabby and {pillow_tabby_on_hand_eow|int} Pillow Tabby units left, and both are G3 winners and the Gen Z gateway. Open the inventory view and confirm inbound supply for Tabby first.",
+    "citations": [
+     {
+      "start": 17,
+      "end": 20,
+      "key": "tabby_wos",
+      "fmt": "wos",
+      "value": 2.51
+     },
+     {
+      "start": 40,
+      "end": 43,
+      "key": "tabby_wos_ly_same_week",
+      "fmt": "wos",
+      "value": 6.73
+     },
+     {
+      "start": 68,
+      "end": 71,
+      "key": "pillow_tabby_wos",
+      "fmt": "wos",
+      "value": 2.83
+     },
+     {
+      "start": 75,
+      "end": 78,
+      "key": "pillow_tabby_wos_ly_same_week",
+      "fmt": "wos",
+      "value": 7.75
+     },
+     {
+      "start": 138,
+      "end": 141,
+      "key": "tabby_on_hand_eow",
+      "fmt": "int",
+      "value": 116.0
+     },
+     {
+      "start": 152,
+      "end": 154,
+      "key": "pillow_tabby_on_hand_eow",
+      "fmt": "int",
+      "value": 41.0
+     }
+    ],
     "generated_by": "pregenerated",
     "validation": {
      "n_numbers": 6,
@@ -2860,14 +5194,12 @@
        "alternatives": 0,
        "candidates": [
         "tabby_wos"
-       ]
-      },
-      {
-       "text": "2.8",
-       "fact": "pillow_tabby_wos",
-       "alternatives": 0,
-       "candidates": [
-        "pillow_tabby_wos"
+       ],
+       "ok": true,
+       "checks": [
+        "citation",
+        "metric",
+        "subject"
        ]
       },
       {
@@ -2876,6 +5208,26 @@
        "alternatives": 0,
        "candidates": [
         "tabby_wos_ly_same_week"
+       ],
+       "ok": true,
+       "checks": [
+        "citation",
+        "metric",
+        "subject",
+        "period"
+       ]
+      },
+      {
+       "text": "2.8",
+       "fact": "pillow_tabby_wos",
+       "alternatives": 0,
+       "candidates": [
+        "pillow_tabby_wos"
+       ],
+       "ok": true,
+       "checks": [
+        "citation",
+        "subject"
        ]
       },
       {
@@ -2884,6 +5236,12 @@
        "alternatives": 0,
        "candidates": [
         "pillow_tabby_wos_ly_same_week"
+       ],
+       "ok": true,
+       "checks": [
+        "citation",
+        "subject",
+        "period"
        ]
       },
       {
@@ -2892,6 +5250,12 @@
        "alternatives": 0,
        "candidates": [
         "tabby_on_hand_eow"
+       ],
+       "ok": true,
+       "checks": [
+        "citation",
+        "metric",
+        "subject"
        ]
       },
       {
@@ -2900,10 +5264,27 @@
        "alternatives": 0,
        "candidates": [
         "pillow_tabby_on_hand_eow"
+       ],
+       "ok": true,
+       "checks": [
+        "citation",
+        "metric",
+        "subject"
        ]
       }
      ],
-     "status": "PASS"
+     "status": "PASS",
+     "mode": "semantic",
+     "failures": [],
+     "checks": {
+      "citation": 6,
+      "metric": 4,
+      "subject": 6,
+      "period": 2,
+      "direction": 0,
+      "comparison": 0
+     },
+     "n_citations": 6
     }
    },
    {
@@ -2955,7 +5336,67 @@
      ]
     },
     "headline": "Returning customers grew only +0.9% over L4W, and returning Gen Z fell to 81 from 85.",
-    "body": "Period-to-date returning Gen Z is -14.0% (117 vs 136). Only 18.0% of new Gen Z joined Insider in L4W vs 21.4% last year.",
+    "body": "Period-to-date returning Gen Z is -14.0% (117 vs 136 LY). Only 18.0% of new Gen Z joined Insider in L4W vs 21.4% last year.",
+    "headline_source": "Returning customers grew only {l4w_returning_yoy_pct|pct+} over L4W, and returning Gen Z fell to {l4w_genz_returning_ty|int} from {l4w_genz_returning_ly|int}.",
+    "body_source": "Period-to-date returning Gen Z is {ptd_genz_returning_yoy_pct|pct+} ({ptd_genz_returning_ty|int} vs {ptd_genz_returning_ly|int} LY). Only {l4w_genz_new_insider_rate_ty|pct} of new Gen Z joined Insider in L4W vs {l4w_genz_new_insider_rate_ly|pct} last year.",
+    "citations": [
+     {
+      "start": 30,
+      "end": 35,
+      "key": "l4w_returning_yoy_pct",
+      "fmt": "pct+",
+      "value": 0.009317
+     },
+     {
+      "start": 74,
+      "end": 76,
+      "key": "l4w_genz_returning_ty",
+      "fmt": "int",
+      "value": 81.0
+     },
+     {
+      "start": 82,
+      "end": 84,
+      "key": "l4w_genz_returning_ly",
+      "fmt": "int",
+      "value": 85.0
+     },
+     {
+      "start": 120,
+      "end": 126,
+      "key": "ptd_genz_returning_yoy_pct",
+      "fmt": "pct+",
+      "value": -0.139706
+     },
+     {
+      "start": 128,
+      "end": 131,
+      "key": "ptd_genz_returning_ty",
+      "fmt": "int",
+      "value": 117.0
+     },
+     {
+      "start": 135,
+      "end": 138,
+      "key": "ptd_genz_returning_ly",
+      "fmt": "int",
+      "value": 136.0
+     },
+     {
+      "start": 149,
+      "end": 154,
+      "key": "l4w_genz_new_insider_rate_ty",
+      "fmt": "pct",
+      "value": 0.179688
+     },
+     {
+      "start": 193,
+      "end": 198,
+      "key": "l4w_genz_new_insider_rate_ly",
+      "fmt": "pct",
+      "value": 0.214286
+     }
+    ],
     "generated_by": "pregenerated",
     "validation": {
      "n_numbers": 8,
@@ -2968,6 +5409,13 @@
        "alternatives": 0,
        "candidates": [
         "l4w_returning_yoy_pct"
+       ],
+       "ok": true,
+       "checks": [
+        "citation",
+        "metric",
+        "period",
+        "direction"
        ]
       },
       {
@@ -2976,6 +5424,12 @@
        "alternatives": 0,
        "candidates": [
         "l4w_genz_returning_ty"
+       ],
+       "ok": true,
+       "checks": [
+        "citation",
+        "metric",
+        "subject"
        ]
       },
       {
@@ -2984,6 +5438,12 @@
        "alternatives": 0,
        "candidates": [
         "l4w_genz_returning_ly"
+       ],
+       "ok": true,
+       "checks": [
+        "citation",
+        "metric",
+        "subject"
        ]
       },
       {
@@ -2992,6 +5452,13 @@
        "alternatives": 0,
        "candidates": [
         "ptd_genz_returning_yoy_pct"
+       ],
+       "ok": true,
+       "checks": [
+        "citation",
+        "metric",
+        "subject",
+        "period"
        ]
       },
       {
@@ -3000,6 +5467,13 @@
        "alternatives": 0,
        "candidates": [
         "ptd_genz_returning_ty"
+       ],
+       "ok": true,
+       "checks": [
+        "citation",
+        "metric",
+        "subject",
+        "period"
        ]
       },
       {
@@ -3008,6 +5482,13 @@
        "alternatives": 0,
        "candidates": [
         "ptd_genz_returning_ly"
+       ],
+       "ok": true,
+       "checks": [
+        "citation",
+        "metric",
+        "subject",
+        "period"
        ]
       },
       {
@@ -3016,6 +5497,13 @@
        "alternatives": 0,
        "candidates": [
         "l4w_genz_new_insider_rate_ty"
+       ],
+       "ok": true,
+       "checks": [
+        "citation",
+        "metric",
+        "subject",
+        "period"
        ]
       },
       {
@@ -3024,10 +5512,28 @@
        "alternatives": 0,
        "candidates": [
         "l4w_genz_new_insider_rate_ly"
+       ],
+       "ok": true,
+       "checks": [
+        "citation",
+        "metric",
+        "subject",
+        "period"
        ]
       }
      ],
-     "status": "PASS"
+     "status": "PASS",
+     "mode": "semantic",
+     "failures": [],
+     "checks": {
+      "citation": 8,
+      "metric": 8,
+      "subject": 7,
+      "period": 8,
+      "direction": 1,
+      "comparison": 0
+     },
+     "n_citations": 8
     }
    },
    {
@@ -3080,7 +5586,46 @@
      ]
     },
     "headline": "Gen Z share of new customers reached 43.3% in W28, up from 33.3% in W23.",
-    "body": "Last year's W28 was 22.7%, and 39 Gen Z customers were new vs 15.",
+    "body": "Last year's W28 was 22.7%, and 39 Gen Z customers were new vs 15 LY.",
+    "headline_source": "Gen Z share of new customers reached {week_genz_share_of_new_ty|pct} in W28, up from {first_week_genz_share_of_new_ty|pct} in W23.",
+    "body_source": "Last year's W28 was {week_genz_share_of_new_ly|pct}, and {week_genz_new_ty|int} Gen Z customers were new vs {week_genz_new_ly|int} LY.",
+    "citations": [
+     {
+      "start": 37,
+      "end": 42,
+      "key": "week_genz_share_of_new_ty",
+      "fmt": "pct",
+      "value": 0.433333
+     },
+     {
+      "start": 59,
+      "end": 64,
+      "key": "first_week_genz_share_of_new_ty",
+      "fmt": "pct",
+      "value": 0.333333
+     },
+     {
+      "start": 93,
+      "end": 98,
+      "key": "week_genz_share_of_new_ly",
+      "fmt": "pct",
+      "value": 0.227273
+     },
+     {
+      "start": 104,
+      "end": 106,
+      "key": "week_genz_new_ty",
+      "fmt": "int",
+      "value": 39.0
+     },
+     {
+      "start": 135,
+      "end": 137,
+      "key": "week_genz_new_ly",
+      "fmt": "int",
+      "value": 15.0
+     }
+    ],
     "generated_by": "pregenerated",
     "validation": {
      "n_numbers": 5,
@@ -3093,6 +5638,12 @@
        "alternatives": 0,
        "candidates": [
         "week_genz_share_of_new_ty"
+       ],
+       "ok": true,
+       "checks": [
+        "citation",
+        "metric",
+        "subject"
        ]
       },
       {
@@ -3101,6 +5652,10 @@
        "alternatives": 0,
        "candidates": [
         "first_week_genz_share_of_new_ty"
+       ],
+       "ok": true,
+       "checks": [
+        "citation"
        ]
       },
       {
@@ -3109,6 +5664,11 @@
        "alternatives": 0,
        "candidates": [
         "week_genz_share_of_new_ly"
+       ],
+       "ok": true,
+       "checks": [
+        "citation",
+        "period"
        ]
       },
       {
@@ -3117,6 +5677,11 @@
        "alternatives": 0,
        "candidates": [
         "week_genz_new_ty"
+       ],
+       "ok": true,
+       "checks": [
+        "citation",
+        "subject"
        ]
       },
       {
@@ -3125,10 +5690,27 @@
        "alternatives": 0,
        "candidates": [
         "week_genz_new_ly"
+       ],
+       "ok": true,
+       "checks": [
+        "citation",
+        "subject",
+        "period"
        ]
       }
      ],
-     "status": "PASS"
+     "status": "PASS",
+     "mode": "semantic",
+     "failures": [],
+     "checks": {
+      "citation": 5,
+      "metric": 1,
+      "subject": 3,
+      "period": 2,
+      "direction": 0,
+      "comparison": 0
+     },
+     "n_citations": 5
     }
    },
    {
@@ -3164,8 +5746,82 @@
       }
      ]
     },
-    "headline": "Gen Z new customers nearly doubled period-to-date: 171 vs 87 (+96.6%).",
-    "body": "Gen Z is 37.7% of new customers vs 24.3% LY. Pillow Tabby (+133%) and Tabby (+27.1%) add +5.0 and +5.5 pts of L4W growth; total L4W demand is +12.3%.",
+    "headline": "Gen Z new customers nearly doubled period-to-date: 171 vs 87 LY (+96.6%).",
+    "body": "Gen Z is 37.7% of new customers vs 24.3% LY. Tabby (demand +27.1%, contribution +5.5 pts) and Pillow Tabby (demand +133%, contribution +5.0 pts) lead L4W growth, and total L4W demand is +12.3%.",
+    "headline_source": "Gen Z new customers nearly doubled period-to-date: {ptd_genz_new_ty|int} vs {ptd_genz_new_ly|int} LY ({ptd_genz_new_yoy_pct|pct+}).",
+    "body_source": "Gen Z is {ptd_genz_share_of_new_ty|pct} of new customers vs {ptd_genz_share_of_new_ly|pct} LY. Tabby (demand {tabby_l4w_sales_yoy_pct|pct+}, contribution {tabby_l4w_contrib_pts|pts+}) and Pillow Tabby (demand {pillow_tabby_l4w_sales_yoy_pct|pct+}, contribution {pillow_tabby_l4w_contrib_pts|pts+}) lead L4W growth, and total L4W demand is {l4w_sales_yoy_pct|pct+}.",
+    "citations": [
+     {
+      "start": 51,
+      "end": 54,
+      "key": "ptd_genz_new_ty",
+      "fmt": "int",
+      "value": 171.0
+     },
+     {
+      "start": 58,
+      "end": 60,
+      "key": "ptd_genz_new_ly",
+      "fmt": "int",
+      "value": 87.0
+     },
+     {
+      "start": 65,
+      "end": 71,
+      "key": "ptd_genz_new_yoy_pct",
+      "fmt": "pct+",
+      "value": 0.965517
+     },
+     {
+      "start": 83,
+      "end": 88,
+      "key": "ptd_genz_share_of_new_ty",
+      "fmt": "pct",
+      "value": 0.377483
+     },
+     {
+      "start": 109,
+      "end": 114,
+      "key": "ptd_genz_share_of_new_ly",
+      "fmt": "pct",
+      "value": 0.243017
+     },
+     {
+      "start": 133,
+      "end": 139,
+      "key": "tabby_l4w_sales_yoy_pct",
+      "fmt": "pct+",
+      "value": 0.271394
+     },
+     {
+      "start": 154,
+      "end": 162,
+      "key": "tabby_l4w_contrib_pts",
+      "fmt": "pts+",
+      "value": 5.472
+     },
+     {
+      "start": 189,
+      "end": 194,
+      "key": "pillow_tabby_l4w_sales_yoy_pct",
+      "fmt": "pct+",
+      "value": 1.328984
+     },
+     {
+      "start": 209,
+      "end": 217,
+      "key": "pillow_tabby_l4w_contrib_pts",
+      "fmt": "pts+",
+      "value": 4.987
+     },
+     {
+      "start": 260,
+      "end": 266,
+      "key": "l4w_sales_yoy_pct",
+      "fmt": "pct+",
+      "value": 0.122725
+     }
+    ],
     "generated_by": "pregenerated",
     "validation": {
      "n_numbers": 10,
@@ -3178,6 +5834,10 @@
        "alternatives": 0,
        "candidates": [
         "ptd_genz_new_ty"
+       ],
+       "ok": true,
+       "checks": [
+        "citation"
        ]
       },
       {
@@ -3186,6 +5846,11 @@
        "alternatives": 0,
        "candidates": [
         "ptd_genz_new_ly"
+       ],
+       "ok": true,
+       "checks": [
+        "citation",
+        "period"
        ]
       },
       {
@@ -3194,6 +5859,11 @@
        "alternatives": 0,
        "candidates": [
         "ptd_genz_new_yoy_pct"
+       ],
+       "ok": true,
+       "checks": [
+        "citation",
+        "comparison"
        ]
       },
       {
@@ -3202,6 +5872,12 @@
        "alternatives": 0,
        "candidates": [
         "ptd_genz_share_of_new_ty"
+       ],
+       "ok": true,
+       "checks": [
+        "citation",
+        "metric",
+        "subject"
        ]
       },
       {
@@ -3210,14 +5886,13 @@
        "alternatives": 0,
        "candidates": [
         "ptd_genz_share_of_new_ly"
-       ]
-      },
-      {
-       "text": "+133%",
-       "fact": "pillow_tabby_l4w_sales_yoy_pct",
-       "alternatives": 0,
-       "candidates": [
-        "pillow_tabby_l4w_sales_yoy_pct"
+       ],
+       "ok": true,
+       "checks": [
+        "citation",
+        "metric",
+        "subject",
+        "period"
        ]
       },
       {
@@ -3226,14 +5901,13 @@
        "alternatives": 0,
        "candidates": [
         "tabby_l4w_sales_yoy_pct"
-       ]
-      },
-      {
-       "text": "+5.0",
-       "fact": "pillow_tabby_l4w_contrib_pts",
-       "alternatives": 0,
-       "candidates": [
-        "pillow_tabby_l4w_contrib_pts"
+       ],
+       "ok": true,
+       "checks": [
+        "citation",
+        "metric",
+        "subject",
+        "period"
        ]
       },
       {
@@ -3242,6 +5916,43 @@
        "alternatives": 0,
        "candidates": [
         "tabby_l4w_contrib_pts"
+       ],
+       "ok": true,
+       "checks": [
+        "citation",
+        "metric",
+        "subject",
+        "period"
+       ]
+      },
+      {
+       "text": "+133%",
+       "fact": "pillow_tabby_l4w_sales_yoy_pct",
+       "alternatives": 0,
+       "candidates": [
+        "pillow_tabby_l4w_sales_yoy_pct"
+       ],
+       "ok": true,
+       "checks": [
+        "citation",
+        "metric",
+        "subject",
+        "period"
+       ]
+      },
+      {
+       "text": "+5.0 pts",
+       "fact": "pillow_tabby_l4w_contrib_pts",
+       "alternatives": 0,
+       "candidates": [
+        "pillow_tabby_l4w_contrib_pts"
+       ],
+       "ok": true,
+       "checks": [
+        "citation",
+        "metric",
+        "subject",
+        "period"
        ]
       },
       {
@@ -3250,10 +5961,27 @@
        "alternatives": 0,
        "candidates": [
         "l4w_sales_yoy_pct"
+       ],
+       "ok": true,
+       "checks": [
+        "citation",
+        "metric",
+        "period"
        ]
       }
      ],
-     "status": "PASS"
+     "status": "PASS",
+     "mode": "semantic",
+     "failures": [],
+     "checks": {
+      "citation": 10,
+      "metric": 7,
+      "subject": 6,
+      "period": 7,
+      "direction": 0,
+      "comparison": 2
+     },
+     "n_citations": 10
     }
    },
    {
@@ -3319,8 +6047,61 @@
       }
      ]
     },
-    "headline": "Knit Dress has 21.2 weeks of supply while its L4W demand is -62.6%.",
-    "body": "Trench (16.5, LY 7.8) and Tailored Jacket (15.6, LY 8.0) are also over the high-stock line, and Rogue demand is -44.6%. Clear the apparel overhang before buying more.",
+    "headline": "Knit Dress has 21.3 weeks of supply while its L4W demand is -62.6%.",
+    "body": "Trench (16.5 vs 7.8 LY) and Tailored Jacket (15.6 vs 8.0 LY) are also over the high-stock line, and Rogue demand is -44.6%. Clear the apparel overhang before buying more.",
+    "headline_source": "Knit Dress has {knit_dress_wos|wos} weeks of supply while its L4W demand is {knit_dress_l4w_sales_yoy_pct|pct+}.",
+    "body_source": "Trench ({trench_wos|wos} vs {trench_wos_ly_same_week|wos} LY) and Tailored Jacket ({tailored_jacket_wos|wos} vs {tailored_jacket_wos_ly_same_week|wos} LY) are also over the high-stock line, and Rogue demand is {rogue_l4w_sales_yoy_pct|pct+}. Clear the apparel overhang before buying more.",
+    "citations": [
+     {
+      "start": 15,
+      "end": 19,
+      "key": "knit_dress_wos",
+      "fmt": "wos",
+      "value": 21.25
+     },
+     {
+      "start": 60,
+      "end": 66,
+      "key": "knit_dress_l4w_sales_yoy_pct",
+      "fmt": "pct+",
+      "value": -0.626011
+     },
+     {
+      "start": 76,
+      "end": 80,
+      "key": "trench_wos",
+      "fmt": "wos",
+      "value": 16.46
+     },
+     {
+      "start": 84,
+      "end": 87,
+      "key": "trench_wos_ly_same_week",
+      "fmt": "wos",
+      "value": 7.79
+     },
+     {
+      "start": 113,
+      "end": 117,
+      "key": "tailored_jacket_wos",
+      "fmt": "wos",
+      "value": 15.57
+     },
+     {
+      "start": 121,
+      "end": 124,
+      "key": "tailored_jacket_wos_ly_same_week",
+      "fmt": "wos",
+      "value": 8.0
+     },
+     {
+      "start": 184,
+      "end": 190,
+      "key": "rogue_l4w_sales_yoy_pct",
+      "fmt": "pct+",
+      "value": -0.445954
+     }
+    ],
     "generated_by": "pregenerated",
     "validation": {
      "n_numbers": 7,
@@ -3328,11 +6109,17 @@
      "unmatched": [],
      "matches": [
       {
-       "text": "21.2",
+       "text": "21.3",
        "fact": "knit_dress_wos",
        "alternatives": 0,
        "candidates": [
         "knit_dress_wos"
+       ],
+       "ok": true,
+       "checks": [
+        "citation",
+        "metric",
+        "subject"
        ]
       },
       {
@@ -3341,6 +6128,13 @@
        "alternatives": 0,
        "candidates": [
         "knit_dress_l4w_sales_yoy_pct"
+       ],
+       "ok": true,
+       "checks": [
+        "citation",
+        "metric",
+        "subject",
+        "period"
        ]
       },
       {
@@ -3349,6 +6143,11 @@
        "alternatives": 0,
        "candidates": [
         "trench_wos"
+       ],
+       "ok": true,
+       "checks": [
+        "citation",
+        "subject"
        ]
       },
       {
@@ -3357,6 +6156,12 @@
        "alternatives": 0,
        "candidates": [
         "trench_wos_ly_same_week"
+       ],
+       "ok": true,
+       "checks": [
+        "citation",
+        "subject",
+        "period"
        ]
       },
       {
@@ -3365,6 +6170,11 @@
        "alternatives": 0,
        "candidates": [
         "tailored_jacket_wos"
+       ],
+       "ok": true,
+       "checks": [
+        "citation",
+        "subject"
        ]
       },
       {
@@ -3373,6 +6183,12 @@
        "alternatives": 0,
        "candidates": [
         "tailored_jacket_wos_ly_same_week"
+       ],
+       "ok": true,
+       "checks": [
+        "citation",
+        "subject",
+        "period"
        ]
       },
       {
@@ -3381,10 +6197,27 @@
        "alternatives": 0,
        "candidates": [
         "rogue_l4w_sales_yoy_pct"
+       ],
+       "ok": true,
+       "checks": [
+        "citation",
+        "metric",
+        "subject"
        ]
       }
      ],
-     "status": "PASS"
+     "status": "PASS",
+     "mode": "semantic",
+     "failures": [],
+     "checks": {
+      "citation": 7,
+      "metric": 3,
+      "subject": 7,
+      "period": 3,
+      "direction": 0,
+      "comparison": 0
+     },
+     "n_citations": 7
     }
    }
   ]
@@ -3476,7 +6309,81 @@
      ]
     },
     "headline": "Tabby has 2.1 weeks of supply and Pillow Tabby 1.8, while replenishment covered only 28% of what Tabby sold.",
-    "body": "Last year the same week held 7.0 and 5.1 weeks, and Tabby receipts covered 95% of sales. At this pace Tabby runs out in about 2.6 weeks and Pillow Tabby in 2.2, putting $23.1K of sample demand at risk (7.7% of the next four weeks). Re-open replenishment on both now (R1).",
+    "body": "Last year the same week held 7.0 and 5.1 weeks, and Tabby receipts covered 95% of sales. At this pace Tabby runs out in about 2.6 weeks and Pillow Tabby in 2.2, putting $23.1K of sample demand at risk (7.7% of next 4-week demand). Re-open replenishment on both now (R1).",
+    "headline_source": "Tabby has {tabby_wos|wos} weeks of supply and Pillow Tabby {pillow_tabby_wos|wos}, while replenishment covered only {tabby_receipts_to_sales_ty|pct0} of what Tabby sold.",
+    "body_source": "Last year the same week held {tabby_wos_ly_same_week|wos} and {pillow_tabby_wos_ly_same_week|wos} weeks, and Tabby receipts covered {tabby_receipts_to_sales_ly|pct0} of sales. At this pace Tabby runs out in about {tabby_weeks_to_stockout|wos} weeks and Pillow Tabby in {pillow_tabby_weeks_to_stockout|wos}, putting {r1_demand_at_risk_usd|money_k} of sample demand at risk ({r1_demand_at_risk_pct_of_next_4wk|pct} of next 4-week demand). Re-open replenishment on both now (R1).",
+    "citations": [
+     {
+      "start": 10,
+      "end": 13,
+      "key": "tabby_wos",
+      "fmt": "wos",
+      "value": 2.08
+     },
+     {
+      "start": 47,
+      "end": 50,
+      "key": "pillow_tabby_wos",
+      "fmt": "wos",
+      "value": 1.8
+     },
+     {
+      "start": 85,
+      "end": 88,
+      "key": "tabby_receipts_to_sales_ty",
+      "fmt": "pct0",
+      "value": 0.282609
+     },
+     {
+      "start": 138,
+      "end": 141,
+      "key": "tabby_wos_ly_same_week",
+      "fmt": "wos",
+      "value": 7.03
+     },
+     {
+      "start": 146,
+      "end": 149,
+      "key": "pillow_tabby_wos_ly_same_week",
+      "fmt": "wos",
+      "value": 5.12
+     },
+     {
+      "start": 184,
+      "end": 187,
+      "key": "tabby_receipts_to_sales_ly",
+      "fmt": "pct0",
+      "value": 0.953052
+     },
+     {
+      "start": 235,
+      "end": 238,
+      "key": "tabby_weeks_to_stockout",
+      "fmt": "wos",
+      "value": 2.624
+     },
+     {
+      "start": 265,
+      "end": 268,
+      "key": "pillow_tabby_weeks_to_stockout",
+      "fmt": "wos",
+      "value": 2.215
+     },
+     {
+      "start": 278,
+      "end": 284,
+      "key": "r1_demand_at_risk_usd",
+      "fmt": "money_k",
+      "value": 23058.29
+     },
+     {
+      "start": 311,
+      "end": 315,
+      "key": "r1_demand_at_risk_pct_of_next_4wk",
+      "fmt": "pct",
+      "value": 0.0774
+     }
+    ],
     "generated_by": "pregenerated",
     "validation": {
      "n_numbers": 10,
@@ -3489,6 +6396,12 @@
        "alternatives": 0,
        "candidates": [
         "tabby_wos"
+       ],
+       "ok": true,
+       "checks": [
+        "citation",
+        "metric",
+        "subject"
        ]
       },
       {
@@ -3497,6 +6410,12 @@
        "alternatives": 0,
        "candidates": [
         "pillow_tabby_wos"
+       ],
+       "ok": true,
+       "checks": [
+        "citation",
+        "metric",
+        "subject"
        ]
       },
       {
@@ -3505,6 +6424,12 @@
        "alternatives": 0,
        "candidates": [
         "tabby_receipts_to_sales_ty"
+       ],
+       "ok": true,
+       "checks": [
+        "citation",
+        "metric",
+        "subject"
        ]
       },
       {
@@ -3513,6 +6438,11 @@
        "alternatives": 0,
        "candidates": [
         "tabby_wos_ly_same_week"
+       ],
+       "ok": true,
+       "checks": [
+        "citation",
+        "period"
        ]
       },
       {
@@ -3521,6 +6451,10 @@
        "alternatives": 0,
        "candidates": [
         "pillow_tabby_wos_ly_same_week"
+       ],
+       "ok": true,
+       "checks": [
+        "citation"
        ]
       },
       {
@@ -3529,6 +6463,12 @@
        "alternatives": 0,
        "candidates": [
         "tabby_receipts_to_sales_ly"
+       ],
+       "ok": true,
+       "checks": [
+        "citation",
+        "metric",
+        "subject"
        ]
       },
       {
@@ -3537,6 +6477,12 @@
        "alternatives": 0,
        "candidates": [
         "tabby_weeks_to_stockout"
+       ],
+       "ok": true,
+       "checks": [
+        "citation",
+        "metric",
+        "subject"
        ]
       },
       {
@@ -3545,6 +6491,12 @@
        "alternatives": 0,
        "candidates": [
         "pillow_tabby_weeks_to_stockout"
+       ],
+       "ok": true,
+       "checks": [
+        "citation",
+        "metric",
+        "subject"
        ]
       },
       {
@@ -3553,6 +6505,11 @@
        "alternatives": 0,
        "candidates": [
         "r1_demand_at_risk_usd"
+       ],
+       "ok": true,
+       "checks": [
+        "citation",
+        "metric"
        ]
       },
       {
@@ -3561,10 +6518,26 @@
        "alternatives": 0,
        "candidates": [
         "r1_demand_at_risk_pct_of_next_4wk"
+       ],
+       "ok": true,
+       "checks": [
+        "citation",
+        "metric"
        ]
       }
      ],
-     "status": "PASS"
+     "status": "PASS",
+     "mode": "semantic",
+     "failures": [],
+     "checks": {
+      "citation": 10,
+      "metric": 8,
+      "subject": 6,
+      "period": 1,
+      "direction": 0,
+      "comparison": 0
+     },
+     "n_citations": 10
     }
    },
    {
@@ -3626,7 +6599,88 @@
      ]
     },
     "headline": "Only 16.4% of new Gen Z joined Insider over L4W, the gap behind a flat returning base.",
-    "body": "Period-to-date returning customers are 1,142 vs 1,142 and returning Gen Z is -6.5%, even though L4W improved (+3.8%). The gap is widest in Outlet (9.7% vs 23.1% for other new customers) and Greater China (5.1% vs 21.7%). Enrol at the first Gen Z purchase: +10% returning Gen Z is worth about 0.85% of demand (R3).",
+    "body": "Period-to-date returning customers are 1,142 vs 1,142 LY; returning Gen Z is -6.5%, even though L4W returning customers improved (+3.8%). The gap shows in Outlet (9.7% vs 23.1%) and Greater China (5.1% vs 21.7%), new Gen Z vs other new customers. Enrol at the first Gen Z purchase: a 10% lift in returning Gen Z, worth about 0.85% of demand (R3).",
+    "headline_source": "Only {l4w_genz_new_insider_rate_ty|pct} of new Gen Z joined Insider over L4W, the gap behind a flat returning base.",
+    "body_source": "Period-to-date returning customers are {ptd_returning_ty|int} vs {ptd_returning_ly|int} LY; returning Gen Z is {ptd_genz_returning_yoy_pct|pct+}, even though L4W returning customers improved ({l4w_returning_yoy_pct|pct+}). The gap shows in Outlet ({outlet_genz_new_insider_rate|pct} vs {outlet_other_new_insider_rate|pct}) and Greater China ({greater_china_genz_new_insider_rate|pct} vs {greater_china_other_new_insider_rate|pct}), new Gen Z vs other new customers. Enrol at the first Gen Z purchase: a {r3_returning_genz_lift|pct0} lift in returning Gen Z, worth about {r3_pct_of_ty_demand|pct2} of demand (R3).",
+    "citations": [
+     {
+      "start": 5,
+      "end": 10,
+      "key": "l4w_genz_new_insider_rate_ty",
+      "fmt": "pct",
+      "value": 0.164286
+     },
+     {
+      "start": 126,
+      "end": 131,
+      "key": "ptd_returning_ty",
+      "fmt": "int",
+      "value": 1142.0
+     },
+     {
+      "start": 135,
+      "end": 140,
+      "key": "ptd_returning_ly",
+      "fmt": "int",
+      "value": 1142.0
+     },
+     {
+      "start": 164,
+      "end": 169,
+      "key": "ptd_genz_returning_yoy_pct",
+      "fmt": "pct+",
+      "value": -0.064935
+     },
+     {
+      "start": 217,
+      "end": 222,
+      "key": "l4w_returning_yoy_pct",
+      "fmt": "pct+",
+      "value": 0.038226
+     },
+     {
+      "start": 250,
+      "end": 254,
+      "key": "outlet_genz_new_insider_rate",
+      "fmt": "pct",
+      "value": 0.096774
+     },
+     {
+      "start": 258,
+      "end": 263,
+      "key": "outlet_other_new_insider_rate",
+      "fmt": "pct",
+      "value": 0.231481
+     },
+     {
+      "start": 284,
+      "end": 288,
+      "key": "greater_china_genz_new_insider_rate",
+      "fmt": "pct",
+      "value": 0.051282
+     },
+     {
+      "start": 292,
+      "end": 297,
+      "key": "greater_china_other_new_insider_rate",
+      "fmt": "pct",
+      "value": 0.217391
+     },
+     {
+      "start": 371,
+      "end": 374,
+      "key": "r3_returning_genz_lift",
+      "fmt": "pct0",
+      "value": 0.1
+     },
+     {
+      "start": 412,
+      "end": 417,
+      "key": "r3_pct_of_ty_demand",
+      "fmt": "pct2",
+      "value": 0.0085
+     }
+    ],
     "generated_by": "pregenerated",
     "validation": {
      "n_numbers": 11,
@@ -3639,24 +6693,41 @@
        "alternatives": 0,
        "candidates": [
         "l4w_genz_new_insider_rate_ty"
+       ],
+       "ok": true,
+       "checks": [
+        "citation",
+        "metric",
+        "subject",
+        "period"
+       ]
+      },
+      {
+       "text": "1,142",
+       "fact": "ptd_returning_ty",
+       "alternatives": 0,
+       "candidates": [
+        "ptd_returning_ty"
+       ],
+       "ok": true,
+       "checks": [
+        "citation",
+        "metric",
+        "period"
        ]
       },
       {
        "text": "1,142",
        "fact": "ptd_returning_ly",
-       "alternatives": 1,
+       "alternatives": 0,
        "candidates": [
-        "ptd_returning_ly",
-        "ptd_returning_ty"
-       ]
-      },
-      {
-       "text": "1,142",
-       "fact": "ptd_returning_ly",
-       "alternatives": 1,
-       "candidates": [
-        "ptd_returning_ly",
-        "ptd_returning_ty"
+        "ptd_returning_ly"
+       ],
+       "ok": true,
+       "checks": [
+        "citation",
+        "metric",
+        "period"
        ]
       },
       {
@@ -3665,6 +6736,12 @@
        "alternatives": 0,
        "candidates": [
         "ptd_genz_returning_yoy_pct"
+       ],
+       "ok": true,
+       "checks": [
+        "citation",
+        "metric",
+        "subject"
        ]
       },
       {
@@ -3673,6 +6750,13 @@
        "alternatives": 0,
        "candidates": [
         "l4w_returning_yoy_pct"
+       ],
+       "ok": true,
+       "checks": [
+        "citation",
+        "metric",
+        "period",
+        "direction"
        ]
       },
       {
@@ -3681,6 +6765,11 @@
        "alternatives": 0,
        "candidates": [
         "outlet_genz_new_insider_rate"
+       ],
+       "ok": true,
+       "checks": [
+        "citation",
+        "subject"
        ]
       },
       {
@@ -3689,6 +6778,11 @@
        "alternatives": 0,
        "candidates": [
         "outlet_other_new_insider_rate"
+       ],
+       "ok": true,
+       "checks": [
+        "citation",
+        "subject"
        ]
       },
       {
@@ -3697,6 +6791,11 @@
        "alternatives": 0,
        "candidates": [
         "greater_china_genz_new_insider_rate"
+       ],
+       "ok": true,
+       "checks": [
+        "citation",
+        "subject"
        ]
       },
       {
@@ -3705,15 +6804,25 @@
        "alternatives": 0,
        "candidates": [
         "greater_china_other_new_insider_rate"
+       ],
+       "ok": true,
+       "checks": [
+        "citation",
+        "subject"
        ]
       },
       {
-       "text": "+10%",
+       "text": "10%",
        "fact": "r3_returning_genz_lift",
-       "alternatives": 1,
+       "alternatives": 0,
        "candidates": [
-        "r3_returning_genz_lift",
-        "outlet_genz_new_insider_rate"
+        "r3_returning_genz_lift"
+       ],
+       "ok": true,
+       "checks": [
+        "citation",
+        "metric",
+        "subject"
        ]
       },
       {
@@ -3722,10 +6831,26 @@
        "alternatives": 0,
        "candidates": [
         "r3_pct_of_ty_demand"
+       ],
+       "ok": true,
+       "checks": [
+        "citation",
+        "metric"
        ]
       }
      ],
-     "status": "PASS"
+     "status": "PASS",
+     "mode": "semantic",
+     "failures": [],
+     "checks": {
+      "citation": 11,
+      "metric": 7,
+      "subject": 7,
+      "period": 5,
+      "direction": 1,
+      "comparison": 0
+     },
+     "n_citations": 11
     }
    },
    {
@@ -3784,6 +6909,45 @@
     },
     "headline": "Gen Z share of new customers climbed to 47.1% in W29, up from 33.3% in W23.",
     "body": "Last year the same week was 27.6%. 41 Gen Z customers were new vs 16 LY; find out what drove it, because the extract can't explain it.",
+    "headline_source": "Gen Z share of new customers climbed to {week_genz_share_of_new_ty|pct} in W29, up from {first_week_genz_share_of_new_ty|pct} in W23.",
+    "body_source": "Last year the same week was {week_genz_share_of_new_ly|pct}. {week_genz_new_ty|int} Gen Z customers were new vs {week_genz_new_ly|int} LY; find out what drove it, because the extract can't explain it.",
+    "citations": [
+     {
+      "start": 40,
+      "end": 45,
+      "key": "week_genz_share_of_new_ty",
+      "fmt": "pct",
+      "value": 0.471264
+     },
+     {
+      "start": 62,
+      "end": 67,
+      "key": "first_week_genz_share_of_new_ty",
+      "fmt": "pct",
+      "value": 0.333333
+     },
+     {
+      "start": 104,
+      "end": 109,
+      "key": "week_genz_share_of_new_ly",
+      "fmt": "pct",
+      "value": 0.275862
+     },
+     {
+      "start": 111,
+      "end": 113,
+      "key": "week_genz_new_ty",
+      "fmt": "int",
+      "value": 41.0
+     },
+     {
+      "start": 142,
+      "end": 144,
+      "key": "week_genz_new_ly",
+      "fmt": "int",
+      "value": 16.0
+     }
+    ],
     "generated_by": "pregenerated",
     "validation": {
      "n_numbers": 5,
@@ -3796,6 +6960,12 @@
        "alternatives": 0,
        "candidates": [
         "week_genz_share_of_new_ty"
+       ],
+       "ok": true,
+       "checks": [
+        "citation",
+        "metric",
+        "subject"
        ]
       },
       {
@@ -3804,6 +6974,10 @@
        "alternatives": 0,
        "candidates": [
         "first_week_genz_share_of_new_ty"
+       ],
+       "ok": true,
+       "checks": [
+        "citation"
        ]
       },
       {
@@ -3812,6 +6986,11 @@
        "alternatives": 0,
        "candidates": [
         "week_genz_share_of_new_ly"
+       ],
+       "ok": true,
+       "checks": [
+        "citation",
+        "period"
        ]
       },
       {
@@ -3820,6 +6999,11 @@
        "alternatives": 0,
        "candidates": [
         "week_genz_new_ty"
+       ],
+       "ok": true,
+       "checks": [
+        "citation",
+        "subject"
        ]
       },
       {
@@ -3828,10 +7012,27 @@
        "alternatives": 0,
        "candidates": [
         "week_genz_new_ly"
+       ],
+       "ok": true,
+       "checks": [
+        "citation",
+        "subject",
+        "period"
        ]
       }
      ],
-     "status": "PASS"
+     "status": "PASS",
+     "mode": "semantic",
+     "failures": [],
+     "checks": {
+      "citation": 5,
+      "metric": 1,
+      "subject": 3,
+      "period": 2,
+      "direction": 0,
+      "comparison": 0
+     },
+     "n_citations": 5
     }
    },
    {
@@ -3865,8 +7066,75 @@
       }
      ]
     },
-    "headline": "Gen Z new customers have more than doubled period-to-date: 212 vs 103 (+106%).",
-    "body": "Gen Z is 39.3% of new customers vs 24.8% LY. Tabby (+26.9%, +5.0 pts) and Pillow Tabby (+60.3%, +3.2 pts) lead L4W growth, so the Tabby franchise is the template to share across the business.",
+    "headline": "Gen Z new customers have more than doubled period-to-date: 212 vs 103 LY (+106%).",
+    "body": "Gen Z is 39.3% of new customers vs 24.8% LY. Tabby (demand +26.9%, contribution +5.0 pts) and Pillow Tabby (demand +60.3%, contribution +3.2 pts) lead L4W growth, so the Tabby franchise is the template to share across the business.",
+    "headline_source": "Gen Z new customers have more than doubled period-to-date: {ptd_genz_new_ty|int} vs {ptd_genz_new_ly|int} LY ({ptd_genz_new_yoy_pct|pct+}).",
+    "body_source": "Gen Z is {ptd_genz_share_of_new_ty|pct} of new customers vs {ptd_genz_share_of_new_ly|pct} LY. Tabby (demand {tabby_l4w_sales_yoy_pct|pct+}, contribution {tabby_l4w_contrib_pts|pts+}) and Pillow Tabby (demand {pillow_tabby_l4w_sales_yoy_pct|pct+}, contribution {pillow_tabby_l4w_contrib_pts|pts+}) lead L4W growth, so the Tabby franchise is the template to share across the business.",
+    "citations": [
+     {
+      "start": 59,
+      "end": 62,
+      "key": "ptd_genz_new_ty",
+      "fmt": "int",
+      "value": 212.0
+     },
+     {
+      "start": 66,
+      "end": 69,
+      "key": "ptd_genz_new_ly",
+      "fmt": "int",
+      "value": 103.0
+     },
+     {
+      "start": 74,
+      "end": 79,
+      "key": "ptd_genz_new_yoy_pct",
+      "fmt": "pct+",
+      "value": 1.058252
+     },
+     {
+      "start": 91,
+      "end": 96,
+      "key": "ptd_genz_share_of_new_ty",
+      "fmt": "pct",
+      "value": 0.392593
+     },
+     {
+      "start": 117,
+      "end": 122,
+      "key": "ptd_genz_share_of_new_ly",
+      "fmt": "pct",
+      "value": 0.247596
+     },
+     {
+      "start": 141,
+      "end": 147,
+      "key": "tabby_l4w_sales_yoy_pct",
+      "fmt": "pct+",
+      "value": 0.268856
+     },
+     {
+      "start": 162,
+      "end": 170,
+      "key": "tabby_l4w_contrib_pts",
+      "fmt": "pts+",
+      "value": 4.978
+     },
+     {
+      "start": 197,
+      "end": 203,
+      "key": "pillow_tabby_l4w_sales_yoy_pct",
+      "fmt": "pct+",
+      "value": 0.602721
+     },
+     {
+      "start": 218,
+      "end": 226,
+      "key": "pillow_tabby_l4w_contrib_pts",
+      "fmt": "pts+",
+      "value": 3.158
+     }
+    ],
     "generated_by": "pregenerated",
     "validation": {
      "n_numbers": 9,
@@ -3879,6 +7147,10 @@
        "alternatives": 0,
        "candidates": [
         "ptd_genz_new_ty"
+       ],
+       "ok": true,
+       "checks": [
+        "citation"
        ]
       },
       {
@@ -3887,6 +7159,11 @@
        "alternatives": 0,
        "candidates": [
         "ptd_genz_new_ly"
+       ],
+       "ok": true,
+       "checks": [
+        "citation",
+        "period"
        ]
       },
       {
@@ -3895,6 +7172,11 @@
        "alternatives": 0,
        "candidates": [
         "ptd_genz_new_yoy_pct"
+       ],
+       "ok": true,
+       "checks": [
+        "citation",
+        "comparison"
        ]
       },
       {
@@ -3903,6 +7185,12 @@
        "alternatives": 0,
        "candidates": [
         "ptd_genz_share_of_new_ty"
+       ],
+       "ok": true,
+       "checks": [
+        "citation",
+        "metric",
+        "subject"
        ]
       },
       {
@@ -3911,6 +7199,13 @@
        "alternatives": 0,
        "candidates": [
         "ptd_genz_share_of_new_ly"
+       ],
+       "ok": true,
+       "checks": [
+        "citation",
+        "metric",
+        "subject",
+        "period"
        ]
       },
       {
@@ -3919,6 +7214,13 @@
        "alternatives": 0,
        "candidates": [
         "tabby_l4w_sales_yoy_pct"
+       ],
+       "ok": true,
+       "checks": [
+        "citation",
+        "metric",
+        "subject",
+        "period"
        ]
       },
       {
@@ -3927,6 +7229,13 @@
        "alternatives": 0,
        "candidates": [
         "tabby_l4w_contrib_pts"
+       ],
+       "ok": true,
+       "checks": [
+        "citation",
+        "metric",
+        "subject",
+        "period"
        ]
       },
       {
@@ -3935,6 +7244,13 @@
        "alternatives": 0,
        "candidates": [
         "pillow_tabby_l4w_sales_yoy_pct"
+       ],
+       "ok": true,
+       "checks": [
+        "citation",
+        "metric",
+        "subject",
+        "period"
        ]
       },
       {
@@ -3943,10 +7259,28 @@
        "alternatives": 0,
        "candidates": [
         "pillow_tabby_l4w_contrib_pts"
+       ],
+       "ok": true,
+       "checks": [
+        "citation",
+        "metric",
+        "subject",
+        "period"
        ]
       }
      ],
-     "status": "PASS"
+     "status": "PASS",
+     "mode": "semantic",
+     "failures": [],
+     "checks": {
+      "citation": 9,
+      "metric": 6,
+      "subject": 6,
+      "period": 6,
+      "direction": 0,
+      "comparison": 2
+     },
+     "n_citations": 9
     }
    },
    {
@@ -4011,8 +7345,68 @@
       }
      ]
     },
-    "headline": "Knit Dress, Trench and Tailored Jacket hold 20.7, 16.2 and 15.2 weeks of supply against a median of 7.9.",
+    "headline": "Knit Dress holds 20.7 weeks of supply, Trench 16.2 and Tailored Jacket 15.2, against a median of 7.9.",
     "body": "That is 198 units, about $50.5K at retail, above median cover. Knit Dress demand is -62.7% over L4W and Rogue -35.9%; move that open-to-buy to Hero (R2).",
+    "headline_source": "Knit Dress holds {knit_dress_wos|wos} weeks of supply, Trench {trench_wos|wos} and Tailored Jacket {tailored_jacket_wos|wos}, against a median of {median_wos|wos}.",
+    "body_source": "That is {r2_excess_units|int} units, about {r2_excess_retail_value_usd|money_k} at retail, above median cover. Knit Dress demand is {knit_dress_l4w_sales_yoy_pct|pct+} over L4W and Rogue {rogue_l4w_sales_yoy_pct|pct+}; move that open-to-buy to Hero (R2).",
+    "citations": [
+     {
+      "start": 17,
+      "end": 21,
+      "key": "knit_dress_wos",
+      "fmt": "wos",
+      "value": 20.71
+     },
+     {
+      "start": 46,
+      "end": 50,
+      "key": "trench_wos",
+      "fmt": "wos",
+      "value": 16.22
+     },
+     {
+      "start": 71,
+      "end": 75,
+      "key": "tailored_jacket_wos",
+      "fmt": "wos",
+      "value": 15.17
+     },
+     {
+      "start": 97,
+      "end": 100,
+      "key": "median_wos",
+      "fmt": "wos",
+      "value": 7.9
+     },
+     {
+      "start": 110,
+      "end": 113,
+      "key": "r2_excess_units",
+      "fmt": "int",
+      "value": 198.0
+     },
+     {
+      "start": 127,
+      "end": 133,
+      "key": "r2_excess_retail_value_usd",
+      "fmt": "money_k",
+      "value": 50499.55
+     },
+     {
+      "start": 186,
+      "end": 192,
+      "key": "knit_dress_l4w_sales_yoy_pct",
+      "fmt": "pct+",
+      "value": -0.626725
+     },
+     {
+      "start": 212,
+      "end": 218,
+      "key": "rogue_l4w_sales_yoy_pct",
+      "fmt": "pct+",
+      "value": -0.359436
+     }
+    ],
     "generated_by": "pregenerated",
     "validation": {
      "n_numbers": 8,
@@ -4025,6 +7419,12 @@
        "alternatives": 0,
        "candidates": [
         "knit_dress_wos"
+       ],
+       "ok": true,
+       "checks": [
+        "citation",
+        "metric",
+        "subject"
        ]
       },
       {
@@ -4033,6 +7433,11 @@
        "alternatives": 0,
        "candidates": [
         "trench_wos"
+       ],
+       "ok": true,
+       "checks": [
+        "citation",
+        "subject"
        ]
       },
       {
@@ -4041,6 +7446,11 @@
        "alternatives": 0,
        "candidates": [
         "tailored_jacket_wos"
+       ],
+       "ok": true,
+       "checks": [
+        "citation",
+        "subject"
        ]
       },
       {
@@ -4049,6 +7459,10 @@
        "alternatives": 0,
        "candidates": [
         "median_wos"
+       ],
+       "ok": true,
+       "checks": [
+        "citation"
        ]
       },
       {
@@ -4057,6 +7471,11 @@
        "alternatives": 0,
        "candidates": [
         "r2_excess_units"
+       ],
+       "ok": true,
+       "checks": [
+        "citation",
+        "metric"
        ]
       },
       {
@@ -4065,6 +7484,11 @@
        "alternatives": 0,
        "candidates": [
         "r2_excess_retail_value_usd"
+       ],
+       "ok": true,
+       "checks": [
+        "citation",
+        "metric"
        ]
       },
       {
@@ -4073,6 +7497,13 @@
        "alternatives": 0,
        "candidates": [
         "knit_dress_l4w_sales_yoy_pct"
+       ],
+       "ok": true,
+       "checks": [
+        "citation",
+        "metric",
+        "subject",
+        "period"
        ]
       },
       {
@@ -4081,10 +7512,28 @@
        "alternatives": 0,
        "candidates": [
         "rogue_l4w_sales_yoy_pct"
+       ],
+       "ok": true,
+       "checks": [
+        "citation",
+        "metric",
+        "subject",
+        "period"
        ]
       }
      ],
-     "status": "PASS"
+     "status": "PASS",
+     "mode": "semantic",
+     "failures": [],
+     "checks": {
+      "citation": 8,
+      "metric": 5,
+      "subject": 5,
+      "period": 2,
+      "direction": 0,
+      "comparison": 0
+     },
+     "n_citations": 8
     }
    }
   ]
@@ -4177,8 +7626,96 @@
       }
      ]
     },
-    "headline": "Tabby is down to 1.9 weeks of supply and Pillow Tabby to 1.6, after receipts covered only 28% and 29% of units sold.",
-    "body": "Last year the same snapshot held 7.5 and 5.1 weeks, with receipts at 95% and 85% of sales. Only 82 Tabby and 24 Pillow Tabby units remain; at the current pace the 4-week demand at risk is $23.1K, 7.7% of the next four weeks. Re-open replenishment now (R1).",
+    "headline": "Tabby is down to 1.9 weeks of supply and Pillow Tabby to 1.6, after Tabby receipts covered only 28% of units sold and Pillow Tabby receipts 29%.",
+    "body": "Last year the same snapshot held 7.5 and 5.1 weeks, with Tabby receipts at 95% and Pillow Tabby at 85% of sales. Only 82 Tabby and 24 Pillow Tabby units remain; at the current pace $23.1K of demand is at risk, 7.7% of next 4-week demand. Re-open replenishment now (R1).",
+    "headline_source": "Tabby is down to {tabby_wos|wos} weeks of supply and Pillow Tabby to {pillow_tabby_wos|wos}, after Tabby receipts covered only {tabby_receipts_to_sales_ty|pct0} of units sold and Pillow Tabby receipts {pillow_tabby_receipts_to_sales_ty|pct0}.",
+    "body_source": "Last year the same snapshot held {tabby_wos_ly_same_week|wos} and {pillow_tabby_wos_ly_same_week|wos} weeks, with Tabby receipts at {tabby_receipts_to_sales_ly|pct0} and Pillow Tabby at {pillow_tabby_receipts_to_sales_ly|pct0} of sales. Only {tabby_on_hand_eow|int} Tabby and {pillow_tabby_on_hand_eow|int} Pillow Tabby units remain; at the current pace {r1_demand_at_risk_usd|money_k} of demand is at risk, {r1_demand_at_risk_pct_of_next_4wk|pct} of next 4-week demand. Re-open replenishment now (R1).",
+    "citations": [
+     {
+      "start": 17,
+      "end": 20,
+      "key": "tabby_wos",
+      "fmt": "wos",
+      "value": 1.85
+     },
+     {
+      "start": 57,
+      "end": 60,
+      "key": "pillow_tabby_wos",
+      "fmt": "wos",
+      "value": 1.6
+     },
+     {
+      "start": 96,
+      "end": 99,
+      "key": "tabby_receipts_to_sales_ty",
+      "fmt": "pct0",
+      "value": 0.282609
+     },
+     {
+      "start": 140,
+      "end": 143,
+      "key": "pillow_tabby_receipts_to_sales_ty",
+      "fmt": "pct0",
+      "value": 0.287356
+     },
+     {
+      "start": 178,
+      "end": 181,
+      "key": "tabby_wos_ly_same_week",
+      "fmt": "wos",
+      "value": 7.52
+     },
+     {
+      "start": 186,
+      "end": 189,
+      "key": "pillow_tabby_wos_ly_same_week",
+      "fmt": "wos",
+      "value": 5.09
+     },
+     {
+      "start": 220,
+      "end": 223,
+      "key": "tabby_receipts_to_sales_ly",
+      "fmt": "pct0",
+      "value": 0.953052
+     },
+     {
+      "start": 244,
+      "end": 247,
+      "key": "pillow_tabby_receipts_to_sales_ly",
+      "fmt": "pct0",
+      "value": 0.849057
+     },
+     {
+      "start": 263,
+      "end": 265,
+      "key": "tabby_on_hand_eow",
+      "fmt": "int",
+      "value": 82.0
+     },
+     {
+      "start": 276,
+      "end": 278,
+      "key": "pillow_tabby_on_hand_eow",
+      "fmt": "int",
+      "value": 24.0
+     },
+     {
+      "start": 326,
+      "end": 332,
+      "key": "r1_demand_at_risk_usd",
+      "fmt": "money_k",
+      "value": 23058.29
+     },
+     {
+      "start": 355,
+      "end": 359,
+      "key": "r1_demand_at_risk_pct_of_next_4wk",
+      "fmt": "pct",
+      "value": 0.0774
+     }
+    ],
     "generated_by": "pregenerated",
     "validation": {
      "n_numbers": 12,
@@ -4191,6 +7728,12 @@
        "alternatives": 0,
        "candidates": [
         "tabby_wos"
+       ],
+       "ok": true,
+       "checks": [
+        "citation",
+        "metric",
+        "subject"
        ]
       },
       {
@@ -4199,6 +7742,12 @@
        "alternatives": 0,
        "candidates": [
         "pillow_tabby_wos"
+       ],
+       "ok": true,
+       "checks": [
+        "citation",
+        "metric",
+        "subject"
        ]
       },
       {
@@ -4207,6 +7756,12 @@
        "alternatives": 0,
        "candidates": [
         "tabby_receipts_to_sales_ty"
+       ],
+       "ok": true,
+       "checks": [
+        "citation",
+        "metric",
+        "subject"
        ]
       },
       {
@@ -4215,6 +7770,12 @@
        "alternatives": 0,
        "candidates": [
         "pillow_tabby_receipts_to_sales_ty"
+       ],
+       "ok": true,
+       "checks": [
+        "citation",
+        "metric",
+        "subject"
        ]
       },
       {
@@ -4223,6 +7784,11 @@
        "alternatives": 0,
        "candidates": [
         "tabby_wos_ly_same_week"
+       ],
+       "ok": true,
+       "checks": [
+        "citation",
+        "period"
        ]
       },
       {
@@ -4231,6 +7797,10 @@
        "alternatives": 0,
        "candidates": [
         "pillow_tabby_wos_ly_same_week"
+       ],
+       "ok": true,
+       "checks": [
+        "citation"
        ]
       },
       {
@@ -4239,6 +7809,12 @@
        "alternatives": 0,
        "candidates": [
         "tabby_receipts_to_sales_ly"
+       ],
+       "ok": true,
+       "checks": [
+        "citation",
+        "metric",
+        "subject"
        ]
       },
       {
@@ -4247,6 +7823,12 @@
        "alternatives": 0,
        "candidates": [
         "pillow_tabby_receipts_to_sales_ly"
+       ],
+       "ok": true,
+       "checks": [
+        "citation",
+        "metric",
+        "subject"
        ]
       },
       {
@@ -4255,6 +7837,12 @@
        "alternatives": 0,
        "candidates": [
         "tabby_on_hand_eow"
+       ],
+       "ok": true,
+       "checks": [
+        "citation",
+        "metric",
+        "subject"
        ]
       },
       {
@@ -4263,6 +7851,12 @@
        "alternatives": 0,
        "candidates": [
         "pillow_tabby_on_hand_eow"
+       ],
+       "ok": true,
+       "checks": [
+        "citation",
+        "metric",
+        "subject"
        ]
       },
       {
@@ -4271,6 +7865,11 @@
        "alternatives": 0,
        "candidates": [
         "r1_demand_at_risk_usd"
+       ],
+       "ok": true,
+       "checks": [
+        "citation",
+        "metric"
        ]
       },
       {
@@ -4279,10 +7878,26 @@
        "alternatives": 0,
        "candidates": [
         "r1_demand_at_risk_pct_of_next_4wk"
+       ],
+       "ok": true,
+       "checks": [
+        "citation",
+        "metric"
        ]
       }
      ],
-     "status": "PASS"
+     "status": "PASS",
+     "mode": "semantic",
+     "failures": [],
+     "checks": {
+      "citation": 12,
+      "metric": 10,
+      "subject": 8,
+      "period": 1,
+      "direction": 0,
+      "comparison": 0
+     },
+     "n_citations": 12
     }
    },
    {
@@ -4344,7 +7959,88 @@
      ]
     },
     "headline": "Insider attach of new Gen Z is 15.5% over L4W, against 23.4% for new Millennials.",
-    "body": "Period-to-date returning customers are flat (1,239 vs 1,236) and returning Gen Z is -3.1%. The gap sits in Outlet (9.7% vs 23.1%), eComm (12.7% vs 19.2%) and Greater China (5.1% vs 21.7%), so start Insider enrolment there (R3).",
+    "body": "Period-to-date returning customers are flat at 1,239 vs 1,236 LY; returning Gen Z is -3.1%. The gap sits in Outlet (9.7% vs 23.1%), eComm (12.7% vs 19.2%) and Greater China (5.1% vs 21.7%), so start Insider enrolment there (R3).",
+    "headline_source": "Insider attach of new Gen Z is {l4w_genz_new_insider_rate_ty|pct} over L4W, against {millennial_new_insider_rate|pct} for new Millennials.",
+    "body_source": "Period-to-date returning customers are flat at {ptd_returning_ty|int} vs {ptd_returning_ly|int} LY; returning Gen Z is {ptd_genz_returning_yoy_pct|pct+}. The gap sits in Outlet ({outlet_genz_new_insider_rate|pct} vs {outlet_other_new_insider_rate|pct}), eComm ({ecomm_genz_new_insider_rate|pct} vs {ecomm_other_new_insider_rate|pct}) and Greater China ({greater_china_genz_new_insider_rate|pct} vs {greater_china_other_new_insider_rate|pct}), so start Insider enrolment there (R3).",
+    "citations": [
+     {
+      "start": 31,
+      "end": 36,
+      "key": "l4w_genz_new_insider_rate_ty",
+      "fmt": "pct",
+      "value": 0.15493
+     },
+     {
+      "start": 55,
+      "end": 60,
+      "key": "millennial_new_insider_rate",
+      "fmt": "pct",
+      "value": 0.2343
+     },
+     {
+      "start": 129,
+      "end": 134,
+      "key": "ptd_returning_ty",
+      "fmt": "int",
+      "value": 1239.0
+     },
+     {
+      "start": 138,
+      "end": 143,
+      "key": "ptd_returning_ly",
+      "fmt": "int",
+      "value": 1236.0
+     },
+     {
+      "start": 167,
+      "end": 172,
+      "key": "ptd_genz_returning_yoy_pct",
+      "fmt": "pct+",
+      "value": -0.030675
+     },
+     {
+      "start": 198,
+      "end": 202,
+      "key": "outlet_genz_new_insider_rate",
+      "fmt": "pct",
+      "value": 0.096774
+     },
+     {
+      "start": 206,
+      "end": 211,
+      "key": "outlet_other_new_insider_rate",
+      "fmt": "pct",
+      "value": 0.231481
+     },
+     {
+      "start": 221,
+      "end": 226,
+      "key": "ecomm_genz_new_insider_rate",
+      "fmt": "pct",
+      "value": 0.126582
+     },
+     {
+      "start": 230,
+      "end": 235,
+      "key": "ecomm_other_new_insider_rate",
+      "fmt": "pct",
+      "value": 0.192308
+     },
+     {
+      "start": 256,
+      "end": 260,
+      "key": "greater_china_genz_new_insider_rate",
+      "fmt": "pct",
+      "value": 0.051282
+     },
+     {
+      "start": 264,
+      "end": 269,
+      "key": "greater_china_other_new_insider_rate",
+      "fmt": "pct",
+      "value": 0.217391
+     }
+    ],
     "generated_by": "pregenerated",
     "validation": {
      "n_numbers": 11,
@@ -4357,6 +8053,13 @@
        "alternatives": 0,
        "candidates": [
         "l4w_genz_new_insider_rate_ty"
+       ],
+       "ok": true,
+       "checks": [
+        "citation",
+        "metric",
+        "subject",
+        "period"
        ]
       },
       {
@@ -4365,6 +8068,11 @@
        "alternatives": 0,
        "candidates": [
         "millennial_new_insider_rate"
+       ],
+       "ok": true,
+       "checks": [
+        "citation",
+        "subject"
        ]
       },
       {
@@ -4373,6 +8081,12 @@
        "alternatives": 0,
        "candidates": [
         "ptd_returning_ty"
+       ],
+       "ok": true,
+       "checks": [
+        "citation",
+        "metric",
+        "period"
        ]
       },
       {
@@ -4381,6 +8095,12 @@
        "alternatives": 0,
        "candidates": [
         "ptd_returning_ly"
+       ],
+       "ok": true,
+       "checks": [
+        "citation",
+        "metric",
+        "period"
        ]
       },
       {
@@ -4389,6 +8109,12 @@
        "alternatives": 0,
        "candidates": [
         "ptd_genz_returning_yoy_pct"
+       ],
+       "ok": true,
+       "checks": [
+        "citation",
+        "metric",
+        "subject"
        ]
       },
       {
@@ -4397,6 +8123,11 @@
        "alternatives": 0,
        "candidates": [
         "outlet_genz_new_insider_rate"
+       ],
+       "ok": true,
+       "checks": [
+        "citation",
+        "subject"
        ]
       },
       {
@@ -4405,6 +8136,11 @@
        "alternatives": 0,
        "candidates": [
         "outlet_other_new_insider_rate"
+       ],
+       "ok": true,
+       "checks": [
+        "citation",
+        "subject"
        ]
       },
       {
@@ -4413,6 +8149,11 @@
        "alternatives": 0,
        "candidates": [
         "ecomm_genz_new_insider_rate"
+       ],
+       "ok": true,
+       "checks": [
+        "citation",
+        "subject"
        ]
       },
       {
@@ -4421,6 +8162,11 @@
        "alternatives": 0,
        "candidates": [
         "ecomm_other_new_insider_rate"
+       ],
+       "ok": true,
+       "checks": [
+        "citation",
+        "subject"
        ]
       },
       {
@@ -4429,6 +8175,11 @@
        "alternatives": 0,
        "candidates": [
         "greater_china_genz_new_insider_rate"
+       ],
+       "ok": true,
+       "checks": [
+        "citation",
+        "subject"
        ]
       },
       {
@@ -4437,10 +8188,26 @@
        "alternatives": 0,
        "candidates": [
         "greater_china_other_new_insider_rate"
+       ],
+       "ok": true,
+       "checks": [
+        "citation",
+        "subject"
        ]
       }
      ],
-     "status": "PASS"
+     "status": "PASS",
+     "mode": "semantic",
+     "failures": [],
+     "checks": {
+      "citation": 11,
+      "metric": 4,
+      "subject": 9,
+      "period": 4,
+      "direction": 0,
+      "comparison": 0
+     },
+     "n_citations": 11
     }
    },
    {
@@ -4502,8 +8269,47 @@
       }
      ]
     },
-    "headline": "Gen Z took 56.0% of new customers in the first four days of W30, up from 33.3% in W23.",
-    "body": "Last year the same four days were at 13.2%, on 28 Gen Z new vs 5. It's a partial week with small counts, but the direction matches the columns above.",
+    "headline": "Gen Z took 56.0% of new customers so far in W30, up from 33.3% in W23.",
+    "body": "Over the same days last year the share was 13.2%, on 28 Gen Z new customers vs 5 LY. It's a partial week with small counts, but the direction matches the columns above.",
+    "headline_source": "Gen Z took {week_genz_share_of_new_ty|pct} of new customers so far in W30, up from {first_week_genz_share_of_new_ty|pct} in W23.",
+    "body_source": "Over the same days last year the share was {week_genz_share_of_new_ly|pct}, on {week_genz_new_ty|int} Gen Z new customers vs {week_genz_new_ly|int} LY. It's a partial week with small counts, but the direction matches the columns above.",
+    "citations": [
+     {
+      "start": 11,
+      "end": 16,
+      "key": "week_genz_share_of_new_ty",
+      "fmt": "pct",
+      "value": 0.56
+     },
+     {
+      "start": 57,
+      "end": 62,
+      "key": "first_week_genz_share_of_new_ty",
+      "fmt": "pct",
+      "value": 0.333333
+     },
+     {
+      "start": 114,
+      "end": 119,
+      "key": "week_genz_share_of_new_ly",
+      "fmt": "pct",
+      "value": 0.131579
+     },
+     {
+      "start": 124,
+      "end": 126,
+      "key": "week_genz_new_ty",
+      "fmt": "int",
+      "value": 28.0
+     },
+     {
+      "start": 150,
+      "end": 151,
+      "key": "week_genz_new_ly",
+      "fmt": "int",
+      "value": 5.0
+     }
+    ],
     "generated_by": "pregenerated",
     "validation": {
      "n_numbers": 5,
@@ -4516,6 +8322,12 @@
        "alternatives": 0,
        "candidates": [
         "week_genz_share_of_new_ty"
+       ],
+       "ok": true,
+       "checks": [
+        "citation",
+        "metric",
+        "subject"
        ]
       },
       {
@@ -4524,6 +8336,10 @@
        "alternatives": 0,
        "candidates": [
         "first_week_genz_share_of_new_ty"
+       ],
+       "ok": true,
+       "checks": [
+        "citation"
        ]
       },
       {
@@ -4532,6 +8348,12 @@
        "alternatives": 0,
        "candidates": [
         "week_genz_share_of_new_ly"
+       ],
+       "ok": true,
+       "checks": [
+        "citation",
+        "metric",
+        "period"
        ]
       },
       {
@@ -4540,6 +8362,12 @@
        "alternatives": 0,
        "candidates": [
         "week_genz_new_ty"
+       ],
+       "ok": true,
+       "checks": [
+        "citation",
+        "metric",
+        "subject"
        ]
       },
       {
@@ -4548,10 +8376,28 @@
        "alternatives": 0,
        "candidates": [
         "week_genz_new_ly"
+       ],
+       "ok": true,
+       "checks": [
+        "citation",
+        "metric",
+        "subject",
+        "period"
        ]
       }
      ],
-     "status": "PASS"
+     "status": "PASS",
+     "mode": "semantic",
+     "failures": [],
+     "checks": {
+      "citation": 5,
+      "metric": 4,
+      "subject": 3,
+      "period": 2,
+      "direction": 0,
+      "comparison": 0
+     },
+     "n_citations": 5
     }
    },
    {
@@ -4587,8 +8433,82 @@
       }
      ]
     },
-    "headline": "Gen Z new customers are up +122% like-for-like: 240 vs 108.",
-    "body": "Gen Z is 40.7% of new customers vs 23.8% LY. Over L4W, Tabby (+28.9%, +5.3 pts) and Pillow Tabby (+62.0%, +3.5 pts) lead the franchise, and total demand is +12.8% period-to-date.",
+    "headline": "Gen Z new customers are up +122% like-for-like: 240 vs 108 LY.",
+    "body": "Gen Z is 40.7% of new customers vs 23.8% LY. Tabby (L4W demand +28.9%, contribution +5.3 pts) and Pillow Tabby (L4W demand +62.0%, contribution +3.5 pts) lead L4W growth, and total demand is +12.8% period-to-date.",
+    "headline_source": "Gen Z new customers are up {ptd_genz_new_yoy_pct|pct+} like-for-like: {ptd_genz_new_ty|int} vs {ptd_genz_new_ly|int} LY.",
+    "body_source": "Gen Z is {ptd_genz_share_of_new_ty|pct} of new customers vs {ptd_genz_share_of_new_ly|pct} LY. Tabby (L4W demand {tabby_l4w_sales_yoy_pct|pct+}, contribution {tabby_l4w_contrib_pts|pts+}) and Pillow Tabby (L4W demand {pillow_tabby_l4w_sales_yoy_pct|pct+}, contribution {pillow_tabby_l4w_contrib_pts|pts+}) lead L4W growth, and total demand is {ptd_sales_yoy_pct|pct+} period-to-date.",
+    "citations": [
+     {
+      "start": 27,
+      "end": 32,
+      "key": "ptd_genz_new_yoy_pct",
+      "fmt": "pct+",
+      "value": 1.222222
+     },
+     {
+      "start": 48,
+      "end": 51,
+      "key": "ptd_genz_new_ty",
+      "fmt": "int",
+      "value": 240.0
+     },
+     {
+      "start": 55,
+      "end": 58,
+      "key": "ptd_genz_new_ly",
+      "fmt": "int",
+      "value": 108.0
+     },
+     {
+      "start": 72,
+      "end": 77,
+      "key": "ptd_genz_share_of_new_ty",
+      "fmt": "pct",
+      "value": 0.40678
+     },
+     {
+      "start": 98,
+      "end": 103,
+      "key": "ptd_genz_share_of_new_ly",
+      "fmt": "pct",
+      "value": 0.237885
+     },
+     {
+      "start": 126,
+      "end": 132,
+      "key": "tabby_l4w_sales_yoy_pct",
+      "fmt": "pct+",
+      "value": 0.289024
+     },
+     {
+      "start": 147,
+      "end": 155,
+      "key": "tabby_l4w_contrib_pts",
+      "fmt": "pts+",
+      "value": 5.306
+     },
+     {
+      "start": 186,
+      "end": 192,
+      "key": "pillow_tabby_l4w_sales_yoy_pct",
+      "fmt": "pct+",
+      "value": 0.619844
+     },
+     {
+      "start": 207,
+      "end": 215,
+      "key": "pillow_tabby_l4w_contrib_pts",
+      "fmt": "pts+",
+      "value": 3.479
+     },
+     {
+      "start": 254,
+      "end": 260,
+      "key": "ptd_sales_yoy_pct",
+      "fmt": "pct+",
+      "value": 0.128498
+     }
+    ],
     "generated_by": "pregenerated",
     "validation": {
      "n_numbers": 10,
@@ -4601,6 +8521,13 @@
        "alternatives": 0,
        "candidates": [
         "ptd_genz_new_yoy_pct"
+       ],
+       "ok": true,
+       "checks": [
+        "citation",
+        "metric",
+        "subject",
+        "direction"
        ]
       },
       {
@@ -4609,6 +8536,10 @@
        "alternatives": 0,
        "candidates": [
         "ptd_genz_new_ty"
+       ],
+       "ok": true,
+       "checks": [
+        "citation"
        ]
       },
       {
@@ -4617,6 +8548,11 @@
        "alternatives": 0,
        "candidates": [
         "ptd_genz_new_ly"
+       ],
+       "ok": true,
+       "checks": [
+        "citation",
+        "period"
        ]
       },
       {
@@ -4625,6 +8561,12 @@
        "alternatives": 0,
        "candidates": [
         "ptd_genz_share_of_new_ty"
+       ],
+       "ok": true,
+       "checks": [
+        "citation",
+        "metric",
+        "subject"
        ]
       },
       {
@@ -4633,6 +8575,13 @@
        "alternatives": 0,
        "candidates": [
         "ptd_genz_share_of_new_ly"
+       ],
+       "ok": true,
+       "checks": [
+        "citation",
+        "metric",
+        "subject",
+        "period"
        ]
       },
       {
@@ -4641,6 +8590,13 @@
        "alternatives": 0,
        "candidates": [
         "tabby_l4w_sales_yoy_pct"
+       ],
+       "ok": true,
+       "checks": [
+        "citation",
+        "metric",
+        "subject",
+        "period"
        ]
       },
       {
@@ -4649,6 +8605,13 @@
        "alternatives": 0,
        "candidates": [
         "tabby_l4w_contrib_pts"
+       ],
+       "ok": true,
+       "checks": [
+        "citation",
+        "metric",
+        "subject",
+        "period"
        ]
       },
       {
@@ -4657,6 +8620,13 @@
        "alternatives": 0,
        "candidates": [
         "pillow_tabby_l4w_sales_yoy_pct"
+       ],
+       "ok": true,
+       "checks": [
+        "citation",
+        "metric",
+        "subject",
+        "period"
        ]
       },
       {
@@ -4665,6 +8635,13 @@
        "alternatives": 0,
        "candidates": [
         "pillow_tabby_l4w_contrib_pts"
+       ],
+       "ok": true,
+       "checks": [
+        "citation",
+        "metric",
+        "subject",
+        "period"
        ]
       },
       {
@@ -4673,10 +8650,27 @@
        "alternatives": 0,
        "candidates": [
         "ptd_sales_yoy_pct"
+       ],
+       "ok": true,
+       "checks": [
+        "citation",
+        "metric",
+        "period"
        ]
       }
      ],
-     "status": "PASS"
+     "status": "PASS",
+     "mode": "semantic",
+     "failures": [],
+     "checks": {
+      "citation": 10,
+      "metric": 8,
+      "subject": 7,
+      "period": 7,
+      "direction": 1,
+      "comparison": 1
+     },
+     "n_citations": 10
     }
    },
    {
@@ -4742,6 +8736,59 @@
     },
     "headline": "Knit Dress holds 21.2 weeks of supply, Trench 16.9 and Tailored Jacket 16.3, against a median of 7.9.",
     "body": "Together that's 198 units and $50.5K at retail above median cover, while Knit Dress demand is -60.3% over L4W. Mark down or transfer, and move the open-to-buy to Hero (R2).",
+    "headline_source": "Knit Dress holds {knit_dress_wos|wos} weeks of supply, Trench {trench_wos|wos} and Tailored Jacket {tailored_jacket_wos|wos}, against a median of {median_wos|wos}.",
+    "body_source": "Together that's {r2_excess_units|int} units and {r2_excess_retail_value_usd|money_k} at retail above median cover, while Knit Dress demand is {knit_dress_l4w_sales_yoy_pct|pct+} over L4W. Mark down or transfer, and move the open-to-buy to Hero (R2).",
+    "citations": [
+     {
+      "start": 17,
+      "end": 21,
+      "key": "knit_dress_wos",
+      "fmt": "wos",
+      "value": 21.18
+     },
+     {
+      "start": 46,
+      "end": 50,
+      "key": "trench_wos",
+      "fmt": "wos",
+      "value": 16.89
+     },
+     {
+      "start": 71,
+      "end": 75,
+      "key": "tailored_jacket_wos",
+      "fmt": "wos",
+      "value": 16.28
+     },
+     {
+      "start": 97,
+      "end": 100,
+      "key": "median_wos",
+      "fmt": "wos",
+      "value": 7.9
+     },
+     {
+      "start": 118,
+      "end": 121,
+      "key": "r2_excess_units",
+      "fmt": "int",
+      "value": 198.0
+     },
+     {
+      "start": 132,
+      "end": 138,
+      "key": "r2_excess_retail_value_usd",
+      "fmt": "money_k",
+      "value": 50499.55
+     },
+     {
+      "start": 196,
+      "end": 202,
+      "key": "knit_dress_l4w_sales_yoy_pct",
+      "fmt": "pct+",
+      "value": -0.602784
+     }
+    ],
     "generated_by": "pregenerated",
     "validation": {
      "n_numbers": 7,
@@ -4754,6 +8801,12 @@
        "alternatives": 0,
        "candidates": [
         "knit_dress_wos"
+       ],
+       "ok": true,
+       "checks": [
+        "citation",
+        "metric",
+        "subject"
        ]
       },
       {
@@ -4762,6 +8815,11 @@
        "alternatives": 0,
        "candidates": [
         "trench_wos"
+       ],
+       "ok": true,
+       "checks": [
+        "citation",
+        "subject"
        ]
       },
       {
@@ -4770,6 +8828,11 @@
        "alternatives": 0,
        "candidates": [
         "tailored_jacket_wos"
+       ],
+       "ok": true,
+       "checks": [
+        "citation",
+        "subject"
        ]
       },
       {
@@ -4778,6 +8841,10 @@
        "alternatives": 0,
        "candidates": [
         "median_wos"
+       ],
+       "ok": true,
+       "checks": [
+        "citation"
        ]
       },
       {
@@ -4786,6 +8853,11 @@
        "alternatives": 0,
        "candidates": [
         "r2_excess_units"
+       ],
+       "ok": true,
+       "checks": [
+        "citation",
+        "metric"
        ]
       },
       {
@@ -4794,6 +8866,11 @@
        "alternatives": 0,
        "candidates": [
         "r2_excess_retail_value_usd"
+       ],
+       "ok": true,
+       "checks": [
+        "citation",
+        "metric"
        ]
       },
       {
@@ -4802,10 +8879,28 @@
        "alternatives": 0,
        "candidates": [
         "knit_dress_l4w_sales_yoy_pct"
+       ],
+       "ok": true,
+       "checks": [
+        "citation",
+        "metric",
+        "subject",
+        "period"
        ]
       }
      ],
-     "status": "PASS"
+     "status": "PASS",
+     "mode": "semantic",
+     "failures": [],
+     "checks": {
+      "citation": 7,
+      "metric": 4,
+      "subject": 4,
+      "period": 1,
+      "direction": 0,
+      "comparison": 0
+     },
+     "n_citations": 7
     }
    }
   ]

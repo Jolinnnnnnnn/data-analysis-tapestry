@@ -193,6 +193,9 @@ def win_card(w, anoms):
         c.put(f"{k}_l4w_sales_yoy_pct", r["sales_yoy_pct"], f"{s}.sales_yoy_pct")
         c.put(f"{k}_l4w_contrib_pts", r["contrib_pts"], f"{s}.contrib_pts")
     c.put("l4w_sales_yoy_pct", M["trailing"][str(w)]["L4W"]["sales"]["yoy_pct"], f"trailing.{w}.L4W.sales.yoy_pct")
+    # the ranked list lets the validator check rank words ("Tabby leads L4W growth") against the facts
+    c.put("l4w_top_families_by_contrib", M["weekly_facts"][str(w)]["l4w_top_families_by_contrib"],
+          f"weekly_facts.{w}.l4w_top_families_by_contrib (products_by_week[wk={w}, L4W] ranked by contrib_pts)")
     c.d["chart"] = {"type": "bars", "unit": f"Gen Z new customers, PTD W23–W{w} (sample)", "rows": [
         {"label": "Gen Z new · LY", "value": ptd["genz_new"]["ly"], "fmt": "int", "tone": "ly"},
         {"label": "Gen Z new · TY", "value": ptd["genz_new"]["ty"], "fmt": "int", "tone": "green"}]}
