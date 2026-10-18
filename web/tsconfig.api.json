@@ -9,6 +9,7 @@
     "skipLibCheck": true,
     "noEmit": true,
     "isolatedModules": true,
+    "resolveJsonModule": true,
     "types": ["node"]
   },
   "include": ["api", "src/lib/ask/catalog.ts"]

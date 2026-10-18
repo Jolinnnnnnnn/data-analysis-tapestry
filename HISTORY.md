@@ -158,3 +158,11 @@
 - Actions: `web/src/lib/ask/catalog.ts` (12 templates, routing schema and prompt built from app.json), `engine.ts` (keyword parser, checks, premise note, answers), `web/api/ask.ts` (Claude router with fallbacks, rate limit, cache), Ask screen rewrite (source chip, reading, premise box, refusals, keyboard-accessible buttons), Vite dev middleware for `/api/ask`, How page note.
 - New templates: family_kpi, growth_drivers (uses decomposition_ptd), new_customers, stock_alerts, actions (the week's number-checked cards), rank_families (contribution, demand or growth).
 - Verification: `web/scripts/ask-test.mjs` (part of verify, so it gates the Vercel build): 1,205 checks including all 40 card "Ask why" prompts, refusals, premise verdicts against stored values, and 1,128 template runs over every week and window with no missing values; the API compiled to plain Node ESM and answered 503/403/400 correctly, and reached Anthropic with an invalid key (401 mapped to `bad_key`); browser preview at desktop and 375 px with no horizontal scroll.
+
+## Iteration 19 (fix: /api/ask returned 500 in production)
+- Symptom: after the merge, `POST /api/ask` on the production site returned a plain "Internal Server Error" in 0.3 s, so every Ask question fell back to the keyword parser.
+- Reproduction: a local `vercel build` of `web/`, then the built function probed with a fake key and an out-of-range week (so nothing can reach Claude): from the function folder it answered 400, from `/` it threw an uncaught ENOENT on `src/data/app.json`.
+- Cause: the catalog was read with `readFileSync(join(process.cwd(), ...))` outside the try block, so the function depended on its working directory.
+- Fix: `app.json` is a static JSON import (bundled into the function; `includeFiles` dropped), and catalog loading returns a JSON 500 (`catalog`) instead of crashing.
+- Verification: rebuilt with the Vercel CLI, `app.json` sits inside the function bundle and the probe answers 400 from any directory on Node 22 and 24; a new ask-test check changes directory before calling the function and fails on the old code; test scripts no longer print esbuild "build was canceled" (dependency discovery off for server-only loading).
+- Not run, at the user's request: a live call to Claude.

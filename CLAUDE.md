@@ -199,7 +199,7 @@ The pipeline is data -> metrics -> rules -> facts -> AI words -> validator -> UI
 **Process and docs**
 - Work in a loop: ORIENT (NOTES, HISTORY tail) -> PLAN -> ACT -> VERIFY (with a second method) -> RECORD -> REFLECT.
 - For bugs, reproduce end to end first, as close to the user's experience as possible.
-- Next numbers: D27 in DECISIONS, Iteration 19 in HISTORY, P22 in PROMPTS.
+- Next numbers: D27 in DECISIONS, Iteration 20 in HISTORY, P22 in PROMPTS.
   NOTES holds the current state only.
 - The Python 3.9 venv is `.venv`: install with `.venv/bin/python -m pip` and run scripts with `.venv/bin/python -W ignore`.
 
@@ -276,5 +276,7 @@ Update an existing entry rather than duplicating it, and promote a rule into Con
 *Deploy*
 - 2026-10-15: The Vercel Root Directory was left at the repo root, so the repo was served as raw static files: 404 at `/`, and `data/raw` was downloadable.
   The Root Directory must be `web`; check that the live asset hashes match the local build.
+- 2026-10-18: `api/ask.ts` read `app.json` with a path built from `process.cwd()`, outside its try block; on Vercel the function crashed with a bare 500 before any call to Claude.
+  Bundle function data with a static import (never a cwd-relative read), keep every load inside error handling, and check a function with a local `vercel build` and a probe from another directory.
 - 2026-10-15: Hashed deployment URLs sit behind Vercel Authentication, and only the production domain is public.
   Never share a deployment URL as "the link".

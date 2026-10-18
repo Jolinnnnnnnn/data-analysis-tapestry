@@ -3,7 +3,8 @@
 // 2. the checks refuse what a route can't honour (unknown weeks, named entities, missing parameters, "none");
 // 3. premises are checked against stored YoY / WoW values, and answers about a family use that family's rows;
 // 4. every template runs for every week and window without missing values;
-// 5. the router contract (schema, prompt, parseRoute) matches the catalog.
+// 5. the router contract (schema, prompt, parseRoute) matches the catalog;
+// 6. the function loads from any working directory.
 // Expected values are read from app.json, never typed in. Exits 1 on any failure.
 import { fileURLToPath } from "node:url";
 import { createServer } from "vite";
@@ -12,7 +13,7 @@ import { createServer } from "vite";
 globalThis.window = { location: { hash: "" }, addEventListener() {}, scrollTo() {}, matchMedia: () => ({ matches: false, addEventListener() {} }) };
 globalThis.document = { documentElement: { classList: { toggle() {} } } };
 
-const vite = await createServer({ root: fileURLToPath(new URL("..", import.meta.url)), server: { middlewareMode: true, hmr: false }, appType: "custom", logLevel: "error" });
+const vite = await createServer({ root: fileURLToPath(new URL("..", import.meta.url)), server: { middlewareMode: true, hmr: false }, appType: "custom", logLevel: "error", optimizeDeps: { noDiscovery: true, include: [] } });
 const E = await vite.ssrLoadModule("/src/lib/ask/engine.ts");
 const K = await vite.ssrLoadModule("/src/lib/ask/catalog.ts");
 const core = await vite.ssrLoadModule("/src/lib/core.ts");
@@ -160,6 +161,25 @@ for (const v of variants) for (const week of WEEKS) for (const window of K.WINDO
   }
 }
 
+// 6. The function loads its catalog without depending on the working directory (a cwd-relative read crashed
+// production with a bare 500). A fake key plus an out-of-range week stops before any call to Claude.
+// Runs after Vite is closed, so changing directory can't disturb it.
+const api = await vite.ssrLoadModule("/api/ask.ts");
 await vite.close();
+{
+  const saved = { key: process.env.ANTHROPIC_API_KEY, cwd: process.cwd() };
+  process.env.ANTHROPIC_API_KEY = "sk-ant-test-not-a-key";
+  process.chdir("/");
+  try {
+    const r = await api.POST(new Request("https://example.vercel.app/api/ask", { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify({ question: "q", wk: 0, win: "L4W" }) }));
+    check("api answers from any working directory", r.status === 400 && (await r.json()).error === "bad_context", `status ${r.status}`);
+  } catch (e) {
+    check("api answers from any working directory", false, String(e));
+  } finally {
+    process.chdir(saved.cwd);
+    if (saved.key === undefined) delete process.env.ANTHROPIC_API_KEY; else process.env.ANTHROPIC_API_KEY = saved.key;
+  }
+}
+
 console.log(`ask: ${n} checks, ${runs} template runs, ${fails} failures`);
 process.exit(fails ? 1 : 0);
