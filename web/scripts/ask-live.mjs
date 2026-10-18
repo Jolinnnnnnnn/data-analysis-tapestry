@@ -13,7 +13,7 @@ for (const k of ["ANTHROPIC_API_KEY", "ASK_MODEL"]) if (env[k] && !process.env[k
 
 globalThis.window = { location: { hash: "" }, addEventListener() {}, scrollTo() {}, matchMedia: () => ({ matches: false, addEventListener() {} }) };
 globalThis.document = { documentElement: { classList: { toggle() {} } } };
-const vite = await createServer({ root, server: { middlewareMode: true, hmr: false }, appType: "custom", logLevel: "error" });
+const vite = await createServer({ root, server: { middlewareMode: true, hmr: false }, appType: "custom", logLevel: "error", optimizeDeps: { noDiscovery: true, include: [] } });
 const E = await vite.ssrLoadModule("/src/lib/ask/engine.ts");
 const { LAST_FULL } = await vite.ssrLoadModule("/src/lib/core.ts");
 const api = base ? null : await vite.ssrLoadModule("/api/ask.ts");

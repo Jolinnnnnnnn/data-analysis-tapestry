@@ -2,5 +2,5 @@
   "framework": "vite",
   "buildCommand": "npm run verify && npm run build",
   "outputDirectory": "dist",
-  "functions": { "api/ask.ts": { "maxDuration": 30, "includeFiles": "src/data/app.json" } }
+  "functions": { "api/ask.ts": { "maxDuration": 30 } }
 }

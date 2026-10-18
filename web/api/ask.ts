@@ -3,8 +3,8 @@
 // writes the answer. The key stays here (ANTHROPIC_API_KEY on Vercel). Any failure returns an error code and the
 // browser falls back to the keyword parser, so the page never depends on this function being up.
 import Anthropic from "@anthropic-ai/sdk";
-import { readFileSync } from "node:fs";
-import { join } from "node:path";
+// A static import bundles the data with the function, so nothing depends on the working directory at runtime.
+import appData from "../src/data/app.json" with { type: "json" };
 import { WINDOWS, catalogFrom, parseRoute, routeSchema, systemPrompt, type Catalog } from "../src/lib/ask/catalog.js";
 
 const MODEL = process.env.ASK_MODEL || "claude-opus-5-5";
@@ -17,9 +17,7 @@ const CACHE_MAX = 200;
 let ctx: { cat: Catalog; system: string; schema: Record<string, unknown> } | null = null;
 function context() {
   if (!ctx) {
-    // app.json ships with the function (vercel.json includeFiles); cwd is the project root (web/).
-    const D = JSON.parse(readFileSync(join(process.cwd(), "src/data/app.json"), "utf8"));
-    const cat = catalogFrom(D);
+    const cat = catalogFrom(appData);
     ctx = { cat, system: systemPrompt(cat), schema: routeSchema(cat) };
   }
   return ctx;
@@ -59,7 +57,14 @@ export async function POST(request: Request): Promise<Response> {
   } catch {
     return json(400, { error: "bad_json" });
   }
-  const { cat, system, schema } = context();
+  let built: ReturnType<typeof context>;
+  try {
+    built = context();
+  } catch (e) {
+    console.error("ask: catalog failed", e);
+    return json(500, { error: "catalog" });
+  }
+  const { cat, system, schema } = built;
   const question = typeof body?.question === "string" ? body.question.trim() : "";
   const wk = body?.wk;
   const win = body?.win;
