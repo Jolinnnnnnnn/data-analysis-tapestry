@@ -37,7 +37,7 @@ function Summary() {
   // a claim with no number of its own (e.g. a rank word) fails after the last number has been checked
   const failIdx = !blocked ? -1 : firstBad >= 0 ? firstBad : nums.length;
   const [lit, setLit] = useState(0);
-  const [phase, setPhase] = useState<Phase>("checking");
+  const [phaseState, setPhase] = useState<Phase>("checking");
   const [flash, setFlash] = useState(false);
   const [factsOpen, setFactsOpen] = useState(false);
   const [hover, setHover] = useState<null | { i: number; x: number; y: number }>(null);
@@ -65,6 +65,9 @@ function Summary() {
     return () => timers.forEach((t) => { clearInterval(t); clearTimeout(t); });
   }, [text, run, rm]); // eslint-disable-line react-hooks/exhaustive-deps
 
+  // the replay effect resets phase only after the render where the text changes (e.g. Exit demo): until then a
+  // stale "folded" would meet a passing text with no failure to show, so a phase that contradicts the verdict reads as "checking"
+  const phase: Phase = (blocked ? phaseState !== "done" : phaseState === "checking" || phaseState === "done") ? phaseState : "checking";
   const failed = phase === "failed" || phase === "folding" || phase === "folded";
   const folded = phase === "folded";
   const factsShown = factsOpen || folded;
