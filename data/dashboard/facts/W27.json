@@ -139,7 +139,7 @@
    "severity": "warning",
    "rule_id": "GENZ_NEW_INSIDER_LOW",
    "entity": "genz",
-   "message": "L4W (W24–W27) Insider attach of new Gen Z 18.2% (< 20%).",
+   "message": "L4W (W24-W27) Insider attach of new Gen Z 18.2% (< 20%).",
    "values": {
     "genz_new_insider_rate_ty": 0.181818,
     "weeks": [

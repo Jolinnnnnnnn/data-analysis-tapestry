@@ -87,7 +87,7 @@
    "severity": "critical",
    "rule_id": "RECEIPTS_BELOW_SALES",
    "entity": "Pillow Tabby",
-   "message": "Pillow Tabby replenishment W24–29 covered 29% of units sold (LY 85%).",
+   "message": "Pillow Tabby replenishment W24-W29 covered 29% of units sold (LY 85%).",
    "values": {
     "receipts_to_sales_TY": 0.287356,
     "receipts_to_sales_LY": 0.849057,
@@ -101,7 +101,7 @@
    "severity": "critical",
    "rule_id": "RECEIPTS_BELOW_SALES",
    "entity": "Tabby",
-   "message": "Tabby replenishment W24–29 covered 28% of units sold (LY 95%).",
+   "message": "Tabby replenishment W24-W29 covered 28% of units sold (LY 95%).",
    "values": {
     "receipts_to_sales_TY": 0.282609,
     "receipts_to_sales_LY": 0.953052,
@@ -115,7 +115,7 @@
    "severity": "critical",
    "rule_id": "WOS_LOW",
    "entity": "Pillow Tabby",
-   "message": "Pillow Tabby weeks of supply 1.6 (LY same week 5.1) — G3 winner / Gen Z gateway.",
+   "message": "Pillow Tabby weeks of supply 1.6 (LY same week 5.1); G3 winner and Gen Z gateway.",
    "values": {
     "wos": 1.6,
     "wos_ly_same_week": 5.09,
@@ -128,7 +128,7 @@
    "severity": "critical",
    "rule_id": "WOS_LOW",
    "entity": "Tabby",
-   "message": "Tabby weeks of supply 1.9 (LY same week 7.5) — G3 winner / Gen Z gateway.",
+   "message": "Tabby weeks of supply 1.9 (LY same week 7.5); G3 winner and Gen Z gateway.",
    "values": {
     "wos": 1.85,
     "wos_ly_same_week": 7.52,
@@ -154,7 +154,7 @@
    "severity": "warning",
    "rule_id": "GENZ_NEW_INSIDER_LOW",
    "entity": "genz",
-   "message": "L4W (W27–W30) Insider attach of new Gen Z 15.5% (< 20%).",
+   "message": "L4W (W27-W30) Insider attach of new Gen Z 15.5% (< 20%).",
    "values": {
     "genz_new_insider_rate_ty": 0.15493,
     "weeks": [
@@ -234,7 +234,7 @@
    "severity": "info",
    "rule_id": "PARTIAL_WEEK",
    "entity": "total",
-   "message": "W30 is a partial week (Sun–Wed); LY compared on the same 4 days.",
+   "message": "W30 is a partial week (Sun-Wed); LY compared on the same 4 days.",
    "values": {
     "days": 4
    },

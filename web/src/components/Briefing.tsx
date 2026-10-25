@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import { annotate, validateText } from "../lib/validator.js";
 import {
-  C, D, DEMOS, GOALS, MONO, SEV, WINDOWED, askBus, checkTitle, fmtNum, fmtPct, fmtWos, goalOfFact, setUrl, useReducedMotion, useUrl, weekAI,
+  C, D, DEMOS, FIRST_FULL_L4W, GOALS, MONO, SEV, WINDOWED, askBus, checkTitle, fmtNum, fmtPct, fmtWos, goalOfFact, setUrl, useReducedMotion, useUrl, weekAI,
 } from "../lib/core";
 
 // ---------- helpers ----------
@@ -138,13 +138,13 @@ function Summary() {
         <div aria-live="polite" style={{ display: "inline-flex", flexDirection: "column", gap: 2, marginTop: 12, padding: "8px 11px", borderRadius: 10, fontSize: 12, fontWeight: 700, transition: "background .25s ease, color .25s ease", background: badge.bg, color: badge.ink }}>
           <span style={{ whiteSpace: "nowrap" }}>{badge.l1}</span><span style={{ whiteSpace: "nowrap" }}>{badge.l2}</span>
         </div>
-        <div className="link" onClick={() => setRun((x) => x + 1)} style={{ marginTop: 10, fontSize: 12, fontWeight: 600, color: C.muted }}>Replay check</div>
+        <button type="button" className="btn-plain link" onClick={() => setRun((x) => x + 1)} style={{ display: "block", marginTop: 10, fontSize: 12, fontWeight: 600, color: C.muted }}>Replay check</button>
         <div style={{ marginTop: 14, fontFamily: MONO, fontSize: 10.5, fontWeight: 700, color: C.muted }}>TRY A WRONG TEXT</div>
         {DEMOS.map((d) => (
-          <div key={d.id} className="link" onClick={() => setUrl({ demo: u.demo === d.id ? "" : d.id })} title={d.hint}
-            style={{ marginTop: 5, fontSize: 12, fontWeight: u.demo === d.id ? 700 : 600, color: u.demo === d.id ? C.crit : C.muted }}>
+          <button type="button" key={d.id} className="btn-plain link" onClick={() => setUrl({ demo: u.demo === d.id ? "" : d.id })} title={d.hint} aria-pressed={u.demo === d.id}
+            style={{ display: "block", marginTop: 5, fontSize: 12, fontWeight: u.demo === d.id ? 700 : 600, color: u.demo === d.id ? C.crit : C.muted }}>
             {u.demo === d.id ? `✕ ${d.label}` : d.label}
-          </div>
+          </button>
         ))}
       </div>
       <div style={{ flex: "1 1 460px", minWidth: 0 }}>
@@ -179,7 +179,7 @@ function Summary() {
           </div>
         )}
         <div style={{ display: "flex", alignItems: "center", gap: 16, marginTop: 16, fontSize: 13, flexWrap: "wrap" }}>
-          <b className="clickable" onClick={() => setFactsOpen(!factsOpen)}>{factsShown ? "− " : "+ "}Facts used ({res.n_numbers})</b>
+          <button type="button" className="btn-plain" aria-expanded={factsShown} onClick={() => setFactsOpen(!factsOpen)} style={{ fontWeight: 700 }}>{factsShown ? "− " : "+ "}Facts used ({res.n_numbers})</button>
           <span style={{ color: C.muted }}>Hover any number to see the fact it cites and the checks it passed. Rules decide what's unusual; the AI words the facts.</span>
         </div>
         {factsShown && (
@@ -319,7 +319,7 @@ function MicroChart({ card }: { card: any }) {
           {n === 1 && <circle cx={X(0)} cy={Y(g[0].genz_share_of_new_TY)} r={3} fill={GOALS[1].hue} />}
         </svg>
         <div style={{ display: "flex", justifyContent: "space-between", fontFamily: MONO, fontSize: 11, color: C.muted, marginTop: 4 }}>
-          <span>W23</span><span style={{ whiteSpace: "nowrap" }}><b style={{ color: GOALS[1].ink }}>TY {fmtPct(v.week_genz_share_of_new_ty, false, 0)}</b>{u.ly ? ` · LY ${fmtPct(v.week_genz_share_of_new_ly, false, 0)}` : ""}</span><span>W{u.wk}</span>
+          <span>W{g[0].WK}</span><span style={{ whiteSpace: "nowrap" }}><b style={{ color: GOALS[1].ink }}>TY {fmtPct(v.week_genz_share_of_new_ty, false, 0)}</b>{u.ly ? ` · LY ${fmtPct(v.week_genz_share_of_new_ly, false, 0)}` : ""}</span><span>W{u.wk}</span>
         </div>
       </div>
     );
@@ -365,7 +365,7 @@ function Card({ card, rank }: { card: any; rank: number }) {
         )}
         <div style={{ display: "flex", alignItems: "center", gap: 16, marginTop: 12, fontSize: 13, fontWeight: 700, flexWrap: "wrap" }}>
           <button className={rank === 1 ? "btn-dark" : "btn-line"} onClick={() => setUrl({ screen: "explore", tab: TAB_OF[card.explore_tab] }, true)}>Open details</button>
-          <span className="clickable" onClick={() => { askBus.pending = card.ask_prefill; setUrl({ screen: "ask" }, true); }} style={{ whiteSpace: "nowrap" }}>Ask why</span>
+          <button type="button" className="btn-plain" onClick={() => { askBus.pending = card.ask_prefill; setUrl({ screen: "ask" }, true); }} style={{ whiteSpace: "nowrap" }}>Ask why</button>
           <div style={{ flex: 1 }} />
           <span title={ids.map((i) => D.anomalies.find((a: any) => a.id === i)?.message).join("\n")} style={{ fontFamily: MONO, fontWeight: 400, fontSize: 11, whiteSpace: "nowrap", color: C.muted }}>{evidence}</span>
         </div>
@@ -380,7 +380,7 @@ function Rail() {
   const u = useUrl();
   const w = weekAI(u.wk);
   const hits = w.counts.rule_hits;
-  const off = u.wk < 26;
+  const off = u.wk < FIRST_FULL_L4W;
   const alerts = (D.alerts_by_week[String(u.wk)] || []).map((id: string) => D.anomalies.find((a: any) => a.id === id));
   const sev = w.counts.n_alerts_by_severity;
   return (
@@ -406,7 +406,7 @@ function Rail() {
           );
         })}
       </div>
-      {off && <div style={{ marginTop: 10, fontSize: 12, lineHeight: 1.5, color: C.body }}>Family and stock rules are off before W26: their trailing 4-week window is truncated.</div>}
+      {off && <div style={{ marginTop: 10, fontSize: 12, lineHeight: 1.5, color: C.body }}>Family and stock rules are off before W{FIRST_FULL_L4W}: their trailing 4-week window is truncated.</div>}
       <div style={{ display: "flex", alignItems: "baseline", justifyContent: "space-between", marginTop: 32, paddingBottom: 10, borderBottom: `2px solid ${C.charcoal}` }}>
         <h3 className="cond" style={{ margin: 0, fontWeight: 800, fontSize: 24 }}>Alerts</h3>
         <span style={{ fontFamily: MONO, fontSize: 12 }}>{w.counts.n_alerts} in W{u.wk}</span>
@@ -428,7 +428,7 @@ function Rail() {
 // The action each rule-picked card type points to (FINDINGS.md R1-R3); cards without one aren't actions.
 const ACTIONS: Record<string, string> = {
   stock: "Re-open replenishment on Tabby and Pillow Tabby (R1)",
-  retention: "Enrol new Gen Z customers in Insider at their first purchase (R3)",
+  retention: "Enroll new Gen Z customers in Insider at their first purchase (R3)",
   overstock: "Move open-to-buy from Halo apparel to Hero; mark down or transfer the overhang (R2)",
 };
 

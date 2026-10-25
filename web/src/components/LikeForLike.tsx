@@ -28,12 +28,12 @@ export function BasisSwitch({ big = 72 }: { big?: number }) {
         </div>
         <div className="seg" style={{ background: C.lav2 }} role="radiogroup" aria-label="Comparison basis">
           {([["Naive", true], ["Like-for-like", false]] as const).map(([l, v]) => (
-            <span key={l} role="radio" aria-checked={naive === v} onClick={() => setNaive(v)} style={{ background: naive === v ? C.charcoal : "transparent", color: naive === v ? "#fff" : C.ink, fontWeight: 700 }}>{l}</span>
+            <button type="button" key={l} role="radio" aria-checked={naive === v} className="btn-plain" onClick={() => setNaive(v)} style={{ background: naive === v ? C.charcoal : "transparent", color: naive === v ? "#fff" : C.ink, fontWeight: 700 }}>{l}</button>
           ))}
         </div>
       </div>
       <div style={{ marginTop: 22, display: "grid", gridTemplateColumns: "96px repeat(7,minmax(0,1fr))", gap: 4, fontSize: 12 }}>
-        <div style={{ display: "flex", flexDirection: "column", justifyContent: "center", fontFamily: MONO, fontSize: 11, fontWeight: 700 }}>LY W30<span key={String(naive)} className="swap" style={{ fontWeight: 400 }}>{fmtMoney(lyW30)}</span></div>
+        <div style={{ display: "flex", flexDirection: "column", justifyContent: "center", fontFamily: MONO, fontSize: 11, fontWeight: 700 }}>LY W{D.meta.partial_week}<span key={String(naive)} className="swap" style={{ fontWeight: 400 }}>{fmtMoney(lyW30)}</span></div>
         {days.map((d, i) => {
           const isExtra = !d.ly_in_like_for_like;
           const filled = !isExtra || naive;
@@ -45,7 +45,7 @@ export function BasisSwitch({ big = 72 }: { big?: number }) {
             </div>
           );
         })}
-        <div style={{ display: "flex", flexDirection: "column", justifyContent: "center", fontFamily: MONO, fontSize: 11, fontWeight: 700 }}>TY W30<span style={{ fontWeight: 400 }}>{fmtMoney(w30.sales.ty)}</span></div>
+        <div style={{ display: "flex", flexDirection: "column", justifyContent: "center", fontFamily: MONO, fontSize: 11, fontWeight: 700 }}>TY W{D.meta.partial_week}<span style={{ fontWeight: 400 }}>{fmtMoney(w30.sales.ty)}</span></div>
         {days.map((d) => (
           <div key={d.day} style={{ height: 58, padding: 8, display: "flex", flexDirection: "column", justifyContent: "space-between", background: d.ty != null ? C.sapphire : "transparent", color: "#fff" }}>
             {d.ty != null && <><span style={{ fontFamily: MONO, fontSize: 11, fontWeight: 700 }}>{d.day}</span><span style={{ fontFamily: MONO, fontSize: 11 }}>{fmtMoney(d.ty)}</span></>}
@@ -74,14 +74,14 @@ export function LikeForLikeStrip() {
         <b style={{ whiteSpace: "nowrap", fontFamily: MONO, fontSize: 11 }}>LIKE-FOR-LIKE</b>
         <span>W{D.meta.partial_week} is partial: {D.meta.partial_week_days}. LY W{D.meta.partial_week} is cut to the same days. Counts are sample-scale; read shares and ratios.</span>
         <div style={{ flex: 1 }} />
-        <b className="link" onClick={() => setOpen(true)} style={{ whiteSpace: "nowrap" }}>Naive vs like-for-like →</b>
+        <button type="button" className="btn-plain link" onClick={() => setOpen(true)} style={{ whiteSpace: "nowrap", fontWeight: 700 }}>Naive vs like-for-like →</button>
       </div>
       {open && (
         <div onClick={() => setOpen(false)} style={{ position: "fixed", inset: 0, zIndex: 50, background: "rgba(31,38,54,.45)", display: "flex", alignItems: "flex-start", justifyContent: "center", padding: "80px 20px", overflow: "auto" }}>
-          <div className="fade-in" role="dialog" aria-label="Naive vs like-for-like" onClick={(e) => e.stopPropagation()} style={{ width: 780, maxWidth: "100%", padding: 24, background: "#fff", boxShadow: "0 30px 80px rgba(0,0,0,.35)" }}>
+          <div className="fade-in" role="dialog" aria-modal="true" aria-label="Naive vs like-for-like" onClick={(e) => e.stopPropagation()} style={{ width: 780, maxWidth: "100%", padding: 24, background: "#fff", boxShadow: "0 30px 80px rgba(0,0,0,.35)" }}>
             <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 12 }}>
               <b style={{ fontFamily: MONO, fontSize: 11 }}>LIKE-FOR-LIKE</b><div style={{ flex: 1 }} />
-              <span onClick={() => setOpen(false)} className="clickable" aria-label="Close" style={{ fontSize: 20, lineHeight: 1 }}>×</span>
+              <button type="button" onClick={() => setOpen(false)} className="btn-plain" aria-label="Close" autoFocus style={{ fontSize: 20, lineHeight: 1 }}>×</button>
             </div>
             <BasisSwitch big={60} />
           </div>

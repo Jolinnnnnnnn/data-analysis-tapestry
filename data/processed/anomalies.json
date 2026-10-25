@@ -127,7 +127,7 @@
   {
    "id": "RECEIPTS_BELOW_SALES",
    "scope": "family",
-   "metric": "receipts_to_sales_TY W24\u201329 (latest only)",
+   "metric": "receipts_to_sales_TY W24-W29 (latest only)",
    "rule": "< 0.5",
    "severity": "critical"
   },
@@ -145,7 +145,7 @@
    "wk": 23,
    "entity": "genz",
    "severity": "warning",
-   "message": "L4W (W23\u2013W23) Insider attach of new Gen Z 4.5% (< 20%).",
+   "message": "L4W (W23-W23) Insider attach of new Gen Z 4.5% (< 20%).",
    "values": {
     "genz_new_insider_rate_ty": 0.045455,
     "weeks": [
@@ -191,7 +191,7 @@
    "wk": 24,
    "entity": "genz",
    "severity": "warning",
-   "message": "L4W (W23\u2013W24) Insider attach of new Gen Z 16.3% (< 20%).",
+   "message": "L4W (W23-W24) Insider attach of new Gen Z 16.3% (< 20%).",
    "values": {
     "genz_new_insider_rate_ty": 0.162791,
     "weeks": [
@@ -264,7 +264,7 @@
    "wk": 25,
    "entity": "genz",
    "severity": "warning",
-   "message": "L4W (W23\u2013W25) Insider attach of new Gen Z 19.4% (< 20%).",
+   "message": "L4W (W23-W25) Insider attach of new Gen Z 19.4% (< 20%).",
    "values": {
     "genz_new_insider_rate_ty": 0.194444,
     "weeks": [
@@ -369,7 +369,7 @@
    "wk": 26,
    "entity": "genz",
    "severity": "warning",
-   "message": "L4W (W23\u2013W26) Insider attach of new Gen Z 19.4% (< 20%).",
+   "message": "L4W (W23-W26) Insider attach of new Gen Z 19.4% (< 20%).",
    "values": {
     "genz_new_insider_rate_ty": 0.193878,
     "weeks": [
@@ -528,7 +528,7 @@
    "wk": 27,
    "entity": "genz",
    "severity": "warning",
-   "message": "L4W (W24\u2013W27) Insider attach of new Gen Z 18.2% (< 20%).",
+   "message": "L4W (W24-W27) Insider attach of new Gen Z 18.2% (< 20%).",
    "values": {
     "genz_new_insider_rate_ty": 0.181818,
     "weeks": [
@@ -621,7 +621,7 @@
    "wk": 28,
    "entity": "Pillow Tabby",
    "severity": "critical",
-   "message": "Pillow Tabby weeks of supply 2.8 (LY same week 7.8) \u2014 G3 winner / Gen Z gateway.",
+   "message": "Pillow Tabby weeks of supply 2.8 (LY same week 7.8); G3 winner and Gen Z gateway.",
    "values": {
     "wos": 2.83,
     "wos_ly_same_week": 7.75,
@@ -634,7 +634,7 @@
    "wk": 28,
    "entity": "Tabby",
    "severity": "critical",
-   "message": "Tabby weeks of supply 2.5 (LY same week 6.7) \u2014 G3 winner / Gen Z gateway.",
+   "message": "Tabby weeks of supply 2.5 (LY same week 6.7); G3 winner and Gen Z gateway.",
    "values": {
     "wos": 2.51,
     "wos_ly_same_week": 6.73,
@@ -686,7 +686,7 @@
    "wk": 28,
    "entity": "genz",
    "severity": "warning",
-   "message": "L4W (W25\u2013W28) Insider attach of new Gen Z 18.0% (< 20%).",
+   "message": "L4W (W25-W28) Insider attach of new Gen Z 18.0% (< 20%).",
    "values": {
     "genz_new_insider_rate_ty": 0.179688,
     "weeks": [
@@ -828,7 +828,7 @@
    "wk": 29,
    "entity": "Pillow Tabby",
    "severity": "critical",
-   "message": "Pillow Tabby weeks of supply 1.8 (LY same week 5.1) \u2014 G3 winner / Gen Z gateway.",
+   "message": "Pillow Tabby weeks of supply 1.8 (LY same week 5.1); G3 winner and Gen Z gateway.",
    "values": {
     "wos": 1.8,
     "wos_ly_same_week": 5.12,
@@ -841,7 +841,7 @@
    "wk": 29,
    "entity": "Tabby",
    "severity": "critical",
-   "message": "Tabby weeks of supply 2.1 (LY same week 7.0) \u2014 G3 winner / Gen Z gateway.",
+   "message": "Tabby weeks of supply 2.1 (LY same week 7.0); G3 winner and Gen Z gateway.",
    "values": {
     "wos": 2.08,
     "wos_ly_same_week": 7.03,
@@ -880,7 +880,7 @@
    "wk": 29,
    "entity": "genz",
    "severity": "warning",
-   "message": "L4W (W26\u2013W29) Insider attach of new Gen Z 16.4% (< 20%).",
+   "message": "L4W (W26-W29) Insider attach of new Gen Z 16.4% (< 20%).",
    "values": {
     "genz_new_insider_rate_ty": 0.164286,
     "weeks": [
@@ -974,7 +974,7 @@
    "wk": 30,
    "entity": "Pillow Tabby",
    "severity": "critical",
-   "message": "Pillow Tabby replenishment W24\u201329 covered 29% of units sold (LY 85%).",
+   "message": "Pillow Tabby replenishment W24-W29 covered 29% of units sold (LY 85%).",
    "values": {
     "receipts_to_sales_TY": 0.287356,
     "receipts_to_sales_LY": 0.849057,
@@ -988,7 +988,7 @@
    "wk": 30,
    "entity": "Tabby",
    "severity": "critical",
-   "message": "Tabby replenishment W24\u201329 covered 28% of units sold (LY 95%).",
+   "message": "Tabby replenishment W24-W29 covered 28% of units sold (LY 95%).",
    "values": {
     "receipts_to_sales_TY": 0.282609,
     "receipts_to_sales_LY": 0.953052,
@@ -1002,7 +1002,7 @@
    "wk": 30,
    "entity": "Pillow Tabby",
    "severity": "critical",
-   "message": "Pillow Tabby weeks of supply 1.6 (LY same week 5.1) \u2014 G3 winner / Gen Z gateway.",
+   "message": "Pillow Tabby weeks of supply 1.6 (LY same week 5.1); G3 winner and Gen Z gateway.",
    "values": {
     "wos": 1.6,
     "wos_ly_same_week": 5.09,
@@ -1015,7 +1015,7 @@
    "wk": 30,
    "entity": "Tabby",
    "severity": "critical",
-   "message": "Tabby weeks of supply 1.9 (LY same week 7.5) \u2014 G3 winner / Gen Z gateway.",
+   "message": "Tabby weeks of supply 1.9 (LY same week 7.5); G3 winner and Gen Z gateway.",
    "values": {
     "wos": 1.85,
     "wos_ly_same_week": 7.52,
@@ -1041,7 +1041,7 @@
    "wk": 30,
    "entity": "genz",
    "severity": "warning",
-   "message": "L4W (W27\u2013W30) Insider attach of new Gen Z 15.5% (< 20%).",
+   "message": "L4W (W27-W30) Insider attach of new Gen Z 15.5% (< 20%).",
    "values": {
     "genz_new_insider_rate_ty": 0.15493,
     "weeks": [
@@ -1121,7 +1121,7 @@
    "wk": 30,
    "entity": "total",
    "severity": "info",
-   "message": "W30 is a partial week (Sun\u2013Wed); LY compared on the same 4 days.",
+   "message": "W30 is a partial week (Sun-Wed); LY compared on the same 4 days.",
    "values": {
     "days": 4
    },

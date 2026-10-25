@@ -172,3 +172,8 @@ Evidence scripts in brackets. Sensitivity numbers are filled from `scripts/09_ch
 - Abuse guard: 300-character questions, a per-IP limit per warm instance, a small in-memory cache, same-origin check, and the Anthropic console spend limit as the hard cap.
 - Premise scope (Iteration 21): every premise gets a verdict, whatever the template, checked over the period the answer covers (the template's week and window, the full period for PTD-only templates, else the single week) and for the route's subject (a family's demand, Gen Z transactions or new customers, or the whole business); what nothing stored can settle gets an explicit "isn't checked" sentence instead of silence.
 - Why not let Claude answer directly: an answer written by a model would need the number validator plus a semantic check; routing keeps every number in code and makes wrong-entity answers impossible by construction.
+
+## D27 G3 tiles: one period-to-date across the row
+- Question: the G3 tile row showed "Demand · PTD W23-W29 +12.1%" (following the selected week) beside "Tabby share of growth · PTD W23-W30", with the drill-down bar right below at "+12.8% · PTD W23-W30", so one screen carried two different period-to-date totals.
+- Choice: every G3 tile, the drill-down and the PTD scorecard use the full like-for-like period (`growth_drill`, `products_ptd`), independent of the selected week; the selected week's own PTD stays in the header KPI band under the PTD window.
+- Rationale: the G3 growth story (shares of growth, Tabby franchise, drags) only exists for the full period, so the row reads as one basis; +12.1% (full weeks only) remains a sensitivity in FINDINGS F2.

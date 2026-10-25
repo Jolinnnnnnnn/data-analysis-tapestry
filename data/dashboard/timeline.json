@@ -29,7 +29,7 @@
   "severity": "critical",
   "rule_id": "WOS_LOW",
   "anomaly_id": "AN034",
-  "message": "Tabby weeks of supply 2.5 (LY same week 6.7) — G3 winner / Gen Z gateway."
+  "message": "Tabby weeks of supply 2.5 (LY same week 6.7); G3 winner and Gen Z gateway."
  },
  {
   "wk": 29,
@@ -45,6 +45,6 @@
   "severity": "critical",
   "rule_id": "RECEIPTS_BELOW_SALES",
   "anomaly_id": "AN060",
-  "message": "Tabby replenishment W24–29 covered 28% of units sold (LY 95%)."
+  "message": "Tabby replenishment W24-W29 covered 28% of units sold (LY 95%)."
  }
 ]

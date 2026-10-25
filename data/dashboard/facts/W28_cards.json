@@ -173,7 +173,7 @@
   {
    "card_id": "pattern",
    "title": "Gen Z share of new customers",
-   "meta": "Acquisition · Gen Z share of new · W23–W28",
+   "meta": "Acquisition · Gen Z share of new · W23-W28",
    "findings": [
     "F5"
    ],
@@ -241,7 +241,7 @@
   {
    "card_id": "win",
    "title": "Gen Z acquisition and Tabby growth",
-   "meta": "Growth · PTD W23–W28 · L4W families",
+   "meta": "Growth · PTD W23-W28 · L4W families",
    "findings": [
     "F4",
     "F9"
@@ -297,7 +297,7 @@
    },
    "chart": {
     "type": "bars",
-    "unit": "Gen Z new customers, PTD W23–W28 (sample)",
+    "unit": "Gen Z new customers, PTD W23-W28 (sample)",
     "rows": [
      {
       "label": "Gen Z new · LY",
