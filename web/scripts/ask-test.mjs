@@ -19,6 +19,7 @@ const K = await vite.ssrLoadModule("/src/lib/ask/catalog.ts");
 const core = await vite.ssrLoadModule("/src/lib/core.ts");
 const { D, WEEKS, LAST_FULL, fmtMoney, fmtPct } = core;
 const DEF = { wk: LAST_FULL, win: "L4W" };
+const leak = /undefined|NaN|null|\[object/;
 
 let fails = 0;
 let n = 0;
@@ -101,6 +102,42 @@ refused("unknown template", route({ template: "forecast_next_week" }));
   const p3 = E.resolveRoute(route({ template: "sales_kpi", window: "L1W", week: LAST_FULL, premise: { metric: "demand", direction: upYoy ? "up" : "down", basis: "yoy" } }), DEF);
   check("true YoY premise is confirmed", p3.premise?.includes("That matches the data"), p3.premise);
 }
+// Premises on templates without a week or window. These are the routes Claude returned in production for "Why are
+// sales down vs last year?" and "Why did demand fall in week 29?"; both premises were dropped without a word.
+{
+  const ptd = D.headline_ptd.sales.yoy_pct;
+  const p1 = E.resolveRoute(route({ template: "growth_drivers", premise: { metric: "demand", direction: ptd > 0 ? "down" : "up", basis: "yoy" } }), DEF);
+  check("growth_drivers: a false YoY premise is contradicted with the PTD value", p1.premise?.includes("The data says otherwise") && p1.premise.includes(fmtPct(ptd, true)), p1.premise);
+  const b = D.trailing[String(LAST_FULL)].L1W;
+  const p2 = E.resolveRoute(route({ template: "why_flagged", subject: "total", window: "L1W", week: LAST_FULL, premise: { metric: "demand", direction: "down", basis: "unspecified" } }), DEF);
+  check("why_flagged: the premise is checked for that week, YoY and WoW", p2.premise?.includes(fmtPct(b.sales.yoy_pct, true)) && p2.premise.includes(fmtPct(b.wow.sales, true)), p2.premise);
+  const fam = D.products_by_week.find((r) => r.wk === LAST_FULL && r.window === "L1W" && r.family === "Tabby");
+  const p3 = E.resolveRoute(route({ template: "actions", subject: "Tabby", premise: { metric: "demand", direction: "down", basis: "yoy" } }), DEF);
+  check("actions about a family: the premise uses that family's demand", p3.premise?.includes("Tabby demand") && p3.premise.includes(fmtPct(fam.sales_yoy_pct, true)), p3.premise);
+  const p4 = E.resolveRoute(route({ template: "new_customers", subject: "genz", premise: { metric: "demand", direction: "down", basis: "yoy" } }), DEF);
+  check("a Gen Z demand premise says it isn't checked instead of quoting total demand", p4.premise?.includes("isn't checked") && !p4.premise.includes(fmtPct(D.trailing[String(LAST_FULL)].L4W.sales.yoy_pct, true)), p4.premise);
+  const p5 = E.resolveRoute(route({ template: "new_customers", subject: "genz", window: "L1W", premise: { metric: "transactions", direction: "up", basis: "wow" } }), DEF);
+  check("a WoW premise with no stored WoW says so", p5.premise?.includes("isn't stored for Gen Z transactions") && p5.premise.includes(fmtPct(b.genz_txns.yoy_pct, true)), p5.premise);
+  const { route: r6, plan: p6 } = ask("What's driving the drop in sales?");
+  check("keyword parser: a premise on growth_drivers is parsed and checked", r6.template === "growth_drivers" && p6.premise?.includes("The data says otherwise"), JSON.stringify(r6.premise) + " " + p6.premise);
+  const { route: r7 } = ask("Which families had the worst sales drop?");
+  check("keyword parser: a ranking question assumes nothing about the total", r7.template === "rank_families" && r7.premise === null, JSON.stringify(r7));
+}
+// Every premise gets a sentence, on every template, metric, basis and subject: never a silent null.
+{
+  let missing = 0;
+  const subjects = [null, "total", "genz", "retention", "Tabby"];
+  for (const t of K.TEMPLATE_IDS) for (const metric of K.PREMISE_METRICS) for (const basis of ["yoy", "wow", "unspecified"]) for (const subject of subjects) {
+    const extra = t === "family_kpi" ? { subject: "Tabby" } : t === "wos_threshold" ? { op: "below", threshold: 3, subject } : { subject };
+    const plan = E.resolveRoute(route({ template: t, ...extra, premise: { metric, direction: "down", basis } }), DEF);
+    if (!plan.ok) continue; // refused for another reason (e.g. sales_kpi for Gen Z), covered above
+    if (!plan.premise?.startsWith("Your question assumes") || leak.test(plan.premise)) {
+      missing++;
+      if (missing <= 3) check(`premise sentence for ${t} ${metric} ${basis} ${subject}`, false, String(plan.premise));
+    }
+  }
+  check("every premise gets a sentence", missing === 0, `${missing} combinations without one`);
+}
 {
   const plan = E.resolveRoute(route({ template: "sales_kpi", reading: "Demand in W29 was 71.3K" }), DEF);
   check("a model reading with numbers is replaced by the template reading", plan.ok && !/71/.test(plan.reading) && plan.reading.length > 0, plan.reading);
@@ -124,7 +161,6 @@ refused("unknown template", route({ template: "forecast_next_week" }));
 }
 
 // 4. Every template runs everywhere with no missing values
-const leak = /undefined|NaN|null|\[object/;
 const variants = [
   ...["sales_kpi", "growth_drivers", "winners", "new_customers", "genz_share_trend", "insider_segments"].map((t) => ({ template: t })),
   ...D.products_ptd.map((p) => ({ template: "family_kpi", subject: p.STYLE_GROUP })),
