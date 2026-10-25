@@ -173,3 +173,11 @@
 - Briefing: the summary shows its first 3 sentences as bullets with "Read the full summary"; a "This week · needs you" list maps each card the rules rank "Needs you" to its recommendation (stock R1, retention R3, overstock R2). The AI text is unchanged, so the validator results are too.
 - Explore G1: the range slider is gone; the playhead is dragged directly, is a keyboard slider when focused (arrow keys), and a tap without dragging drills into that week like the points.
 - Verification: browser checks of bullets and toggle, the action list at W29, the partial note at W30, drag W30 to W26, arrow keys W26 to W28, tap drills to G3; verify and build pass.
+
+## Iteration 21 (fix: Ask dropped premises)
+- Found while clicking through the live site end to end.
+  The same pass found the Briefing crash on leaving a held-back validator demo, which is fixed separately in PR #7 (branch `fix-exit-demo`).
+- Premise: "Why are sales down vs last year?" (routed to `growth_drivers`) and the suggested "Why did demand fall in week 29?" (`why_flagged`) answered with no premise note, although Claude's route carried the premise; `premiseNote` returned null for any template without a week and window, and the keyword parser parsed premises for only three templates.
+  Fix: every premise gets a verdict over the period the answer covers (the template's week and window, the full period for PTD-only templates, else the single week), for the route's subject (a family, Gen Z or the whole business), or a sentence saying why it can't be checked; the parser now parses premises on every template except the family rankings, and the router prompt says the premise is about the subject.
+- Verification: `ask-test.mjs` adds the two production routes, family, Gen Z and missing-WoW cases, and a sweep that every template, metric, basis and subject gets a premise sentence (10 of the new checks fail on the old engine); verify and build pass; in the browser, the keyword-parser answer to "What's driving the drop in sales?" opens with the premise correction.
+- Not run: a live Claude call against the fixed code (needs the deploy); the production routes are replayed in the tests instead.

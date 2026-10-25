@@ -77,7 +77,8 @@ export function parseQuestion(q: string): Route {
   const route = (template: string, extra: Partial<Route> = {}): Route => {
     const r = { ...base, template, ...extra };
     if (r.template !== "insider_segments") r.unmatched = SEGMENT_WORDS.filter(([re]) => re.test(t)).map(([, name]) => name);
-    if (["sales_kpi", "family_kpi", "new_customers"].includes(r.template)) r.premise = parsePremise(t, r.template);
+    // a ranking question ("which families fell?") asks which ones changed and assumes nothing about the total
+    if (!["rank_families", "winners"].includes(r.template)) r.premise = parsePremise(t, r.template);
     return r;
   };
   if (/\bwhat should\b|\brecommend|\bactions?\b|\bwhat to do\b|\bdo about\b/.test(t)) return route("actions");
@@ -169,45 +170,63 @@ export function resolveRoute(r: Route, defaults: { wk: number; win: string }): P
   if (window === "L4W" && week != null && trailing(week, "L4W").truncated) {
     notes.push(`L4W ending W${week} has only ${trailing(week, "L4W").n_weeks} ${plural(trailing(week, "L4W").n_weeks, "week", "weeks")} because the data starts at W${FIRST}.`);
   }
-  const premise = r.premise ? premiseNote(r.premise, tid, params) : null;
+  // Every premise gets a verdict, whatever the template. It is checked over the period the answer covers: the
+  // template's own week and window, the full period for a PTD-only template, else the single week it looks at.
+  const premise = r.premise
+    ? premiseNote(r.premise, { week: week ?? LAST, window: window ?? (PTD_ONLY.includes(tid) ? "PTD" : "L1W"), subject: r.subject })
+    : null;
   return { ok: true, tid, params, notes, premise, reading: reading || readingFor(tid, params) };
 }
 
 const PREMISE_KEY = { demand: "sales", transactions: "txns", aov: "aov", new_customers: "new_customers", genz_new: "genz_new" } as const;
 const PREMISE_LABEL = { demand: "demand", transactions: "transactions", aov: "AOV", new_customers: "new customers", genz_new: "Gen Z new customers" } as const;
+// Gen Z figures stored per period: transactions and new customers (both with a YoY; WoW only for new customers)
+const GENZ_KEY: Partial<Record<keyof typeof PREMISE_KEY, string>> = { transactions: "genz_txns", new_customers: "genz_new", genz_new: "genz_new" };
+const GENZ_LABEL: Partial<Record<keyof typeof PREMISE_KEY, string>> = { transactions: "Gen Z transactions", new_customers: "Gen Z new customers", genz_new: "Gen Z new customers" };
 
-/** Checks the change a question takes for granted against the stored YoY / WoW values, and says what the data shows. */
-export function premiseNote(pr: NonNullable<Route["premise"]>, tid: string, p: Params): string | null {
-  const w = p.week as number | undefined;
-  const win = p.window as Win | undefined;
-  if (w == null || !win) return null;
+/**
+ * Checks the change a question takes for granted against the stored YoY / WoW values over `scope`, and says what the
+ * data shows. It always returns a sentence: when nothing stored can settle the premise, it says so rather than
+ * staying silent, because an answer under an unchallenged false premise reads as agreeing with it.
+ */
+export function premiseNote(pr: NonNullable<Route["premise"]>, scope: { week: number; window: Win; subject: string | null }): string {
+  const { week: w, window: win, subject } = scope;
   const checks: { label: string; v: number | null | undefined }[] = [];
   let label: string = PREMISE_LABEL[pr.metric];
   const extra: string[] = [];
-  if (tid === "family_kpi") {
-    if (pr.metric !== "demand") return `Your question assumes a change in ${label} for ${p.subject}; only demand is stored per family, so that part isn't checked.`;
-    label = `${p.subject} demand`;
-    const row = win === "PTD" ? D.products_ptd.find((r: any) => r.STYLE_GROUP === p.subject) : D.products_by_week.find((r: any) => r.wk === w && r.window === win && r.family === p.subject);
+  const unchecked = (what: string, why: string) => `Your question assumes a change in ${what}; ${why}, so that part isn't checked.`;
+  const family = subject != null && CATALOG.families.includes(subject);
+  if (family) {
+    if (pr.metric !== "demand") return unchecked(`${label} for ${subject}`, "only demand is stored per family");
+    label = `${subject} demand`;
+    const row = win === "PTD" ? D.products_ptd.find((r: any) => r.STYLE_GROUP === subject) : D.products_by_week.find((r: any) => r.wk === w && r.window === win && r.family === subject);
     checks.push({ label: "vs last year", v: row?.sales_yoy_pct });
     if (pr.basis === "wow") extra.push("A change vs the previous week isn't stored per family.");
+  } else if (subject === "retention" && !["new_customers", "genz_new"].includes(pr.metric)) {
+    return unchecked(`${label} for returning customers`, `${label} isn't stored for returning customers alone`);
   } else {
-    const key = PREMISE_KEY[pr.metric];
-    const wow = win === "L1W" ? trailing(w, "L1W").wow?.[key] : null;
+    const genz = subject === "genz";
+    if (genz && !GENZ_KEY[pr.metric]) return unchecked(`Gen Z ${label}`, `${label} isn't stored by generation`);
+    const key = genz ? GENZ_KEY[pr.metric]! : PREMISE_KEY[pr.metric];
+    if (genz) label = GENZ_LABEL[pr.metric]!;
+    const wows = win === "L1W" ? trailing(w, "L1W").wow : null;
+    const wow = wows?.[key];
     if (pr.basis !== "wow") checks.push({ label: "vs last year", v: trailing(w, win)[key]?.yoy_pct });
     if (pr.basis !== "yoy") {
       if (wow != null) checks.push({ label: "vs the previous week", v: wow });
       else if (pr.basis === "wow") {
-        extra.push(win === "L1W" ? `There is no previous week before W${w} in the data.` : "A change vs the previous week is only stored for a single week (L1W).");
+        extra.push(win !== "L1W" ? "A change vs the previous week is only stored for a single week (L1W)."
+          : !wows ? `There is no previous week before W${w} in the data.` : `A change vs the previous week isn't stored for ${label}.`);
         checks.push({ label: "vs last year", v: trailing(w, win)[key]?.yoy_pct });
       }
     }
   }
   const known = checks.filter((c): c is { label: string; v: number } => c.v != null);
-  if (!known.length) return null;
+  if (!known.length) return unchecked(label, `it isn't stored for ${span(w, win)}`);
   const holds = (v: number) => (pr.direction === "up" ? v > 0 : v < 0);
   const held = known.filter((c) => holds(c.v));
   const verdict = held.length === known.length ? "That matches the data" : held.length === 0 ? "The data says otherwise" : `That holds ${held.map((c) => c.label).join(" and ")} only`;
-  const where = tid === "family_kpi" && win === "PTD" ? `PTD (${range([FIRST, LAST])})` : span(w, win);
+  const where = family && win === "PTD" ? `PTD (${range([FIRST, LAST])})` : span(w, win);
   return [`Your question assumes ${label} ${pr.direction === "up" ? "rose" : "fell"}. ${verdict}: in ${where} it was ${known.map((c) => `${fmtPct(c.v, true)} ${c.label}`).join(" and ")}.`, ...extra].join(" ");
 }
 
