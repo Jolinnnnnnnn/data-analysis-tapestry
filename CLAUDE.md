@@ -44,7 +44,7 @@ CLAUDE.md                  this file
 NOTES.md                   working memory: assumptions A1-A8, gotchas, current state
 DECISIONS.md               interpretation choices D1-D13 (analysis) and D14-D25 (dashboard)
 FINDINGS.md                F1-F15 with evidence paths, recommendations R1-R3
-HISTORY.md                 iteration log ("## Iteration N"); latest is 21
+HISTORY.md                 iteration log ("## Iteration N"); latest is 22
 PROMPTS.md                 AI-assisted steps and how each was verified (P1-P20)
 QUESTIONS.md               hypothesis backlog (all resolved or dropped)
 scripts/
@@ -190,16 +190,19 @@ The pipeline is data -> metrics -> rules -> facts -> AI words -> validator -> UI
   No dual axes, and direct labels instead of legends.
 - Motion appears only where it encodes information.
   Respect reduce-motion, and keep the opt-in toggle visible.
+- Anything clickable is a `<button>` (restyle it with the `btn-plain` class and inline styles), with a role where it acts as a tab, radio or switch; never an `onClick` on a `div`, `span` or `b`.
+  SVG marks may stay mouse shortcuts only when a keyboard path does the same thing (the G1 playhead slider).
 
 **Writing (from the global rules)**
 - Never use the em dash or en dash characters; use a plain "-".
-  The data itself contains en dashes (e.g. the `partial_week_days` label); leave generated data alone, but never type them in prose or code comments.
+  This includes strings that scripts 11-18 write for the UI (rule messages, labels, captions) and UI copy; build week spans with `wkRange`/`PTD_RANGE` in `core.ts` (or the script's week list), never by typing "W23-W30".
+  The analysis tables (01-10, 13) and their lookup keys still contain en dashes; leave those alone.
 - In long Markdown files, put each full sentence on its own line.
 
 **Process and docs**
 - Work in a loop: ORIENT (NOTES, HISTORY tail) -> PLAN -> ACT -> VERIFY (with a second method) -> RECORD -> REFLECT.
 - For bugs, reproduce end to end first, as close to the user's experience as possible.
-- Next numbers: D27 in DECISIONS, Iteration 22 in HISTORY, P22 in PROMPTS.
+- Next numbers: D28 in DECISIONS, Iteration 23 in HISTORY, P22 in PROMPTS.
   NOTES holds the current state only.
 - The Python 3.9 venv is `.venv`: install with `.venv/bin/python -m pip` and run scripts with `.venv/bin/python -W ignore`.
 
@@ -268,6 +271,8 @@ Update an existing entry rather than duplicating it, and promote a rule into Con
   Write helper scripts to the scratchpad and run them with one plain command each.
 
 *Web and animation*
+- 2026-10-25: Most controls (main nav, window switch, goal tabs, demo links, the like-for-like link) were `onClick` spans and divs, so only 10 elements per page took keyboard focus, and UI copy typed week spans with en dashes, which the conventions forbid.
+  Use buttons for anything clickable and build week labels from data; grep `web/src` for `onClick` on non-buttons and for typed `W2`/dash characters before shipping UI copy.
 - 2026-10-25: The Briefing summary reset its replay phase in an effect, so leaving a held-back validator demo rendered the old phase with the new passing text and crashed the app; tests had only exited mid-replay.
   Reset render state in the same render when its input changes (or derive it), and test every transition from a settled state, not only from the middle of an animation.
 - 2026-10-14: The user's Mac has Reduce motion on, and the Claude browser pane and headless Chrome inherit it, so animations looked missing or without object persistence.

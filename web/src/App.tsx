@@ -10,7 +10,7 @@ function MotionToggle() {
   const m = useMotionPref();
   return (
     <span style={{ whiteSpace: "nowrap" }}>
-      Animations: <span className="link" onClick={() => setForceMotion(!m.force)}>{m.force ? "always on" : m.sysReduce ? "off (system reduce-motion)" : "on"}</span>
+      Animations: <button type="button" className="btn-plain link" onClick={() => setForceMotion(!m.force)}>{m.force ? "always on" : m.sysReduce ? "off (system reduce-motion)" : "on"}</button>
       {m.sysReduce && !m.force && " · click to play them anyway"}
     </span>
   );
@@ -26,7 +26,7 @@ export default function App() {
       {demo && u.screen === "briefing" && (
         <div className="pad-x" style={{ display: "flex", flexWrap: "wrap", gap: "4px 16px", padding: "9px 40px", background: C.critTint, color: C.crit, fontSize: 12.5, fontFamily: MONO }}>
           <span style={{ flex: "1 1 480px" }}>Validator demo ({checkTitle(demo.check).toLowerCase()} check): {demo.banner}</span>
-          <span className="link" onClick={() => setUrl({ demo: "" })} style={{ fontWeight: 700, whiteSpace: "nowrap" }}>Exit demo</span>
+          <button type="button" className="btn-plain link" onClick={() => setUrl({ demo: "" })} style={{ fontWeight: 700, whiteSpace: "nowrap" }}>Exit demo</button>
         </div>
       )}
       {u.screen === "briefing" && <Briefing />}

@@ -156,7 +156,7 @@ def retention_card(w, anoms):
 
 
 def pattern_card(w, anoms):
-    c = Card("pattern", "Gen Z share of new customers", f"Acquisition · Gen Z share of new · W23–W{w}", ["F5"], "G2",
+    c = Card("pattern", "Gen Z share of new customers", f"Acquisition · Gen Z share of new · W{WEEKS[0]}-W{w}", ["F5"], "G2",
              f"Gen Z share of new customers by week up to week {w}?")
     c.d["anomaly_ids"] = [a["id"] for a in anoms if a["rule_id"] in ("GENZ_SHARE_BELOW_LY", "GENZ_NEW_YOY_NEG", "GENZ_NEW_WOW_DROP")]
     c.pill("Needs you" if c.d["anomaly_ids"] else "Pattern")
@@ -175,7 +175,7 @@ def pattern_card(w, anoms):
 
 
 def win_card(w, anoms):
-    c = Card("win", "Gen Z acquisition and Tabby growth", f"Growth · PTD W23–W{w} · L4W families", ["F4", "F9"], "G3",
+    c = Card("win", "Gen Z acquisition and Tabby growth", f"Growth · PTD W{WEEKS[0]}-W{w} · L4W families", ["F4", "F9"], "G3",
              f"Top 3 families by contribution in L4W for week {w}")
     c.d["anomaly_ids"] = [a["id"] for a in anoms if a["rule_id"] == "SALES_YOY_SPIKE"]
     c.pill("Win")
@@ -196,7 +196,7 @@ def win_card(w, anoms):
     # the ranked list lets the validator check rank words ("Tabby leads L4W growth") against the facts
     c.put("l4w_top_families_by_contrib", M["weekly_facts"][str(w)]["l4w_top_families_by_contrib"],
           f"weekly_facts.{w}.l4w_top_families_by_contrib (products_by_week[wk={w}, L4W] ranked by contrib_pts)")
-    c.d["chart"] = {"type": "bars", "unit": f"Gen Z new customers, PTD W23–W{w} (sample)", "rows": [
+    c.d["chart"] = {"type": "bars", "unit": f"Gen Z new customers, PTD W{WEEKS[0]}-W{w} (sample)", "rows": [
         {"label": "Gen Z new · LY", "value": ptd["genz_new"]["ly"], "fmt": "int", "tone": "ly"},
         {"label": "Gen Z new · TY", "value": ptd["genz_new"]["ty"], "fmt": "int", "tone": "green"}]}
     return c

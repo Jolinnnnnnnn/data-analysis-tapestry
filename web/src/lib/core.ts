@@ -9,6 +9,11 @@ export const D: any = raw;
 export const WEEKS: number[] = D.meta.weeks;
 export const LAST_FULL: number = D.meta.last_full_week;
 export const PARTIAL: number = D.meta.partial_week;
+export const FIRST_WEEK: number = WEEKS[0];
+export const LAST_WEEK: number = WEEKS[WEEKS.length - 1];
+/** "W23-W30": a span of fiscal weeks, from stored week numbers (never typed into copy). */
+export const wkRange = (a: number, b: number) => (a === b ? `W${a}` : `W${a}-W${b}`);
+export const PTD_RANGE = wkRange(FIRST_WEEK, LAST_WEEK);
 
 // ---------- tokens ----------
 export const C = {
@@ -29,19 +34,19 @@ export const EASE = "cubic-bezier(.2,.7,.2,1)";
 
 // ---------- formatting (display only) ----------
 export const fmtMoney = (x: number | null | undefined, compact = true) =>
-  x == null ? "—" : compact && Math.abs(x) >= 1000 ? `$${(x / 1000).toFixed(1)}K` : `$${x.toLocaleString("en-US", { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
+  x == null ? "-" : compact && Math.abs(x) >= 1000 ? `$${(x / 1000).toFixed(1)}K` : `$${x.toLocaleString("en-US", { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
 export const fmtUsd0 = (x: number) => `$${Math.round(x).toLocaleString("en-US")}`;
 export const fmtPct = (x: number | null | undefined, signed = false, dp = 1) => {
-  if (x == null) return "—";
+  if (x == null) return "-";
   const v = x * 100;
   const d = Math.abs(v) >= 100 ? 0 : dp;
   const s = Math.abs(v).toFixed(d);
   return signed ? `${v > 0 ? "+" : v < 0 ? "−" : ""}${s}%` : `${v < 0 ? "−" : ""}${s}%`;
 };
-export const fmtPts = (x: number | null | undefined) => (x == null ? "—" : `${x > 0 ? "+" : x < 0 ? "−" : ""}${Math.abs(x).toFixed(1)} pts`);
+export const fmtPts = (x: number | null | undefined) => (x == null ? "-" : `${x > 0 ? "+" : x < 0 ? "−" : ""}${Math.abs(x).toFixed(1)} pts`);
 export const fmtNum = (x: number | null | undefined, dp = 0) =>
-  x == null ? "—" : x.toLocaleString("en-US", { minimumFractionDigits: dp, maximumFractionDigits: dp });
-export const fmtWos = (x: number | null | undefined) => (x == null ? "—" : x.toFixed(1));
+  x == null ? "-" : x.toLocaleString("en-US", { minimumFractionDigits: dp, maximumFractionDigits: dp });
+export const fmtWos = (x: number | null | undefined) => (x == null ? "-" : x.toFixed(1));
 export const arrow = (x: number | null | undefined) => (x == null || x === 0 ? "" : x > 0 ? "▲ " : "▼ ");
 export const tone = (x: number | null | undefined, dark = false) =>
   x == null || x === 0 ? (dark ? C.onDarkMuted : C.muted) : x > 0 ? (dark ? C.upOnDark : C.up) : dark ? C.downOnDark : C.down;
@@ -53,6 +58,8 @@ export const dateWords = (iso: string) => {
 // ---------- data accessors ----------
 export const weekAI = (wk: number) => D.weeks_ai[String(wk)];
 export const trailing = (wk: number, win: string) => D.trailing[String(wk)][win];
+/** The first week whose L4W window is complete: family and stock rules run from here. */
+export const FIRST_FULL_L4W: number = WEEKS.find((w) => !trailing(w, "L4W").truncated) ?? LAST_WEEK;
 export const anomaly = (id: string) => D.anomalies.find((a: any) => a.id === id);
 export const alertsFor = (wk: number) => (D.alerts_by_week[String(wk)] || []).map(anomaly);
 export const ruleById = (id: string) => D.rules.find((r: any) => r.id === id);
@@ -84,7 +91,7 @@ export const DEMOS = [
     banner: "a sentence was put in front of this week's AI summary that puts a total-business fact under a named customer group." },
 ];
 
-/** Which goal a fact belongs to (colours numbers in the AI text). */
+/** Which goal a fact belongs to (colors numbers in the AI text). */
 export function goalOfFact(path: string): number {
   const p = path.toLowerCase();
   if (/wos|receipts|on_hand|r1_|r2_|stock|median|excess/.test(p)) return 3;

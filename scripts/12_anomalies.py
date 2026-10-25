@@ -30,7 +30,7 @@ RULES = [
      "note": "escalated to critical if family is a G3 Winner or Gen Z gateway"},
     {"id": "WOS_HIGH", "scope": "family", "metric": "TY wos", "rule": "> 15.0 weeks", "severity": "warning"},
     {"id": "WOS_COLLAPSE_VS_LY", "scope": "family", "metric": "TY wos / LY same-week wos", "rule": "< 0.5", "severity": "warning"},
-    {"id": "RECEIPTS_BELOW_SALES", "scope": "family", "metric": "receipts_to_sales_TY W24–29 (latest only)", "rule": "< 0.5", "severity": "critical"},
+    {"id": "RECEIPTS_BELOW_SALES", "scope": "family", "metric": "receipts_to_sales_TY W24-W29 (latest only)", "rule": "< 0.5", "severity": "critical"},
     {"id": "PARTIAL_WEEK", "scope": "data", "metric": "is_partial", "rule": "true", "severity": "info"},
 ]
 SEV = {r["id"]: r["severity"] for r in RULES}
@@ -51,7 +51,7 @@ for w in WEEKS:
     wow = l1.get("wow") or {}
     s = l1["sales"]["yoy_pct"]
     if l1["is_partial"]:
-        add("PARTIAL_WEEK", w, f"W{w} is a partial week (Sun–Wed); LY compared on the same 4 days.", {"days": 4})
+        add("PARTIAL_WEEK", w, f"W{w} is a partial week (Sun-Wed); LY compared on the same 4 days.", {"days": 4})
     if s is not None:
         if s <= -0.10:
             add("SALES_YOY_DROP", w, f"W{w} demand {f_pct(s)} YoY.", {"sales_yoy_pct": s})
@@ -81,7 +81,7 @@ for w in WEEKS:
             {"genz_share_of_new_ty": sh["ty"], "genz_share_of_new_ly": sh["ly"]}, "genz")
     ins = l4["genz_new_insider_rate"]["ty"]
     if ins is not None and ins < 0.20:
-        add("GENZ_NEW_INSIDER_LOW", w, f"L4W (W{l4['weeks'][0]}–W{l4['weeks'][-1]}) Insider attach of new Gen Z {fixed(ins*100, 1)}% (< 20%).",
+        add("GENZ_NEW_INSIDER_LOW", w, f"L4W (W{l4['weeks'][0]}-W{l4['weeks'][-1]}) Insider attach of new Gen Z {fixed(ins*100, 1)}% (< 20%).",
             {"genz_new_insider_rate_ty": ins, "weeks": l4["weeks"]}, "genz")
     ry = l4["returning_customers"]["yoy_pct"]
     if ry is not None and ry < 0.02:
@@ -101,7 +101,7 @@ for w in WEEKS:
         if iv["wos"] is not None and iv["wos"] < 3.0:
             sev = "critical" if (fam in WINNERS or fam in GATEWAYS) else "warning"
             add("WOS_LOW", w, f"{fam} weeks of supply {fixed(iv['wos'], 1)} (LY same week {fixed(iv['wos_ly_same_week'], 1)})"
-                + (" — G3 winner / Gen Z gateway." if sev == "critical" else "."),
+                + ("; G3 winner and Gen Z gateway." if sev == "critical" else "."),
                 {"wos": iv["wos"], "wos_ly_same_week": iv["wos_ly_same_week"], "on_hand_eow": iv["on_hand_eow"]}, fam, sev)
         if iv["wos"] is not None and iv["wos"] > 15.0:
             add("WOS_HIGH", w, f"{fam} weeks of supply {fixed(iv['wos'], 1)} (LY same week {fixed(iv['wos_ly_same_week'], 1)}).",
@@ -114,7 +114,7 @@ latest = WEEKS[-1]
 for fam, r in pos.items():
     if r["receipts_to_sales_TY"] is not None and r["receipts_to_sales_TY"] < 0.5:
         add("RECEIPTS_BELOW_SALES", latest,
-            f"{fam} replenishment W24–29 covered {fixed(r['receipts_to_sales_TY']*100, 0)}% of units sold (LY {fixed(r['receipts_to_sales_LY']*100, 0)}%).",
+            f"{fam} replenishment W24-W29 covered {fixed(r['receipts_to_sales_TY']*100, 0)}% of units sold (LY {fixed(r['receipts_to_sales_LY']*100, 0)}%).",
             {"receipts_to_sales_TY": r["receipts_to_sales_TY"], "receipts_to_sales_LY": r["receipts_to_sales_LY"],
              "receipts_W24_29_TY": r["receipts_W24_29_TY"], "receipts_W24_29_LY": r["receipts_W24_29_LY"]}, fam)
 

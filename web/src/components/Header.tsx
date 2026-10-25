@@ -71,12 +71,12 @@ function WeekStrip() {
         const on = w === u.wk;
         const n = weekAI(w).counts.n_alerts;
         return (
-          <span key={w} role="radio" aria-checked={on} tabIndex={0} onClick={() => setUrl({ wk: w })} onKeyDown={(e) => e.key === "Enter" && setUrl({ wk: w })}
+          <button type="button" key={w} role="radio" aria-checked={on} className="btn-plain" onClick={() => setUrl({ wk: w })}
             title={`${n} alerts fired in W${w}${w === PARTIAL ? " (partial week)" : ""}`}
             style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 4, padding: "6px 9px", borderRadius: 5, cursor: "pointer", whiteSpace: "nowrap", transition: "background .2s ease", background: on ? C.sapphire : "transparent", color: on ? "#fff" : C.onDarkFaint, fontWeight: on ? 700 : 400 }}>
             <span style={{ width: 12, borderRadius: 2, transition: "height .25s ease", height: Math.round((n / max) * 22) + 2, background: on ? "#fff" : w === PARTIAL ? "repeating-linear-gradient(0deg,rgba(255,255,255,.35) 0 2px,transparent 2px 4px)" : "rgba(255,255,255,.28)" }} />
             W{w}{w === PARTIAL ? " ◔" : ""}
-          </span>
+          </button>
         );
       })}
     </div>
@@ -144,14 +144,14 @@ export default function Header() {
         <span className="cond" style={{ fontWeight: 900, fontSize: 20 }}>TY/LY</span>
         <nav style={{ display: "flex", alignSelf: "stretch", fontSize: 14, fontWeight: 600 }}>
           {nav.map(([k, l]) => (
-            <span key={k} onClick={() => setUrl({ screen: k }, true)} className="clickable"
-              style={{ display: "flex", alignItems: "center", padding: "0 14px", whiteSpace: "nowrap", color: u.screen === k ? "#fff" : C.onDarkMuted, boxShadow: u.screen === k ? `inset 0 -3px 0 ${C.thistle}` : "none", minHeight: 60 }}>{l}</span>
+            <button type="button" key={k} onClick={() => setUrl({ screen: k }, true)} className="btn-plain" aria-current={u.screen === k ? "page" : undefined}
+              style={{ display: "flex", alignItems: "center", padding: "0 14px", whiteSpace: "nowrap", color: u.screen === k ? "#fff" : C.onDarkMuted, boxShadow: u.screen === k ? `inset 0 -3px 0 ${C.thistle}` : "none", minHeight: 60 }}>{l}</button>
           ))}
         </nav>
         <div style={{ flex: 1 }} />
         {m.sysReduce && !m.force && (
-          <button type="button" onClick={() => setForceMotion(true)} style={{ padding: "5px 11px", border: "1px solid rgba(255,255,255,.3)", borderRadius: 999, background: "transparent", color: C.onDarkMuted, fontSize: 12, fontWeight: 600, cursor: "pointer", whiteSpace: "nowrap" }}>
-            Animations off (system setting) · Turn on
+          <button type="button" onClick={() => setForceMotion(true)} title="Animations are off because the system's Reduce motion setting is on" style={{ padding: "5px 11px", border: "1px solid rgba(255,255,255,.3)", borderRadius: 999, background: "transparent", color: C.onDarkMuted, fontSize: 12, fontWeight: 600, cursor: "pointer", whiteSpace: "nowrap" }}>
+            Turn on animations
           </button>
         )}
         <Search />
@@ -160,17 +160,17 @@ export default function Header() {
         <WeekStrip />
         <span className="hide-narrow" style={{ fontSize: 11, lineHeight: 1.3, color: C.onDarkFaint, maxWidth: 92 }}>Bar height = alerts fired that week</span>
         <div style={{ flex: 1 }} />
-        <div className="seg" style={{ background: "rgba(255,255,255,.08)" }}>
+        <div className="seg" role="radiogroup" aria-label="Window" style={{ background: "rgba(255,255,255,.08)" }}>
           {["L1W", "L4W", "PTD"].map((o) => (
-            <span key={o} onClick={() => setUrl({ win: o })} style={{ background: u.win === o ? C.thistle : "transparent", color: u.win === o ? C.ink : "#fff", fontWeight: u.win === o ? 700 : 400 }}>{o}</span>
+            <button type="button" key={o} role="radio" aria-checked={u.win === o} className="btn-plain" onClick={() => setUrl({ win: o })} style={{ background: u.win === o ? C.thistle : "transparent", color: u.win === o ? C.ink : "#fff", fontWeight: u.win === o ? 700 : 400 }}>{o}</button>
           ))}
         </div>
-        <div onClick={() => setUrl({ ly: !u.ly })} role="switch" aria-checked={u.ly} className="clickable" style={{ display: "flex", alignItems: "center", gap: 8, fontSize: 13, fontWeight: 600 }}>
-          <div style={{ width: 32, height: 18, borderRadius: 999, position: "relative", transition: "background .2s ease", background: u.ly ? C.sapphire : "rgba(255,255,255,.2)" }}>
-            <div style={{ position: "absolute", top: 2, width: 14, height: 14, borderRadius: "50%", background: "#fff", transition: "left .2s ease", left: u.ly ? 16 : 2 }} />
-          </div>
+        <button type="button" onClick={() => setUrl({ ly: !u.ly })} role="switch" aria-checked={u.ly} className="btn-plain" style={{ display: "flex", alignItems: "center", gap: 8, fontSize: 13, fontWeight: 600 }}>
+          <span style={{ display: "block", width: 32, height: 18, borderRadius: 999, position: "relative", transition: "background .2s ease", background: u.ly ? C.sapphire : "rgba(255,255,255,.2)" }}>
+            <span style={{ display: "block", position: "absolute", top: 2, width: 14, height: 14, borderRadius: "50%", background: "#fff", transition: "left .2s ease", left: u.ly ? 16 : 2 }} />
+          </span>
           Show LY
-        </div>
+        </button>
       </div>
 
       {u.screen === "briefing" && (
@@ -188,10 +188,10 @@ export default function Header() {
             </div>
             <div style={{ flex: "1 1 260px", maxWidth: 320, display: "grid", gridTemplateColumns: "1fr 1fr", gap: 4 }}>
               {GOALS.map((g, i) => (
-                <div key={g.id} className="hov-bright clickable" onClick={() => setUrl({ screen: "explore", tab: i }, true)} style={{ padding: 12, background: g.key, color: i === 3 ? C.ink : "#fff" }}>
-                  <div style={{ display: "flex", justifyContent: "space-between", gap: 6, whiteSpace: "nowrap", fontFamily: MONO, fontSize: 10, fontWeight: 700 }}><span>{g.id}</span><span>Explore →</span></div>
-                  <div style={{ marginTop: 14, fontSize: 13, fontWeight: 700 }}>{g.name}</div>
-                </div>
+                <button type="button" key={g.id} className="btn-plain hov-bright" onClick={() => setUrl({ screen: "explore", tab: i }, true)} style={{ display: "block", padding: 12, background: g.key, color: i === 3 ? C.ink : "#fff" }}>
+                  <span style={{ display: "flex", justifyContent: "space-between", gap: 6, whiteSpace: "nowrap", fontFamily: MONO, fontSize: 10, fontWeight: 700 }}><span>{g.id}</span><span>Explore →</span></span>
+                  <span style={{ display: "block", marginTop: 14, fontSize: 13, fontWeight: 700 }}>{g.name}</span>
+                </button>
               ))}
             </div>
           </div>
@@ -202,15 +202,15 @@ export default function Header() {
         <div className="pad-x" style={{ padding: "28px 40px 0", borderTop: "1px solid rgba(255,255,255,.1)" }}>
           <span style={{ fontFamily: MONO, fontSize: 12, color: C.onDarkMuted }}>Explore · FY26 W{u.wk} · window {u.win}</span>
           <h1 className="cond h1-hero" style={{ margin: "10px 0 22px", fontWeight: 800, fontSize: 44, lineHeight: 1 }}>{GOALS[u.tab].id} {GOALS[u.tab].name}</h1>
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(170px,1fr))", gap: 4 }}>
+          <div role="tablist" aria-label="Goal" style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(170px,1fr))", gap: 4 }}>
             {GOALS.map((g, i) => (
-              <div key={g.id} onClick={() => setUrl({ tab: i })} className="clickable" role="tab" aria-selected={i === u.tab}
-                style={{ padding: "12px 14px 14px", transition: "background .2s ease", background: i === u.tab ? g.key : "rgba(255,255,255,.06)", color: i === u.tab && i === 3 ? C.ink : "#fff" }}>
-                <div style={{ display: "flex", alignItems: "center", gap: 8, fontFamily: MONO, fontSize: 11, fontWeight: 700 }}>
+              <button type="button" key={g.id} onClick={() => setUrl({ tab: i })} className="btn-plain" role="tab" aria-selected={i === u.tab}
+                style={{ display: "block", padding: "12px 14px 14px", transition: "background .2s ease", background: i === u.tab ? g.key : "rgba(255,255,255,.06)", color: i === u.tab && i === 3 ? C.ink : "#fff" }}>
+                <span style={{ display: "flex", alignItems: "center", gap: 8, fontFamily: MONO, fontSize: 11, fontWeight: 700 }}>
                   <span style={{ width: 8, height: 8, borderRadius: 2, background: i === u.tab ? (i === 3 ? C.ink : "#fff") : g.key }} />{g.id}
-                </div>
-                <div style={{ marginTop: 12, fontSize: 15, fontWeight: 700 }}>{g.name}</div>
-              </div>
+                </span>
+                <span style={{ display: "block", marginTop: 12, fontSize: 15, fontWeight: 700 }}>{g.name}</span>
+              </button>
             ))}
           </div>
         </div>

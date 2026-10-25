@@ -1,11 +1,13 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import {
-  C, D, EASE, GOALS, MONO, PARTIAL, SEV, WEEKS, WINDOWED, arrow, fmtMoney, fmtNum, fmtPct, fmtPts, fmtUsd0, fmtWos,
-  SEGMENT_NAME, ruleThreshold, setUrl, tone, trailing, useReducedMotion, useUrl, weekAI,
+  C, D, EASE, FIRST_WEEK, GOALS, LAST_FULL, LAST_WEEK, MONO, PARTIAL, PTD_RANGE, SEV, WEEKS, WINDOWED, arrow, fmtMoney, fmtNum, fmtPct, fmtPts, fmtUsd0, fmtWos,
+  SEGMENT_NAME, ruleThreshold, setUrl, tone, trailing, useReducedMotion, useUrl, weekAI, wkRange,
 } from "../lib/core";
 import { PartialNote } from "./Header";
 
 export const drillBus = { weekMode: false };
+// implied receipts need a prior snapshot, so they cover the complete weeks after the first one
+const RECEIPT_WEEKS = wkRange(FIRST_WEEK + 1, LAST_FULL);
 
 // ---------- shared pieces ----------
 function Panel({ title, note, children, style }: { title: string; note?: string; children: any; style?: any }) {
@@ -36,9 +38,11 @@ function Table({ title, note, cols, rows, initial, highlight }: { title: string;
       </div>
       <table className="tbl" style={{ minWidth: 620 }}>
         <thead><tr>{cols.map((c) => (
-          <th key={c.key} onClick={() => setSort([c.key, sort[0] === c.key ? -sort[1] : -1])} style={{ textAlign: c.align === "r" ? "right" : "left", cursor: "pointer" }}
+          <th key={c.key} style={{ textAlign: c.align === "r" ? "right" : "left" }}
             aria-sort={sort[0] === c.key ? (sort[1] > 0 ? "ascending" : "descending") : "none"}>
-            {c.label} <span style={{ color: C.sapphireInk }}>{sort[0] === c.key ? (sort[1] > 0 ? "↑" : "↓") : ""}</span>
+            <button type="button" className="btn-plain" onClick={() => setSort([c.key, sort[0] === c.key ? -sort[1] : -1])} style={{ fontWeight: 700 }}>
+              {c.label} <span style={{ color: C.sapphireInk }}>{sort[0] === c.key ? (sort[1] > 0 ? "↑" : "↓") : ""}</span>
+            </button>
           </th>))}</tr></thead>
         <tbody>{sorted.map((r, i) => (
           <tr key={i} className={highlight?.(r) ? "hl" : ""}>{cols.map((c) => (
@@ -52,7 +56,8 @@ function Table({ title, note, cols, rows, initial, highlight }: { title: string;
 function Kpis({ items }: { items: { label: string; value: string; delta: string; color?: string }[] }) {
   return (
     <div className="panel" style={{ overflow: "hidden" }}>
-      <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(170px,1fr))" }}>
+      {/* one row when they fit, else half a row each (6 → 3 + 3, never 5 + 1), then pairs on a phone */}
+      <div className="kpi-grid" style={{ "--n": items.length, "--mid": Math.ceil(items.length / 2) } as any}>
         {items.map((k) => (
           <div key={k.label} style={{ padding: "16px 18px", boxShadow: `1px 1px 0 ${C.hair}` }}>
             <div style={{ fontSize: 12, fontWeight: 600, color: C.muted }}>{k.label}</div>
@@ -68,9 +73,9 @@ function Kpis({ items }: { items: { label: string; value: string; delta: string;
 
 function Seg({ opts, value, onChange, dark }: { opts: [string, string][]; value: string; onChange: (v: string) => void; dark?: boolean }) {
   return (
-    <div className="seg" style={{ background: C.lav2 }}>
+    <div className="seg" role="radiogroup" style={{ background: C.lav2 }}>
       {opts.map(([v, l]) => (
-        <span key={v} onClick={() => onChange(v)} style={{ background: value === v ? (dark ? C.charcoal : C.charcoal) : "transparent", color: value === v ? "#fff" : C.ink, fontWeight: 700 }}>{l}</span>
+        <button type="button" key={v} role="radio" aria-checked={value === v} className="btn-plain" onClick={() => onChange(v)} style={{ background: value === v ? (dark ? C.charcoal : C.charcoal) : "transparent", color: value === v ? "#fff" : C.ink, fontWeight: 700 }}>{l}</button>
       ))}
     </div>
   );
@@ -142,7 +147,7 @@ function Playhead() {
       <div style={{ display: "flex", alignItems: "center", gap: 16, flexWrap: "wrap" }}>
         <div style={{ flex: "1 1 260px" }}>
           <h2 className="cond" style={{ margin: 0, fontWeight: 800, fontSize: 26 }}>Season so far: weekly demand</h2>
-          <div style={{ marginTop: 4, fontSize: 13, color: C.muted }}>Press play to replay W23→W30, or drag the playhead. Where it stops is the selected week for the whole dashboard. Click a point to see that week's family contributions.</div>
+          <div style={{ marginTop: 4, fontSize: 13, color: C.muted }}>Press play to replay W{FIRST_WEEK}→W{LAST_WEEK}, or drag the playhead. Where it stops is the selected week for the whole dashboard. Click a point to see that week's family contributions.</div>
         </div>
         <button onClick={play} style={{ display: "flex", alignItems: "center", gap: 8, padding: "9px 16px", border: 0, borderRadius: 6, background: C.sapphire, color: "#fff", fontSize: 14, fontWeight: 700 }}>
           {playing ? "❚❚ Pause" : p >= n - 1 ? "▶ Replay season" : "▶ Play"}
@@ -159,7 +164,7 @@ function Playhead() {
           <g>
             <polyline points={wk.slice(0, full + 1).map((r, i) => `${X(i)},${Y(r.sales.ly)}`).join(" ")} fill="none" stroke={C.ly} strokeWidth={2} strokeOpacity={0.75} />
             <polyline points={`${X(full)},${Y(wk[full].sales.ly)} ${X(n - 1)},${Y(wk[n - 1].sales.ly)}`} fill="none" stroke={C.ly} strokeWidth={2} strokeOpacity={0.75} strokeDasharray="5 5" />
-            <circle cx={X(n - 1)} cy={Y(D.meta.ly_w30_full_week_sales)} r={5} fill="#fff" stroke={C.ly} strokeWidth={1.5}><title>LY W30 full week (7 days, not like-for-like): {fmtMoney(D.meta.ly_w30_full_week_sales)}</title></circle>
+            <circle cx={X(n - 1)} cy={Y(D.meta.ly_w30_full_week_sales)} r={5} fill="#fff" stroke={C.ly} strokeWidth={1.5}><title>LY W{PARTIAL} full week (7 days, not like-for-like): {fmtMoney(D.meta.ly_w30_full_week_sales)}</title></circle>
             <text x={X(n - 1) + 9} y={Y(D.meta.ly_w30_full_week_sales) + 4} fontFamily="Space Mono" fontSize={10.5} fill={C.muted}>LY full wk</text>
             <text x={X(n - 1) + 9} y={Y(wk[n - 1].sales.ly) + 4} fontFamily="Space Mono" fontSize={11} fill={C.muted}>LY</text>
           </g>
@@ -197,6 +202,7 @@ function Playhead() {
           onKeyDown={(e) => {
             const d = e.key === "ArrowRight" || e.key === "ArrowUp" ? 1 : e.key === "ArrowLeft" || e.key === "ArrowDown" ? -1 : 0;
             if (d) { e.preventDefault(); seek(Math.round(p) + d); }
+            if (e.key === "Enter") { e.preventDefault(); drillBus.weekMode = true; setUrl({ screen: "explore", tab: 2 }); }
           }} />
         <text x={X(p) > 620 ? X(p) - 14 : X(p) + 12} y={yAt + (X(p) > 620 ? 22 : -12)} textAnchor={X(p) > 620 ? "end" : "start"} fontFamily="Space Mono" fontSize={12} fontWeight={700} fill={C.sapphireInk}>TY {fmtMoney(cur.sales.ty)}</text>
       </svg>
@@ -243,7 +249,7 @@ function G1() {
         ["UPT", fmtNum(b.upt.ty, 2), b.upt], ["AUR", fmtMoney(b.aur.ty, false), b.aur], ["Customers", fmtNum(b.customers.ty), b.customers],
       ].map(([label, value, blk]: any) => ({ label: `${label} · ${u.win}`, value, delta: `${arrow(blk.yoy_pct)}${fmtPct(blk.yoy_pct, true)} YoY`, color: tone(blk.yoy_pct) }))} />
       <Playhead />
-      <Table title="Weekly demand" note="TY vs LY like-for-like. W30 is partial on both sides." initial={["wk", 1]} highlight={(r) => r.wk === u.wk}
+      <Table title="Weekly demand" note={`TY vs LY like-for-like. W${PARTIAL} is partial on both sides.`} initial={["wk", 1]} highlight={(r) => r.wk === u.wk}
         rows={D.weekly.map((r: any) => ({ ...r, alerts: weekAI(r.wk).counts.n_alerts }))}
         cols={[
           { key: "wk", label: "Week", sort: (r) => r.wk, cell: (r) => `W${r.wk}${r.is_partial ? " · partial" : ""}` },
@@ -268,7 +274,7 @@ function MorphShare() {
   useEffect(replay, [u.wk]); // eslint-disable-line react-hooks/exhaustive-deps
   const val = state === "TY" ? s.ty : s.ly;
   return (
-    <Panel title="Gen Z share of new · PTD" note={`W23–W${u.wk}. The bar moves from its LY value to TY when the comparison loads.`} style={{ flex: "1 1 300px" }}>
+    <Panel title="Gen Z share of new · PTD" note={`${wkRange(FIRST_WEEK, u.wk)}. The bar moves from its LY value to TY when the comparison loads.`} style={{ flex: "1 1 300px" }}>
       <div style={{ marginTop: 24, overflow: "hidden" }}><span key={state} className="cond swap" style={{ fontWeight: 800, fontSize: 56, color: GOALS[1].ink, display: "inline-block" }}>{fmtPct(val)}</span></div>
       <div style={{ fontFamily: MONO, fontSize: 12, color: C.muted }}>{state === "TY" ? `TY · ${fmtPts(s.chg_pts)} vs LY` : "LY"}</div>
       <div style={{ position: "relative", height: 22, marginTop: 10, background: C.lav3 }}>
@@ -300,7 +306,7 @@ function G2() {
         { label: `Returning Gen Z · ${u.win} (proxy)`, value: fmtNum(b.genz_returning.ty), delta: `${fmtPct(b.genz_returning.yoy_pct, true)} vs ${fmtNum(b.genz_returning.ly)} LY`, color: tone(b.genz_returning.yoy_pct) },
       ]} />
       <div style={{ display: "flex", flexWrap: "wrap", gap: 18 }}>
-        <Panel title="Gen Z share of new customers, by week" note="TY above LY in every week. W30 is partial (dotted)." style={{ flex: "999 1 520px" }}>
+        <Panel title="Gen Z share of new customers, by week" note={`TY above LY in every week. W${PARTIAL} is partial (dotted).`} style={{ flex: "999 1 520px" }}>
           <svg viewBox="0 0 800 270" width="100%" style={{ display: "block", marginTop: 12, overflow: "visible" }} role="img" aria-label="Gen Z share of new customers by week">
             {[0, 0.2, 0.4, 0.6].map((v) => <g key={v}><line x1={50} x2={770} y1={Y(v)} y2={Y(v)} stroke="rgba(52,64,85,.12)" /><text x={44} y={Y(v) + 4} textAnchor="end" fontFamily="Space Mono" fontSize={11} fill={C.muted}>{v * 100}%</text></g>)}
             <rect x={X(u.wk - WEEKS[0]) - 30} y={14} width={60} height={220} fill={GOALS[1].tint} opacity={0.6} />
@@ -327,7 +333,7 @@ function G2() {
           { key: "other", label: "Other new rate", align: "r", sort: (r) => r.other_new_insider_rate, cell: (r) => fmtPct(r.other_new_insider_rate), color: () => C.muted },
           { key: "p", label: "p-value", align: "r", sort: (r) => r.p, cell: (r) => r.p.toFixed(3), color: (r) => (r.p < 0.05 ? C.down : C.muted) },
         ]} />
-      <Table title="New vs returning customers by generation" note="PTD W23–W30. Returning is a mix proxy (no customer key across years)." initial={["new", -1]}
+      <Table title="New vs returning customers by generation" note={`PTD ${PTD_RANGE}. Returning is a mix proxy (no customer key across years).`} initial={["new", -1]}
         rows={D.generation_ptd}
         cols={[
           { key: "g", label: "Generation", cell: (r) => r.generation, bold: true },
@@ -365,11 +371,11 @@ function Drill() {
     drags = weekRows.filter((r: any) => r.contrib_pts < 0).sort((a: any, b: any) => a.contrib_pts - b.contrib_pts).slice(0, 4).map((r: any) => ({ label: `${r.family} ${fmtPts(r.contrib_pts)}`, w: -r.contrib_pts }));
     note = `Contribution to YoY demand growth, ${win} ending W${u.wk}, in percentage points. Largest five gainers shown; the full list is in the table below.`;
   } else if (level === 0) {
-    blocks = [{ label: "Demand · PTD W23–W30", val: fmtPct(gd.total.yoy_pct, true), sub: `${fmtUsd0(gd.total.ty)} vs ${fmtUsd0(gd.total.ly)}`, w: 1, next: 1, dark: true }];
+    blocks = [{ label: `Demand · PTD ${PTD_RANGE}`, val: fmtPct(gd.total.yoy_pct, true), sub: `${fmtUsd0(gd.total.ty)} vs ${fmtUsd0(gd.total.ly)}`, w: 1, next: 1, dark: true }];
     note = "Full period, like-for-like (independent of the selected week). Click the bar to break demand growth into its drivers.";
   } else if (level === 1) {
     blocks = gd.drivers.map((d: any, i: number) => ({ label: d.label, val: fmtPct(d.share_of_growth, false, 0), sub: d.pct_chg != null ? `of growth · ${fmtPct(d.pct_chg, true)}` : "of growth", w: Math.max(d.share_of_growth, 0.04), next: i === 0 ? 2 : undefined, dark: i === 0 }));
-    note = "Log decomposition of PTD growth (W23–W30, like-for-like). Click 'More customers' to see which families carried it.";
+    note = `Log decomposition of PTD growth (${PTD_RANGE}, like-for-like). Click 'More customers' to see which families carried it.`;
   } else if (level === 2) {
     const fam = (n: string) => gd.families.find((f: any) => f.family === n);
     blocks = [
@@ -386,6 +392,8 @@ function Drill() {
     if (Math.abs(st.other_styles_share_of_growth) >= 0.005) blocks.push({ label: `Other ${family} styles`, val: fmtPct(st.other_styles_share_of_growth, false, 0), sub: "below the volume threshold", w: Math.abs(st.other_styles_share_of_growth) });
     note = `${family} styles: share of total PTD growth (the family is ${fmtPct(st.family_share_of_growth, false, 0)}).`;
   }
+  // Widths encode share of growth, but a tiny share would leave no room for its label: each block keeps a floor wide
+  // enough to read, and a row that can't fit its blocks wraps (the zoom animation lifts the floor).
   const crumbs = weekMode ? [`Families · W${u.wk} (${win})`] : ["Demand", "Drivers", "Families", `${family} styles`].slice(0, level + 1);
   function click(b: Block, i: number) {
     if (weekMode || zoom != null || b.next == null) return;
@@ -402,30 +410,33 @@ function Drill() {
       <div style={{ display: "flex", alignItems: "center", gap: 6, marginTop: 10, fontFamily: MONO, fontSize: 12, flexWrap: "wrap" }}>
         {crumbs.map((c, i) => (
           <span key={c} style={{ display: "contents" }}>
-            <span onClick={() => !weekMode && (setLevel(i), setZoom(null))} className="clickable" style={{ padding: "4px 8px", borderRadius: 4, background: i === crumbs.length - 1 ? C.charcoal : "transparent", color: i === crumbs.length - 1 ? "#fff" : C.sapphireInk, fontWeight: i === crumbs.length - 1 ? 700 : 400 }}>{c}</span>
+            <button type="button" disabled={weekMode || i === crumbs.length - 1} aria-current={i === crumbs.length - 1 ? "step" : undefined} onClick={() => (setLevel(i), setZoom(null))} className="btn-plain" style={{ cursor: weekMode || i === crumbs.length - 1 ? "default" : "pointer", padding: "4px 8px", borderRadius: 4, background: i === crumbs.length - 1 ? C.charcoal : "transparent", color: i === crumbs.length - 1 ? "#fff" : C.sapphireInk, fontWeight: i === crumbs.length - 1 ? 700 : 400 }}>{c}</button>
             {i < crumbs.length - 1 && <span style={{ color: C.ly }}>›</span>}
           </span>
         ))}
       </div>
       <div style={{ marginTop: 6, fontSize: 13, color: C.muted }}>{note}</div>
-      <div key={`${weekMode}${level}${family}${u.wk}`} className="fade-in" style={{ display: "flex", gap: 3, height: 132, marginTop: 16 }}>
+      <div key={`${weekMode}${level}${family}${u.wk}`} className="fade-in" style={{ display: "flex", flexWrap: zoom == null ? "wrap" : "nowrap", gap: 3, marginTop: 16 }}>
         {blocks.map((b, i) => {
           const col = b.dark ? (i === 0 ? C.charcoal : "#5B6780") : i === 0 && weekMode ? C.charcoal : i === 1 ? "#5B6780" : "#C9CED9";
           const ink = col === "#C9CED9" ? C.ink : "#fff";
+          // a block that drills in is a button (focusable, Enter/Space); the others are plain data blocks
+          const drillable = b.next != null && !weekMode;
+          const Block: any = drillable ? "button" : "div";
           return (
-            <div key={b.label} onClick={() => click(b, i)} title={b.next != null ? "Click to drill in" : undefined}
-              style={{ display: "flex", flexDirection: "column", justifyContent: "space-between", minWidth: 0, overflow: "hidden", padding: 14, cursor: b.next != null && !weekMode ? "pointer" : "default", transition: `flex-grow .32s ${EASE}, opacity .2s ease`, flex: `${zoom == null ? b.w : zoom === i ? 100 : 0.0001} 1 0`, background: col, color: ink, opacity: zoom == null || zoom === i ? 1 : 0 }}>
-              <div style={{ fontSize: 14, fontWeight: 700, whiteSpace: "nowrap" }}>{b.label}{b.next != null && !weekMode ? " ↘" : ""}</div>
-              <div><div className="cond" style={{ fontWeight: 800, fontSize: 34, whiteSpace: "nowrap" }}>{b.val}</div><div style={{ fontFamily: MONO, fontSize: 11, whiteSpace: "nowrap" }}>{b.sub}</div></div>
-            </div>
+            <Block key={b.label} {...(drillable ? { type: "button", className: "btn-plain", onClick: () => click(b, i), title: "Click to drill in" } : {})}
+              style={{ display: "flex", flexDirection: "column", justifyContent: "space-between", minWidth: zoom == null ? 136 : 0, minHeight: 132, overflow: "hidden", padding: 14, cursor: drillable ? "pointer" : "default", transition: `flex-grow .32s ${EASE}, opacity .2s ease`, flex: `${zoom == null ? b.w : zoom === i ? 100 : 0.0001} 1 0`, background: col, color: ink, opacity: zoom == null || zoom === i ? 1 : 0 }}>
+              <span style={{ display: "block", fontSize: 14, fontWeight: 700, lineHeight: 1.2 }}>{b.label}{drillable ? " ↘" : ""}</span>
+              <span style={{ display: "block" }}><span className="cond" style={{ display: "block", fontWeight: 800, fontSize: 34, whiteSpace: "nowrap" }}>{b.val}</span><span style={{ display: "block", fontFamily: MONO, fontSize: 11, lineHeight: 1.3 }}>{b.sub}</span></span>
+            </Block>
           );
         })}
       </div>
       {drags.length > 0 && (
         <div style={{ display: "flex", alignItems: "center", gap: 10, marginTop: 8, flexWrap: "wrap" }}>
           <span style={{ fontFamily: MONO, fontSize: 11, fontWeight: 700, whiteSpace: "nowrap" }}>DRAGS</span>
-          <div style={{ flex: 1, display: "flex", gap: 3, minWidth: 280, height: 40 }}>
-            {drags.map((d) => <div key={d.label} style={{ flex: `${d.w} 1 0`, minWidth: 0, display: "flex", alignItems: "center", padding: "0 12px", background: "repeating-linear-gradient(135deg,#E9E4EF 0 6px,#F6F3FA 6px 12px)", fontSize: 13, fontWeight: 700, whiteSpace: "nowrap", overflow: "hidden" }}>{d.label}</div>)}
+          <div style={{ flex: 1, display: "flex", flexWrap: "wrap", gap: 3, minWidth: 280, minHeight: 40 }}>
+            {drags.map((d) => <div key={d.label} style={{ flex: `${d.w} 1 0`, minWidth: 136, display: "flex", alignItems: "center", padding: "0 10px", background: "repeating-linear-gradient(135deg,#E9E4EF 0 6px,#F6F3FA 6px 12px)", fontSize: 13, fontWeight: 700, lineHeight: 1.15 }}>{d.label}</div>)}
           </div>
         </div>
       )}
@@ -435,7 +446,6 @@ function Drill() {
 
 function G3() {
   const u = useUrl();
-  const ptd = trailing(u.wk, "PTD");
   const gd = D.growth_drill;
   const tabby = gd.families.find((f: any) => f.family === "Tabby");
   const drag = [...gd.families].sort((a: any, b: any) => a.share_of_growth - b.share_of_growth)[0];
@@ -445,13 +455,13 @@ function G3() {
   return (
     <>
       <Kpis items={[
-        { label: `Demand · PTD W23–W${u.wk}`, value: fmtPct(ptd.sales.yoy_pct, true), delta: `${fmtMoney(ptd.sales.ty)} vs ${fmtMoney(ptd.sales.ly)}` },
-        { label: "Tabby share of growth · PTD W23–W30", value: fmtPct(tabby.share_of_growth, false, 0), delta: `demand ${fmtPct(tabby.sales_yoy_pct, true)}`, color: C.up },
+        { label: `Demand · PTD ${PTD_RANGE}`, value: fmtPct(gd.total.yoy_pct, true), delta: `${fmtMoney(gd.total.ty)} vs ${fmtMoney(gd.total.ly)}` },
+        { label: `Tabby share of growth · PTD ${PTD_RANGE}`, value: fmtPct(tabby.share_of_growth, false, 0), delta: `demand ${fmtPct(tabby.sales_yoy_pct, true)}`, color: C.up },
         { label: "Tabby + Pillow Tabby", value: fmtPct(gd.hero_share_of_growth, false, 0), delta: "of PTD growth" },
         { label: "Biggest drag · PTD", value: drag.family, delta: `${fmtPct(drag.share_of_growth, true, 0)} of growth · demand ${fmtPct(drag.sales_yoy_pct, true)}`, color: C.down },
       ]} />
       <Drill />
-      <Table title={`Family scorecard · ${isPtd ? "PTD W23–W30" : `${u.win} ending W${u.wk}`}`} note="Contribution = points of total YoY demand growth. Gen Z index: 100 = the family's average customer mix." initial={["contrib", -1]}
+      <Table title={`Family scorecard · ${isPtd ? `PTD ${PTD_RANGE}` : `${u.win} ending W${u.wk}`}`} note="Contribution = points of total YoY demand growth. Gen Z index: 100 = the family's average customer mix." initial={["contrib", -1]}
         rows={rows} highlight={(r) => ["Tabby", "Pillow Tabby"].includes(g(r, "STYLE_GROUP", "family"))}
         cols={[
           { key: "fam", label: "Family", cell: (r) => g(r, "STYLE_GROUP", "family") },
@@ -486,7 +496,7 @@ function G4() {
     <>
       <Kpis items={[
         { label: "Demand at risk · next 4 weeks", value: fmtMoney(R1.demand_at_risk_usd_sample), delta: `${fmtPct(R1.demand_at_risk_pct_of_next_4wk_demand)} of demand (R1)`, color: C.down },
-        { label: "Tabby replenishment cover · W24–W29", value: fmtPct(tabbyPos.receipts_to_sales_TY, false, 0), delta: `▼ LY ${fmtPct(tabbyPos.receipts_to_sales_LY, false, 0)} of units sold`, color: C.down },
+        { label: `Tabby replenishment cover · ${RECEIPT_WEEKS}`, value: fmtPct(tabbyPos.receipts_to_sales_TY, false, 0), delta: `▼ LY ${fmtPct(tabbyPos.receipts_to_sales_LY, false, 0)} of units sold`, color: C.down },
         { label: "Stock above median WOS", value: `${fmtNum(R2.excess_units)} units`, delta: `${fmtMoney(R2.excess_retail_value_usd_sample)} at retail (R2)` },
         { label: "Stock vs demand correlation", value: sh.corr_ty.toFixed(2), delta: `▼ LY ${sh.corr_ly.toFixed(2)}`, color: C.down },
       ]} />

@@ -87,7 +87,7 @@
    "severity": "critical",
    "rule_id": "WOS_LOW",
    "entity": "Pillow Tabby",
-   "message": "Pillow Tabby weeks of supply 1.8 (LY same week 5.1) — G3 winner / Gen Z gateway.",
+   "message": "Pillow Tabby weeks of supply 1.8 (LY same week 5.1); G3 winner and Gen Z gateway.",
    "values": {
     "wos": 1.8,
     "wos_ly_same_week": 5.12,
@@ -100,7 +100,7 @@
    "severity": "critical",
    "rule_id": "WOS_LOW",
    "entity": "Tabby",
-   "message": "Tabby weeks of supply 2.1 (LY same week 7.0) — G3 winner / Gen Z gateway.",
+   "message": "Tabby weeks of supply 2.1 (LY same week 7.0); G3 winner and Gen Z gateway.",
    "values": {
     "wos": 2.08,
     "wos_ly_same_week": 7.03,
@@ -139,7 +139,7 @@
    "severity": "warning",
    "rule_id": "GENZ_NEW_INSIDER_LOW",
    "entity": "genz",
-   "message": "L4W (W26–W29) Insider attach of new Gen Z 16.4% (< 20%).",
+   "message": "L4W (W26-W29) Insider attach of new Gen Z 16.4% (< 20%).",
    "values": {
     "genz_new_insider_rate_ty": 0.164286,
     "weeks": [

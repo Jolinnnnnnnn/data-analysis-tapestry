@@ -1,5 +1,5 @@
 import { BasisSwitch } from "./LikeForLike";
-import { C, CHECK_INFO, D, DEMOS, GOALS, MONO, dateWords, fmtNum, fmtPct, setUrl } from "../lib/core";
+import { C, CHECK_INFO, D, DEMOS, GOALS, MONO, PTD_RANGE, dateWords, fmtNum, fmtPct, setUrl } from "../lib/core";
 import { VOCAB } from "../lib/validator.js";
 import { TEMPLATES } from "../lib/ask/catalog";
 
@@ -39,8 +39,8 @@ export default function HowBuilt() {
       <section>
         <h2 className="cond" style={{ margin: "0 0 14px", fontWeight: 800, fontSize: 30 }}>Pipeline</h2>
         <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(150px,1fr))", gap: 4 }}>
-          {tile("01", "DATA", "Transactions + stock snapshots", `FY26 vs FY25, W23–W30 · ${fmtNum(c.lines_total)} lines`, C.charcoal)}
-          {tile("02", "METRICS", "metrics.json", "scripts 01–11 · ratios from totals", C.charcoal)}
+          {tile("01", "DATA", "Transactions + stock snapshots", `${D.meta.ty_label} vs ${D.meta.ly_label}, ${PTD_RANGE} · ${fmtNum(c.lines_total)} lines`, C.charcoal)}
+          {tile("02", "METRICS", "metrics.json", "scripts 01-11 · ratios from totals", C.charcoal)}
           {tile("03", "RULES", "anomalies.json", `12_anomalies.py · ${D.rules.length} thresholds · ${D.anomaly_meta.n_anomalies} alerts`, C.thistle, C.ink, C.body)}
           {tile("04", "AI WRITES", "From the week's facts only", `${b.model} · no new math, no new numbers`, GOALS[1].hue, "#fff", "#EFE6FA")}
           {tile("05", "VALIDATOR", "Every number → the fact it cites", `${CHECK_INFO.length} checks · one miss = held back, build fails`, C.sapphire, "#fff", "#E2ECFB")}
@@ -54,7 +54,7 @@ export default function HowBuilt() {
           Ask follows the same rule. Claude only picks one of {TEMPLATES.length} query templates and fills its parameters, as structured output against a fixed schema; it never sees or writes a data value.
           Code then checks that choice (the week exists, any product or region named can actually be filtered, any change the question takes for granted is true) and writes the answer from metrics.json.
           If Claude is unavailable, a keyword parser picks the template and the same checks run. {" "}
-          <span className="link" onClick={() => setUrl({ screen: "ask" }, true)} style={{ fontWeight: 700 }}>Try Ask →</span>
+          <button type="button" className="btn-plain link" onClick={() => setUrl({ screen: "ask" }, true)} style={{ fontWeight: 700 }}>Try Ask →</button>
         </p>
       </section>
 
@@ -73,7 +73,7 @@ export default function HowBuilt() {
                   <span style={{ fontFamily: MONO, fontSize: 11, color: C.muted, whiteSpace: "nowrap" }}>{fmtNum(b.checks_run[ck.id])} runs</span>
                 </div>
                 <p style={{ flex: 1, margin: "6px 0 0", fontSize: 13.5, lineHeight: 1.55, color: C.body }}>{ck.text}</p>
-                {demo && <span className="link" onClick={() => setUrl({ screen: "briefing", demo: demo.id }, true)} style={{ marginTop: 10, fontSize: 13, fontWeight: 700, color: C.crit }}>See it stop {demo.label.toLowerCase()} →</span>}
+                {demo && <button type="button" className="btn-plain link" onClick={() => setUrl({ screen: "briefing", demo: demo.id }, true)} style={{ alignSelf: "flex-start", marginTop: 10, fontSize: 13, fontWeight: 700, color: C.crit }}>See it stop {demo.label.toLowerCase()} →</button>}
               </div>
             );
           })}
@@ -94,7 +94,7 @@ export default function HowBuilt() {
         <div className="panel" style={{ padding: 24 }}><BasisSwitch /></div>
         <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(260px,1fr))", gap: 12, marginTop: 12 }}>
           {card("Stock stopped following demand.", `Family stock share and demand share correlated at ${sh.corr_ly.toFixed(2)} last year and ${sh.corr_ty.toFixed(2)} this year. Tabby is ${fmtPct(tabby.demand_share_ty)} of demand but ${fmtPct(tabby.stock_share_ty)} of stock.`)}
-          {card("No cohorts are possible.", `Every transaction is one line, and ${fmtNum(c.cust_ids_total)} customer IDs on ${fmtNum(c.lines_total)} lines repeat about as often as random IDs would (${dq.cust_id_repeat_surplus_observed} repeats vs ≈${dq.cust_id_repeat_surplus_expected_random.toFixed(1)} expected), so retention is a labelled proxy.`)}
+          {card("No cohorts are possible.", `Every transaction is one line, and ${fmtNum(c.cust_ids_total)} customer IDs on ${fmtNum(c.lines_total)} lines repeat about as often as random IDs would (${dq.cust_id_repeat_surplus_observed} repeats vs ≈${dq.cust_id_repeat_surplus_expected_random.toFixed(1)} expected), so retention is a labeled proxy.`)}
           {card("A snapshot from the future.", `TY sales stop on ${dateWords(dq.ty_last_sale_date)}, yet an end-of-week W${D.meta.partial_week} stock snapshot exists for every family. It's used as the latest position.`)}
         </div>
       </section>

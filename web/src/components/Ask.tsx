@@ -4,7 +4,7 @@ import { TEMPLATES, type Route } from "../lib/ask/catalog";
 import { parseQuestion, resolveRoute, runPlan, type Content, type Params } from "../lib/ask/engine";
 
 // Ask: Claude (via /api/ask) or, when it is unavailable, a keyword parser maps the question to ONE fixed query
-// template + parameters. Code checks that route (week range, named entities the template can't honour, premises
+// template + parameters. Code checks that route (week range, named entities the template can't honor, premises
 // the question takes for granted) and writes the answer from app.json. The model never sees or writes data values.
 
 type Source = { kind: "claude"; model: string } | { kind: "parser"; why: string };

@@ -263,7 +263,7 @@
     "title": "Gen Z share of new customers",
     "pill": "Pattern",
     "pill_rank": 2,
-    "meta": "Acquisition · Gen Z share of new · W23–W23",
+    "meta": "Acquisition · Gen Z share of new · W23-W23",
     "findings": [
      "F5"
     ],
@@ -398,7 +398,7 @@
     "title": "Gen Z acquisition and Tabby growth",
     "pill": "Win",
     "pill_rank": 3,
-    "meta": "Growth · PTD W23–W23 · L4W families",
+    "meta": "Growth · PTD W23-W23 · L4W families",
     "findings": [
      "F4",
      "F9"
@@ -408,7 +408,7 @@
     "ask_prefill": "Top 3 families by contribution in L4W for week 23",
     "chart": {
      "type": "bars",
-     "unit": "Gen Z new customers, PTD W23–W23 (sample)",
+     "unit": "Gen Z new customers, PTD W23-W23 (sample)",
      "rows": [
       {
        "label": "Gen Z new · LY",
@@ -971,9 +971,9 @@
      ]
     },
     "headline": "Returning customers are -2.7% YoY over W23-W24, and returning Gen Z is down to 36 from 51.",
-    "body": "Returning Gen Z is -29.4% and new Gen Z Insider attach is 16.3% vs 29.0% LY, so last year's Gen Z buyers aren't visibly coming back. Insider enrolment at the first purchase is the lever to test.",
+    "body": "Returning Gen Z is -29.4% and new Gen Z Insider attach is 16.3% vs 29.0% LY, so last year's Gen Z buyers aren't visibly coming back. Insider enrollment at the first purchase is the lever to test.",
     "headline_source": "Returning customers are {l4w_returning_yoy_pct|pct+} YoY over W23-W24, and returning Gen Z is down to {l4w_genz_returning_ty|int} from {l4w_genz_returning_ly|int}.",
-    "body_source": "Returning Gen Z is {l4w_genz_returning_yoy_pct|pct+} and new Gen Z Insider attach is {l4w_genz_new_insider_rate_ty|pct} vs {l4w_genz_new_insider_rate_ly|pct} LY, so last year's Gen Z buyers aren't visibly coming back. Insider enrolment at the first purchase is the lever to test.",
+    "body_source": "Returning Gen Z is {l4w_genz_returning_yoy_pct|pct+} and new Gen Z Insider attach is {l4w_genz_new_insider_rate_ty|pct} vs {l4w_genz_new_insider_rate_ly|pct} LY, so last year's Gen Z buyers aren't visibly coming back. Insider enrollment at the first purchase is the lever to test.",
     "citations": [
      {
       "start": 24,
@@ -1129,7 +1129,7 @@
     "title": "Gen Z share of new customers",
     "pill": "Pattern",
     "pill_rank": 2,
-    "meta": "Acquisition · Gen Z share of new · W23–W24",
+    "meta": "Acquisition · Gen Z share of new · W23-W24",
     "findings": [
      "F5"
     ],
@@ -1266,7 +1266,7 @@
     "title": "Gen Z acquisition and Tabby growth",
     "pill": "Win",
     "pill_rank": 3,
-    "meta": "Growth · PTD W23–W24 · L4W families",
+    "meta": "Growth · PTD W23-W24 · L4W families",
     "findings": [
      "F4",
      "F9"
@@ -1276,7 +1276,7 @@
     "ask_prefill": "Top 3 families by contribution in L4W for week 24",
     "chart": {
      "type": "bars",
-     "unit": "Gen Z new customers, PTD W23–W24 (sample)",
+     "unit": "Gen Z new customers, PTD W23-W24 (sample)",
      "rows": [
       {
        "label": "Gen Z new · LY",
@@ -2060,7 +2060,7 @@
     "title": "Gen Z share of new customers",
     "pill": "Pattern",
     "pill_rank": 2,
-    "meta": "Acquisition · Gen Z share of new · W23–W25",
+    "meta": "Acquisition · Gen Z share of new · W23-W25",
     "findings": [
      "F5"
     ],
@@ -2201,7 +2201,7 @@
     "title": "Gen Z acquisition and Tabby growth",
     "pill": "Win",
     "pill_rank": 3,
-    "meta": "Growth · PTD W23–W25 · L4W families",
+    "meta": "Growth · PTD W23-W25 · L4W families",
     "findings": [
      "F4",
      "F9"
@@ -2211,7 +2211,7 @@
     "ask_prefill": "Top 3 families by contribution in L4W for week 25",
     "chart": {
      "type": "bars",
-     "unit": "Gen Z new customers, PTD W23–W25 (sample)",
+     "unit": "Gen Z new customers, PTD W23-W25 (sample)",
      "rows": [
       {
        "label": "Gen Z new · LY",
@@ -3278,7 +3278,7 @@
     "title": "Gen Z share of new customers",
     "pill": "Pattern",
     "pill_rank": 2,
-    "meta": "Acquisition · Gen Z share of new · W23–W26",
+    "meta": "Acquisition · Gen Z share of new · W23-W26",
     "findings": [
      "F5"
     ],
@@ -3447,7 +3447,7 @@
     "title": "Gen Z acquisition and Tabby growth",
     "pill": "Win",
     "pill_rank": 3,
-    "meta": "Growth · PTD W23–W26 · L4W families",
+    "meta": "Growth · PTD W23-W26 · L4W families",
     "findings": [
      "F4",
      "F9"
@@ -3457,7 +3457,7 @@
     "ask_prefill": "Top 3 families by contribution in L4W for week 26",
     "chart": {
      "type": "bars",
-     "unit": "Gen Z new customers, PTD W23–W26 (sample)",
+     "unit": "Gen Z new customers, PTD W23-W26 (sample)",
      "rows": [
       {
        "label": "Gen Z new · LY",
@@ -4386,7 +4386,7 @@
     "title": "Gen Z share of new customers",
     "pill": "Pattern",
     "pill_rank": 2,
-    "meta": "Acquisition · Gen Z share of new · W23–W27",
+    "meta": "Acquisition · Gen Z share of new · W23-W27",
     "findings": [
      "F5"
     ],
@@ -4558,7 +4558,7 @@
     "title": "Gen Z acquisition and Tabby growth",
     "pill": "Win",
     "pill_rank": 3,
-    "meta": "Growth · PTD W23–W27 · L4W families",
+    "meta": "Growth · PTD W23-W27 · L4W families",
     "findings": [
      "F4",
      "F9"
@@ -4568,7 +4568,7 @@
     "ask_prefill": "Top 3 families by contribution in L4W for week 27",
     "chart": {
      "type": "bars",
-     "unit": "Gen Z new customers, PTD W23–W27 (sample)",
+     "unit": "Gen Z new customers, PTD W23-W27 (sample)",
      "rows": [
       {
        "label": "Gen Z new · LY",
@@ -5541,7 +5541,7 @@
     "title": "Gen Z share of new customers",
     "pill": "Pattern",
     "pill_rank": 2,
-    "meta": "Acquisition · Gen Z share of new · W23–W28",
+    "meta": "Acquisition · Gen Z share of new · W23-W28",
     "findings": [
      "F5"
     ],
@@ -5718,7 +5718,7 @@
     "title": "Gen Z acquisition and Tabby growth",
     "pill": "Win",
     "pill_rank": 3,
-    "meta": "Growth · PTD W23–W28 · L4W families",
+    "meta": "Growth · PTD W23-W28 · L4W families",
     "findings": [
      "F4",
      "F9"
@@ -5730,7 +5730,7 @@
     "ask_prefill": "Top 3 families by contribution in L4W for week 28",
     "chart": {
      "type": "bars",
-     "unit": "Gen Z new customers, PTD W23–W28 (sample)",
+     "unit": "Gen Z new customers, PTD W23-W28 (sample)",
      "rows": [
       {
        "label": "Gen Z new · LY",
@@ -6599,9 +6599,9 @@
      ]
     },
     "headline": "Only 16.4% of new Gen Z joined Insider over L4W, the gap behind a flat returning base.",
-    "body": "Period-to-date returning customers are 1,142 vs 1,142 LY; returning Gen Z is -6.5%, even though L4W returning customers improved (+3.8%). The gap shows in Outlet (9.7% vs 23.1%) and Greater China (5.1% vs 21.7%), new Gen Z vs other new customers. Enrol at the first Gen Z purchase: a 10% lift in returning Gen Z, worth about 0.85% of demand (R3).",
+    "body": "Period-to-date returning customers are 1,142 vs 1,142 LY; returning Gen Z is -6.5%, even though L4W returning customers improved (+3.8%). The gap shows in Outlet (9.7% vs 23.1%) and Greater China (5.1% vs 21.7%), new Gen Z vs other new customers. Enroll at the first Gen Z purchase: a 10% lift in returning Gen Z, worth about 0.85% of demand (R3).",
     "headline_source": "Only {l4w_genz_new_insider_rate_ty|pct} of new Gen Z joined Insider over L4W, the gap behind a flat returning base.",
-    "body_source": "Period-to-date returning customers are {ptd_returning_ty|int} vs {ptd_returning_ly|int} LY; returning Gen Z is {ptd_genz_returning_yoy_pct|pct+}, even though L4W returning customers improved ({l4w_returning_yoy_pct|pct+}). The gap shows in Outlet ({outlet_genz_new_insider_rate|pct} vs {outlet_other_new_insider_rate|pct}) and Greater China ({greater_china_genz_new_insider_rate|pct} vs {greater_china_other_new_insider_rate|pct}), new Gen Z vs other new customers. Enrol at the first Gen Z purchase: a {r3_returning_genz_lift|pct0} lift in returning Gen Z, worth about {r3_pct_of_ty_demand|pct2} of demand (R3).",
+    "body_source": "Period-to-date returning customers are {ptd_returning_ty|int} vs {ptd_returning_ly|int} LY; returning Gen Z is {ptd_genz_returning_yoy_pct|pct+}, even though L4W returning customers improved ({l4w_returning_yoy_pct|pct+}). The gap shows in Outlet ({outlet_genz_new_insider_rate|pct} vs {outlet_other_new_insider_rate|pct}) and Greater China ({greater_china_genz_new_insider_rate|pct} vs {greater_china_other_new_insider_rate|pct}), new Gen Z vs other new customers. Enroll at the first Gen Z purchase: a {r3_returning_genz_lift|pct0} lift in returning Gen Z, worth about {r3_pct_of_ty_demand|pct2} of demand (R3).",
     "citations": [
      {
       "start": 5,
@@ -6667,15 +6667,15 @@
       "value": 0.217391
      },
      {
-      "start": 371,
-      "end": 374,
+      "start": 372,
+      "end": 375,
       "key": "r3_returning_genz_lift",
       "fmt": "pct0",
       "value": 0.1
      },
      {
-      "start": 412,
-      "end": 417,
+      "start": 413,
+      "end": 418,
       "key": "r3_pct_of_ty_demand",
       "fmt": "pct2",
       "value": 0.0085
@@ -6858,7 +6858,7 @@
     "title": "Gen Z share of new customers",
     "pill": "Pattern",
     "pill_rank": 2,
-    "meta": "Acquisition · Gen Z share of new · W23–W29",
+    "meta": "Acquisition · Gen Z share of new · W23-W29",
     "findings": [
      "F5"
     ],
@@ -7040,7 +7040,7 @@
     "title": "Gen Z acquisition and Tabby growth",
     "pill": "Win",
     "pill_rank": 3,
-    "meta": "Growth · PTD W23–W29 · L4W families",
+    "meta": "Growth · PTD W23-W29 · L4W families",
     "findings": [
      "F4",
      "F9"
@@ -7050,7 +7050,7 @@
     "ask_prefill": "Top 3 families by contribution in L4W for week 29",
     "chart": {
      "type": "bars",
-     "unit": "Gen Z new customers, PTD W23–W29 (sample)",
+     "unit": "Gen Z new customers, PTD W23-W29 (sample)",
      "rows": [
       {
        "label": "Gen Z new · LY",
@@ -7959,9 +7959,9 @@
      ]
     },
     "headline": "Insider attach of new Gen Z is 15.5% over L4W, against 23.4% for new Millennials.",
-    "body": "Period-to-date returning customers are flat at 1,239 vs 1,236 LY; returning Gen Z is -3.1%. The gap sits in Outlet (9.7% vs 23.1%), eComm (12.7% vs 19.2%) and Greater China (5.1% vs 21.7%), so start Insider enrolment there (R3).",
+    "body": "Period-to-date returning customers are flat at 1,239 vs 1,236 LY; returning Gen Z is -3.1%. The gap sits in Outlet (9.7% vs 23.1%), eComm (12.7% vs 19.2%) and Greater China (5.1% vs 21.7%), so start Insider enrollment there (R3).",
     "headline_source": "Insider attach of new Gen Z is {l4w_genz_new_insider_rate_ty|pct} over L4W, against {millennial_new_insider_rate|pct} for new Millennials.",
-    "body_source": "Period-to-date returning customers are flat at {ptd_returning_ty|int} vs {ptd_returning_ly|int} LY; returning Gen Z is {ptd_genz_returning_yoy_pct|pct+}. The gap sits in Outlet ({outlet_genz_new_insider_rate|pct} vs {outlet_other_new_insider_rate|pct}), eComm ({ecomm_genz_new_insider_rate|pct} vs {ecomm_other_new_insider_rate|pct}) and Greater China ({greater_china_genz_new_insider_rate|pct} vs {greater_china_other_new_insider_rate|pct}), so start Insider enrolment there (R3).",
+    "body_source": "Period-to-date returning customers are flat at {ptd_returning_ty|int} vs {ptd_returning_ly|int} LY; returning Gen Z is {ptd_genz_returning_yoy_pct|pct+}. The gap sits in Outlet ({outlet_genz_new_insider_rate|pct} vs {outlet_other_new_insider_rate|pct}), eComm ({ecomm_genz_new_insider_rate|pct} vs {ecomm_other_new_insider_rate|pct}) and Greater China ({greater_china_genz_new_insider_rate|pct} vs {greater_china_other_new_insider_rate|pct}), so start Insider enrollment there (R3).",
     "citations": [
      {
       "start": 31,
@@ -8215,7 +8215,7 @@
     "title": "Gen Z share of new customers",
     "pill": "Pattern",
     "pill_rank": 2,
-    "meta": "Acquisition · Gen Z share of new · W23–W30",
+    "meta": "Acquisition · Gen Z share of new · W23-W30",
     "findings": [
      "F5"
     ],
@@ -8405,7 +8405,7 @@
     "title": "Gen Z acquisition and Tabby growth",
     "pill": "Win",
     "pill_rank": 3,
-    "meta": "Growth · PTD W23–W30 · L4W families",
+    "meta": "Growth · PTD W23-W30 · L4W families",
     "findings": [
      "F4",
      "F9"
@@ -8417,7 +8417,7 @@
     "ask_prefill": "Top 3 families by contribution in L4W for week 30",
     "chart": {
      "type": "bars",
-     "unit": "Gen Z new customers, PTD W23–W30 (sample)",
+     "unit": "Gen Z new customers, PTD W23-W30 (sample)",
      "rows": [
       {
        "label": "Gen Z new · LY",

@@ -3,69 +3,69 @@
  "summaries": {
   "23": {
    "source": "Retention warnings open the period. Returning customers were flat at {anomalies[2].values.returning_ty|int} vs {anomalies[2].values.returning_ly|int} LY, returning Gen Z fell to {anomalies[1].values.genz_returning_ty|int} from {anomalies[1].values.genz_returning_ly|int} ({anomalies[1].values.genz_returning_yoy_pct|pct+}), and only {l4w_genz_new_insider_rate_ty|pct} of new Gen Z joined Insider. W23 is the first week in the extract, so L4W and period-to-date equal this one week and the inventory rules stay off until the 4-week window fills. Demand grew {l1w_sales_yoy_pct|pct+} YoY to {l1w_sales_ty|money_k} (LY {l1w_sales_ly|money_k}), with transactions {l1w_txns_yoy_pct|pct+} and AOV {l1w_aov_yoy_pct|pct+} at {l1w_aov_ty|money2}. Gen Z new customers were {l1w_genz_new_ty|int} vs {l1w_genz_new_ly|int} LY ({l1w_genz_new_yoy_pct|pct+}), a {l1w_genz_share_of_new_ty|pct} share of all new customers vs {l1w_genz_share_of_new_ly|pct} last year. Tabby led L4W growth: demand {l4w_top_families_by_contrib[0].sales_yoy_pct|pct+} YoY and contribution {l4w_top_families_by_contrib[0].contrib_pts|pts+}, while Trench was the largest drag at {l4w_bottom_families_by_contrib[0].contrib_pts|pts+} ({l4w_bottom_families_by_contrib[0].sales_yoy_pct|pct+}). Trench also shows {highest_wos_families[0].wos|wos} weeks of supply on a one-week sales window, a watch item rather than an alert.",
-   "facts_md5": "fe044ca9d30a38ea00589a0ffed9fc38"
+   "facts_md5": "59ba28c9d49eb641c5674a1238f1a3f3"
   },
   "24": {
    "source": "Transactions fell {l1w_txns_yoy_pct|pct_abs} YoY in W24, but demand still grew {l1w_sales_yoy_pct|pct+} to {l1w_sales_ty|money_k} because AOV rose {l1w_aov_yoy_pct|pct+} to {l1w_aov_ty|money2}, so this was a basket week, not a traffic week. The retention proxies stayed weak over W23-W24: returning customers {l4w_returning_yoy_pct|pct+}, returning Gen Z {anomalies[1].values.genz_returning_ty|int} vs {anomalies[1].values.genz_returning_ly|int} LY ({anomalies[1].values.genz_returning_yoy_pct|pct+}), and only {l4w_genz_new_insider_rate_ty|pct} of new Gen Z joined Insider. Gen Z new customers were {l1w_genz_new_ty|int} vs {l1w_genz_new_ly|int} LY ({l1w_genz_new_yoy_pct|pct+}), a {l1w_genz_share_of_new_ty|pct} share of new customers vs {l1w_genz_share_of_new_ly|pct} last year. Demand is {l1w_sales_wow_pct|pct+} WoW; period-to-date it is {ptd_sales_yoy_pct|pct+} YoY. Tabby added {l4w_top_families_by_contrib[0].contrib_pts|pts+} of L4W contribution (demand {l4w_top_families_by_contrib[0].sales_yoy_pct|pct+}), while Tailored Jacket was the largest drag (contribution {l4w_bottom_families_by_contrib[0].contrib_pts|pts+}, demand {l4w_bottom_families_by_contrib[0].sales_yoy_pct|pct+}); it also holds {highest_wos_families[0].wos|wos} weeks of supply. Tabby cover is down to {lowest_wos_families[0].wos|wos} weeks vs {lowest_wos_families[0].wos_ly_same_week|wos} LY on a sales window that is still truncated, so no stock rule fires yet.",
-   "facts_md5": "d78fd65fbd1f28a71d7bdf7293606c7f"
+   "facts_md5": "a3018428e371f11cf4461219b5cd7f2e"
   },
   "25": {
    "source": "Demand fell {l1w_sales_wow_pct|pct_abs} WoW in W25, and this time it is traffic: transactions {anomalies[3].values.txns_wow_pct|pct+} WoW while AOV slipped only {anomalies[3].values.aov_wow_pct|pct+}. Against last year the week still grew {l1w_sales_yoy_pct|pct+} ({l1w_sales_ty|money_k} vs {l1w_sales_ly|money_k} LY), and period-to-date demand is {ptd_sales_yoy_pct|pct+}. Retention proxies remain the weak spot over W23-W25: returning customers {l4w_returning_yoy_pct|pct+} ({anomalies[2].values.returning_ty|int} vs {anomalies[2].values.returning_ly|int} LY), returning Gen Z {anomalies[1].values.genz_returning_ty|int} vs {anomalies[1].values.genz_returning_ly|int} LY ({anomalies[1].values.genz_returning_yoy_pct|pct+}), and new Gen Z Insider attach {l4w_genz_new_insider_rate_ty|pct}. Acquisition is the bright spot: {l1w_genz_new_ty|int} Gen Z new customers vs {l1w_genz_new_ly|int} LY ({l1w_genz_new_yoy_pct|pct+}), a {l1w_genz_share_of_new_ty|pct} share of all new customers vs {l1w_genz_share_of_new_ly|pct} LY. Tabby (L4W contribution {l4w_top_families_by_contrib[0].contrib_pts|pts+}, demand {l4w_top_families_by_contrib[0].sales_yoy_pct|pct+}) and Pillow Tabby (L4W contribution {l4w_top_families_by_contrib[1].contrib_pts|pts+}, demand {l4w_top_families_by_contrib[1].sales_yoy_pct|pct+}) carry the growth, while Tailored Jacket L4W demand is {l4w_bottom_families_by_contrib[0].sales_yoy_pct|pct+}. Tabby cover is already {lowest_wos_families[0].wos|wos} weeks vs {lowest_wos_families[0].wos_ly_same_week|wos} LY, though the window is still truncated, so there is no stock alert yet.",
-   "facts_md5": "b50e5a2bf7b3b111070577d30cec5752"
+   "facts_md5": "ba6859398972e098ec948ddb18299163"
   },
   "26": {
    "source": "W26 is the first week the inventory rules can fire, and Tabby already has {lowest_wos_families[0].wos|wos} weeks of supply vs {lowest_wos_families[0].wos_ly_same_week|wos} last year. At the other end, Tailored Jacket holds {highest_wos_families[0].wos|wos} weeks vs {highest_wos_families[0].wos_ly_same_week|wos} LY and Trench {highest_wos_families[1].wos|wos} vs {highest_wos_families[1].wos_ly_same_week|wos} LY, while L4W demand fell at Tailored Jacket ({anomalies[2].values.sales_yoy_pct|pct+}), Knit Dress ({anomalies[0].values.sales_yoy_pct|pct+}) and Loafer ({anomalies[1].values.sales_yoy_pct|pct+}). Demand was {l1w_sales_yoy_pct|pct+} YoY at {l1w_sales_ty|money_k}; WoW it rose {l1w_sales_wow_pct|pct+}, a rebound driven by traffic (transactions {anomalies[6].values.txns_wow_pct|pct+} WoW, AOV {anomalies[6].values.aov_wow_pct|pct+}). L4W demand is {l4w_sales_yoy_pct|pct+}. Gen Z new customers were {l1w_genz_new_ty|int} vs {l1w_genz_new_ly|int} LY ({l1w_genz_new_yoy_pct|pct+}), a {l1w_genz_share_of_new_ty|pct} share of new customers vs {l1w_genz_share_of_new_ly|pct} LY, and {l4w_genz_new_ty|int} vs {l4w_genz_new_ly|int} LY over L4W ({l4w_genz_new_yoy_pct|pct+}). Retention proxies are still negative: returning customers {l4w_returning_yoy_pct|pct+} ({anomalies[5].values.returning_ty|int} vs {anomalies[5].values.returning_ly|int} LY), returning Gen Z {anomalies[4].values.genz_returning_ty|int} vs {anomalies[4].values.genz_returning_ly|int} LY ({anomalies[4].values.genz_returning_yoy_pct|pct+}), and new Gen Z Insider attach {l4w_genz_new_insider_rate_ty|pct}.",
-   "facts_md5": "7f956452a33d0a6ab3ec09ffe6d2e33b"
+   "facts_md5": "53921989e2e37c585a08328ca49dd9a4"
   },
   "27": {
    "source": "In W27 Tabby's cover kept shrinking to {lowest_wos_families[0].wos|wos} weeks of supply vs {lowest_wos_families[0].wos_ly_same_week|wos} LY, and Pillow Tabby is next lowest at {lowest_wos_families[1].wos|wos} vs {lowest_wos_families[1].wos_ly_same_week|wos} LY. Demand grew {l1w_sales_yoy_pct|pct+} YoY to {l1w_sales_ty|money_k}, with transactions {l1w_txns_yoy_pct|pct+} doing the work and AOV {l1w_aov_yoy_pct|pct+}. Gen Z new customers reached {l1w_genz_new_ty|int} vs {l1w_genz_new_ly|int} LY ({l1w_genz_new_yoy_pct|pct+}), a {l1w_genz_share_of_new_ty|pct} share of new customers vs {l1w_genz_share_of_new_ly|pct} LY; over L4W it is {l4w_genz_new_ty|int} vs {l4w_genz_new_ly|int} LY ({l4w_genz_new_yoy_pct|pct+}). Halo is the drag: over L4W Rogue is {anomalies[2].values.sales_yoy_pct|pct+}, Tailored Jacket {anomalies[3].values.sales_yoy_pct|pct+}, Knit Dress {anomalies[0].values.sales_yoy_pct|pct+} and Loafer {anomalies[1].values.sales_yoy_pct|pct+}, while Tailored Jacket still holds {highest_wos_families[0].wos|wos} weeks of supply and Trench {highest_wos_families[1].wos|wos}. Retention stays flat: returning customers {anomalies[6].values.returning_ty|int} vs {anomalies[6].values.returning_ly|int} LY, returning Gen Z {anomalies[5].values.genz_returning_ty|int} vs {anomalies[5].values.genz_returning_ly|int} LY ({anomalies[5].values.genz_returning_yoy_pct|pct+}), and new Gen Z Insider attach {l4w_genz_new_insider_rate_ty|pct}. L4W demand is {l4w_sales_yoy_pct|pct+} and period-to-date {ptd_sales_yoy_pct|pct+}.",
-   "facts_md5": "2a98d9ed2d43e369ac4db61c14decf86"
+   "facts_md5": "ccfa544502e9da76913645eae15efd2b"
   },
   "28": {
    "source": "Critical stock: Tabby is down to {lowest_wos_families[0].wos|wos} weeks of supply vs {lowest_wos_families[0].wos_ly_same_week|wos} LY and Pillow Tabby to {lowest_wos_families[1].wos|wos} vs {lowest_wos_families[1].wos_ly_same_week|wos} LY. On hand: Tabby {anomalies[1].values.on_hand_eow|int} units, Pillow Tabby {anomalies[0].values.on_hand_eow|int}. Both are G3 winners and Gen Z gateways, so a stock-out would cap growth. Demand jumped {l1w_sales_yoy_pct|pct+} YoY to {l1w_sales_ty|money_k} and {l1w_sales_wow_pct|pct+} WoW, but mostly on basket: AOV {l1w_aov_yoy_pct|pct+} at {l1w_aov_ty|money2} vs {anomalies[13].values.aov_ly|money2} LY, transactions {l1w_txns_yoy_pct|pct+}. Gen Z new customers were {l1w_genz_new_ty|int} vs {l1w_genz_new_ly|int} LY ({l1w_genz_new_yoy_pct|pct+}), a {l1w_genz_share_of_new_ty|pct} share of new customers vs {l1w_genz_share_of_new_ly|pct} LY. Over L4W, Rogue demand is {anomalies[4].values.sales_yoy_pct|pct+}, Knit Dress {anomalies[2].values.sales_yoy_pct|pct+} and Loafer {anomalies[3].values.sales_yoy_pct|pct+}, and Knit Dress sits on {highest_wos_families[0].wos|wos} weeks of supply vs {highest_wos_families[0].wos_ly_same_week|wos} LY. Retention: returning customers {l4w_returning_yoy_pct|pct+} ({anomalies[7].values.returning_ty|int} vs {anomalies[7].values.returning_ly|int} LY), returning Gen Z {anomalies[6].values.genz_returning_ty|int} vs {anomalies[6].values.genz_returning_ly|int} LY ({anomalies[6].values.genz_returning_yoy_pct|pct+}), and new Gen Z Insider attach {l4w_genz_new_insider_rate_ty|pct}.",
-   "facts_md5": "f8ebffb1550ea203e006f77d00f130f3"
+   "facts_md5": "ec3db0e07fbd5990df1bf42843c2afa2"
   },
   "29": {
    "source": "Pillow Tabby is down to {lowest_wos_families[0].wos|wos} weeks of supply vs {lowest_wos_families[0].wos_ly_same_week|wos} LY and Tabby to {lowest_wos_families[1].wos|wos} vs {lowest_wos_families[1].wos_ly_same_week|wos} LY. Pillow Tabby has only {anomalies[0].values.on_hand_eow|int} units left and Tabby {anomalies[1].values.on_hand_eow|int}. Tabby and Pillow Tabby are L4W growth leaders, so stock is the decision this week. Demand was {l1w_sales_yoy_pct|pct+} YoY ({l1w_sales_ty|money_k} vs {l1w_sales_ly|money_k} LY) on transactions {l1w_txns_yoy_pct|pct+}. The {l1w_sales_wow_pct|pct+} WoW drop in demand is basket, not traffic: transactions {anomalies[5].values.txns_wow_pct|pct+} WoW and AOV {anomalies[5].values.aov_wow_pct|pct+} after the W28 spike. L4W demand is {l4w_sales_yoy_pct|pct+} and period-to-date {ptd_sales_yoy_pct|pct+}. Gen Z new customers were {l1w_genz_new_ty|int} vs {l1w_genz_new_ly|int} LY ({l1w_genz_new_yoy_pct|pct+}), a {l1w_genz_share_of_new_ty|pct} share of new customers vs {l1w_genz_share_of_new_ly|pct} LY, and {l4w_genz_new_ty|int} vs {l4w_genz_new_ly|int} LY over L4W ({l4w_genz_new_yoy_pct|pct+}). But only {l4w_genz_new_insider_rate_ty|pct} of new Gen Z joined Insider over L4W. Halo apparel is the drag: Knit Dress {l4w_bottom_families_by_contrib[1].sales_yoy_pct|pct+} and Rogue {l4w_bottom_families_by_contrib[0].sales_yoy_pct|pct+} over L4W, with Knit Dress holding {highest_wos_families[0].wos|wos} weeks of supply.",
-   "facts_md5": "eaaee235eddaf9cbf51b9ef6621a5fd8"
+   "facts_md5": "a4745236cb0c49c714359437220ce8d0"
   },
   "30": {
    "source": "Replenishment has stopped following demand: over W24-W29 Tabby received stock equal to {anomalies[1].values.receipts_to_sales_TY|pct0} of units sold, LY {anomalies[1].values.receipts_to_sales_LY|pct0}, and Pillow Tabby {anomalies[0].values.receipts_to_sales_TY|pct0}, LY {anomalies[0].values.receipts_to_sales_LY|pct0}. The latest snapshot shows Tabby at {lowest_wos_families[1].wos|wos} weeks of supply vs {lowest_wos_families[1].wos_ly_same_week|wos} LY, with {anomalies[3].values.on_hand_eow|int} units left; Pillow Tabby is at {lowest_wos_families[0].wos|wos} vs {lowest_wos_families[0].wos_ly_same_week|wos} LY, with {anomalies[2].values.on_hand_eow|int}. W30 is a partial week (Sun-Wed, {days_in_week|int} days), compared with the same days last year: demand {l1w_sales_yoy_pct|pct+} YoY ({l1w_sales_ty|money_k} vs {l1w_sales_ly|money_k} LY), transactions {l1w_txns_yoy_pct|pct+}, AOV {l1w_aov_yoy_pct|pct+}. Gen Z took {l1w_genz_share_of_new_ty|pct} of new customers ({l1w_genz_new_ty|int} vs {l1w_genz_new_ly|int} LY), and L4W Gen Z new customers were {l4w_genz_new_ty|int} vs {l4w_genz_new_ly|int} LY ({l4w_genz_new_yoy_pct|pct+}). Only {l4w_genz_new_insider_rate_ty|pct} of new Gen Z joined Insider over L4W. Knit Dress ({highest_wos_families[0].wos|wos} weeks of supply, L4W demand {l4w_bottom_families_by_contrib[0].sales_yoy_pct|pct+}) and Trench ({highest_wos_families[1].wos|wos} weeks of supply) carry the overstock. Like-for-like period-to-date demand is {ptd_sales_yoy_pct|pct+}.",
-   "facts_md5": "ab4f8311ede2fe73946b09c5bb72ebd7"
+   "facts_md5": "790fdfb19b2cb841ab96400b268efc75"
   }
  },
  "headlines": {
   "23": {
    "source": "W23 demand {l1w_sales_ty|money_k}, {l1w_sales_yoy_pct|pct+} YoY. Retention warnings open the period.",
-   "facts_md5": "fe044ca9d30a38ea00589a0ffed9fc38"
+   "facts_md5": "59ba28c9d49eb641c5674a1238f1a3f3"
   },
   "24": {
    "source": "W24 demand {l1w_sales_ty|money_k}, {l1w_sales_yoy_pct|pct+} YoY, on bigger baskets while transactions fell {l1w_txns_yoy_pct|pct_abs}.",
-   "facts_md5": "d78fd65fbd1f28a71d7bdf7293606c7f"
+   "facts_md5": "a3018428e371f11cf4461219b5cd7f2e"
   },
   "25": {
    "source": "W25 demand {l1w_sales_ty|money_k}, {l1w_sales_yoy_pct|pct+} YoY, but demand is down {l1w_sales_wow_pct|pct_abs} WoW as traffic dipped.",
-   "facts_md5": "b50e5a2bf7b3b111070577d30cec5752"
+   "facts_md5": "ba6859398972e098ec948ddb18299163"
   },
   "26": {
    "source": "W26 demand {l1w_sales_ty|money_k}, {l1w_sales_yoy_pct|pct+} YoY. Tabby's cover drops to {lowest_wos_families[0].wos|wos} weeks vs {lowest_wos_families[0].wos_ly_same_week|wos} LY.",
-   "facts_md5": "7f956452a33d0a6ab3ec09ffe6d2e33b"
+   "facts_md5": "53921989e2e37c585a08328ca49dd9a4"
   },
   "27": {
    "source": "W27 demand {l1w_sales_ty|money_k}, {l1w_sales_yoy_pct|pct+} YoY. Gen Z takes {l1w_genz_share_of_new_ty|pct} of new customers.",
-   "facts_md5": "2a98d9ed2d43e369ac4db61c14decf86"
+   "facts_md5": "ccfa544502e9da76913645eae15efd2b"
   },
   "28": {
    "source": "W28 demand {l1w_sales_ty|money_k}, {l1w_sales_yoy_pct|pct+} YoY. Critical stock alerts on Tabby and Pillow Tabby.",
-   "facts_md5": "f8ebffb1550ea203e006f77d00f130f3"
+   "facts_md5": "ec3db0e07fbd5990df1bf42843c2afa2"
   },
   "29": {
    "source": "W29 demand {l1w_sales_ty|money_k}, {l1w_sales_yoy_pct|pct+} YoY. Critical stock alerts on the Tabby franchise.",
-   "facts_md5": "eaaee235eddaf9cbf51b9ef6621a5fd8"
+   "facts_md5": "a4745236cb0c49c714359437220ce8d0"
   },
   "30": {
    "source": "W30 so far, {days_in_week|int} days like-for-like: demand {l1w_sales_ty|money_k}, {l1w_sales_yoy_pct|pct+} YoY. Tabby replenishment is at {anomalies[1].values.receipts_to_sales_TY|pct0} of sales.",
-   "facts_md5": "ab4f8311ede2fe73946b09c5bb72ebd7"
+   "facts_md5": "790fdfb19b2cb841ab96400b268efc75"
   }
  },
  "cards": {
@@ -104,7 +104,7 @@
    },
    "retention": {
     "headline": "Returning customers are {l4w_returning_yoy_pct|pct+} YoY over W23-W24, and returning Gen Z is down to {l4w_genz_returning_ty|int} from {l4w_genz_returning_ly|int}.",
-    "body": "Returning Gen Z is {l4w_genz_returning_yoy_pct|pct+} and new Gen Z Insider attach is {l4w_genz_new_insider_rate_ty|pct} vs {l4w_genz_new_insider_rate_ly|pct} LY, so last year's Gen Z buyers aren't visibly coming back. Insider enrolment at the first purchase is the lever to test.",
+    "body": "Returning Gen Z is {l4w_genz_returning_yoy_pct|pct+} and new Gen Z Insider attach is {l4w_genz_new_insider_rate_ty|pct} vs {l4w_genz_new_insider_rate_ly|pct} LY, so last year's Gen Z buyers aren't visibly coming back. Insider enrollment at the first purchase is the lever to test.",
     "facts_md5": "9a777361593ab3721b7ca8d4fd7bd6a6"
    },
    "pattern": {
@@ -239,7 +239,7 @@
    },
    "retention": {
     "headline": "Only {l4w_genz_new_insider_rate_ty|pct} of new Gen Z joined Insider over L4W, the gap behind a flat returning base.",
-    "body": "Period-to-date returning customers are {ptd_returning_ty|int} vs {ptd_returning_ly|int} LY; returning Gen Z is {ptd_genz_returning_yoy_pct|pct+}, even though L4W returning customers improved ({l4w_returning_yoy_pct|pct+}). The gap shows in Outlet ({outlet_genz_new_insider_rate|pct} vs {outlet_other_new_insider_rate|pct}) and Greater China ({greater_china_genz_new_insider_rate|pct} vs {greater_china_other_new_insider_rate|pct}), new Gen Z vs other new customers. Enrol at the first Gen Z purchase: a {r3_returning_genz_lift|pct0} lift in returning Gen Z, worth about {r3_pct_of_ty_demand|pct2} of demand (R3).",
+    "body": "Period-to-date returning customers are {ptd_returning_ty|int} vs {ptd_returning_ly|int} LY; returning Gen Z is {ptd_genz_returning_yoy_pct|pct+}, even though L4W returning customers improved ({l4w_returning_yoy_pct|pct+}). The gap shows in Outlet ({outlet_genz_new_insider_rate|pct} vs {outlet_other_new_insider_rate|pct}) and Greater China ({greater_china_genz_new_insider_rate|pct} vs {greater_china_other_new_insider_rate|pct}), new Gen Z vs other new customers. Enroll at the first Gen Z purchase: a {r3_returning_genz_lift|pct0} lift in returning Gen Z, worth about {r3_pct_of_ty_demand|pct2} of demand (R3).",
     "facts_md5": "a3461b82462628f5ff19f56ec29c009f"
    },
    "pattern": {
@@ -266,7 +266,7 @@
    },
    "retention": {
     "headline": "Insider attach of new Gen Z is {l4w_genz_new_insider_rate_ty|pct} over L4W, against {millennial_new_insider_rate|pct} for new Millennials.",
-    "body": "Period-to-date returning customers are flat at {ptd_returning_ty|int} vs {ptd_returning_ly|int} LY; returning Gen Z is {ptd_genz_returning_yoy_pct|pct+}. The gap sits in Outlet ({outlet_genz_new_insider_rate|pct} vs {outlet_other_new_insider_rate|pct}), eComm ({ecomm_genz_new_insider_rate|pct} vs {ecomm_other_new_insider_rate|pct}) and Greater China ({greater_china_genz_new_insider_rate|pct} vs {greater_china_other_new_insider_rate|pct}), so start Insider enrolment there (R3).",
+    "body": "Period-to-date returning customers are flat at {ptd_returning_ty|int} vs {ptd_returning_ly|int} LY; returning Gen Z is {ptd_genz_returning_yoy_pct|pct+}. The gap sits in Outlet ({outlet_genz_new_insider_rate|pct} vs {outlet_other_new_insider_rate|pct}), eComm ({ecomm_genz_new_insider_rate|pct} vs {ecomm_other_new_insider_rate|pct}) and Greater China ({greater_china_genz_new_insider_rate|pct} vs {greater_china_other_new_insider_rate|pct}), so start Insider enrollment there (R3).",
     "facts_md5": "9500206cb68124bf41005b51d7e6d60a"
    },
    "pattern": {

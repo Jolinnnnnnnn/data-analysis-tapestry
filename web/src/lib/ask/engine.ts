@@ -1,14 +1,13 @@
 // Ask engine: route -> checks -> answer. The route comes from Claude (api/ask.ts) or, offline, from the keyword
 // parser below; both have the same shape, so the same checks run on either. Code, not the model, decides whether
-// a route can be honoured, checks any premise the question takes for granted, and writes every number.
-import { D, PARTIAL, SEGMENT_NAME, WEEKS, alertsFor, anomaly, fmtMoney, fmtNum, fmtPct, fmtPts, fmtWos, ruleById, trailing, weekAI } from "../core";
+// a route can be honored, checks any premise the question takes for granted, and writes every number.
+import { D, FIRST_FULL_L4W, PARTIAL, SEGMENT_NAME, WEEKS, alertsFor, anomaly, fmtMoney, fmtNum, fmtPct, fmtPts, fmtWos, ruleById, trailing, weekAI } from "../core";
 import { extractNumbers, validateText } from "../validator.js";
 import { TEMPLATES, catalogFrom, type Route, type Win } from "./catalog";
 
 export const CATALOG = catalogFrom(D);
 const FIRST = WEEKS[0];
 const LAST = WEEKS[WEEKS.length - 1];
-const FIRST_FULL_L4W: number = WEEKS.find((w) => !trailing(w, "L4W").truncated) ?? LAST;
 const STOCK_RULES = { low: ["WOS_LOW", "WOS_COLLAPSE_VS_LY", "RECEIPTS_BELOW_SALES"], high: ["WOS_HIGH"] };
 const PTD_ONLY = ["growth_drivers", "winners", "insider_segments"];
 const WEEKLESS = [...PTD_ONLY];
@@ -117,7 +116,7 @@ function parsePremise(t: string, tid: string): Route["premise"] {
   return { metric, direction: down ? "down" : "up", basis };
 }
 
-// ---------- checks: can this route be honoured? ----------
+// ---------- checks: can this route be honored? ----------
 export function resolveRoute(r: Route, defaults: { wk: number; win: string }): Plan {
   const reading = safeReading(r.reading) ?? "";
   const refuse = (reason: string): Plan => ({ ok: false, reason, reading });

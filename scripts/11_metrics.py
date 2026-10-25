@@ -88,8 +88,8 @@ meta = {
     "as_of_date": str(asof.date()),
     "weeks": WEEKS,
     "last_full_week": LAST_FULL_WK,
-    "partial_week": 30, "partial_week_days": "Sun–Wed (4 of 7)",
-    "basis": "PTD like-for-like: LY W30 restricted to Sun–Wed to match TY (DECISIONS D3). Counts are SAMPLE-scale (D11).",
+    "partial_week": 30, "partial_week_days": "Sun-Wed (4 of 7)",
+    "basis": "PTD like-for-like: LY W30 restricted to Sun-Wed to match TY (DECISIONS D3). Counts are SAMPLE-scale (D11).",
     "ly_w30_full_week_sales": r(d[(d.YEAR == "LY") & (d.WK == 30)].DEMAND_AMT.sum(), 2),
     "definitions": {
         "sales": "sum DEMAND_AMT (USD, after discounts)", "txns": "distinct TXN_ID (= lines)",
@@ -296,7 +296,8 @@ stock_demand_shares = {
     "families": [{k: (r(v) if isinstance(v, float) else v) for k, v in row.items()} for row in _shares.to_dict("records")],
     "corr_ly": r(np.corrcoef(_pos.eoh_W29_LY, _pos.l4w_units_LY)[0, 1]),
     "corr_ty": r(np.corrcoef(_pos.eoh_W30_TY, _pos.l4w_units_TY)[0, 1]),
-    "basis": "stock = end-of-week on hand (TY W30, LY W29); demand = L4W W26–W29 units; shares of the 21-family total",
+    "basis": ("Independent of the selected week. Stock = end-of-week on hand: LY at W29, the last week complete in both years; "
+              "TY at its latest snapshot, W30 (dated after the last sale, F13). Demand = L4W W26-W29 units. Shares of the 21-family total."),
 }
 assert round(stock_demand_shares["corr_ly"], 2) == 0.96 and round(stock_demand_shares["corr_ty"], 2) == 0.33, "corr vs FINDINGS F11"
 # Growth drill-down (M3): PTD demand growth → drivers → families → styles. Shares of total growth (sum to 1).

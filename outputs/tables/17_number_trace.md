@@ -143,7 +143,7 @@ Each printed number, the fact key it cites, the value of that key, and the metri
 
 ## W24 card retention
 
-> Returning customers are -2.7% YoY over W23-W24, and returning Gen Z is down to 36 from 51. Returning Gen Z is -29.4% and new Gen Z Insider attach is 16.3% vs 29.0% LY, so last year's Gen Z buyers aren't visibly coming back. Insider enrolment at the first purchase is the lever to test.
+> Returning customers are -2.7% YoY over W23-W24, and returning Gen Z is down to 36 from 51. Returning Gen Z is -29.4% and new Gen Z Insider attach is 16.3% vs 29.0% LY, so last year's Gen Z buyers aren't visibly coming back. Insider enrollment at the first purchase is the lever to test.
 
 | shown | cited key | value | source |
 |---|---|---|---|
@@ -724,7 +724,7 @@ Each printed number, the fact key it cites, the value of that key, and the metri
 
 ## W29 card retention
 
-> Only 16.4% of new Gen Z joined Insider over L4W, the gap behind a flat returning base. Period-to-date returning customers are 1,142 vs 1,142 LY; returning Gen Z is -6.5%, even though L4W returning customers improved (+3.8%). The gap shows in Outlet (9.7% vs 23.1%) and Greater China (5.1% vs 21.7%), new Gen Z vs other new customers. Enrol at the first Gen Z purchase: a 10% lift in returning Gen Z, worth about 0.85% of demand (R3).
+> Only 16.4% of new Gen Z joined Insider over L4W, the gap behind a flat returning base. Period-to-date returning customers are 1,142 vs 1,142 LY; returning Gen Z is -6.5%, even though L4W returning customers improved (+3.8%). The gap shows in Outlet (9.7% vs 23.1%) and Greater China (5.1% vs 21.7%), new Gen Z vs other new customers. Enroll at the first Gen Z purchase: a 10% lift in returning Gen Z, worth about 0.85% of demand (R3).
 
 | shown | cited key | value | source |
 |---|---|---|---|
@@ -849,7 +849,7 @@ Each printed number, the fact key it cites, the value of that key, and the metri
 
 ## W30 card retention
 
-> Insider attach of new Gen Z is 15.5% over L4W, against 23.4% for new Millennials. Period-to-date returning customers are flat at 1,239 vs 1,236 LY; returning Gen Z is -3.1%. The gap sits in Outlet (9.7% vs 23.1%), eComm (12.7% vs 19.2%) and Greater China (5.1% vs 21.7%), so start Insider enrolment there (R3).
+> Insider attach of new Gen Z is 15.5% over L4W, against 23.4% for new Millennials. Period-to-date returning customers are flat at 1,239 vs 1,236 LY; returning Gen Z is -3.1%. The gap sits in Outlet (9.7% vs 23.1%), eComm (12.7% vs 19.2%) and Greater China (5.1% vs 21.7%), so start Insider enrollment there (R3).
 
 | shown | cited key | value | source |
 |---|---|---|---|
