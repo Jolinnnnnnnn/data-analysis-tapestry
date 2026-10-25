@@ -44,7 +44,7 @@ CLAUDE.md                  this file
 NOTES.md                   working memory: assumptions A1-A8, gotchas, current state
 DECISIONS.md               interpretation choices D1-D13 (analysis) and D14-D25 (dashboard)
 FINDINGS.md                F1-F15 with evidence paths, recommendations R1-R3
-HISTORY.md                 iteration log ("## Iteration N"); latest is 17
+HISTORY.md                 iteration log ("## Iteration N"); latest is 21
 PROMPTS.md                 AI-assisted steps and how each was verified (P1-P20)
 QUESTIONS.md               hypothesis backlog (all resolved or dropped)
 scripts/
@@ -63,7 +63,8 @@ data/raw/                  READ-ONLY input
 data/processed/            metrics.json, anomalies.json, metrics_schema.md, tidy CSVs (generated)
 data/dashboard/            facts, summaries, briefing, timeline, build_stats (generated)
 outputs/tables, figures/   analysis tables (01-14), the AI number trace (17) and PNG charts (generated)
-handoff/                   prompts for later sessions (PROMPT_C is superseded; PROMPT_D is still open; PROMPT_E is done)
+WALKTHROUGH.md             3-minute interview walkthrough of the dashboard: script, click path, panel Q&A, open site issues
+handoff/                   prompts for later sessions (PROMPT_C is superseded; PROMPT_D is still open; PROMPT_E and PROMPT_F are done)
 web/                       Vite + React + TypeScript dashboard (see web/README.md)
   src/lib/core.ts          design tokens, display formatting, data access, URL hash state, motion preference, demos
   src/lib/validator.js     JS port of the Python validator (must stay line-for-line equivalent)
@@ -199,7 +200,7 @@ The pipeline is data -> metrics -> rules -> facts -> AI words -> validator -> UI
 **Process and docs**
 - Work in a loop: ORIENT (NOTES, HISTORY tail) -> PLAN -> ACT -> VERIFY (with a second method) -> RECORD -> REFLECT.
 - For bugs, reproduce end to end first, as close to the user's experience as possible.
-- Next numbers: D27 in DECISIONS, Iteration 21 in HISTORY, P22 in PROMPTS.
+- Next numbers: D27 in DECISIONS, Iteration 22 in HISTORY, P22 in PROMPTS.
   NOTES holds the current state only.
 - The Python 3.9 venv is `.venv`: install with `.venv/bin/python -m pip` and run scripts with `.venv/bin/python -W ignore`.
 
@@ -207,6 +208,7 @@ The pipeline is data -> metrics -> rules -> facts -> AI words -> validator -> UI
 - Branch before non-trivial work.
 - Commit and push only when asked; the user merges PRs on GitHub.
 - Never add a `Co-Authored-By` (or any agent-name) trailer to commit messages.
+- Never add "Generated with Claude Code" or any other agent attribution to PR titles or descriptions either.
 - Before deleting a branch with unmerged commits, tag it `archive/<name>`.
 - Never log in to Vercel or GitHub for the user; point them to the dashboard step instead.
 - API keys live only in the Vercel project's environment variables or a git-ignored `web/.env.local`; never in chat, code or commits.
@@ -237,8 +239,13 @@ Update an existing entry rather than duplicating it, and promote a rule into Con
   Format numbers for the UI with `_common.fixed` or 17's `render()`, which follow `toFixed`.
 - 2026-10-18: Ask's keyword picker dropped words it did not know, so "Show me Tabby performance" got whole-business numbers and "Why did sales drop?" was answered without saying demand rose YoY.
   Correct numbers for the wrong question are still wrong: a picker must report entities it can't honour and premises it assumes, and code must refuse or correct before answering.
+- 2026-10-25: Ask's premise check returned nothing for templates without a week and window, so "Why are sales down vs last year?" was answered as if demand fell, and the keyword parser parsed premises for only three templates.
+  Every assumption a route carries must end in a verdict or an explicit "not checked"; never let a helper return silently for a case it doesn't handle.
 - 2026-10-14: The Claude Design prototype's numbers were placeholders, and several were wrong (alert IDs AN098+, `RECEIPTS_BELOW_SALES` firing in W29, `WOS_LOW` as a warning, TY W30 at $41.6K).
   Never trust mock data; wire everything to `app.json`.
+
+- 2026-10-18: I ended three PR descriptions with "Generated with Claude Code", following a session default, after the user had already removed Claude attribution from the history.
+  The no-attribution rule covers PR descriptions too, not only commit messages.
 
 *Tooling and environment*
 - 2026-10-13: The venv's `pip` shebang pointed at an old checkout path.
@@ -262,6 +269,8 @@ Update an existing entry rather than duplicating it, and promote a rule into Con
   Write helper scripts to the scratchpad and run them with one plain command each.
 
 *Web and animation*
+- 2026-10-25: The Briefing summary reset its replay phase in an effect, so leaving a held-back validator demo rendered the old phase with the new passing text and crashed the app; tests had only exited mid-replay.
+  Reset render state in the same render when its input changes (or derive it), and test every transition from a settled state, not only from the middle of an animation.
 - 2026-10-14: The user's Mac has Reduce motion on, and the Claude browser pane and headless Chrome inherit it, so animations looked missing or without object persistence.
   Test motion with CDP `Emulation.setEmulatedMedia` (`prefers-reduced-motion: no-preference`), and keep the footer opt-in toggle discoverable.
 - 2026-10-14: A hidden Claude browser pane runs 0 requestAnimationFrame frames per second.

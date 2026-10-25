@@ -173,3 +173,14 @@
 - Briefing: the summary shows its first 3 sentences as bullets with "Read the full summary"; a "This week · needs you" list maps each card the rules rank "Needs you" to its recommendation (stock R1, retention R3, overstock R2). The AI text is unchanged, so the validator results are too.
 - Explore G1: the range slider is gone; the playhead is dragged directly, is a keyboard slider when focused (arrow keys), and a tap without dragging drills into that week like the points.
 - Verification: browser checks of bullets and toggle, the action list at W29, the partial note at W30, drag W30 to W26, arrow keys W26 to W28, tap drills to G3; verify and build pass.
+
+## Iteration 21 (fix: Exit demo crash, Ask premise dropped; interview walkthrough)
+- Found while writing and rehearsing `WALKTHROUGH.md` (the 3-minute interview script, from `handoff/PROMPT_F_walkthrough.md`) on the live site.
+- Crash: once a validator demo had held the summary back, **Exit demo** or the "✕" toggle blanked the whole app (`Cannot read properties of null (reading 'check')`).
+  Reproduced on production and locally; exiting while the replay was still running did not crash, which is why earlier checks missed it.
+  Cause: `Summary` reset its replay phase in an effect, so for one render it drew the old held-back phase with the new, passing text and read the failure of a text that had none.
+  Fix: the check restarts in the same render when the shown text changes, and the held-back state requires a failing text.
+- Premise: "Why are sales down vs last year?" (routed to `growth_drivers`) and the suggested "Why did demand fall in week 29?" (`why_flagged`) answered with no premise note, although Claude's route carried the premise; `premiseNote` returned null for any template without a week and window, and the keyword parser parsed premises for only three templates.
+  Fix: every premise gets a verdict over the period the answer covers (the template's week and window, the full period for PTD-only templates, else the single week), for the route's subject (a family, Gen Z or the whole business), or a sentence saying why it can't be checked; the parser now parses premises on every template except the family rankings, and the router prompt says the premise is about the subject.
+- Verification: `ask-test.mjs` adds the two production routes, family, Gen Z and missing-WoW cases, and a sweep that every template, metric, basis and subject gets a premise sentence (10 of the new checks fail on the old engine); verify and build pass; in the browser, exit, toggle, demo-to-demo and week changes no longer crash, and the keyword-parser answer to "What's driving the drop in sales?" opens with the premise correction.
+- Not run: a live Claude call against the fixed code (needs the deploy); the production routes are replayed in the tests instead.

@@ -36,8 +36,9 @@ function Summary() {
   const firstBad = nums.findIndex((s: any) => !s.ok);
   // a claim with no number of its own (e.g. a rank word) fails after the last number has been checked
   const failIdx = !blocked ? -1 : firstBad >= 0 ? firstBad : nums.length;
-  const [lit, setLit] = useState(0);
-  const [phase, setPhase] = useState<Phase>("checking");
+  const settled = (): Phase => (blocked ? "folded" : "done");
+  const [lit, setLit] = useState(() => (rm ? (blocked ? failIdx : nums.length) : 0));
+  const [phase, setPhase] = useState<Phase>(() => (rm ? settled() : "checking"));
   const [flash, setFlash] = useState(false);
   const [factsOpen, setFactsOpen] = useState(false);
   const [hover, setHover] = useState<null | { i: number; x: number; y: number }>(null);
@@ -45,10 +46,22 @@ function Summary() {
   const [run, setRun] = useState(0);
   const [full, setFull] = useState(false);
   const root = useRef<HTMLDivElement>(null);
+  // A new text (week or demo change) restarts the check in this same render: the effect below runs only after the
+  // render, and the old text's phase must never be drawn with the new text's result (a held-back phase with a passing
+  // text has no failure to name).
+  const [checked, setChecked] = useState(text);
+  if (checked !== text) {
+    setChecked(text);
+    setLit(rm ? (blocked ? failIdx : nums.length) : 0);
+    setPhase(rm ? settled() : "checking");
+    setFlash(false);
+    setHover(null);
+    setConn(null);
+  }
 
   useEffect(() => {
     const timers: any[] = [];
-    if (rm) { setLit(blocked ? failIdx : nums.length); setPhase(blocked ? "folded" : "done"); return; }
+    if (rm) { setLit(blocked ? failIdx : nums.length); setPhase(settled()); return; }
     setLit(0); setPhase("checking"); setFlash(false);
     let n = 0;
     const iv = setInterval(() => {
@@ -65,8 +78,9 @@ function Summary() {
     return () => timers.forEach((t) => { clearInterval(t); clearTimeout(t); });
   }, [text, run, rm]); // eslint-disable-line react-hooks/exhaustive-deps
 
-  const failed = phase === "failed" || phase === "folding" || phase === "folded";
-  const folded = phase === "folded";
+  // the render that resets the check above still finishes with the old phase, so a held-back state needs a failing text
+  const failed = blocked && (phase === "failed" || phase === "folding" || phase === "folded");
+  const folded = blocked && phase === "folded";
   const factsShown = factsOpen || folded;
   const okCount = failed ? failIdx : phase === "done" ? nums.length : lit;
   const bad = blocked ? res.failures[0] : null; // failures are sorted by position: the first one stops the replay
